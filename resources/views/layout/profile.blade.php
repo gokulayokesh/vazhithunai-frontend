@@ -8,11 +8,11 @@
         <!-- Page Title -->
         <div class="page-title light-background">
             <div class="container d-lg-flex justify-content-between align-items-center">
-                <h1 class="mb-2 mb-lg-0">Agent Profile</h1>
+                <h1 class="mb-2 mb-lg-0">Profile</h1>
                 <nav class="breadcrumbs">
                     <ol>
                         <li><a href="index.html">Home</a></li>
-                        <li class="current">Agent Profile</li>
+                        <li class="current">Profile</li>
                     </ol>
                 </nav>
             </div>
@@ -23,67 +23,77 @@
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-                <!-- Hero Profile Header -->
                 <div class="row align-items-center mb-5">
                     <div class="col-lg-4" data-aos="fade-right" data-aos-delay="150">
                         <div class="agent-photo-wrapper">
-                            <img src="assets/img/real-estate/agent-3.webp" alt="Agent Profile"
-                                class="img-fluid agent-photo">
+                            <img src="{{ $profile->userImages->first()->image_path ?? asset('assets/img/person/person-f-5.webp') }}"
+                                alt="{{ $profile->user->name }}" class="img-fluid agent-photo">
                             <div class="agent-badge">
                                 <i class="bi bi-star-fill"></i>
-                                <span>Top Agent</span>
+                                <span>Featured Profile</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-8" data-aos="fade-left" data-aos-delay="200">
                         <div class="agent-info">
-                            <h1 class="agent-name">Sarah Martinez</h1>
-                            <p class="agent-title">Senior Real Estate Advisor</p>
-                            <p class="agent-tagline">"Helping you find not just a house, but your perfect home in the
-                                heart of the city."</p>
+                            <h1 class="agent-name">{{ $profile->user->name }}</h1>
+                            <p class="agent-title">{{ \Carbon\Carbon::parse($profile->dob)->age }} yrs •
+                                {{ ucfirst($profile->gender) }}</p>
+                            <p class="agent-tagline">
+                                "{{ $profile->expectations ?? 'Looking for a compatible life partner who shares similar values.' }}"
+                            </p>
 
                             <div class="contact-info-hero">
                                 <div class="contact-item">
                                     <i class="bi bi-telephone-fill"></i>
-                                    <span>+1 (555) 234-5678</span>
+                                    <span>{{ $profile->parent_mobile }}</span>
                                 </div>
                                 <div class="contact-item">
                                     <i class="bi bi-envelope-fill"></i>
-                                    <span>sarah.martinez@example.com</span>
+                                    <span>{{ $profile->user->email }}</span>
                                 </div>
                                 <div class="contact-item">
                                     <i class="bi bi-geo-alt-fill"></i>
-                                    <span>Downtown &amp; Suburbs Specialist</span>
+                                    <span>{{ $profile->city }}, {{ $profile->state }}</span>
                                 </div>
                             </div>
 
                             <div class="hero-actions">
-                                <a href="#contact" class="btn btn-primary">Contact Me Now</a>
-                                <a href="#listings" class="btn btn-outline">View My Listings</a>
+                                <a href="#contact" class="btn btn-primary">Contact Family</a>
+                                <a href="#details" class="btn btn-outline">View Full Profile</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Agent Stats -->
+                <!-- Profile Stats -->
                 <div class="stats-section" data-aos="fade-up" data-aos-delay="100">
                     <div class="row text-center">
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="stat-item">
                                 <div class="stat-icon">
-                                    <i class="bi bi-house-door-fill"></i>
+                                    <i class="bi bi-rulers"></i>
                                 </div>
-                                <div class="stat-number">180+</div>
-                                <div class="stat-label">Homes Sold</div>
+                                <div class="stat-number">{{ $profile->height }}</div>
+                                <div class="stat-label">Height</div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="stat-item">
                                 <div class="stat-icon">
-                                    <i class="bi bi-calendar-check-fill"></i>
+                                    <i class="bi bi-mortarboard-fill"></i>
                                 </div>
-                                <div class="stat-number">8</div>
-                                <div class="stat-label">Years Experience</div>
+                                <div class="stat-number">{{ $profile->highest_education }}</div>
+                                <div class="stat-label">Education</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="bi bi-briefcase-fill"></i>
+                                </div>
+                                <div class="stat-number">{{ $profile->occupation_category }}</div>
+                                <div class="stat-label">Occupation</div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 mb-4">
@@ -91,49 +101,39 @@
                                 <div class="stat-icon">
                                     <i class="bi bi-people-fill"></i>
                                 </div>
-                                <div class="stat-number">200+</div>
-                                <div class="stat-label">Happy Clients</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="stat-item">
-                                <div class="stat-icon">
-                                    <i class="bi bi-trophy-fill"></i>
-                                </div>
-                                <div class="stat-number">Top 5%</div>
-                                <div class="stat-label">Nationwide</div>
+                                <div class="stat-number">{{ $profile->marital_status }}</div>
+                                <div class="stat-label">Marital Status</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Agent Bio & Specialties -->
+                <!-- Profile Bio & Details -->
                 <div class="row mb-5" data-aos="fade-up" data-aos-delay="150">
                     <div class="col-lg-4 mb-4">
                         <div class="sidebar-info">
                             <div class="contact-card">
                                 <h4>Get In Touch</h4>
-
                                 <div class="contact-details">
                                     <div class="contact-detail">
                                         <i class="bi bi-telephone"></i>
                                         <div>
                                             <strong>Phone</strong>
-                                            <p>+1 (555) 234-5678</p>
+                                            <p>{{ $profile->parent_mobile }}</p>
                                         </div>
                                     </div>
                                     <div class="contact-detail">
                                         <i class="bi bi-envelope"></i>
                                         <div>
                                             <strong>Email</strong>
-                                            <p>sarah.martinez@example.com</p>
+                                            <p>{{ $profile->user->email }}</p>
                                         </div>
                                     </div>
                                     <div class="contact-detail">
                                         <i class="bi bi-geo-alt"></i>
                                         <div>
-                                            <strong>Office</strong>
-                                            <p>1234 Main Street<br>Austin, TX 78701</p>
+                                            <strong>Location</strong>
+                                            <p>{{ $profile->city }}, {{ $profile->state }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -147,66 +147,51 @@
                             </div>
 
                             <div class="specialties-card">
-                                <h4>Specialties</h4>
+                                <h4>Interests</h4>
                                 <div class="specialty-tags">
-                                    <span class="specialty-tag">Luxury Homes</span>
-                                    <span class="specialty-tag">First-Time Buyers</span>
-                                    <span class="specialty-tag">Investment Properties</span>
-                                    <span class="specialty-tag">Relocation</span>
-                                    <span class="specialty-tag">Bilingual Support</span>
+                                    @foreach ($profile->interests ?? [] as $interest)
+                                        <span class="specialty-tag">{{ $interest }}</span>
+                                    @endforeach
                                 </div>
                             </div>
 
                             <div class="certifications-card">
-                                <h4>Certifications</h4>
-                                <div class="cert-item">
-                                    <i class="bi bi-award-fill"></i>
-                                    <span>Certified Residential Specialist (CRS)</span>
-                                </div>
-                                <div class="cert-item">
-                                    <i class="bi bi-shield-check"></i>
-                                    <span>Graduate REALTOR Institute (GRI)</span>
-                                </div>
-                                <div class="cert-item">
-                                    <i class="bi bi-house-fill"></i>
-                                    <span>Luxury Home Marketing Specialist</span>
-                                </div>
+                                <h4>Languages</h4>
+                                @foreach ($profile->languages ?? [] as $lang)
+                                    <div class="cert-item">
+                                        <i class="bi bi-translate"></i>
+                                        <span>{{ $lang }}</span>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-8">
                         <div class="bio-content">
-                            <h3>About Sarah</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                            <h3>About {{ $profile->user->name }}</h3>
+                            <p>{{ $profile->about ?? 'Profile description not provided.' }}</p>
 
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                                anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-                                veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-
-                            <h4>My Approach</h4>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro
-                                quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
-                                quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-                                voluptatem.</p>
+                            <h4>Family Details</h4>
+                            <p>Father: {{ $profile->father_work ?? 'N/A' }} | Mother:
+                                {{ $profile->mother_work ?? 'N/A' }}</p>
+                            <p>Siblings: {{ $profile->brothers_count }} Brothers ({{ $profile->married_brothers }}
+                                Married), {{ $profile->sisters_count }} Sisters ({{ $profile->married_sisters }}
+                                Married)</p>
 
                             <div class="achievements">
-                                <h4>Recent Achievements</h4>
+                                <h4>Horoscope Details</h4>
                                 <ul>
-                                    <li>Top 5% of agents nationwide in 2023</li>
-                                    <li>Closed over $25M in sales last year</li>
-                                    <li>Winner of "Client Choice Award" 2023</li>
-                                    <li>Featured in Austin Real Estate Magazine</li>
+                                    <li>Birth Star: {{ $profile->birth_star }}</li>
+                                    <li>Zodiac Sign: {{ $profile->zodiac_sign }}</li>
+                                    <li>Rahu/Ketu: {{ $profile->rahu_ketu }}</li>
+                                    <li>Chevvai Dosham: {{ $profile->chevvai }}</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Contact Form -->
                 <div class="contact-form-section" id="contact" data-aos="fade-up" data-aos-delay="100">

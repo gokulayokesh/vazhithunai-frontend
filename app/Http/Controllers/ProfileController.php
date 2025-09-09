@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserDetails;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -13,6 +14,15 @@ class ProfileController extends Controller
 
     public function profile(Request $request)
     {
-        return view('layout.profile');
+        $userId = (int) $request->id;
+
+        $profile = UserDetails::with([
+            'user',          // relation to users table
+            'userImages',    // relation to profile images
+        ])
+            ->where('user_id', $userId)
+            ->first();
+
+        return view('layout.profile', compact('profile'));
     }
 }

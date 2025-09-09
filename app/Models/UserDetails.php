@@ -15,4 +15,14 @@ class UserDetails extends Model
         'brothers_count', 'sisters_count', 'married_brothers', 'married_sisters', 'own_house', 'family_notes',
         'birth_star', 'rahu_ketu', 'chevvai', 'zodiac_sign', 'birth_lagnam', 'expectations', 'previous_marriage', 'additional_horoscope',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function userImages()
+    {
+        return $this->hasMany(UserImages::class, 'user_id', 'user_id');
+    }
 }

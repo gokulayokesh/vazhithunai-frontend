@@ -31,57 +31,61 @@
                                         <p>Discover thousands of verified listings</p>
                                     </div>
 
-                                    <form action="" class="property-search-form">
+                                    <form method="get" action="{{ route('listings.search') }}"
+                                        class="property-search-form">
                                         <div class="search-grid">
                                             <div class="search-field">
                                                 <label for="search-location" class="field-label">Location</label>
-                                                <input type="text" id="search-location" name="location"
-                                                    placeholder="Enter city or neighborhood" required="">
+                                                <select id="search-type" name="city">
+                                                    <option value="">Select Location</option>
+                                                    @foreach ($cities as $city)
+                                                        <option value={{ $city['name'] }}>
+                                                            {{ $city['name'] . ' / ' . $city['tamil_name'] }}</option>
+                                                    @endforeach
+                                                </select>
                                                 <i class="bi bi-geo-alt field-icon"></i>
                                             </div>
 
                                             <div class="search-field">
                                                 <label for="search-type" class="field-label">Looking for</label>
-                                                <select id="search-type" name="gender" required="">
-                                                    <option value="">Select</option>
-                                                    <option>ஆண் / Male</option>
-                                                    <option>பெண் / Female</option>
-                                                    <option>மற்றவை / Other</option>
+                                                <select id="search-type" name="gender">
+                                                    <option value="">Select Gender</option>
+                                                    <option value="Male">ஆண் / Male</option>
+                                                    <option value="Female">பெண் / Female</option>
+                                                    <option value="Other">மற்றவை / Other</option>
                                                 </select>
                                                 <i class="bi bi-gender-ambiguous field-icon"></i>
                                             </div>
 
                                             <div class="search-field">
-                                                <label for="search-budget" class="field-label">Budget Range</label>
-                                                <select id="search-budget" name="price_range" required="">
-                                                    <option value="">Any Price</option>
-                                                    <option value="0-300000">Under $300K</option>
-                                                    <option value="300000-600000">$300K - $600K</option>
-                                                    <option value="600000-900000">$600K - $900K</option>
-                                                    <option value="900000-1500000">$900K - $1.5M</option>
-                                                    <option value="1500000+">Above $1.5M</option>
+                                                <label for="search-budget" class="field-label">Age From</label>
+                                                <select id="search-budget" name="age_from">
+                                                    <option value="" selected>Select From Age</option>
+                                                    <option value="0">Any Age</option>
+                                                    @for ($i = 18; $i <= 40; $i++)
+                                                        <option value="{{ $i }}">{{ $i }}</option>
+                                                    @endfor
                                                 </select>
-                                                <i class="bi bi-currency-dollar field-icon"></i>
+                                                <i class="bi bi-calendar-event field-icon"></i>
                                             </div>
 
                                             <div class="search-field">
-                                                <label for="search-rooms" class="field-label">Bedrooms</label>
-                                                <select id="search-rooms" name="bedrooms">
-                                                    <option value="">Any</option>
-                                                    <option value="1">1 Room</option>
-                                                    <option value="2">2 Rooms</option>
-                                                    <option value="3">3 Rooms</option>
-                                                    <option value="4">4 Rooms</option>
-                                                    <option value="5+">5+ Rooms</option>
+                                                <label for="search-rooms" class="field-label">to</label>
+                                                <select id="search-rooms" name="age_to">
+                                                    <option value="" selected>Select To Age</option>
+                                                    <option value="0">Any Age</option>
+                                                    @for ($i = 18; $i <= 40; $i++)
+                                                        <option value="{{ $i }}">{{ $i }}</option>
+                                                    @endfor
                                                 </select>
-                                                <i class="bi bi-door-open field-icon"></i>
+                                                <i class="bi bi-calendar-event field-icon"></i>
                                             </div>
                                         </div>
 
-                                        <a href="{{ route('listings.search') }}" class="search-btn">
+                                        <button type="submit" class="search-btn">
                                             <i class="bi bi-search-heart-fill"></i>
                                             <span>Find Partner</span>
-                                        </a>
+                                        </button>
                                     </form>
                                 </div>
 
