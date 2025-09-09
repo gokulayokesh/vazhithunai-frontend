@@ -1262,7 +1262,7 @@
                     "Criminal Law",
                     "Corporate Law",
                     "Constitutional Law",
-                    "Intellectual Property Law",
+                    "Intellectual Partner Law",
                     "International Law"
                 ],
                 management: [

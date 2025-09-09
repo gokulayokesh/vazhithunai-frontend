@@ -244,7 +244,7 @@
                                                 <option value="">Select Service</option>
                                                 <option value="buying">Buying a Home</option>
                                                 <option value="selling">Selling a Home</option>
-                                                <option value="investment">Investment Property</option>
+                                                <option value="investment">Investment Partner</option>
                                                 <option value="consultation">Market Consultation</option>
                                             </select>
                                         </div>

@@ -41,16 +41,14 @@
                                             </div>
 
                                             <div class="search-field">
-                                                <label for="search-type" class="field-label">Partner Type</label>
-                                                <select id="search-type" name="property_type" required="">
-                                                    <option value="">All Types</option>
-                                                    <option value="house">Single House</option>
-                                                    <option value="apartment">Apartment</option>
-                                                    <option value="condo">Condominium</option>
-                                                    <option value="villa">Villa</option>
-                                                    <option value="commercial">Commercial</option>
+                                                <label for="search-type" class="field-label">Looking for</label>
+                                                <select id="search-type" name="gender" required="">
+                                                    <option value="">Select</option>
+                                                    <option>ஆண் / Male</option>
+                                                    <option>பெண் / Female</option>
+                                                    <option>மற்றவை / Other</option>
                                                 </select>
-                                                <i class="bi bi-building field-icon"></i>
+                                                <i class="bi bi-gender-ambiguous field-icon"></i>
                                             </div>
 
                                             <div class="search-field">
@@ -117,8 +115,7 @@
                             <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
                                 <div class="visual-container">
                                     <div class="featured-property">
-                                        <img src="assets/img/bg/about-1.jpeg" alt="Featured Partner"
-                                            class="img-fluid">
+                                        <img src="assets/img/bg/about-1.jpeg" alt="Featured Partner" class="img-fluid">
                                         <div class="property-info">
                                             {{-- <div class="property-price">$925,000</div>
                                             <div class="property-details">

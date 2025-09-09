@@ -1,4 +1,4 @@
-@extends('include.header')
+@include('include.header')
 
 <body class="contact-page">
     @include('include.nav-header')
@@ -24,8 +24,8 @@
             <!-- Map Section -->
             <div class="map-container mb-5">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus"
-                    width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d288.25489266379117!2d79.365336713564!3d10.956229576923452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baacd46ec5abce1%3A0xa18fc3807b03295b!2s57%2F1%2C%20Eb%20Colony%2C%20Kumbakonam%2C%20Tamil%20Nadu%20612001!5e0!3m2!1sen!2sin!4v1757351773559!5m2!1sen!2sin"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
@@ -40,7 +40,7 @@
                             </div>
                             <div class="info-content">
                                 <h4>Location</h4>
-                                <p>482 Pine Street, Seattle, Washington 98101</p>
+                                <p>#48/93, Mukkannar Street,<br> Kumbakonam, 612001</p>
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                             </div>
                             <div class="info-content">
                                 <h4>Phone &amp; Email</h4>
-                                <p>+1 (206) 555-0192</p>
+                                <p>+91 94438 74110</p>
                                 <p>connect@example.com</p>
                             </div>
                         </div>

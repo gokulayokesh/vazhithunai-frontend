@@ -19,7 +19,7 @@
         </div><!-- End Page Title -->
 
         <!-- Properties Section -->
-        <section id="properties" class="properties section">
+        <section id="properties" class="properties section" style="padding: 60px 0px 0px 0px;">
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -115,708 +115,265 @@
                     </div>
                 </div>
 
-                <div class="properties-container">
-
-                    <div class="properties-masonry view-masonry active" data-aos="fade-up" data-aos-delay="250">
-                        <div class="row g-4">
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="property-item">
-                                    <a href="{{ route('profile') }}" class="property-link">
-                                        <div class="property-image-wrapper">
-                                            <img src="assets/img/real-estate/property-exterior-2.webp"
-                                                alt="Luxury Villa" class="img-fluid">
-                                            <div class="property-status">
-                                                <span class="status-badge featured">Featured</span>
-                                                <span class="status-badge sale">For Sale</span>
-                                            </div>
-                                            <div class="property-actions">
-                                                <button class="action-btn favorite-btn" data-toggle="tooltip"
-                                                    title="Add to Favorites">
-                                                    <i class="bi bi-heart"></i>
-                                                </button>
-                                                <button class="action-btn share-btn" data-toggle="tooltip"
-                                                    title="Share Profile">
-                                                    <i class="bi bi-share"></i>
-                                                </button>
-                                                <button class="action-btn gallery-btn" data-toggle="tooltip"
-                                                    title="View Gallery">
-                                                    <i class="bi bi-images"></i>
-                                                    <span class="gallery-count">14</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="property-details"><a href="{{ route('profile') }}"
-                                            class="property-link">
-                                            <div class="property-header">
-                                                <div class="property-price">$1,850,000</div>
-                                                <div class="property-type">House</div>
-                                            </div>
-                                            <h4 class="property-title">Luxury Modern Villa with Pool</h4>
-                                            <p class="property-address">
-                                                <i class="bi bi-geo-alt"></i>
-                                                3458 Sunset Boulevard, Beverly Hills, CA 90210
-                                            </p>
-                                            <div class="property-specs">
-                                                <div class="spec-item">
-                                                    <i class="bi bi-house-door"></i>
-                                                    <span>5 Bedrooms</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <i class="bi bi-droplet"></i>
-                                                    <span>4 Bathrooms</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <i class="bi bi-arrows-angle-expand"></i>
-                                                    <span>3,400 sq ft</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="property-agent-info"><a href="{{ route('profile') }}"
-                                                class="property-link">
-                                                <div class="agent-avatar">
-                                                    <img src="assets/img/real-estate/agent-2.webp" alt="Agent">
-                                                </div>
-                                                <div class="agent-details">
-                                                    <strong>Jennifer Miller</strong>
-                                                    <span>Prime Realty Group</span>
-                                                </div>
-                                            </a>
-                                            <div class="agent-contact"><a href="{{ route('profile') }}"
-                                                    class="property-link">
-                                                </a><a href="tel:+15551234567" class="contact-btn">
-                                                    <i class="bi bi-telephone"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div><!-- End Profile Item -->
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="property-item">
-                                    <a href="{{ route('profile') }}" class="property-link">
-                                        <div class="property-image-wrapper">
-                                            <img src="assets/img/real-estate/property-interior-1.webp"
-                                                alt="Modern Apartment" class="img-fluid">
-                                            <div class="property-status">
-                                                <span class="status-badge new">New Listing</span>
-                                                <span class="status-badge rent">For Rent</span>
-                                            </div>
-                                            <div class="property-actions">
-                                                <button class="action-btn favorite-btn" data-toggle="tooltip"
-                                                    title="Add to Favorites">
-                                                    <i class="bi bi-heart"></i>
-                                                </button>
-                                                <button class="action-btn share-btn" data-toggle="tooltip"
-                                                    title="Share Profile">
-                                                    <i class="bi bi-share"></i>
-                                                </button>
-                                                <button class="action-btn gallery-btn" data-toggle="tooltip"
-                                                    title="View Gallery">
-                                                    <i class="bi bi-images"></i>
-                                                    <span class="gallery-count">9</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="property-details"><a href="{{ route('profile') }}"
-                                            class="property-link">
-                                            <div class="property-header">
-                                                <div class="property-price">$5,200<span>/month</span></div>
-                                                <div class="property-type">Apartment</div>
-                                            </div>
-                                            <h4 class="property-title">Downtown Modern Penthouse</h4>
-                                            <p class="property-address">
-                                                <i class="bi bi-geo-alt"></i>
-                                                1247 Broadway Street, Manhattan, NY 10001
-                                            </p>
-                                            <div class="property-specs">
-                                                <div class="spec-item">
-                                                    <i class="bi bi-house-door"></i>
-                                                    <span>3 Bedrooms</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <i class="bi bi-droplet"></i>
-                                                    <span>2 Bathrooms</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <i class="bi bi-arrows-angle-expand"></i>
-                                                    <span>2,100 sq ft</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="property-agent-info"><a href="{{ route('profile') }}"
-                                                class="property-link">
-                                                <div class="agent-avatar">
-                                                    <img src="assets/img/real-estate/agent-4.webp" alt="Agent">
-                                                </div>
-                                                <div class="agent-details">
-                                                    <strong>Robert Thompson</strong>
-                                                    <span>Urban Living Realty</span>
-                                                </div>
-                                            </a>
-                                            <div class="agent-contact"><a href="{{ route('profile') }}"
-                                                    class="property-link">
-                                                </a><a href="tel:+15552345678" class="contact-btn">
-                                                    <i class="bi bi-telephone"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div><!-- End Profile Item -->
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="property-item">
-                                    <a href="{{ route('profile') }}" class="property-link">
-                                        <div class="property-image-wrapper">
-                                            <img src="assets/img/real-estate/property-exterior-5.webp"
-                                                alt="Family Home" class="img-fluid">
-                                            <div class="property-status">
-                                                <span class="status-badge sale">For Sale</span>
-                                            </div>
-                                            <div class="property-actions">
-                                                <button class="action-btn favorite-btn" data-toggle="tooltip"
-                                                    title="Add to Favorites">
-                                                    <i class="bi bi-heart"></i>
-                                                </button>
-                                                <button class="action-btn share-btn" data-toggle="tooltip"
-                                                    title="Share Profile">
-                                                    <i class="bi bi-share"></i>
-                                                </button>
-                                                <button class="action-btn gallery-btn" data-toggle="tooltip"
-                                                    title="View Gallery">
-                                                    <i class="bi bi-images"></i>
-                                                    <span class="gallery-count">11</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="property-details"><a href="{{ route('profile') }}"
-                                            class="property-link">
-                                            <div class="property-header">
-                                                <div class="property-price">$975,000</div>
-                                                <div class="property-type">House</div>
-                                            </div>
-                                            <h4 class="property-title">Charming Family Home with Garden</h4>
-                                            <p class="property-address">
-                                                <i class="bi bi-geo-alt"></i>
-                                                892 Maple Grove Avenue, Austin, TX 73301
-                                            </p>
-                                            <div class="property-specs">
-                                                <div class="spec-item">
-                                                    <i class="bi bi-house-door"></i>
-                                                    <span>4 Bedrooms</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <i class="bi bi-droplet"></i>
-                                                    <span>3 Bathrooms</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <i class="bi bi-arrows-angle-expand"></i>
-                                                    <span>2,650 sq ft</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="property-agent-info"><a href="{{ route('profile') }}"
-                                                class="property-link">
-                                                <div class="agent-avatar">
-                                                    <img src="assets/img/real-estate/agent-6.webp" alt="Agent">
-                                                </div>
-                                                <div class="agent-details">
-                                                    <strong>Lisa Anderson</strong>
-                                                    <span>Texas Home Solutions</span>
-                                                </div>
-                                            </a>
-                                            <div class="agent-contact"><a href="{{ route('profile') }}"
-                                                    class="property-link">
-                                                </a><a href="tel:+15553456789" class="contact-btn">
-                                                    <i class="bi bi-telephone"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div><!-- End Profile Item -->
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="property-item">
-                                    <a href="{{ route('profile') }}" class="property-link">
-                                        <div class="property-image-wrapper">
-                                            <img src="assets/img/real-estate/property-interior-6.webp"
-                                                alt="Studio Loft" class="img-fluid">
-                                            <div class="property-status">
-                                                <span class="status-badge open">Open House</span>
-                                                <span class="status-badge rent">For Rent</span>
-                                            </div>
-                                            <div class="property-actions">
-                                                <button class="action-btn favorite-btn" data-toggle="tooltip"
-                                                    title="Add to Favorites">
-                                                    <i class="bi bi-heart"></i>
-                                                </button>
-                                                <button class="action-btn share-btn" data-toggle="tooltip"
-                                                    title="Share Profile">
-                                                    <i class="bi bi-share"></i>
-                                                </button>
-                                                <button class="action-btn gallery-btn" data-toggle="tooltip"
-                                                    title="View Gallery">
-                                                    <i class="bi bi-images"></i>
-                                                    <span class="gallery-count">7</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="property-details"><a href="{{ route('profile') }}"
-                                            class="property-link">
-                                            <div class="property-header">
-                                                <div class="property-price">$3,400<span>/month</span></div>
-                                                <div class="property-type">Loft</div>
-                                            </div>
-                                            <h4 class="property-title">Industrial Style Studio Loft</h4>
-                                            <p class="property-address">
-                                                <i class="bi bi-geo-alt"></i>
-                                                567 Warehouse District, Brooklyn, NY 11201
-                                            </p>
-                                            <div class="property-specs">
-                                                <div class="spec-item">
-                                                    <i class="bi bi-house-door"></i>
-                                                    <span>Studio</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <i class="bi bi-droplet"></i>
-                                                    <span>1 Bathroom</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <i class="bi bi-arrows-angle-expand"></i>
-                                                    <span>1,200 sq ft</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="property-agent-info"><a href="{{ route('profile') }}"
-                                                class="property-link">
-                                                <div class="agent-avatar">
-                                                    <img src="assets/img/real-estate/agent-8.webp" alt="Agent">
-                                                </div>
-                                                <div class="agent-details">
-                                                    <strong>Marcus Johnson</strong>
-                                                    <span>Brooklyn Properties</span>
-                                                </div>
-                                            </a>
-                                            <div class="agent-contact"><a href="{{ route('profile') }}"
-                                                    class="property-link">
-                                                </a><a href="tel:+15554567890" class="contact-btn">
-                                                    <i class="bi bi-telephone"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div><!-- End Profile Item -->
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="property-item">
-                                    <a href="{{ route('profile') }}" class="property-link">
-                                        <div class="property-image-wrapper">
-                                            <img src="assets/img/real-estate/property-exterior-7.webp" alt="Townhouse"
-                                                class="img-fluid">
-                                            <div class="property-status">
-                                                <span class="status-badge sale">For Sale</span>
-                                            </div>
-                                            <div class="property-actions">
-                                                <button class="action-btn favorite-btn" data-toggle="tooltip"
-                                                    title="Add to Favorites">
-                                                    <i class="bi bi-heart"></i>
-                                                </button>
-                                                <button class="action-btn share-btn" data-toggle="tooltip"
-                                                    title="Share Profile">
-                                                    <i class="bi bi-share"></i>
-                                                </button>
-                                                <button class="action-btn gallery-btn" data-toggle="tooltip"
-                                                    title="View Gallery">
-                                                    <i class="bi bi-images"></i>
-                                                    <span class="gallery-count">16</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="property-details"><a href="{{ route('profile') }}"
-                                            class="property-link">
-                                            <div class="property-header">
-                                                <div class="property-price">$725,000</div>
-                                                <div class="property-type">Townhouse</div>
-                                            </div>
-                                            <h4 class="property-title">Contemporary Waterfront Townhouse</h4>
-                                            <p class="property-address">
-                                                <i class="bi bi-geo-alt"></i>
-                                                234 Harbor Drive, Miami, FL 33101
-                                            </p>
-                                            <div class="property-specs">
-                                                <div class="spec-item">
-                                                    <i class="bi bi-house-door"></i>
-                                                    <span>3 Bedrooms</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <i class="bi bi-droplet"></i>
-                                                    <span>2 Bathrooms</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <i class="bi bi-arrows-angle-expand"></i>
-                                                    <span>1,950 sq ft</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="property-agent-info"><a href="{{ route('profile') }}"
-                                                class="property-link">
-                                                <div class="agent-avatar">
-                                                    <img src="assets/img/real-estate/agent-9.webp" alt="Agent">
-                                                </div>
-                                                <div class="agent-details">
-                                                    <strong>Sofia Martinez</strong>
-                                                    <span>Coastal Realty</span>
-                                                </div>
-                                            </a>
-                                            <div class="agent-contact"><a href="{{ route('profile') }}"
-                                                    class="property-link">
-                                                </a><a href="tel:+15555678901" class="contact-btn">
-                                                    <i class="bi bi-telephone"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div><!-- End Profile Item -->
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="property-item">
-                                    <a href="{{ route('profile') }}" class="property-link">
-                                        <div class="property-image-wrapper">
-                                            <img src="assets/img/real-estate/property-interior-8.webp" alt="Condo"
-                                                class="img-fluid">
-                                            <div class="property-status">
-                                                <span class="status-badge reduced">Price Reduced</span>
-                                                <span class="status-badge sale">For Sale</span>
-                                            </div>
-                                            <div class="property-actions">
-                                                <button class="action-btn favorite-btn" data-toggle="tooltip"
-                                                    title="Add to Favorites">
-                                                    <i class="bi bi-heart"></i>
-                                                </button>
-                                                <button class="action-btn share-btn" data-toggle="tooltip"
-                                                    title="Share Profile">
-                                                    <i class="bi bi-share"></i>
-                                                </button>
-                                                <button class="action-btn gallery-btn" data-toggle="tooltip"
-                                                    title="View Gallery">
-                                                    <i class="bi bi-images"></i>
-                                                    <span class="gallery-count">12</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="property-details"><a href="{{ route('profile') }}"
-                                            class="property-link">
-                                            <div class="property-header">
-                                                <div class="property-price">$645,000 <span
-                                                        class="old-price">$695,000</span></div>
-                                                <div class="property-type">Condo</div>
-                                            </div>
-                                            <h4 class="property-title">High-Rise Condo with City Views</h4>
-                                            <p class="property-address">
-                                                <i class="bi bi-geo-alt"></i>
-                                                789 Skyline Tower, Seattle, WA 98101
-                                            </p>
-                                            <div class="property-specs">
-                                                <div class="spec-item">
-                                                    <i class="bi bi-house-door"></i>
-                                                    <span>2 Bedrooms</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <i class="bi bi-droplet"></i>
-                                                    <span>2 Bathrooms</span>
-                                                </div>
-                                                <div class="spec-item">
-                                                    <i class="bi bi-arrows-angle-expand"></i>
-                                                    <span>1,450 sq ft</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="property-agent-info"><a href="{{ route('profile') }}"
-                                                class="property-link">
-                                                <div class="agent-avatar">
-                                                    <img src="assets/img/real-estate/agent-10.webp" alt="Agent">
-                                                </div>
-                                                <div class="agent-details">
-                                                    <strong>James Wilson</strong>
-                                                    <span>Pacific Northwest Realty</span>
-                                                </div>
-                                            </a>
-                                            <div class="agent-contact"><a href="{{ route('profile') }}"
-                                                    class="property-link">
-                                                </a><a href="tel:+15556789012" class="contact-btn">
-                                                    <i class="bi bi-telephone"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div><!-- End Profile Item -->
-
-                        </div>
-                    </div>
-
-                    <div class="properties-rows view-rows">
-                        <div class="row g-4">
-
-                            <div class="col-12">
-                                <div class="property-row-item">
-                                    <a href="{{ route('profile') }}" class="property-row-link">
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-4">
-                                                <div class="property-image-wrapper">
-                                                    <img src="assets/img/real-estate/property-exterior-2.webp"
-                                                        alt="Luxury Villa" class="img-fluid">
-                                                    <div class="property-status">
-                                                        <span class="status-badge featured">Featured</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="property-row-content">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-lg-8">
-                                                            <div class="property-info">
-                                                                <div class="property-header">
-                                                                    <h4 class="property-title">Luxury Modern Villa with
-                                                                        Pool</h4>
-                                                                    <div class="property-type-price">
-                                                                        <span class="property-type">House</span>
-                                                                        <span class="property-price">$1,850,000</span>
-                                                                    </div>
-                                                                </div>
-                                                                <p class="property-address">
-                                                                    <i class="bi bi-geo-alt"></i>
-                                                                    3458 Sunset Boulevard, Beverly Hills, CA 90210
-                                                                </p>
-                                                                <div class="property-specs">
-                                                                    <span><i class="bi bi-house-door"></i> 5 Bed</span>
-                                                                    <span><i class="bi bi-droplet"></i> 4 Bath</span>
-                                                                    <span><i class="bi bi-arrows-angle-expand"></i>
-                                                                        3,400 sq ft</span>
-                                                                </div>
-                                                                <div class="property-agent">
-                                                                    <img src="assets/img/real-estate/agent-2.webp"
-                                                                        alt="Agent" class="agent-avatar">
-                                                                    <span>Jennifer Miller, Prime Realty Group</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="property-actions">
-                                                                <div class="action-buttons">
-                                                                    <button class="action-btn favorite-btn">
-                                                                        <i class="bi bi-heart"></i> Save
-                                                                    </button>
-                                                                    <button class="action-btn contact-btn">
-                                                                        <i class="bi bi-telephone"></i> Call
-                                                                    </button>
-                                                                    <button class="action-btn gallery-btn">
-                                                                        <i class="bi bi-images"></i> 14 Photos
-                                                                    </button>
-                                                                </div>
-                                                                <span class="btn btn-primary view-details-btn">View
-                                                                    Details</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div><!-- End Profile Row Item -->
-
-                            <div class="col-12">
-                                <div class="property-row-item">
-                                    <a href="{{ route('profile') }}" class="property-row-link">
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-4">
-                                                <div class="property-image-wrapper">
-                                                    <img src="assets/img/real-estate/property-interior-1.webp"
-                                                        alt="Modern Apartment" class="img-fluid">
-                                                    <div class="property-status">
-                                                        <span class="status-badge new">New</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="property-row-content">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-lg-8">
-                                                            <div class="property-info">
-                                                                <div class="property-header">
-                                                                    <h4 class="property-title">Downtown Modern
-                                                                        Penthouse</h4>
-                                                                    <div class="property-type-price">
-                                                                        <span class="property-type">Apartment</span>
-                                                                        <span
-                                                                            class="property-price">$5,200<small>/month</small></span>
-                                                                    </div>
-                                                                </div>
-                                                                <p class="property-address">
-                                                                    <i class="bi bi-geo-alt"></i>
-                                                                    1247 Broadway Street, Manhattan, NY 10001
-                                                                </p>
-                                                                <div class="property-specs">
-                                                                    <span><i class="bi bi-house-door"></i> 3 Bed</span>
-                                                                    <span><i class="bi bi-droplet"></i> 2 Bath</span>
-                                                                    <span><i class="bi bi-arrows-angle-expand"></i>
-                                                                        2,100 sq ft</span>
-                                                                </div>
-                                                                <div class="property-agent">
-                                                                    <img src="assets/img/real-estate/agent-4.webp"
-                                                                        alt="Agent" class="agent-avatar">
-                                                                    <span>Robert Thompson, Urban Living Realty</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="property-actions">
-                                                                <div class="action-buttons">
-                                                                    <button class="action-btn favorite-btn">
-                                                                        <i class="bi bi-heart"></i> Save
-                                                                    </button>
-                                                                    <button class="action-btn contact-btn">
-                                                                        <i class="bi bi-telephone"></i> Call
-                                                                    </button>
-                                                                    <button class="action-btn gallery-btn">
-                                                                        <i class="bi bi-images"></i> 9 Photos
-                                                                    </button>
-                                                                </div>
-                                                                <span class="btn btn-primary view-details-btn">View
-                                                                    Details</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div><!-- End Profile Row Item -->
-
-                            <div class="col-12">
-                                <div class="property-row-item">
-                                    <a href="{{ route('profile') }}" class="property-row-link">
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-4">
-                                                <div class="property-image-wrapper">
-                                                    <img src="assets/img/real-estate/property-exterior-5.webp"
-                                                        alt="Family Home" class="img-fluid">
-                                                    <div class="property-status">
-                                                        <span class="status-badge sale">For Sale</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="property-row-content">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-lg-8">
-                                                            <div class="property-info">
-                                                                <div class="property-header">
-                                                                    <h4 class="property-title">Charming Family Home
-                                                                        with Garden</h4>
-                                                                    <div class="property-type-price">
-                                                                        <span class="property-type">House</span>
-                                                                        <span class="property-price">$975,000</span>
-                                                                    </div>
-                                                                </div>
-                                                                <p class="property-address">
-                                                                    <i class="bi bi-geo-alt"></i>
-                                                                    892 Maple Grove Avenue, Austin, TX 73301
-                                                                </p>
-                                                                <div class="property-specs">
-                                                                    <span><i class="bi bi-house-door"></i> 4 Bed</span>
-                                                                    <span><i class="bi bi-droplet"></i> 3 Bath</span>
-                                                                    <span><i class="bi bi-arrows-angle-expand"></i>
-                                                                        2,650 sq ft</span>
-                                                                </div>
-                                                                <div class="property-agent">
-                                                                    <img src="assets/img/real-estate/agent-6.webp"
-                                                                        alt="Agent" class="agent-avatar">
-                                                                    <span>Lisa Anderson, Texas Home Solutions</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="property-actions">
-                                                                <div class="action-buttons">
-                                                                    <button class="action-btn favorite-btn">
-                                                                        <i class="bi bi-heart"></i> Save
-                                                                    </button>
-                                                                    <button class="action-btn contact-btn">
-                                                                        <i class="bi bi-telephone"></i> Call
-                                                                    </button>
-                                                                    <button class="action-btn gallery-btn">
-                                                                        <i class="bi bi-images"></i> 11 Photos
-                                                                    </button>
-                                                                </div>
-                                                                <span class="btn btn-primary view-details-btn">View
-                                                                    Details</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div><!-- End Profile Row Item -->
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <nav class="pagination-wrapper mt-5" data-aos="fade-up" data-aos-delay="350">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-lg-6">
-                            <div class="pagination-info">
-                                <p>Showing <strong>1-6</strong> of <strong>124</strong> properties</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <ul class="pagination justify-content-lg-end">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#">
-                                        <i class="bi bi-chevron-left"></i>
-                                    </a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                <li class="page-item"><a class="page-link" href="#">21</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">
-                                        <i class="bi bi-chevron-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-
             </div>
 
         </section><!-- /Properties Section -->
+
+        <section id="agents" class="properties agents section" style="padding: 0px;">
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row gy-4">
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="agent-card">
+                            <div class="agent-image">
+                                <img src="assets/img/real-estate/agent-1.webp" alt="Agent" class="img-fluid">
+                                <div class="badge-overlay">
+                                    <span class="top-seller-badge">Top Seller</span>
+                                </div>
+                            </div>
+                            <div class="agent-info">
+                                <h4>Sarah Martinez</h4>
+                                <span class="role">Senior Property Advisor</span>
+                                <p class="location"><i class="bi bi-geo-alt"></i>vDowntown Miami</p>
+                                <div class="specialties">
+                                    <span class="specialty-tag">Luxury Homes</span>
+                                    <span class="specialty-tag">Condos</span>
+                                </div>
+                                <div class="contact-links">
+                                    <a href="tel:+15551234567"><i class="bi bi-telephone"></i></a>
+                                    <a href="mailto:sarah@example.com"><i class="bi bi-envelope"></i></a>
+                                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                </div>
+                                <a href="#" class="view-listings-btn">View Listings</a>
+                            </div>
+                        </div>
+                    </div><!-- End Agent Card -->
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="agent-card">
+                            <div class="agent-image">
+                                <img src="assets/img/real-estate/agent-2.webp" alt="Agent" class="img-fluid">
+                                <div class="badge-overlay">
+                                    <span class="verified-badge">Verified</span>
+                                </div>
+                            </div>
+                            <div class="agent-info">
+                                <h4>Michael Thompson</h4>
+                                <span class="role">Commercial Specialist</span>
+                                <p class="location"><i class="bi bi-geo-alt"></i>vBrickell Avenue</p>
+                                <div class="specialties">
+                                    <span class="specialty-tag">Commercial</span>
+                                    <span class="specialty-tag">Investment</span>
+                                </div>
+                                <div class="contact-links">
+                                    <a href="tel:+15551234568"><i class="bi bi-telephone"></i></a>
+                                    <a href="mailto:michael@example.com"><i class="bi bi-envelope"></i></a>
+                                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+                                    <a href="#"><i class="bi bi-instagram"></i></a>
+                                </div>
+                                <a href="#" class="view-listings-btn">View Listings</a>
+                            </div>
+                        </div>
+                    </div><!-- End Agent Card -->
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="agent-card">
+                            <div class="agent-image">
+                                <img src="assets/img/real-estate/agent-3.webp" alt="Agent" class="img-fluid">
+                                <div class="badge-overlay">
+                                    <span class="new-agent-badge">New Agent</span>
+                                </div>
+                            </div>
+                            <div class="agent-info">
+                                <h4>Emma Rodriguez</h4>
+                                <span class="role">Residential Expert</span>
+                                <p class="location"><i class="bi bi-geo-alt"></i>vCoral Gables</p>
+                                <div class="specialties">
+                                    <span class="specialty-tag">First-Time Buyers</span>
+                                    <span class="specialty-tag">Families</span>
+                                </div>
+                                <div class="contact-links">
+                                    <a href="tel:+15551234569"><i class="bi bi-telephone"></i></a>
+                                    <a href="mailto:emma@example.com"><i class="bi bi-envelope"></i></a>
+                                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+                                    <a href="#"><i class="bi bi-facebook"></i></a>
+                                </div>
+                                <a href="#" class="view-listings-btn">View Listings</a>
+                            </div>
+                        </div>
+                    </div><!-- End Agent Card -->
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="agent-card">
+                            <div class="agent-image">
+                                <img src="assets/img/real-estate/agent-4.webp" alt="Agent" class="img-fluid">
+                                <div class="badge-overlay">
+                                    <span class="awarded-badge">Award Winner</span>
+                                </div>
+                            </div>
+                            <div class="agent-info">
+                                <h4>James Wilson</h4>
+                                <span class="role">Luxury Property Consultant</span>
+                                <p class="location"><i class="bi bi-geo-alt"></i>vSouth Beach</p>
+                                <div class="specialties">
+                                    <span class="specialty-tag">Waterfront</span>
+                                    <span class="specialty-tag">Penthouses</span>
+                                </div>
+                                <div class="contact-links">
+                                    <a href="tel:+15551234570"><i class="bi bi-telephone"></i></a>
+                                    <a href="mailto:james@example.com"><i class="bi bi-envelope"></i></a>
+                                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+                                    <a href="#"><i class="bi bi-twitter"></i></a>
+                                </div>
+                                <a href="#" class="view-listings-btn">View Listings</a>
+                            </div>
+                        </div>
+                    </div><!-- End Agent Card -->
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="agent-card">
+                            <div class="agent-image">
+                                <img src="assets/img/real-estate/agent-5.webp" alt="Agent" class="img-fluid">
+                                <div class="badge-overlay">
+                                    <span class="top-seller-badge">Top Seller</span>
+                                </div>
+                            </div>
+                            <div class="agent-info">
+                                <h4>Lisa Chen</h4>
+                                <span class="role">International Sales Manager</span>
+                                <p class="location"><i class="bi bi-geo-alt"></i>vDesign District</p>
+                                <div class="specialties">
+                                    <span class="specialty-tag">International</span>
+                                    <span class="specialty-tag">Mandarin</span>
+                                </div>
+                                <div class="contact-links">
+                                    <a href="tel:+15551234571"><i class="bi bi-telephone"></i></a>
+                                    <a href="mailto:lisa@example.com"><i class="bi bi-envelope"></i></a>
+                                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+                                    <a href="#"><i class="bi bi-wechat"></i></a>
+                                </div>
+                                <a href="#" class="view-listings-btn">View Listings</a>
+                            </div>
+                        </div>
+                    </div><!-- End Agent Card -->
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="agent-card">
+                            <div class="agent-image">
+                                <img src="assets/img/real-estate/agent-6.webp" alt="Agent" class="img-fluid">
+                                <div class="badge-overlay">
+                                    <span class="verified-badge">Verified</span>
+                                </div>
+                            </div>
+                            <div class="agent-info">
+                                <h4>David Garcia</h4>
+                                <span class="role">Property Investment Advisor</span>
+                                <p class="location"><i class="bi bi-geo-alt"></i>vAventura</p>
+                                <div class="specialties">
+                                    <span class="specialty-tag">Investment</span>
+                                    <span class="specialty-tag">Spanish</span>
+                                </div>
+                                <div class="contact-links">
+                                    <a href="tel:+15551234572"><i class="bi bi-telephone"></i></a>
+                                    <a href="mailto:david@example.com"><i class="bi bi-envelope"></i></a>
+                                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                </div>
+                                <a href="#" class="view-listings-btn">View Listings</a>
+                            </div>
+                        </div>
+                    </div><!-- End Agent Card -->
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="agent-card">
+                            <div class="agent-image">
+                                <img src="assets/img/real-estate/agent-7.webp" alt="Agent" class="img-fluid">
+                                <div class="badge-overlay">
+                                    <span class="awarded-badge">Award Winner</span>
+                                </div>
+                            </div>
+                            <div class="agent-info">
+                                <h4>Rachel Porter</h4>
+                                <span class="role">Rental Specialist</span>
+                                <p class="location"><i class="bi bi-geo-alt"></i>vMidtown Miami</p>
+                                <div class="specialties">
+                                    <span class="specialty-tag">Rentals</span>
+                                    <span class="specialty-tag">Young Professionals</span>
+                                </div>
+                                <div class="contact-links">
+                                    <a href="tel:+15551234573"><i class="bi bi-telephone"></i></a>
+                                    <a href="mailto:rachel@example.com"><i class="bi bi-envelope"></i></a>
+                                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+                                    <a href="#"><i class="bi bi-instagram"></i></a>
+                                </div>
+                                <a href="#" class="view-listings-btn">View Listings</a>
+                            </div>
+                        </div>
+                    </div><!-- End Agent Card -->
+
+                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="agent-card">
+                            <div class="agent-image">
+                                <img src="assets/img/real-estate/agent-8.webp" alt="Agent" class="img-fluid">
+                                <div class="badge-overlay">
+                                    <span class="new-agent-badge">New Agent</span>
+                                </div>
+                            </div>
+                            <div class="agent-info">
+                                <h4>Alexa Johnson</h4>
+                                <span class="role">New Construction Specialist</span>
+                                <p class="location"><i class="bi bi-geo-alt"></i>vWynwood</p>
+                                <div class="specialties">
+                                    <span class="specialty-tag">New Construction</span>
+                                    <span class="specialty-tag">Modern Homes</span>
+                                </div>
+                                <div class="contact-links">
+                                    <a href="tel:+15551234574"><i class="bi bi-telephone"></i></a>
+                                    <a href="mailto:alex@example.com"><i class="bi bi-envelope"></i></a>
+                                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+                                    <a href="#"><i class="bi bi-twitter"></i></a>
+                                </div>
+                                <a href="#" class="view-listings-btn">View Listings</a>
+                            </div>
+                        </div>
+                    </div><!-- End Agent Card -->
+
+                    <nav class="pagination-wrapper mt-5" data-aos="fade-up" data-aos-delay="350">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-lg-6">
+                                <div class="pagination-info">
+                                    <p>Showing <strong>1-6</strong> of <strong>124</strong> properties</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="pagination justify-content-lg-end">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#">
+                                            <i class="bi bi-chevron-left"></i>
+                                        </a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">...</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">21</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">
+                                            <i class="bi bi-chevron-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
+            </div>
+
+        </section><!-- /Agents Section -->
 
     </main>
 

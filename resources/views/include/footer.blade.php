@@ -4,10 +4,11 @@
         <div class="row gy-4">
             <div class="col-lg-5 col-md-12 footer-about">
                 <a href="index.html" class="logo d-flex align-items-center">
-                    <span class="sitename">HomeSpace</span>
+                    <span class="sitename">Vazhithunai</span>
                 </a>
-                <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies
-                    darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                <p>Where Souls Connect, Love Grows. At Vazhithunai Matrimony, we believe that love is the foundation
+                    upon which
+                    beautiful unions are built, and destiny is the guiding force that brings two souls together.</p>
                 <div class="social-links d-flex mt-4">
                     <a href=""><i class="bi bi-twitter-x"></i></a>
                     <a href=""><i class="bi bi-facebook"></i></a>
@@ -51,14 +52,10 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">HomeSpace</strong> <span>All Rights Reserved</span>
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Vazhithunai</strong> <span>All Rights Reserved</span>
         </p>
         <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you've purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Designed by Hashtag.academy</a>
         </div>
     </div>
     @yield('script')

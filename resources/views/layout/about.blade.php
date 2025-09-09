@@ -27,7 +27,7 @@
                     <div class="col-lg-10">
 
                         <div class="hero-content text-center" data-aos="zoom-in" data-aos-delay="200">
-                            <h2>Premium Real Estate Excellence Since 2008</h2>
+                            <h2>Premium Matrimony Excellence Since 2008</h2>
                             <p class="hero-description">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
                                 posuere cubilia curae; Mauris viverra veniam ut aliquam lorem dapibus gravida. Sed
                                 efficitur
@@ -38,7 +38,7 @@
                             <div class="row g-4 align-items-center">
                                 <div class="col-lg-6">
                                     <div class="primary-image-wrap">
-                                        <img src="assets/img/real-estate/property-exterior-4.webp" alt="Luxury Property"
+                                        <img src="assets/img/real-estate/property-exterior-4.webp" alt="Luxury Partner"
                                             class="img-fluid">
                                         <div class="floating-badge" data-aos="zoom-in" data-aos-delay="400">
                                             <div class="badge-content">
@@ -191,7 +191,7 @@
                                     </div>
                                     <div class="author-info">
                                         <h5>Jennifer Rodriguez</h5>
-                                        <span>Property Investor</span>
+                                        <span>Partner Investor</span>
                                     </div>
                                 </div>
                             </div>
@@ -202,7 +202,7 @@
                 <div class="cta-section" data-aos="fade-up" data-aos-delay="500">
                     <div class="row justify-content-center text-center">
                         <div class="col-lg-8">
-                            <h3>Ready to Find Your Dream Property?</h3>
+                            <h3>Ready to Find Your Dream Partner?</h3>
                             <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
                                 consequatur vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
                             <div class="action-buttons">
