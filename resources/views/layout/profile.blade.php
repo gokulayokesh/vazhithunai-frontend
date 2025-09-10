@@ -5,258 +5,390 @@
 
     <main class="main">
 
-        <!-- Page Title -->
         <div class="page-title light-background">
             <div class="container d-lg-flex justify-content-between align-items-center">
-                <h1 class="mb-2 mb-lg-0">Profile</h1>
+                <h1 class="mb-2 mb-lg-0">Profile Details</h1>
                 <nav class="breadcrumbs">
                     <ol>
-                        <li><a href="index.html">Home</a></li>
-                        <li class="current">Profile</li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
+                        <li class="current">Profile Details</li>
                     </ol>
                 </nav>
             </div>
-        </div><!-- End Page Title -->
+        </div>
 
-        <!-- Agent Profile Section -->
-        <section id="agent-profile" class="agent-profile section">
-
+        <section id="profile-details" class="property-details section">
             <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row">
+                    <div class="col-lg-7">
 
-                <div class="row align-items-center mb-5">
-                    <div class="col-lg-4" data-aos="fade-right" data-aos-delay="150">
-                        <div class="agent-photo-wrapper">
-                            <img src="{{ $profile->userImages->first()->image_path ?? asset('assets/img/person/person-f-5.webp') }}"
-                                alt="{{ $profile->user->name }}" class="img-fluid agent-photo">
-                            <div class="agent-badge">
-                                <i class="bi bi-star-fill"></i>
-                                <span>Featured Profile</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8" data-aos="fade-left" data-aos-delay="200">
-                        <div class="agent-info">
-                            <h1 class="agent-name">{{ $profile->user->name }}</h1>
-                            <p class="agent-title">{{ \Carbon\Carbon::parse($profile->dob)->age }} yrs •
-                                {{ ucfirst($profile->gender) }}</p>
-                            <p class="agent-tagline">
-                                "{{ $profile->expectations ?? 'Looking for a compatible life partner who shares similar values.' }}"
-                            </p>
+                        {{-- Profile Photo Slider --}}
+                        <div class="property-hero mb-5" data-aos="fade-up" data-aos-delay="200">
+                            <div class="hero-image-container">
+                                <div class="property-gallery-slider swiper init-swiper">
+                                    <script type="application/json" class="swiper-config">
+                                        {
+                                          "loop": true,
+                                          "speed": 600,
+                                          "autoplay": {
+                                            "delay": 5000
+                                          },
+                                          "navigation": {
+                                            "nextEl": ".swiper-button-next",
+                                            "prevEl": ".swiper-button-prev"
+                                          },
+                                          "thumbs": {
+                                            "swiper": ".property-thumbnails-slider"
+                                          }
+                                        }
+                                      </script>
+                                    <div class="swiper-wrapper">
+                                        @if (isset($profile->userImages) && count($profile->userImages) > 0)
+                                            @foreach ($profile->userImages as $image)
+                                                <div class="swiper-slide">
+                                                    <img src="{{ asset($image->image_path) }}"
+                                                        class="img-fluid hero-image" alt="{{ $profile->user->name }}">
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="swiper-slide">
+                                                <img src="{{ asset('assets/img/person/person-f-8.webp') }}"
+                                                    class="img-fluid hero-image" alt="{{ $profile->user->name }}">
+                                            </div>
+                                        @endif
 
-                            <div class="contact-info-hero">
-                                <div class="contact-item">
-                                    <i class="bi bi-telephone-fill"></i>
-                                    <span>{{ $profile->parent_mobile }}</span>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="bi bi-envelope-fill"></i>
-                                    <span>{{ $profile->user->email }}</span>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="bi bi-geo-alt-fill"></i>
-                                    <span>{{ $profile->city }}, {{ $profile->state }}</span>
+                                    </div>
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
                                 </div>
                             </div>
 
-                            <div class="hero-actions">
-                                <a href="#contact" class="btn btn-primary">Contact Family</a>
-                                <a href="#details" class="btn btn-outline">View Full Profile</a>
+                            {{-- Thumbnails --}}
+                            <div class="thumbnail-gallery mt-3">
+                                <div class="property-thumbnails-slider swiper init-swiper">
+                                    <script type="application/json" class="swiper-config">
+                                        {
+                                          "loop": true,
+                                          "spaceBetween": 10,
+                                          "slidesPerView": 4,
+                                          "freeMode": true,
+                                          "watchSlidesProgress": true,
+                                          "breakpoints": {
+                                            "576": {
+                                              "slidesPerView": 5
+                                            },
+                                            "768": {
+                                              "slidesPerView": 6
+                                            }
+                                          }
+                                        }
+                                      </script>
+                                    <div class="swiper-wrapper">
+                                        @if (isset($profile->userImages) && count($profile->userImages) > 0)
+                                            @foreach ($profile->userImages as $image)
+                                                <div class="swiper-slide">
+                                                    <img src="{{ asset($image->image_path) }}"
+                                                        class="img-fluid thumbnail-img"
+                                                        alt="{{ $profile->user->name }}">
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="swiper-slide">
+                                                <img src="{{ asset('assets/img/person/person-f-8.webp') }}"
+                                                    class="img-fluid thumbnail-img" alt="{{ $profile->user->name }}">
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Profile Stats -->
-                <div class="stats-section" data-aos="fade-up" data-aos-delay="100">
-                    <div class="row text-center">
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="stat-item">
-                                <div class="stat-icon">
-                                    <i class="bi bi-rulers"></i>
+                        {{-- Profile Info --}}
+                        <div class="property-info mb-5" data-aos="fade-up" data-aos-delay="300">
+                            <div class="property-header">
+                                <h1 class="property-title">{{ $profile->user->name }}</h1>
+                                <div class="property-meta">
+                                    <span class="address"><i class="bi bi-geo-alt"></i> {{ $profile->city }},
+                                        {{ $profile->state }}</span>
+                                    <span class="listing-id">Profile ID: #{{ $profile->id }}</span>
                                 </div>
-                                <div class="stat-number">{{ $profile->height }}</div>
-                                <div class="stat-label">Height</div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="stat-item">
-                                <div class="stat-icon">
-                                    <i class="bi bi-mortarboard-fill"></i>
-                                </div>
-                                <div class="stat-number">{{ $profile->highest_education }}</div>
-                                <div class="stat-label">Education</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="stat-item">
-                                <div class="stat-icon">
-                                    <i class="bi bi-briefcase-fill"></i>
-                                </div>
-                                <div class="stat-number">{{ $profile->occupation_category }}</div>
-                                <div class="stat-label">Occupation</div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="stat-item">
-                                <div class="stat-icon">
-                                    <i class="bi bi-people-fill"></i>
-                                </div>
-                                <div class="stat-number">{{ $profile->marital_status }}</div>
-                                <div class="stat-label">Marital Status</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Profile Bio & Details -->
-                <div class="row mb-5" data-aos="fade-up" data-aos-delay="150">
-                    <div class="col-lg-4 mb-4">
-                        <div class="sidebar-info">
-                            <div class="contact-card">
-                                <h4>Get In Touch</h4>
-                                <div class="contact-details">
-                                    <div class="contact-detail">
-                                        <i class="bi bi-telephone"></i>
-                                        <div>
-                                            <strong>Phone</strong>
-                                            <p>{{ $profile->parent_mobile }}</p>
+                            <div class="pricing-section">
+                                <div class="main-price">{{ \Carbon\Carbon::parse($profile->dob)->age }} yrs</div>
+                                <div class="price-breakdown">
+                                    <span class="deposit">Height: {{ $profile->height }}</span>
+                                    <span class="available">Marital Status: {{ $profile->marital_status }}</span>
+                                </div>
+                            </div>
+
+                            <div class="quick-stats">
+                                <div class="stat-grid">
+                                    <div class="stat-card">
+                                        <div class="stat-icon"><i class="bi bi-gender-ambiguous"></i></div>
+                                        <div class="stat-content">
+                                            <span class="stat-number">{{ ucfirst($profile->gender) }}</span>
+                                            <span class="stat-label">Gender</span>
                                         </div>
                                     </div>
-                                    <div class="contact-detail">
-                                        <i class="bi bi-envelope"></i>
-                                        <div>
-                                            <strong>Email</strong>
-                                            <p>{{ $profile->user->email }}</p>
+                                    <div class="stat-card">
+                                        <div class="stat-icon"><i class="bi bi-mortarboard"></i></div>
+                                        <div class="stat-content">
+                                            <span class="stat-number">{{ $profile->highest_education }}</span>
+                                            <span class="stat-label">Education</span>
                                         </div>
                                     </div>
-                                    <div class="contact-detail">
-                                        <i class="bi bi-geo-alt"></i>
-                                        <div>
-                                            <strong>Location</strong>
-                                            <p>{{ $profile->city }}, {{ $profile->state }}</p>
+                                    <div class="stat-card">
+                                        <div class="stat-icon"><i class="bi bi-briefcase"></i></div>
+                                        <div class="stat-content">
+                                            <span class="stat-number">{{ $profile->occupation_category }}</span>
+                                            <span class="stat-label">Occupation</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-icon"><i class="bi bi-translate"></i></div>
+                                        <div class="stat-content">
+                                            <span
+                                                class="stat-number">{{ implode(', ', $profile->languages ?? []) }}</span>
+                                            <span class="stat-label">Languages</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-icon"><i class="bi bi-heart"></i></div>
+                                        <div class="stat-content">
+                                            <span class="stat-number">{{ $profile->caste }}</span>
+                                            <span class="stat-label">Caste</span>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="social-links">
-                                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                                    <a href="#"><i class="bi bi-facebook"></i></a>
-                                    <a href="#"><i class="bi bi-instagram"></i></a>
-                                    <a href="#"><i class="bi bi-whatsapp"></i></a>
-                                </div>
-                            </div>
-
-                            <div class="specialties-card">
-                                <h4>Interests</h4>
-                                <div class="specialty-tags">
-                                    @foreach ($profile->interests ?? [] as $interest)
-                                        <span class="specialty-tag">{{ $interest }}</span>
-                                    @endforeach
-                                </div>
-                            </div>
-
-                            <div class="certifications-card">
-                                <h4>Languages</h4>
-                                @foreach ($profile->languages ?? [] as $lang)
-                                    <div class="cert-item">
-                                        <i class="bi bi-translate"></i>
-                                        <span>{{ $lang }}</span>
-                                    </div>
-                                @endforeach
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-8">
-                        <div class="bio-content">
+                        {{-- About Section --}}
+                        <div class="property-details mb-5" data-aos="fade-up" data-aos-delay="400">
                             <h3>About {{ $profile->user->name }}</h3>
                             <p>{{ $profile->about ?? 'Profile description not provided.' }}</p>
 
-                            <h4>Family Details</h4>
-                            <p>Father: {{ $profile->father_work ?? 'N/A' }} | Mother:
-                                {{ $profile->mother_work ?? 'N/A' }}</p>
-                            <p>Siblings: {{ $profile->brothers_count }} Brothers ({{ $profile->married_brothers }}
-                                Married), {{ $profile->sisters_count }} Sisters ({{ $profile->married_sisters }}
-                                Married)</p>
-
-                            <div class="achievements">
-                                <h4>Horoscope Details</h4>
-                                <ul>
-                                    <li>Birth Star: {{ $profile->birth_star }}</li>
-                                    <li>Zodiac Sign: {{ $profile->zodiac_sign }}</li>
-                                    <li>Rahu/Ketu: {{ $profile->rahu_ketu }}</li>
-                                    <li>Chevvai Dosham: {{ $profile->chevvai }}</li>
-                                </ul>
+                            <div class="features-grid mt-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>Interests & Hobbies</h5>
+                                        <ul class="feature-list">
+                                            @foreach ($profile->interests ?? [] as $interest)
+                                                <li><i class="bi bi-check2"></i> {{ $interest }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Lifestyle Preferences</h5>
+                                        <ul class="feature-list">
+                                            <li><i class="bi bi-check2"></i> Diet:
+                                                {{ $profile->diet ?? 'Not specified' }}</li>
+                                            <li><i class="bi bi-check2"></i> Drinking:
+                                                {{ $profile->drinking ?? 'Not specified' }}</li>
+                                            <li><i class="bi bi-check2"></i> Smoking:
+                                                {{ $profile->smoking ?? 'Not specified' }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Floor Plan -->
+                        <div class="floor-plan-section mb-5" data-aos="fade-up" data-aos-delay="500">
+                            <h3>Floor Plan</h3>
+                            <div class="floor-plan-card">
+                                <img src="{{ asset($profile->userHoroscopeImages->first()?->image_path ?? asset('assets/img/person/person-f-8.webp')) }}"
+                                    class="img-fluid" alt="Floor Plan">
+                                <div class="plan-details">
+                                    <h5>3 Bedroom Penthouse Layout</h5>
+                                    <p>Open concept living and dining area with private balcony access. Master suite
+                                        features ensuite bathroom and city views.</p>
+                                </div>
+                            </div>
+                        </div><!-- End Floor Plan -->
+
                     </div>
-                </div>
 
 
-                <!-- Contact Form -->
-                <div class="contact-form-section" id="contact" data-aos="fade-up" data-aos-delay="100">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <div class="contact-form-wrapper">
-                                <h3 class="text-center mb-4">Schedule a Consultation</h3>
-                                <p class="text-center mb-4">Ready to buy, sell, or invest? Let's discuss your real
-                                    estate goals and find the perfect solution for you.</p>
+                    {{-- Sidebar --}}
+                    <div class="col-lg-5">
+                        <div class="sticky-sidebar">
+                            {{-- Contact Card --}}
+                            <div class="agent-card mb-4" data-aos="fade-up" data-aos-delay="350">
+                                <div class="agent-header">
+                                    <div class="agent-avatar">
+                                        @if (isset($profile->userImages) && $profile->userImages->count() > 0)
+                                            <img src="{{ asset($profile->userImages->first()?->image_path) }}"
+                                                class="img-fluid" alt="{{ $profile->user->name }}">
+                                        @else
+                                            <img src="{{ asset('assets/img/person/person-f-8.webp') }}"
+                                                class="img-fluid" alt="{{ $profile->user->name }}">
+                                        @endif
 
+                                        <div class="online-status"></div>
+                                    </div>
+                                    <div class="agent-info">
+                                        <h4>{{ $profile->user->name }}</h4>
+                                        <p class="agent-role">{{ $profile->occupation_category }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="agent-contact">
+                                    <div class="contact-item">
+                                        <i class="bi bi-telephone"></i>
+                                        <span>{{ $profile->parent_mobile }}</span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <i class="bi bi-envelope"></i>
+                                        <span>{{ $profile->user->email }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="agent-actions mt-3">
+                                    <a href="tel:{{ $profile->parent_mobile }}" class="btn btn-success w-100 mb-2">
+                                        <i class="bi bi-telephone"></i> Call Now
+                                    </a>
+                                    <a href="mailto:{{ $profile->user->email }}" class="btn btn-outline w-100">
+                                        <i class="bi bi-chat-dots"></i> Send Message
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <!-- Quick Actions -->
+                            <div class="actions-card mb-4" data-aos="fade-up" data-aos-delay="250">
+                                <div class="action-buttons">
+
+                                    <div class="row g-2">
+                                        <div class="col-6">
+                                            <button class="btn btn-outline-primary w-100">
+                                                <i class="bi bi-heart"></i>
+                                                Save
+                                            </button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="btn btn-outline-primary w-100">
+                                                <i class="bi bi-share"></i>
+                                                Share
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- End Quick Actions -->
+
+                            <!-- Contact Form -->
+                            <div class="contact-form-card mb-4" data-aos="fade-up" data-aos-delay="450">
+                                <h4>Request Information</h4>
                                 <form action="forms/contact.php" method="post" class="php-email-form">
                                     <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <label for="name" class="form-label">Full Name</label>
-                                            <input type="text" name="name" class="form-control" id="name"
-                                                required="">
+                                        <div class="col-12 mb-3">
+                                            <input type="text" name="name" class="form-control"
+                                                placeholder="Full Name" required="">
                                         </div>
-                                        <div class="col-md-6 mb-3">
-                                            <label for="email" class="form-label">Email Address</label>
-                                            <input type="email" name="email" class="form-control" id="email"
-                                                required="">
+                                        <div class="col-12 mb-3">
+                                            <input type="email" name="email" class="form-control"
+                                                placeholder="Email Address" required="">
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <label for="phone" class="form-label">Phone Number</label>
+                                        <div class="col-12 mb-3">
                                             <input type="tel" name="phone" class="form-control"
-                                                id="phone">
+                                                placeholder="Phone Number">
                                         </div>
-                                        <div class="col-md-6 mb-3">
-                                            <label for="service" class="form-label">I'm Interested In</label>
-                                            <select name="subject" class="form-control" id="service"
-                                                required="">
-                                                <option value="">Select Service</option>
-                                                <option value="buying">Buying a Home</option>
-                                                <option value="selling">Selling a Home</option>
-                                                <option value="investment">Investment Partner</option>
-                                                <option value="consultation">Market Consultation</option>
+                                        <div class="col-12 mb-3">
+                                            <select name="subject" class="form-select" required="">
+                                                <option value="">I'm interested in...</option>
+                                                <option value="Scheduling a viewing">Scheduling a viewing</option>
+                                                <option value="Getting more information">Getting more information
+                                                </option>
+                                                <option value="Submitting an application">Submitting an application
+                                                </option>
                                             </select>
                                         </div>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="message" class="form-label">Message</label>
-                                        <textarea name="message" class="form-control" id="message" rows="5"
-                                            placeholder="Tell me about your real estate needs and preferences..."></textarea>
+                                        <div class="col-12 mb-3">
+                                            <textarea name="message" class="form-control" rows="4"
+                                                placeholder="Additional questions or preferred viewing times..."></textarea>
+                                        </div>
                                     </div>
 
                                     <div class="loading">Loading</div>
                                     <div class="error-message"></div>
-                                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                                    <div class="sent-message">Your request has been sent successfully!</div>
 
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
-                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100">Send Request</button>
                                 </form>
+                            </div><!-- End Contact Form -->
+
+                            {{-- Similar Profiles --}}
+                            <div class="similar-properties" data-aos="fade-up" data-aos-delay="650">
+                                <h4>Similar Profiles</h4>
+                                @foreach ($similarProfiles as $sim)
+                                    <div class="similar-property-item">
+                                        <img src="{{ $sim->userImages->first()?->image_path ?? asset('assets/img/person/person-f-8.webp') }}"
+                                            class="img-fluid" alt="{{ $sim->user->name }}">
+                                        <div class="similar-info">
+                                            <h6>{{ $sim->user->name }}</h6>
+                                            <p class="similar-price">{{ \Carbon\Carbon::parse($sim->dob)->age }} yrs •
+                                                {{ ucfirst($sim->gender) }}</p>
+                                            <p class="similar-specs">{{ $sim->city }}, {{ $sim->state }}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
+
                         </div>
                     </div>
                 </div>
 
+                <!-- Location Section -->
+                <div class="location-section mt-5" data-aos="fade-up" data-aos-delay="700">
+                    <h3>Location</h3>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="map-wrapper">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.5!2d-73.935!3d40.796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ3JzQ1LjYiTiA3M8KwNTYnMDYuMCJX!5e0!3m2!1sen!2sus!4v1234567890"
+                                    width="100%" height="350" style="border:0;" allowfullscreen=""
+                                    loading="lazy"></iframe>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="neighborhood-info">
+                                <h5>Highlights</h5>
+                                <div class="poi-item">
+                                    <i class="bi bi-mortarboard"></i>
+                                    <div class="poi-content">
+                                        <span class="poi-name">{{ $profile->institution }}</span>
+                                        <span class="poi-distance">{{ $profile->completion_year }}</span>
+                                    </div>
+                                </div>
+                                <div class="poi-item">
+                                    <i class="bi bi-cup-hot"></i>
+                                    <div class="poi-content">
+                                        <span class="poi-name">Local Coffee Shops</span>
+                                        <span class="poi-distance">2 min walk</span>
+                                    </div>
+                                </div>
+                                <div class="poi-item">
+                                    <i class="bi bi-tree"></i>
+                                    <div class="poi-content">
+                                        <span class="poi-name">Marcus Garvey Park</span>
+                                        <span class="poi-distance">0.3 miles</span>
+                                    </div>
+                                </div>
+                                <div class="poi-item">
+                                    <i class="bi bi-train-lightrail-front"></i>
+                                    <div class="poi-content">
+                                        <span class="poi-name">125th St Station</span>
+                                        <span class="poi-distance">0.6 miles</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End Location Section -->
             </div>
+        </section>
 
-        </section><!-- /Agent Profile Section -->
 
     </main>
 

@@ -25,4 +25,9 @@ class UserDetails extends Model
     {
         return $this->hasMany(UserImages::class, 'user_id', 'user_id');
     }
+
+    public function userHoroscopeImages()
+    {
+        return $this->hasMany(UserImages::class, 'user_id', 'user_id');
+    }
 }
