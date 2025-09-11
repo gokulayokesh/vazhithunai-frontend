@@ -383,3 +383,14 @@
 .select2-container .select2-search--inline .select2-search__field {
     height: 25px;
 }
+.terms_condition {
+    margin: auto;
+    text-align: center;
+}
+.terms_condition label {
+    font-size: 14px;
+}
+.terms_condition span {
+    color: #de5255;
+    cursor: pointer;
+}

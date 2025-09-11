@@ -1041,6 +1041,30 @@
                                             </div>
                                         </div>
 
+                                        <!-- Terms & condition --> 
+                                        <div class="terms_condition">
+                                            <input type="checkbox" id="terms_condition">
+                                            <label for="terms_condition">
+                                                I agree to the <span id="tc_modal">Terms & Conditions</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Terms & Conditions Modal -->
+                                        <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="termsModalLabel">Terms & Conditions</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- Add your terms and conditions content here -->
+                                                        <p>Terms & Conditions content goes here...</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </section>
 
@@ -1090,6 +1114,16 @@
                 });
             });
 
+            // Modal
+            // document.addEventListener("DOMContentLoaded", function() {
+                const tcModalTrigger = document.getElementById('tc_modal');
+                tcModalTrigger.addEventListener('click', function() {
+                    console.log('in')
+                    const modal = new bootstrap.Modal(document.getElementById('termsModal'));
+                    modal.show();
+                });
+            // });
+
             function go(dir) {
                 if (dir === 1 && !validateStep(current)) return;
                 const nextIndex = current + dir;
@@ -1123,6 +1157,7 @@
                 // Buttons
                 prevBtn.disabled = current === 0;
                 nextBtn.textContent = current === steps.length - 1 ? "Submit" : "Next step";
+                console.log(current)
             }
 
             function validateStep(stepIndex) {

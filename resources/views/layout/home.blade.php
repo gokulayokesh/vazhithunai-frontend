@@ -468,14 +468,13 @@
                                 <i class="bi bi-search"></i>
                             </div>
                             <div class="service-info">
-                                <h3><a href="service-details.html">Partner Search</a></h3>
-                                <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
-                                    mollit anim id est laborum</p>
-                                <ul class="service-highlights">
+                                <h3><a href="service-details.html">Personalized Matches</a></h3>
+                                <p>We understand that every individual is unique, and so are their preferences. Our intelligent matchmaking algorithms take into account your interests, values, and aspirations to deliver personalized match suggestions, increasing your chances of finding someone who truly resonates with you.</p>
+                                <!-- <ul class="service-highlights">
                                     <li><i class="bi bi-check-circle-fill"></i> Comprehensive Listings</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Advanced Filtering</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Virtual Tours</li>
-                                </ul>
+                                </ul> -->
                                 <a href="service-details.html" class="service-link">
                                     <span>Explore Now</span>
                                     <i class="bi bi-arrow-up-right"></i>
@@ -494,14 +493,13 @@
                                 <i class="bi bi-calculator"></i>
                             </div>
                             <div class="service-info">
-                                <h3><a href="service-details.html">Partner Valuation</a></h3>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                    laudantium totam rem aperiam</p>
-                                <ul class="service-highlights">
+                                <h3><a href="service-details.html">Safe and Secure</a></h3>
+                                <p>Your privacy and security are our top priorities. Our robust verification processes and advanced privacy settings ensure that your journey on LGM Matrimony is both safe and confidential.</p>
+                                <!-- <ul class="service-highlights">
                                     <li><i class="bi bi-check-circle-fill"></i> Market Analysis</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Comparative Reports</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Investment Insights</li>
-                                </ul>
+                                </ul> -->
                                 <a href="service-details.html" class="service-link">
                                     <span>Get Valuation</span>
                                     <i class="bi bi-arrow-up-right"></i>
@@ -524,14 +522,38 @@
                                 <i class="bi bi-key"></i>
                             </div>
                             <div class="service-info">
-                                <h3><a href="service-details.html">Partner Rental</a></h3>
-                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                    voluptatum deleniti atque</p>
-                                <ul class="service-highlights">
+                                <h3><a href="service-details.html">User-Friendly Interface</a></h3>
+                                <p>Navigating through LGM Matrimony is a breeze. Our intuitive user interface makes it easy for you to create a profile, explore potential matches, and engage in meaningful conversations.</p>
+                                <!-- <ul class="service-highlights">
                                     <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
-                                </ul>
+                                </ul> -->
+                                <a href="service-details.html" class="service-link">
+                                    <span>Start Renting</span>
+                                    <i class="bi bi-arrow-up-right"></i>
+                                </a>
+                            </div>
+                            <div class="service-visual">
+                                <img src="assets/img/real-estate/property-interior-8.webp" class="img-fluid"
+                                    alt="Partner Rental" loading="lazy">
+                            </div>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-lg-6" data-aos="fade-right" data-aos-delay="400">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="bi bi-key"></i>
+                            </div>
+                            <div class="service-info">
+                                <h3><a href="service-details.html">Diverse Community</a></h3>
+                                <p>Love knows no boundaries, and neither do we. Our platform welcomes individuals from all walks of life, cultures, and backgrounds, fostering an inclusive and diverse community.</p>
+                                <!-- <ul class="service-highlights">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
+                                </ul> -->
                                 <a href="service-details.html" class="service-link">
                                     <span>Start Renting</span>
                                     <i class="bi bi-arrow-up-right"></i>
@@ -550,14 +572,37 @@
                                 <i class="bi bi-shield-check"></i>
                             </div>
                             <div class="service-info">
-                                <h3><a href="service-details.html">Investment Advisory</a></h3>
-                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia
-                                    consequuntur magni dolores eos</p>
-                                <ul class="service-highlights">
+                                <h3><a href="service-details.html">Expert Advice</a></h3>
+                                <p>We understand that the path to love can be filled with questions and uncertainties. Our team of relationship experts and counselors are here to provide guidance, support, and advice, ensuring you have a fulfilling and enriching experience.</p>
+                                <!-- <ul class="service-highlights">
                                     <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
-                                </ul>
+                                </ul> -->
+                                <a href="service-details.html" class="service-link">
+                                    <span>Learn More</span>
+                                    <i class="bi bi-arrow-up-right"></i>
+                                </a>
+                            </div>
+                            <div class="service-visual">
+                                <img src="assets/img/real-estate/property-exterior-4.webp" class="img-fluid"
+                                    alt="Investment Advisory" loading="lazy">
+                            </div>
+                        </div>
+                    </div><!-- End Service Item -->
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-delay="500">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <div class="service-info">
+                                <h3><a href="service-details.html">Success Stories</a></h3>
+                                <p>Our success is measured by the smiles on the faces of those who have found love through LGM Matrimony. We take immense pride in being a part of your journey and celebrating the success stories that emanate from our platform.</p>
+                                <!-- <ul class="service-highlights">
+                                    <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
+                                </ul> -->
                                 <a href="service-details.html" class="service-link">
                                     <span>Learn More</span>
                                     <i class="bi bi-arrow-up-right"></i>

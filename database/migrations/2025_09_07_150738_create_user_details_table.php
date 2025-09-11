@@ -46,6 +46,20 @@ return new class extends Migration
             $table->string('body_type')->nullable();
             $table->string('physical_status')->nullable();
             $table->string('mother_tongue');
+            $table->string('interests')->nullable();
+            $table->string('hobbies')->nullable();
+            $table->string('favorite_cuisine')->nullable();
+            $table->string('favorite_music')->nullable();
+            $table->string('sports')->nullable();
+            $table->string('pet_preference')->nullable();
+            $table->string('travel_preference')->nullable();
+            $table->string('diet_preference')->nullable();
+            $table->string('smoking_habits')->nullable();
+            $table->string('drinking_habits')->nullable();
+            $table->string('languages_known')->nullable();
+            $table->string('life_motto')->nullable();
+            $table->string('email')->nullable();
+            $table->string('mobile')->nullable();
 
             // Family Details
             $table->string('family_status');
