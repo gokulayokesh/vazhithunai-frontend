@@ -55,4 +55,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserImages::class);
     }
+
+    public function shortlists()
+    {
+        return $this->hasMany(Shortlist::class, 'user_id');
+    }
+
+    public function shortlistedBy()
+    {
+        return $this->hasMany(Shortlist::class, 'shortlisted_user_id');
+    }
 }

@@ -262,10 +262,17 @@
 
                                     <div class="row g-2">
                                         <div class="col-6">
-                                            <button class="btn btn-outline-primary w-100">
-                                                <i class="bi bi-heart"></i>
-                                                Save
+                                            <button class="btn btn-outline-primary w-100 shortlist-btn"
+                                                data-user-id="{{ $profile->id }}">
+                                                @if (auth()->user()->shortlists->contains('shortlisted_user_id', $profile->id))
+                                                    <i class="bi bi-heart-fill text-danger"></i> Shortlist
+                                                @else
+                                                    <i class="bi bi-heart"></i> Shortlist
+                                                @endif
+
                                             </button>
+                                            <div id="shortlist-message" class="mt-2 text-success"
+                                                style="display:none;"></div>
                                         </div>
                                         <div class="col-6">
                                             <button class="btn btn-outline-primary w-100">
@@ -395,4 +402,5 @@
     @include('include.login')
     @include('include.footer')
     @include('include.script')
+
 </body>
