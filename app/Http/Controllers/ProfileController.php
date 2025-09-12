@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Shortlist;
 use App\Models\UserDetails;
 use Illuminate\Http\Request;
 
@@ -39,5 +40,45 @@ class ProfileController extends Controller
             ->get();
 
         return view('layout.profile', compact('profile', 'similarProfiles'));
+    }
+
+    public function toggleShortlist(Request $request, $shortlistedUserId)
+    {
+        $userId = auth()->id();
+
+        // Prevent self-shortlisting
+        if ($userId == $shortlistedUserId) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You cannot shortlist yourself',
+            ], 422);
+        }
+
+        // Check if already shortlisted
+        $existing = Shortlist::where('user_id', $userId)
+            ->where('shortlisted_user_id', $shortlistedUserId)
+            ->first();
+
+        if ($existing) {
+            // Remove from shortlist
+            $existing->delete();
+
+            return response()->json([
+                'status' => 'removed',
+                'message' => 'User removed from shortlist',
+            ]);
+        } else {
+            // Add to shortlist
+            $shortlist = Shortlist::create([
+                'user_id' => $userId,
+                'shortlisted_user_id' => $shortlistedUserId,
+            ]);
+
+            return response()->json([
+                'status' => 'added',
+                'message' => 'User added to shortlist',
+                'data' => $shortlist,
+            ]);
+        }
     }
 }

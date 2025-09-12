@@ -27,6 +27,10 @@ Route::get('/register', function () {
 
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
+Route::get('/terms', function () {
+    return view('layout.terms');
+});
+
 Route::get('/listings', [ProfileSearchController::class, 'search'])->name('listings.search');
 
 Route::get('/profile/{id}', [ProfileController::class, 'profile'])->name('profile');
@@ -39,3 +43,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/profiles/search', [ProfileSearchController::class, 'search'])
     ->name('profiles.search');
+
+Route::post('/shortlist/{user}', [ProfileController::class, 'toggleShortlist'])
+    ->name('shortlist.add');

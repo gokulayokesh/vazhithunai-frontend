@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RegistrationOtpMail;
 use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\UserHoroscopeImages;
 use App\Models\UserImages;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -172,6 +175,26 @@ class RegisterController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->withErrors(['error' => 'Failed to save details: '.$e->getMessage()]);
+        }
+    }
+
+    public function sendOtpEmail($email, $name)
+    {
+        try {
+            // Generate OTP
+            $otp = rand(100000, 999999);
+
+            // Store OTP in cache for 10 minutes
+            Cache::put('otp_'.$email, $otp, now()->addMinutes(10));
+
+            // Send email
+            Mail::to($email)->send(new RegistrationOtpMail($otp, $name));
+
+            return response()->json([
+                'message' => 'OTP sent successfully to '.$email,
+            ]);
+        } catch (Exception $e) {
+            dd($e->getMessage());
         }
     }
 }

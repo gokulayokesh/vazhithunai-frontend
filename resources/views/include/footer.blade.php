@@ -23,7 +23,7 @@
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About us</a></li>
                     <li><a href="#">Services</a></li>
-                    <li><a href="#">Terms of service</a></li>
+                    <li><a href="/terms">Terms of service</a></li>
                     <li><a href="#">Privacy policy</a></li>
                 </ul>
             </div>
@@ -58,5 +58,18 @@
             Designed by Hashtag.academy</a>
         </div>
     </div>
-    @yield('script')
+
 </footer>
+@yield('script')
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+    <div id="liveToast" class="toast align-items-center text-white bg-success border-0" role="alert"
+        aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body" id="toast-message">
+                <!-- Message will be injected here -->
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
+</div>
