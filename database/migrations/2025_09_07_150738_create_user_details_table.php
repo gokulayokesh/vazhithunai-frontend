@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('specialization')->nullable();
             $table->string('institution')->nullable();
             $table->year('completion_year')->nullable();
+            $table->string('additional_qualifications')->nullable();
             $table->string('occupation_category');
             $table->string('job_title');
             $table->string('company_name')->nullable();
@@ -60,6 +61,9 @@ return new class extends Migration
             $table->string('life_motto')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
+            $table->string('facebook_profile_url')->nullable();
+            $table->string('instagram_profile_url')->nullable();
+            $table->string('twitter_profile_url')->nullable();
 
             // Family Details
             $table->string('family_status');

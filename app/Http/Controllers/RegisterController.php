@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\UserHoroscopeImages;
 use App\Models\UserImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -15,6 +18,7 @@ class RegisterController extends Controller
         // Validate all sections
         $validated = $request->validate([
             // Birth Details
+            'name' => 'required|string|max:255',
             'birth_place' => 'required|string|max:255',
             'dob' => 'required|date',
             'birth_time' => 'nullable|string|max:50',
@@ -25,6 +29,7 @@ class RegisterController extends Controller
             'specialization' => 'nullable|string|max:255',
             'institution' => 'nullable|string|max:255',
             'completion_year' => 'nullable|integer',
+            'additional_qualifications' => 'nullable|string|max:255',
             'occupation_category' => 'required|string|max:255',
             'job_title' => 'required|string|max:255',
             'company_name' => 'nullable|string|max:255',
@@ -45,6 +50,23 @@ class RegisterController extends Controller
             'body_type' => 'nullable|string|max:50',
             'physical_status' => 'nullable|string|max:50',
             'mother_tongue' => 'required|string|max:255',
+            'interests' => 'nullable|array|max:255',
+            // 'hobbies' => 'nullable|string|max:255',
+            // 'favorite_cuisine' => 'nullable|string|max:255',
+            // 'favorite_music' => 'nullable|string|max:255',
+            // 'sports' => 'nullable|string|max:255',
+            'pet_preference' => 'nullable|string|max:255',
+            'travel_preference' => 'nullable|string|max:255',
+            'diet_preference' => 'nullable|string|max:255',
+            'smoking_habits' => 'nullable|string|max:255',
+            'drinking_habits' => 'nullable|string|max:255',
+            // 'languages_known' => 'nullable|string|max:255',
+            'life_motto' => 'nullable|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'mobile' => 'required|string|max:20',
+            'facebook_profile_url' => 'nullable|string|max:255',
+            'instagram_profile_url' => 'nullable|string|max:255',
+            'twitter_profile_url' => 'nullable|string|max:255',
 
             // Family Details
             'family_status' => 'required|string|max:255',
@@ -72,44 +94,83 @@ class RegisterController extends Controller
             'additional_horoscope' => 'nullable|string',
 
             // Images
-            'profile_picture' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-            'horoscope_picture' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            // 'profile_picture1' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            // 'horoscope_picture1' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         DB::beginTransaction();
 
         try {
+            $plainPassword = Str::random(10);
+
+            $user = new User;
+            $user->name = $validated['name'];
+            $user->email = $validated['email'];
+            $user->mobile = $validated['mobile'];
+            $user->show_password = $plainPassword; 
+            $user->password = Hash::make($plainPassword);
+            $user->save();
+
             // Save all details into UserDetails
             $details = new UserDetails;
-            $details->user_id = auth()->id();
-            $details->fill($validated); // Make sure your UserDetails model has $fillable set
+            // $details->user_id = auth()->id();
+            $details->user_id = $user->id;
+
+            $details->interests = is_array($request->interests) ? implode(',', $request->interests) : null;
+            $details->hobbies = is_array($request->hobbies) ? implode(',', $request->hobbies) : null;
+            $details->favorite_cuisine = is_array($request->favorite_cuisine) ? implode(',', $request->favorite_cuisine) : null;
+            $details->sports = is_array($request->sports) ? implode(',', $request->sports) : null;
+            $details->languages_known = is_array($request->languages_known) ? implode(',', $request->languages_known) : null;
+            $details->favorite_music = is_array($request->favorite_music) ? implode(',', $request->favorite_music) : null;
+
+            $details->fill($request->except(['interests', 'hobbies', 'favorite_cuisine', 'sports', 'languages_known', 'favorite_music']));
             $details->save();
 
             // Save Profile Picture
+            // if ($request->hasFile('profile_picture')) {
+            //     $profilePath = $request->file('profile_picture')->store('profile_pictures', 'public');
+            //     UserImages::create([
+            //         'user_id' => $user->id,
+            //         'image_path' => $profilePath,
+            //         'type' => 'profile',
+            //     ]);
+            // }
             if ($request->hasFile('profile_picture')) {
-                $profilePath = $request->file('profile_picture')->store('profile_pictures', 'public');
-                UserImages::create([
-                    'user_id' => auth()->id(),
-                    'image_path' => $profilePath,
-                    'type' => 'profile',
-                ]);
+                foreach ($request->file('profile_picture') as $file) {
+                    $path = $file->store('profile_pictures', 'public');
+
+                    UserImages::create([
+                        'user_id' => $user->id,
+                        'image_path' => $path,
+                        'type' => 'profile',
+                    ]);
+                }
             }
 
             // Save Horoscope Picture
+            // if ($request->hasFile('horoscope_picture')) {
+            //     $horoscopePath = $request->file('horoscope_picture')->store('horoscope_pictures', 'public');
+            //     UserHoroscopeImages::create([
+            //         'user_id' => $user->id,
+            //         'image_path' => $horoscopePath,
+            //     ]);
+            // }
+
             if ($request->hasFile('horoscope_picture')) {
-                $horoscopePath = $request->file('horoscope_picture')->store('horoscope_pictures', 'public');
-                UserHoroscopeImages::create([
-                    'user_id' => auth()->id(),
-                    'image_path' => $horoscopePath,
-                ]);
+                foreach ($request->file('horoscope_picture') as $file) {
+                    $path = $file->store('horoscope_pictures', 'public'); 
+                    UserHoroscopeImages::create([
+                        'user_id' => $user->id,
+                        'image_path' => $path,
+                        'type' => 'profile',
+                    ]);
+                }
             }
 
             DB::commit();
-
             return redirect()->back()->with('success', 'Registration details saved successfully!');
         } catch (\Exception $e) {
             DB::rollBack();
-
             return redirect()->back()->withErrors(['error' => 'Failed to save details: '.$e->getMessage()]);
         }
     }

@@ -394,3 +394,9 @@
     color: #de5255;
     cursor: pointer;
 }
+
+@media (max-width: 600px) {
+    #stepHeaders {
+        display: none !important;
+    }
+}

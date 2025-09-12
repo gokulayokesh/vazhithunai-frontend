@@ -47,6 +47,19 @@
     });
 
     /**
+     * Frequently Asked Questions Toggle
+     */
+    document
+        .querySelectorAll(
+            ".faq-item h3, .faq-item .faq-toggle, .faq-item .faq-header"
+        )
+        .forEach((faqItem) => {
+            faqItem.addEventListener("click", () => {
+                faqItem.parentNode.classList.toggle("faq-active");
+            });
+        });
+
+    /**
      * Toggle mobile nav dropdowns
      */
     document

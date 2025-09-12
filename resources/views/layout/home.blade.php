@@ -205,35 +205,47 @@
                     <div class="col-lg-7" data-aos="fade-left" data-aos-delay="300">
                         <div class="content">
                             <div class="section-header">
-                                <span class="section-label">About Our Company</span>
-                                <h2>Building Dreams, Creating Homes Since 2008</h2>
+                                <span class="section-label">Our innovative services</span>
+                                <h2>Tradition, Technology, Trust—All in One.</h2>
                             </div>
 
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                                architecto beatae vitae dicta sunt explicabo.</p>
+                            <p>We blend tradition with technology to make matchmaking meaningful and effortless. Our platform offers advanced search filters tailored to Tamil communities—whether you're looking by caste, sub-caste, Nakshatra, or lifestyle preferences. We support horoscope-based matching, family-managed profiles, and multi-language support including Tamil for easy access across generations. With features like WhatsApp alerts, private photo sharing, and verified contact access, we ensure a secure and respectful experience. Whether you're a parent seeking the perfect alliance or an individual ready to take the next step, our tools are designed to guide you with clarity, comfort, and confidence.</p>
 
                             <div class="achievements-list">
-                                <div class="achievement-item">
-                                    <div class="achievement-icon">
-                                        <i class="bi bi-house-door"></i>
-                                    </div>
-                                    <div class="achievement-content">
-                                        <h4><span data-purecounter-start="0" data-purecounter-end="3200"
-                                                data-purecounter-duration="2" class="purecounter"></span>+ Partner
-                                            Sold</h4>
-                                        <p>Successfully completed transactions</p>
-                                    </div>
-                                </div>
                                 <div class="achievement-item">
                                     <div class="achievement-icon">
                                         <i class="bi bi-people"></i>
                                     </div>
                                     <div class="achievement-content">
-                                        <h4><span data-purecounter-start="0" data-purecounter-end="98"
-                                                data-purecounter-duration="1" class="purecounter"></span>% Client
-                                            Satisfaction</h4>
-                                        <p>Happy customers recommend us</p>
+                                        <h4>Horoscope-Based Matchmaking Filters</h4>
+                                        <p>Find matches by Rasi, Nakshatra, Dosham.</p>
+                                    </div>
+                                </div>
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="bi bi-lock"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h4>Private Photo Sharing Controls</h4>
+                                        <p>Share photos securely with verified members.</p>
+                                    </div>
+                                </div>
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="bi bi-bell"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h4>WhatsApp Alerts for New Matches</h4>
+                                        <p>Instant updates sent directly to your phone.</p>
+                                    </div>
+                                </div>
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="bi bi-toggles"></i>
+                                    </div>
+                                    <div class="achievement-content">
+                                        <h4>Family-Managed Multi-Profile Dashboard</h4>
+                                        <p>Easily manage profiles for loved ones.</p>
                                     </div>
                                 </div>
                             </div>
@@ -249,7 +261,7 @@
                                     </div>
                                     <div class="contact-details">
                                         <span>Call us today</span>
-                                        <strong>+1 (555) 123-4567</strong>
+                                        <strong>+91 94438 74110/strong>
                                     </div>
                                 </div>
                             </div>
@@ -469,7 +481,7 @@
                     <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
                         <div class="service-card">
                             <div class="service-icon">
-                                <i class="bi bi-search"></i>
+                                <i class="bi bi-bookmark-heart"></i>
                             </div>
                             <div class="service-info">
                                 <h3><a href="service-details.html">Personalized Matches</a></h3>
@@ -494,7 +506,7 @@
                     <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
                         <div class="service-card">
                             <div class="service-icon">
-                                <i class="bi bi-calculator"></i>
+                                <i class="bi bi-person-lock"></i>
                             </div>
                             <div class="service-info">
                                 <h3><a href="service-details.html">Safe and Secure</a></h3>
@@ -523,7 +535,7 @@
                     <div class="col-lg-6" data-aos="fade-right" data-aos-delay="400">
                         <div class="service-card">
                             <div class="service-icon">
-                                <i class="bi bi-key"></i>
+                                <i class="bi bi-body-text"></i>
                             </div>
                             <div class="service-info">
                                 <h3><a href="service-details.html">User-Friendly Interface</a></h3>
@@ -548,7 +560,7 @@
                     <div class="col-lg-6" data-aos="fade-right" data-aos-delay="400">
                         <div class="service-card">
                             <div class="service-icon">
-                                <i class="bi bi-key"></i>
+                                <i class="bi bi-arrows-fullscreen"></i>
                             </div>
                             <div class="service-info">
                                 <h3><a href="service-details.html">Diverse Community</a></h3>
@@ -573,7 +585,7 @@
                     <div class="col-lg-6" data-aos="fade-left" data-aos-delay="500">
                         <div class="service-card">
                             <div class="service-icon">
-                                <i class="bi bi-shield-check"></i>
+                                <i class="bi bi-headset"></i>
                             </div>
                             <div class="service-info">
                                 <h3><a href="service-details.html">Expert Advice</a></h3>
@@ -597,7 +609,7 @@
                     <div class="col-lg-6" data-aos="fade-left" data-aos-delay="500">
                         <div class="service-card">
                             <div class="service-icon">
-                                <i class="bi bi-shield-check"></i>
+                                <i class="bi bi-chat-left-heart"></i>
                             </div>
                             <div class="service-info">
                                 <h3><a href="service-details.html">Success Stories</a></h3>
@@ -916,15 +928,16 @@
 
 
         <!-- Why Us Section -->
-        <section id="why-us" class="why-us section">
+        <!-- <section id="why-us" class="why-us section"> -->
 
             <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
+            <!-- <div class="container section-title" data-aos="fade-up">
                 <h2>Why Us</h2>
                 <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
+            </div> -->
+            <!-- End Section Title -->
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <!-- <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="row gy-4">
 
@@ -1075,9 +1088,10 @@
 
                 </div>
 
-            </div>
+            </div> -->
 
-        </section><!-- /Why Us Section -->
+        <!-- </section> -->
+        <!-- /Why Us Section -->
 
         <!-- Pricing Section -->
         <section id="pricing" class="pricing section light-background">
@@ -1227,6 +1241,144 @@
             </div>
         </section>
         <!-- /Pricing Section -->
+
+        <!-- Faq Section -->
+        <section id="faq" class="faq section">
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row gy-5">
+                <div class="col-lg-6" data-aos="zoom-out" data-aos-delay="200">
+                <div class="faq-contact-card">
+                    <div class="card-icon">
+                    <i class="bi bi-question-circle"></i>
+                    </div>
+                    <div class="card-content">
+                    <h3>Still Have Questions?</h3>
+                    <p>
+                        We're here to help every step of the way. Whether you're
+                        unsure about creating a profile, need help with matchmaking
+                        filters, or just want to talk to someone directly, feel free
+                        to reach out. You can call us, drop an email, or message us
+                        on WhatsApp—our support team is happy to assist with any
+                        query, big or small. Your journey matters to us.
+                    </p>
+                    <div class="contact-options">
+                        <a href="#" class="contact-option">
+                        <i class="bi bi-envelope"></i>
+                        <span>Email Support</span>
+                        </a>
+                        <a href="#" class="contact-option">
+                        <i class="bi bi-chat-dots"></i>
+                        <span>Live Chat</span>
+                        </a>
+                        <a href="#" class="contact-option">
+                        <i class="bi bi-telephone"></i>
+                        <span>Call Us</span>
+                        </a>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="faq-accordion">
+                    <div class="faq-item faq-active">
+                    <div class="faq-header">
+                        <h3>How do I register on the website?</h3>
+                        <i class="bi bi-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>
+                        Simply click on the “Register” button and fill in basic
+                        details like name, gender, date of birth, and contact
+                        information. You can create a profile for yourself or on
+                        behalf of a family member.
+                        </p>
+                    </div>
+                    </div>
+                    <!-- End FAQ Item-->
+
+                    <div class="faq-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="faq-header">
+                        <h3>Is registration free or paid?</h3>
+                        <i class="bi bi-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>
+                        Registration is free. You can browse profiles and create
+                        your own without any charges. Premium features like direct
+                        messaging or viewing contact details may require a paid
+                        membership.
+                        </p>
+                    </div>
+                    </div>
+                    <!-- End FAQ Item-->
+
+                    <div class="faq-item">
+                    <div class="faq-header">
+                        <h3>Can I create a profile for my son/daughter/sibling?</h3>
+                        <i class="bi bi-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>
+                        Yes, many users create profiles for their children or
+                        siblings. Just select the appropriate relationship during
+                        registration and provide accurate details.
+                        </p>
+                    </div>
+                    </div>
+                    <!-- End FAQ Item-->
+
+                    <div class="faq-item">
+                    <div class="faq-header">
+                        <h3>What details are mandatory during profile creation?</h3>
+                        <i class="bi bi-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>
+                        Basic personal info (name, age, gender), community/caste,
+                        education, profession, and marital status are required.
+                        You can optionally add horoscope, photos, and partner
+                        preferences.
+                        </p>
+                    </div>
+                    </div>
+                    <!-- End FAQ Item-->
+
+                    <div class="faq-item">
+                    <div class="faq-header">
+                        <h3>What are the different membership plans available?</h3>
+                        <i class="bi bi-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>
+                        We offer free registration and multiple premium plans with
+                        added benefits like direct messaging, contact viewing, and
+                        priority support.
+                        </p>
+                    </div>
+                    </div>
+                    <!-- End FAQ Item-->
+
+                    <div class="faq-item">
+                    <div class="faq-header">
+                        <h3>Is online payment secure?</h3>
+                        <i class="bi bi-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>
+                        Yes, we use encrypted payment gateways to ensure your
+                        transactions are safe and private.
+                        </p>
+                    </div>
+                    </div>
+                    <!-- End FAQ Item-->
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+         
 
         <!-- Call To Action Section -->
         <section class="call-to-action-1 call-to-action section" id="call-to-action">

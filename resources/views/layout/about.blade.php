@@ -65,50 +65,44 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="feature-box" data-aos="flip-up" data-aos-delay="400">
                                 <div class="feature-icon">
-                                    <i class="bi bi-house-door"></i>
+                                    <i class="bi bi-person-badge"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h4>Residential Sales</h4>
-                                    <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt
-                                        mollit anim.</p>
+                                    <h4>Understanding Your Preferences</h4>
+                                    <p>We start by learning about you — your values, lifestyle, and what you’re looking for in a life partner. This helps us create a profile that truly reflects who you are.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="feature-box" data-aos="flip-up" data-aos-delay="450">
                                 <div class="feature-icon">
-                                    <i class="bi bi-building"></i>
+                                    <i class="bi bi-shield-lock"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h4>Commercial Properties</h4>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                        doloremque
-                                        laudantium.</p>
+                                    <h4>Smart & Secure Matchmaking</h4>
+                                    <p>Our intelligent matching system connects you with verified profiles that align with your preferences, ensuring safety, privacy, and cultural compatibility.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="feature-box" data-aos="flip-up" data-aos-delay="500">
                                 <div class="feature-icon">
-                                    <i class="bi bi-graph-up-arrow"></i>
+                                    <i class="bi bi-person-lines-fill"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h4>Investment Guidance</h4>
-                                    <p>Totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto
-                                        beatae vitae.</p>
+                                    <h4>Guided Introductions</h4>
+                                    <p>Once there’s mutual interest, we help you take the next step with respectful, well‑timed introductions — whether that’s through messages, calls, or family‑to‑family meetings.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="feature-box" data-aos="flip-up" data-aos-delay="550">
                                 <div class="feature-icon">
-                                    <i class="bi bi-shield-check"></i>
+                                    <i class="bi bi-headset"></i>
                                 </div>
                                 <div class="feature-content">
-                                    <h4>Legal Support</h4>
-                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                        praesentium
-                                        voluptatum.</p>
+                                    <h4>Ongoing Support</h4>
+                                    <p>From your first match to your wedding day, our dedicated team is here to guide you, answer questions, and ensure your journey is smooth and joyful.</p>
                                 </div>
                             </div>
                         </div>
