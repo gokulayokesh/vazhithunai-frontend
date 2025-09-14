@@ -149,10 +149,10 @@
 
     window.addEventListener("load", initSwiper);
 
-    document
-        .querySelector("#logoutBtn")
-        ?.addEventListener("click", function () {
+    document.querySelectorAll(".logoutBtn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
             console.log("Logout button clicked");
+
             fetch("/logout", {
                 method: "POST",
                 headers: {
@@ -167,7 +167,7 @@
                 })
                 .catch(() => alert("Logout failed"));
         });
-
+    });
     $("#highest_education").select2({
         placeholder: "தேர்வு செய்யவும் / Select",
         width: "100%",

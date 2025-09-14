@@ -33,12 +33,15 @@ Route::get('/terms', function () {
 
 Route::get('/listings', [ProfileSearchController::class, 'search'])->name('listings.search');
 
-Route::get('/profile/{id}', [ProfileController::class, 'profile'])->name('profile');
+Route::get('/profile/{identifier}', [ProfileController::class, 'profile'])->name('profile');
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/my-account', [ProfileController::class, 'myaccount'])->name('myaccount');
+});
 // Backend API
 
 Route::get('/profiles/search', [ProfileSearchController::class, 'search'])

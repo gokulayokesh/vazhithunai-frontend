@@ -11,6 +11,7 @@
                 <nav class="breadcrumbs">
                     <ol>
                         <li><a href="{{ route('home') }}">Home</a></li>
+                        <li><a href="{{ route('listings.search') }}">Listings</a></li>
                         <li class="current">Profile Details</li>
                     </ol>
                 </nav>
@@ -108,9 +109,9 @@
                             <div class="property-header">
                                 <h1 class="property-title">{{ $profile->user->name }}</h1>
                                 <div class="property-meta">
-                                    <span class="address"><i class="bi bi-geo-alt"></i> {{ $profile->city }},
-                                        {{ $profile->state }}</span>
-                                    <span class="listing-id">Profile ID: #{{ $profile->id }}</span>
+                                    <span class="address"><i class="bi bi-geo-alt"></i> {{ $profile->city->name }},
+                                        {{ $profile->city->state->name }}</span>
+                                    <span class="listing-id">Profile ID: #{{ $profile->user->identifier }}</span>
                                 </div>
                             </div>
 
@@ -174,8 +175,10 @@
                                     <div class="col-md-6">
                                         <h5>Interests & Hobbies</h5>
                                         <ul class="feature-list">
-                                            @foreach ($profile->interests ?? [] as $interest)
-                                                <li><i class="bi bi-check2"></i> {{ $interest }}</li>
+                                            @foreach (explode(',', $profile->interests ?? '') as $interest)
+                                                @if (trim($interest) !== '')
+                                                    <li><i class="bi bi-check2"></i> {{ trim($interest) }}</li>
+                                                @endif
                                             @endforeach
                                         </ul>
                                     </div>
@@ -264,12 +267,12 @@
                                         <div class="col-6">
                                             <button class="btn btn-outline-primary w-100 shortlist-btn"
                                                 data-user-id="{{ $profile->id }}">
-                                                @if (auth()->user()->shortlists->contains('shortlisted_user_id', $profile->id))
-                                                    <i class="bi bi-heart-fill text-danger"></i> Shortlist
+                                                @if (auth()->user() && auth()->user()->shortlistedUsers->contains('shortlisted_user_id', $profile->id))
+                                                    <i class="bi bi-heart-fill text-danger"></i>
                                                 @else
-                                                    <i class="bi bi-heart"></i> Shortlist
+                                                    <i class="bi bi-heart"></i>
                                                 @endif
-
+                                                Shortlist
                                             </button>
                                             <div id="shortlist-message" class="mt-2 text-success"
                                                 style="display:none;"></div>

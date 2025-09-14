@@ -12,4 +12,14 @@ class City extends Model
         'status',
         'state_id',
     ];
+
+    public function userDetails()
+    {
+        return $this->hasMany(UserDetails::class);
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
 }

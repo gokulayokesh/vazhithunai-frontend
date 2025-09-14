@@ -11,7 +11,7 @@
                 <h1 class="mb-2 mb-lg-0">About</h1>
                 <nav class="breadcrumbs">
                     <ol>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li class="current">About</li>
                     </ol>
                 </nav>
@@ -69,7 +69,9 @@
                                 </div>
                                 <div class="feature-content">
                                     <h4>Understanding Your Preferences</h4>
-                                    <p>We start by learning about you — your values, lifestyle, and what you’re looking for in a life partner. This helps us create a profile that truly reflects who you are.</p>
+                                    <p>We start by learning about you — your values, lifestyle, and what you’re looking
+                                        for in a life partner. This helps us create a profile that truly reflects who
+                                        you are.</p>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +82,8 @@
                                 </div>
                                 <div class="feature-content">
                                     <h4>Smart & Secure Matchmaking</h4>
-                                    <p>Our intelligent matching system connects you with verified profiles that align with your preferences, ensuring safety, privacy, and cultural compatibility.</p>
+                                    <p>Our intelligent matching system connects you with verified profiles that align
+                                        with your preferences, ensuring safety, privacy, and cultural compatibility.</p>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +94,9 @@
                                 </div>
                                 <div class="feature-content">
                                     <h4>Guided Introductions</h4>
-                                    <p>Once there’s mutual interest, we help you take the next step with respectful, well‑timed introductions — whether that’s through messages, calls, or family‑to‑family meetings.</p>
+                                    <p>Once there’s mutual interest, we help you take the next step with respectful,
+                                        well‑timed introductions — whether that’s through messages, calls, or
+                                        family‑to‑family meetings.</p>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +107,8 @@
                                 </div>
                                 <div class="feature-content">
                                     <h4>Ongoing Support</h4>
-                                    <p>From your first match to your wedding day, our dedicated team is here to guide you, answer questions, and ensure your journey is smooth and joyful.</p>
+                                    <p>From your first match to your wedding day, our dedicated team is here to guide
+                                        you, answer questions, and ensure your journey is smooth and joyful.</p>
                                 </div>
                             </div>
                         </div>

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Shortlist;
+use App\Models\User;
 use App\Models\UserDetails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -15,7 +17,7 @@ class ProfileController extends Controller
 
     public function profile(Request $request)
     {
-        $userId = (int) $request->id;
+        $userId = User::getIdByIdentifier($request->identifier);
 
         $profile = UserDetails::with([
             'user',          // relation to users table
@@ -80,5 +82,12 @@ class ProfileController extends Controller
                 'data' => $shortlist,
             ]);
         }
+    }
+
+    public function myaccount()
+    {
+        $user = Auth::user()->load(['userDetails', 'userImages', 'shortlistedUsers']);
+
+        return view('layout.account', compact('user'));
     }
 }

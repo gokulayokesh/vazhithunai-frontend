@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -18,6 +19,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'identifier',
         'name',
         'email',
         'password',
@@ -56,13 +58,22 @@ class User extends Authenticatable
         return $this->hasMany(UserImages::class);
     }
 
-    public function shortlists()
+    public function shortlistedUsers()
     {
-        return $this->hasMany(Shortlist::class, 'user_id');
+        return $this->belongsToMany(User::class, 'shortlists', 'user_id', 'shortlisted_user_id')
+            ->with('userDetails', 'userImages');
     }
 
-    public function shortlistedBy()
+    protected static function booted()
     {
-        return $this->hasMany(Shortlist::class, 'shortlisted_user_id');
+        static::creating(function ($user) {
+            $raw = Str::lower(Str::random(12));
+            $user->identifier = 'VTM-'.substr($raw, 4, 4).'-'.substr($raw, 8, 4);
+        });
+    }
+
+    public static function getIdByIdentifier(string $identifier): ?int
+    {
+        return static::where('identifier', $identifier)->value('id');
     }
 }

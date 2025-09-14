@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\UserDetails;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileSearchController extends Controller
@@ -12,9 +13,15 @@ class ProfileSearchController extends Controller
     public function search(Request $request)
     {
         $query = UserDetails::with([
-            'user:id,name,email', // Load basic user info
+            'user:id,name,email,identifier', // Load basic user info
             'userImages:id,user_id,image_path', // Load profile images
         ]);
+
+        // Exclude logged-in user
+        $loggedInUserId = Auth::id();
+        if ($loggedInUserId) {
+            $query->where('user_id', '!=', $loggedInUserId);
+        }
 
         // Age filter (convert to DOB range)
         if ($request->filled('age_from') || $request->filled('age_to')) {

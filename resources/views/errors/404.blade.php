@@ -11,7 +11,7 @@
                 <h1 class="mb-2 mb-lg-0">404</h1>
                 <nav class="breadcrumbs">
                     <ol>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li class="current">404</li>
                     </ol>
                 </nav>
@@ -58,7 +58,7 @@
 
         </section><!-- /Error 404 Section -->
 
-    </main> 
+    </main>
     @include('include.login')
     @include('include.footer')
     @include('include.script')

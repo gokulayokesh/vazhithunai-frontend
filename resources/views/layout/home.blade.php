@@ -209,7 +209,15 @@
                                 <h2>Tradition, Technology, Trust—All in One.</h2>
                             </div>
 
-                            <p>We blend tradition with technology to make matchmaking meaningful and effortless. Our platform offers advanced search filters tailored to Tamil communities—whether you're looking by caste, sub-caste, Nakshatra, or lifestyle preferences. We support horoscope-based matching, family-managed profiles, and multi-language support including Tamil for easy access across generations. With features like WhatsApp alerts, private photo sharing, and verified contact access, we ensure a secure and respectful experience. Whether you're a parent seeking the perfect alliance or an individual ready to take the next step, our tools are designed to guide you with clarity, comfort, and confidence.</p>
+                            <p>We blend tradition with technology to make matchmaking meaningful and effortless. Our
+                                platform offers advanced search filters tailored to Tamil communities—whether you're
+                                looking by caste, sub-caste, Nakshatra, or lifestyle preferences. We support
+                                horoscope-based matching, family-managed profiles, and multi-language support including
+                                Tamil for easy access across generations. With features like WhatsApp alerts, private
+                                photo sharing, and verified contact access, we ensure a secure and respectful
+                                experience. Whether you're a parent seeking the perfect alliance or an individual ready
+                                to take the next step, our tools are designed to guide you with clarity, comfort, and
+                                confidence.</p>
 
                             <div class="achievements-list">
                                 <div class="achievement-item">
@@ -485,16 +493,19 @@
                             </div>
                             <div class="service-info">
                                 <h3><a href="service-details.html">Personalized Matches</a></h3>
-                                <p>We understand that every individual is unique, and so are their preferences. Our intelligent matchmaking algorithms take into account your interests, values, and aspirations to deliver personalized match suggestions, increasing your chances of finding someone who truly resonates with you.</p>
-                                <!-- <ul class="service-highlights">
+                                <p>We understand that every individual is unique, and so are their preferences. Our
+                                    intelligent matchmaking algorithms take into account your interests, values, and
+                                    aspirations to deliver personalized match suggestions, increasing your chances of
+                                    finding someone who truly resonates with you.</p>
+                                {{-- <ul class="service-highlights">
                                     <li><i class="bi bi-check-circle-fill"></i> Comprehensive Listings</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Advanced Filtering</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Virtual Tours</li>
-                                </ul> -->
-                                <a href="service-details.html" class="service-link">
+                                </ul> --}}
+                                {{-- <a href="service-details.html" class="service-link">
                                     <span>Explore Now</span>
                                     <i class="bi bi-arrow-up-right"></i>
-                                </a>
+                                </a> --}}
                             </div>
                             <div class="service-visual">
                                 <img src="assets/img/real-estate/property-interior-2.webp" class="img-fluid"
@@ -510,16 +521,18 @@
                             </div>
                             <div class="service-info">
                                 <h3><a href="service-details.html">Safe and Secure</a></h3>
-                                <p>Your privacy and security are our top priorities. Our robust verification processes and advanced privacy settings ensure that your journey on LGM Matrimony is both safe and confidential.</p>
+                                <p>Your privacy and security are our top priorities. Our robust verification processes
+                                    and advanced privacy settings ensure that your journey on LGM Matrimony is both safe
+                                    and confidential.</p>
                                 <!-- <ul class="service-highlights">
                                     <li><i class="bi bi-check-circle-fill"></i> Market Analysis</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Comparative Reports</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Investment Insights</li>
                                 </ul> -->
-                                <a href="service-details.html" class="service-link">
+                                {{-- <a href="service-details.html" class="service-link">
                                     <span>Get Valuation</span>
                                     <i class="bi bi-arrow-up-right"></i>
-                                </a>
+                                </a> --}}
                             </div>
                             <div class="service-visual">
                                 <img src="assets/img/real-estate/property-exterior-1.webp" class="img-fluid"
@@ -539,16 +552,18 @@
                             </div>
                             <div class="service-info">
                                 <h3><a href="service-details.html">User-Friendly Interface</a></h3>
-                                <p>Navigating through LGM Matrimony is a breeze. Our intuitive user interface makes it easy for you to create a profile, explore potential matches, and engage in meaningful conversations.</p>
+                                <p>Navigating through LGM Matrimony is a breeze. Our intuitive user interface makes it
+                                    easy for you to create a profile, explore potential matches, and engage in
+                                    meaningful conversations.</p>
                                 <!-- <ul class="service-highlights">
                                     <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
                                 </ul> -->
-                                <a href="service-details.html" class="service-link">
+                                {{-- <a href="service-details.html" class="service-link">
                                     <span>Start Renting</span>
                                     <i class="bi bi-arrow-up-right"></i>
-                                </a>
+                                </a> --}}
                             </div>
                             <div class="service-visual">
                                 <img src="assets/img/real-estate/property-interior-8.webp" class="img-fluid"
@@ -564,16 +579,18 @@
                             </div>
                             <div class="service-info">
                                 <h3><a href="service-details.html">Diverse Community</a></h3>
-                                <p>Love knows no boundaries, and neither do we. Our platform welcomes individuals from all walks of life, cultures, and backgrounds, fostering an inclusive and diverse community.</p>
+                                <p>Love knows no boundaries, and neither do we. Our platform welcomes individuals from
+                                    all walks of life, cultures, and backgrounds, fostering an inclusive and diverse
+                                    community.</p>
                                 <!-- <ul class="service-highlights">
                                     <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
                                 </ul> -->
-                                <a href="service-details.html" class="service-link">
+                                {{-- <a href="service-details.html" class="service-link">
                                     <span>Start Renting</span>
                                     <i class="bi bi-arrow-up-right"></i>
-                                </a>
+                                </a> --}}
                             </div>
                             <div class="service-visual">
                                 <img src="assets/img/real-estate/property-interior-8.webp" class="img-fluid"
@@ -589,16 +606,18 @@
                             </div>
                             <div class="service-info">
                                 <h3><a href="service-details.html">Expert Advice</a></h3>
-                                <p>We understand that the path to love can be filled with questions and uncertainties. Our team of relationship experts and counselors are here to provide guidance, support, and advice, ensuring you have a fulfilling and enriching experience.</p>
+                                <p>We understand that the path to love can be filled with questions and uncertainties.
+                                    Our team of relationship experts and counselors are here to provide guidance,
+                                    support, and advice, ensuring you have a fulfilling and enriching experience.</p>
                                 <!-- <ul class="service-highlights">
                                     <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
                                 </ul> -->
-                                <a href="service-details.html" class="service-link">
+                                {{-- <a href="service-details.html" class="service-link">
                                     <span>Learn More</span>
                                     <i class="bi bi-arrow-up-right"></i>
-                                </a>
+                                </a> --}}
                             </div>
                             <div class="service-visual">
                                 <img src="assets/img/real-estate/property-exterior-4.webp" class="img-fluid"
@@ -613,16 +632,18 @@
                             </div>
                             <div class="service-info">
                                 <h3><a href="service-details.html">Success Stories</a></h3>
-                                <p>Our success is measured by the smiles on the faces of those who have found love through LGM Matrimony. We take immense pride in being a part of your journey and celebrating the success stories that emanate from our platform.</p>
+                                <p>Our success is measured by the smiles on the faces of those who have found love
+                                    through LGM Matrimony. We take immense pride in being a part of your journey and
+                                    celebrating the success stories that emanate from our platform.</p>
                                 <!-- <ul class="service-highlights">
                                     <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
                                     <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
                                 </ul> -->
-                                <a href="service-details.html" class="service-link">
+                                {{-- <a href="service-details.html" class="service-link">
                                     <span>Learn More</span>
                                     <i class="bi bi-arrow-up-right"></i>
-                                </a>
+                                </a> --}}
                             </div>
                             <div class="service-visual">
                                 <img src="assets/img/real-estate/property-exterior-4.webp" class="img-fluid"
@@ -815,7 +836,7 @@
         </section><!-- /Featured Agents Section -->
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials section light-background">
+        {{-- <section id="testimonials" class="testimonials section light-background">
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
@@ -923,21 +944,21 @@
 
             </div>
 
-        </section><!-- /Testimonials Section -->
+        </section><!-- /Testimonials Section --> --}}
 
 
 
         <!-- Why Us Section -->
         <!-- <section id="why-us" class="why-us section"> -->
 
-            <!-- Section Title -->
-            <!-- <div class="container section-title" data-aos="fade-up">
+        <!-- Section Title -->
+        <!-- <div class="container section-title" data-aos="fade-up">
                 <h2>Why Us</h2>
                 <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
             </div> -->
-            <!-- End Section Title -->
+        <!-- End Section Title -->
 
-            <!-- <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <!-- <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="row gy-4">
 
@@ -1153,7 +1174,7 @@
                             <div class="price">
                                 <span class="currency">₹</span>
                                 <span class="amount">999</span>
-                                <!-- <span class="period">/ month</span> -->
+                                <span class="period">/ 6 months</span>
                             </div>
                             <p class="description">Find your perfect match!</p>
 
@@ -1245,140 +1266,140 @@
         <!-- Faq Section -->
         <section id="faq" class="faq section">
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="row gy-5">
-                <div class="col-lg-6" data-aos="zoom-out" data-aos-delay="200">
-                <div class="faq-contact-card">
-                    <div class="card-icon">
-                    <i class="bi bi-question-circle"></i>
+                <div class="row gy-5">
+                    <div class="col-lg-6" data-aos="zoom-out" data-aos-delay="200">
+                        <div class="faq-contact-card">
+                            <div class="card-icon">
+                                <i class="bi bi-question-circle"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Still Have Questions?</h3>
+                                <p>
+                                    We're here to help every step of the way. Whether you're
+                                    unsure about creating a profile, need help with matchmaking
+                                    filters, or just want to talk to someone directly, feel free
+                                    to reach out. You can call us, drop an email, or message us
+                                    on WhatsApp—our support team is happy to assist with any
+                                    query, big or small. Your journey matters to us.
+                                </p>
+                                <div class="contact-options">
+                                    <a href="#" class="contact-option">
+                                        <i class="bi bi-envelope"></i>
+                                        <span>Email Support</span>
+                                    </a>
+                                    <a href="#" class="contact-option">
+                                        <i class="bi bi-chat-dots"></i>
+                                        <span>Live Chat</span>
+                                    </a>
+                                    <a href="#" class="contact-option">
+                                        <i class="bi bi-telephone"></i>
+                                        <span>Call Us</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-content">
-                    <h3>Still Have Questions?</h3>
-                    <p>
-                        We're here to help every step of the way. Whether you're
-                        unsure about creating a profile, need help with matchmaking
-                        filters, or just want to talk to someone directly, feel free
-                        to reach out. You can call us, drop an email, or message us
-                        on WhatsApp—our support team is happy to assist with any
-                        query, big or small. Your journey matters to us.
-                    </p>
-                    <div class="contact-options">
-                        <a href="#" class="contact-option">
-                        <i class="bi bi-envelope"></i>
-                        <span>Email Support</span>
-                        </a>
-                        <a href="#" class="contact-option">
-                        <i class="bi bi-chat-dots"></i>
-                        <span>Live Chat</span>
-                        </a>
-                        <a href="#" class="contact-option">
-                        <i class="bi bi-telephone"></i>
-                        <span>Call Us</span>
-                        </a>
-                    </div>
+
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="faq-accordion">
+                            <div class="faq-item faq-active">
+                                <div class="faq-header">
+                                    <h3>How do I register on the website?</h3>
+                                    <i class="bi bi-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-content">
+                                    <p>
+                                        Simply click on the “Register” button and fill in basic
+                                        details like name, gender, date of birth, and contact
+                                        information. You can create a profile for yourself or on
+                                        behalf of a family member.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- End FAQ Item-->
+
+                            <div class="faq-item" data-aos="zoom-in" data-aos-delay="200">
+                                <div class="faq-header">
+                                    <h3>Is registration free or paid?</h3>
+                                    <i class="bi bi-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-content">
+                                    <p>
+                                        Registration is free. You can browse profiles and create
+                                        your own without any charges. Premium features like direct
+                                        messaging or viewing contact details may require a paid
+                                        membership.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- End FAQ Item-->
+
+                            <div class="faq-item">
+                                <div class="faq-header">
+                                    <h3>Can I create a profile for my son/daughter/sibling?</h3>
+                                    <i class="bi bi-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-content">
+                                    <p>
+                                        Yes, many users create profiles for their children or
+                                        siblings. Just select the appropriate relationship during
+                                        registration and provide accurate details.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- End FAQ Item-->
+
+                            <div class="faq-item">
+                                <div class="faq-header">
+                                    <h3>What details are mandatory during profile creation?</h3>
+                                    <i class="bi bi-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-content">
+                                    <p>
+                                        Basic personal info (name, age, gender), community/caste,
+                                        education, profession, and marital status are required.
+                                        You can optionally add horoscope, photos, and partner
+                                        preferences.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- End FAQ Item-->
+
+                            <div class="faq-item">
+                                <div class="faq-header">
+                                    <h3>What are the different membership plans available?</h3>
+                                    <i class="bi bi-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-content">
+                                    <p>
+                                        We offer free registration and multiple premium plans with
+                                        added benefits like direct messaging, contact viewing, and
+                                        priority support.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- End FAQ Item-->
+
+                            <div class="faq-item">
+                                <div class="faq-header">
+                                    <h3>Is online payment secure?</h3>
+                                    <i class="bi bi-chevron-down faq-toggle"></i>
+                                </div>
+                                <div class="faq-content">
+                                    <p>
+                                        Yes, we use encrypted payment gateways to ensure your
+                                        transactions are safe and private.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- End FAQ Item-->
+                        </div>
                     </div>
                 </div>
-                </div>
-
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="faq-accordion">
-                    <div class="faq-item faq-active">
-                    <div class="faq-header">
-                        <h3>How do I register on the website?</h3>
-                        <i class="bi bi-chevron-down faq-toggle"></i>
-                    </div>
-                    <div class="faq-content">
-                        <p>
-                        Simply click on the “Register” button and fill in basic
-                        details like name, gender, date of birth, and contact
-                        information. You can create a profile for yourself or on
-                        behalf of a family member.
-                        </p>
-                    </div>
-                    </div>
-                    <!-- End FAQ Item-->
-
-                    <div class="faq-item" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="faq-header">
-                        <h3>Is registration free or paid?</h3>
-                        <i class="bi bi-chevron-down faq-toggle"></i>
-                    </div>
-                    <div class="faq-content">
-                        <p>
-                        Registration is free. You can browse profiles and create
-                        your own without any charges. Premium features like direct
-                        messaging or viewing contact details may require a paid
-                        membership.
-                        </p>
-                    </div>
-                    </div>
-                    <!-- End FAQ Item-->
-
-                    <div class="faq-item">
-                    <div class="faq-header">
-                        <h3>Can I create a profile for my son/daughter/sibling?</h3>
-                        <i class="bi bi-chevron-down faq-toggle"></i>
-                    </div>
-                    <div class="faq-content">
-                        <p>
-                        Yes, many users create profiles for their children or
-                        siblings. Just select the appropriate relationship during
-                        registration and provide accurate details.
-                        </p>
-                    </div>
-                    </div>
-                    <!-- End FAQ Item-->
-
-                    <div class="faq-item">
-                    <div class="faq-header">
-                        <h3>What details are mandatory during profile creation?</h3>
-                        <i class="bi bi-chevron-down faq-toggle"></i>
-                    </div>
-                    <div class="faq-content">
-                        <p>
-                        Basic personal info (name, age, gender), community/caste,
-                        education, profession, and marital status are required.
-                        You can optionally add horoscope, photos, and partner
-                        preferences.
-                        </p>
-                    </div>
-                    </div>
-                    <!-- End FAQ Item-->
-
-                    <div class="faq-item">
-                    <div class="faq-header">
-                        <h3>What are the different membership plans available?</h3>
-                        <i class="bi bi-chevron-down faq-toggle"></i>
-                    </div>
-                    <div class="faq-content">
-                        <p>
-                        We offer free registration and multiple premium plans with
-                        added benefits like direct messaging, contact viewing, and
-                        priority support.
-                        </p>
-                    </div>
-                    </div>
-                    <!-- End FAQ Item-->
-
-                    <div class="faq-item">
-                    <div class="faq-header">
-                        <h3>Is online payment secure?</h3>
-                        <i class="bi bi-chevron-down faq-toggle"></i>
-                    </div>
-                    <div class="faq-content">
-                        <p>
-                        Yes, we use encrypted payment gateways to ensure your
-                        transactions are safe and private.
-                        </p>
-                    </div>
-                    </div>
-                    <!-- End FAQ Item-->
-                </div>
-                </div>
-            </div>
             </div>
         </section>
 
-         
+
 
         <!-- Call To Action Section -->
         <section class="call-to-action-1 call-to-action section" id="call-to-action">
