@@ -42,7 +42,7 @@
             <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
                 <h4>Contact Us</h4>
                 <p>#48, Mukkannar Street</p>
-                <p>Kumbakonam, TN 6120001</p>
+                <p>Kumbakonam, TN 612001</p>
                 <p>India</p>
                 <p class="mt-4"><strong>Phone:</strong> <span>+91 94438 74110</span></p>
                 <p><strong>Email:</strong> <span>support@vazhithunai.com</span></p>
