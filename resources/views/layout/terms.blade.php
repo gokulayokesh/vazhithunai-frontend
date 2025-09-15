@@ -23,7 +23,7 @@
             <div class="container" data-aos="fade-up">
                 <!-- Page Header -->
                 <div class="tos-header text-center" data-aos="fade-up">
-                    <span class="last-updated">Last Updated: February 27, 2025</span>
+                    <span class="last-updated">Last Updated: August 27, 2025</span>
                     <h2>Terms & Conditions</h2>
                     <p>Please read these Terms & Conditions carefully before using our matrimonial services.</p>
                 </div>

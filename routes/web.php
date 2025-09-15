@@ -31,6 +31,10 @@ Route::get('/terms', function () {
     return view('layout.terms');
 });
 
+Route::get('/privacy-policy', function () {
+    return view('layout.privacy');
+});
+
 Route::get('/listings', [ProfileSearchController::class, 'search'])->name('listings.search');
 
 Route::get('/profile/{identifier}', [ProfileController::class, 'profile'])->name('profile');
