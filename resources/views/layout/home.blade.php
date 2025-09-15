@@ -470,7 +470,7 @@
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Featured Services</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+                {{-- <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p> --}}
             </div><!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -1406,13 +1406,13 @@
 
                         <div class="cta-content text-center">
                             <h2>Need Help Finding Your Dream Partner?</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                            {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                            </p>
+                            </p> --}}
 
                             <div class="cta-buttons">
-                                <a href="#" class="btn btn-primary">Contact Us Today</a>
-                                <a href="#" class="btn btn-outline">Schedule a Call</a>
+                                {{-- <a href="#" class="btn btn-primary">Contact Us Today</a> --}}
+                                {{-- <a href="#" class="btn btn-outline">Schedule a Call</a> --}}
                             </div>
 
                             <div class="cta-features">
