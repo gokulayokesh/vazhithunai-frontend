@@ -81,10 +81,10 @@
                                             </div>
                                         </div>
 
-                                        <button onclick="scrollToSection()" class="search-btn">
+                                        <a onclick="scrollToSection()" class="search-btn">
                                             <i class="bi bi-search-heart-fill"></i>
                                             <span>Find Partner</span>
-                                        </button>
+                                        </a>
                                     </form>
                                 </div>
 
@@ -645,12 +645,12 @@
 
                 </div>
 
-                <div class="text-center" data-aos="zoom-in" data-aos-delay="600">
+                {{-- <div class="text-center" data-aos="zoom-in" data-aos-delay="600">
                     <a href="services.html" class="btn-view-all">
                         <span>View All Services</span>
                         <i class="bi bi-arrow-right"></i>
                     </a>
-                </div>
+                </div> --}}
 
             </div>
 
