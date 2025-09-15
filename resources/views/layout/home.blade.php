@@ -255,7 +255,7 @@
                             </div>
 
                             <div class="action-section">
-                                <a href="about.html" class="btn-cta">
+                                <a href="/about" class="btn-cta">
                                     <span>Discover Our Story</span>
                                     <i class="bi bi-arrow-right"></i>
                                 </a>
@@ -265,7 +265,7 @@
                                     </div>
                                     <div class="contact-details">
                                         <span>Call us today</span>
-                                        <strong>+91 94438 74110/strong>
+                                        <strong>+91 94438 74110</strong>
                                     </div>
                                 </div>
                             </div>
@@ -1398,7 +1398,7 @@
 
         <!-- Call To Action Section -->
         <section class="call-to-action-1 call-to-action section" id="call-to-action">
-            <div class="cta-bg" style="background-image: url('assets/img/homepage/showcase-3.png');"></div>
+            <div class="cta-bg" style="background-image: url('assets/img/homepage/img5.png');"></div>
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="row justify-content-center">
@@ -1411,7 +1411,7 @@
                             </p> --}}
 
                             <div class="cta-buttons">
-                                {{-- <a href="#" class="btn btn-primary">Contact Us Today</a> --}}
+                                <a href="/contact" class="btn btn-primary">Contact Us Today</a>
                                 {{-- <a href="#" class="btn btn-outline">Schedule a Call</a> --}}
                             </div>
 
