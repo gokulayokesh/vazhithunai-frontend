@@ -145,7 +145,7 @@
                     <p>If you have any questions about this Privacy Policy or our practices, please contact us:</p>
                     <div class="contact-details">
                         <p><strong>Email:</strong> support@vazhithunai.com</p>
-                        <p><strong>Address:</strong> #48,Mukkannar Street, Kumbakonam</p>
+                        <p><strong>Address:</strong> #48,Mukkannar Street, Kumbakonam, 612001</p>
                     </div>
                 </div>
 
