@@ -320,4 +320,11 @@
             });
         });
     });
+
+    function scrollToSection() {
+        const target = document.getElementById("pricing");
+        if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+        }
+    }
 })();
