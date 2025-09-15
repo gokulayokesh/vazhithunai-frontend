@@ -123,9 +123,8 @@
 
                     <!-- Indemnification -->
                     <div id="indemnification" class="content-section">
-                        <h3>8. Indemnification</h3>
-                        <p>You agree to indemnify and hold us harmless from any claims, damages, or expenses resulting
-                            from your misuse of the platform or violation of these Terms.</p>
+                        <h3>8. Refund Policy</h3>
+                        <p>We don't provide any refunds in any circumstances once paid.</p>
                     </div>
 
                     <!-- Termination -->
