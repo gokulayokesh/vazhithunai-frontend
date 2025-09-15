@@ -26,7 +26,7 @@
                     <li><a href="/terms">Terms of service</a></li>
                     <li><a href="#">Privacy policy</a></li>
                 </ul>
-            </div>
+                {{-- </div>
 
             <div class="col-lg-2 col-6 footer-links">
                 <h4>Our Services</h4>
@@ -37,27 +37,28 @@
                     <li><a href="#">Marketing</a></li>
                     <li><a href="#">Graphic Design</a></li>
                 </ul>
+            </div> --}}
+
+                <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                    <h4>Contact Us</h4>
+                    <p>#48, Mukkannar Street</p>
+                    <p>Kumbakonam, TN 6120001</p>
+                    <p>India</p>
+                    <p class="mt-4"><strong>Phone:</strong> <span>+91 94438 74110</span></p>
+                    <p><strong>Email:</strong> <span>support@vazhithunai.com</span></p>
+                </div>
+
             </div>
+        </div>
 
-            <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-                <h4>Contact Us</h4>
-                <p>A108 Adam Street</p>
-                <p>New York, NY 535022</p>
-                <p>United States</p>
-                <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                <p><strong>Email:</strong> <span>info@example.com</span></p>
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">Vazhithunai</strong> <span>All Rights
+                    Reserved</span>
+            </p>
+            <div class="credits">
+                Designed by Hashtag.academy</a>
             </div>
-
         </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Vazhithunai</strong> <span>All Rights Reserved</span>
-        </p>
-        <div class="credits">
-            Designed by Hashtag.academy</a>
-        </div>
-    </div>
 
 </footer>
 @yield('script')
