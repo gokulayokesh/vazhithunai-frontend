@@ -1425,7 +1425,7 @@
                                     <span>24/7 Support</span>
                                 </div>
                                 <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
-                                    <i class="bi bi-shield-check-fill"></i>
+                                    <i class="bi bi-shield-fill-check"></i>
                                     <span>Trusted Experts</span>
                                 </div>
                             </div>

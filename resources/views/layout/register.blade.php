@@ -50,8 +50,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1"><span
                                                         class="bi bi-person"></span></span>
-                                                <input type="text" name="name" class="form-control" aria-describedby="basic-addon1"
-                                                    required>
+                                                <input type="text" name="name" class="form-control"
+                                                    aria-describedby="basic-addon1" required>
                                             </div>
                                             <div class="error-text">Name is required</div>
                                         </div>
@@ -81,8 +81,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1"><span
                                                         class="bi bi-calendar-heart"></span></span>
-                                                <input type="text" id="age" name="age" class="form-control" disabled
-                                                    aria-describedby="basic-addon1">
+                                                <input type="text" id="age" name="age" class="form-control"
+                                                    disabled aria-describedby="basic-addon1">
                                             </div>
                                         </div>
                                     </div>
@@ -92,8 +92,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1"><span
                                                         class="bi bi-geo-alt"></span></span>
-                                                <input type="text" class="form-control" aria-describedby="basic-addon1"
-                                                    required name="birth_place">
+                                                <input type="text" class="form-control"
+                                                    aria-describedby="basic-addon1" required name="birth_place">
                                             </div>
                                             <div class="error-text">Birth Place is required</div>
                                         </div>
@@ -112,7 +112,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-mortarboard"></span></span>
-                                                <select class="form-control" id="highest_education" name="highest_education" required>
+                                                <select class="form-control" id="highest_education"
+                                                    name="highest_education" required>
                                                     <option value="">Select</option>
                                                     <option>Doctorate / PhD</option>
                                                     <option>Postgraduate / Master's</option>
@@ -131,7 +132,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-journal-bookmark"></span></span>
-                                                <select class="form-control" id="education_field" name="education_field" required>
+                                                <select class="form-control" id="education_field" name="education_field"
+                                                    required>
                                                     <option value="">Select</option>
                                                     <option value="engineering">Engineering</option>
                                                     <option value="medicine">Medicine</option>
@@ -152,7 +154,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-lightbulb"></span></span>
-                                                <select class="form-control" id="specialization" required name="specialization">
+                                                <select class="form-control" id="specialization" required
+                                                    name="specialization">
                                                     <option value="">Select specialization</option>
                                                 </select>
                                             </div>
@@ -164,7 +167,8 @@
                                                 Institution</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-building"></span></span>
-                                                <input type="text" class="form-control" id="institution" name="institution">
+                                                <input type="text" class="form-control" id="institution"
+                                                    name="institution">
                                             </div>
                                         </div>
 
@@ -184,7 +188,8 @@
                                                 Qualifications</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-award"></span></span>
-                                                <input type="text" class="form-control" id="certifications" name="additional_qualifications">
+                                                <input type="text" class="form-control" id="certifications"
+                                                    name="additional_qualifications">
                                             </div>
                                         </div>
 
@@ -195,7 +200,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-briefcase"></span></span>
-                                                <select class="form-control" id="occupation_category" name="occupation_category" required>
+                                                <select class="form-control" id="occupation_category"
+                                                    name="occupation_category" required>
                                                     <option value="">Select</option>
                                                     <option>IT Professional</option>
                                                     <option>Government Employee</option>
@@ -214,7 +220,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-person-badge"></span></span>
-                                                <input type="text" class="form-control" id="job_title" name="job_title" required>
+                                                <input type="text" class="form-control" id="job_title"
+                                                    name="job_title" required>
                                             </div>
                                             <div class="error-text">Job Title is required</div>
                                         </div>
@@ -224,7 +231,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-building-check"></span></span>
-                                                <input type="text" class="form-control" name="company_name" id="company_name">
+                                                <input type="text" class="form-control" name="company_name"
+                                                    id="company_name">
                                             </div>
                                         </div>
 
@@ -265,7 +273,8 @@
                                             <label class="form-label" for="work_location">பணியிடம் / Work Location</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-geo-alt"></span></span>
-                                                <input type="text" class="form-control" id="work_location" name="work_location" required>
+                                                <input type="text" class="form-control" id="work_location"
+                                                    name="work_location" required>
                                             </div>
                                             <div class="error-text">Work Location is required</div>
                                         </div>
@@ -396,7 +405,8 @@
                                             <label class="form-label" for="caste">ஜாதகரின் உட்பிரிவு / Caste</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-people"></span></span>
-                                                <input type="text" class="form-control" id="caste" required name="caste">
+                                                <input type="text" class="form-control" id="caste" required
+                                                    name="caste">
                                             </div>
                                             <div class="error-text">Caste is required</div>
                                         </div>
@@ -407,7 +417,8 @@
                                                 Status</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-heart"></span></span>
-                                                <select class="form-control" id="marital_status" name="marital_status" required>
+                                                <select class="form-control" id="marital_status" name="marital_status"
+                                                    required>
                                                     <option value="">Select</option>
                                                     <option>திருமணம் ஆகாதவர் / Never Married</option>
                                                     <option>விவாகரத்து / Divorced</option>
@@ -422,7 +433,8 @@
                                             <label class="form-label" for="city">நகரம் / City</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-geo-alt"></span></span>
-                                                <input type="text" class="form-control" id="city" name="city" required>
+                                                <input type="text" class="form-control" id="city" name="city"
+                                                    required>
                                             </div>
                                             <div class="error-text">City is required</div>
                                         </div>
@@ -565,7 +577,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-music-note-beamed"></span></span>
-                                                <select id="fav_music" name="favorite_music[]" class="form-control" multiple>
+                                                <select id="fav_music" name="favorite_music[]" class="form-control"
+                                                    multiple>
                                                     <option value="carnatic">கர்நாடக / Carnatic</option>
                                                     <option value="western">மேற்கத்திய / Western</option>
                                                     <option value="bollywood">பாலிவுட் / Bollywood</option>
@@ -677,7 +690,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-translate"></span></span>
-                                                <select id="languages" name="languages_known[]" class="form-control" multiple>
+                                                <select id="languages" name="languages_known[]" class="form-control"
+                                                    multiple>
                                                     <option value="tamil">தமிழ் / Tamil</option>
                                                     <option value="english">ஆங்கிலம் / English</option>
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
@@ -751,24 +765,26 @@
                                             </div>
                                             <div class="error-text">FaceBook Profile Required</div>
                                         </div>
-                                            <div class="form-group col-12 col-md-6 mb-3">
-                                                <label class="form-label" for="instagram_profile_url">Instagram profile url</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text" id="basic-addon1">@</span>
-                                                    <input type="text" class="form-control"
-                                                        aria-describedby="basic-addon1" required name="instagram_profile_url">
-                                                </div>
-                                                <div class="error-text">instagram Profile Required</div>
+                                        <div class="form-group col-12 col-md-6 mb-3">
+                                            <label class="form-label" for="instagram_profile_url">Instagram profile
+                                                url</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="basic-addon1">@</span>
+                                                <input type="text" class="form-control"
+                                                    aria-describedby="basic-addon1" required name="instagram_profile_url">
+                                            </div>
+                                            <div class="error-text">instagram Profile Required</div>
                                         </div>
 
-                                            <div class="form-group col-12 col-md-6 mb-3">
-                                                <label class="form-label" for="instagram_profile_url">Twitter profile url</label>
-                                                <div class="input-group">
-                                                    <span class="input-group-text" id="basic-addon1">@</span>
-                                                    <input type="text" class="form-control"
-                                                        aria-describedby="basic-addon1" name="twitter_profile_url" required>
-                                                </div>
-                                                <div class="error-text">Twitter Profile Required</div>
+                                        <div class="form-group col-12 col-md-6 mb-3">
+                                            <label class="form-label" for="instagram_profile_url">Twitter profile
+                                                url</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text" id="basic-addon1">@</span>
+                                                <input type="text" class="form-control"
+                                                    aria-describedby="basic-addon1" name="twitter_profile_url" required>
+                                            </div>
+                                            <div class="error-text">Twitter Profile Required</div>
                                         </div>
                                     </div>
                                 </section>
@@ -782,7 +798,8 @@
                                                 Status</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-people"></span></span>
-                                                <select class="form-control" id="family_status" name="family_status" required>
+                                                <select class="form-control" id="family_status" name="family_status"
+                                                    required>
                                                     <option value="">Select</option>
                                                     <option>சாதாரணம் / Middle Class</option>
                                                     <option>மேல்நிலை நடுத்தர / Upper Middle Class</option>
@@ -797,7 +814,8 @@
                                             <label class="form-label" for="family_god">குலதெய்வம் / Family God</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-flower1"></span></span>
-                                                <input type="text" class="form-control" id="family_god" name="family_god">
+                                                <input type="text" class="form-control" id="family_god"
+                                                    name="family_god">
                                             </div>
                                         </div>
 
@@ -806,7 +824,8 @@
                                             <label class="form-label" for="father_alive">தகப்பனார் / Father</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-person"></span></span>
-                                                <select class="form-control" id="father_alive" name="father_alive" required>
+                                                <select class="form-control" id="father_alive" name="father_alive"
+                                                    required>
                                                     <option value="">Select</option>
                                                     <option>உண்டு / Alive</option>
                                                     <option>இல்லை / Not Alive</option>
@@ -821,7 +840,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-person-fill"></span></span>
-                                                <select class="form-control" id="mother_alive" name="mother_alive" required>
+                                                <select class="form-control" id="mother_alive" name="mother_alive"
+                                                    required>
                                                     <option value="">Select</option>
                                                     <option>உண்டு / Alive</option>
                                                     <option>இல்லை / Not Alive</option>
@@ -837,7 +857,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-telephone"></span></span>
-                                                <input type="tel" class="form-control" id="parent_mobile" name="parent_mobile" required>
+                                                <input type="tel" class="form-control" id="parent_mobile"
+                                                    name="parent_mobile" required>
                                             </div>
                                             <div class="error-text">Parent/Guardian mobile number is required</div>
                                         </div>
@@ -849,7 +870,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-briefcase"></span></span>
-                                                <input type="text" class="form-control" name="father_work" id="father_work">
+                                                <input type="text" class="form-control" name="father_work"
+                                                    id="father_work">
                                             </div>
                                         </div>
 
@@ -860,7 +882,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-briefcase-fill"></span></span>
-                                                <input type="text" class="form-control" id="mother_work" name="mother_work">
+                                                <input type="text" class="form-control" id="mother_work"
+                                                    name="mother_work">
                                             </div>
                                         </div>
 
@@ -954,7 +977,8 @@
                                                 Star</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-stars"></span></span>
-                                                <input type="text" class="form-control" id="birth_star" name="birth_star" required>
+                                                <input type="text" class="form-control" id="birth_star"
+                                                    name="birth_star" required>
                                             </div>
                                             <div class="error-text">Birth Star is required</div>
                                         </div>
@@ -995,7 +1019,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-brightness-high"></span></span>
-                                                <input type="text" class="form-control" id="zodiac_sign" name="zodiac_sign" required>
+                                                <input type="text" class="form-control" id="zodiac_sign"
+                                                    name="zodiac_sign" required>
                                             </div>
                                             <div class="error-text">Zodiac Sign is required</div>
                                         </div>
@@ -1006,7 +1031,8 @@
                                                 Lagnam</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-sun"></span></span>
-                                                <input type="text" class="form-control" id="birth_lagnam" name="birth_lagnam" required>
+                                                <input type="text" class="form-control" id="birth_lagnam"
+                                                    name="birth_lagnam" required>
                                             </div>
                                             <div class="error-text">Birth Lagnam is required</div>
                                         </div>
@@ -1054,7 +1080,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-journal-text"></span></span>
-                                                <textarea class="form-control" id="previous_marriage" name="previous_marriage" rows="3" placeholder="If applicable, provide details"></textarea>
+                                                <textarea class="form-control" id="previous_marriage" name="previous_marriage" rows="3"
+                                                    placeholder="If applicable, provide details"></textarea>
                                             </div>
                                         </div>
 
@@ -1069,7 +1096,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- Terms & condition --> 
+                                        <!-- Terms & condition -->
                                         <div class="terms_condition">
                                             <input type="checkbox" id="terms_condition">
                                             <label for="terms_condition">
@@ -1078,12 +1105,15 @@
                                         </div>
 
                                         <!-- Terms & Conditions Modal -->
-                                        <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="termsModal" tabindex="-1"
+                                            aria-labelledby="termsModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="termsModalLabel">Terms & Conditions</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        <h5 class="modal-title" id="termsModalLabel">Terms & Conditions
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <!-- Add your terms and conditions content here -->
@@ -1144,12 +1174,12 @@
 
             // Modal
             // document.addEventListener("DOMContentLoaded", function() {
-                const tcModalTrigger = document.getElementById('tc_modal');
-                tcModalTrigger.addEventListener('click', function() {
-                    console.log('in')
-                    const modal = new bootstrap.Modal(document.getElementById('termsModal'));
-                    modal.show();
-                });
+            const tcModalTrigger = document.getElementById('tc_modal');
+            tcModalTrigger.addEventListener('click', function() {
+                console.log('in')
+                const modal = new bootstrap.Modal(document.getElementById('termsModal'));
+                modal.show();
+            });
             // });
 
             function go(dir) {
@@ -1165,18 +1195,18 @@
                     }
                     if (validateStep(current)) {
                         // form.submit();
-                        const formData = new FormData(form); 
+                        const formData = new FormData(form);
 
                         const profileFiles = document.getElementById('profile_picture').files;
-for (let i = 0; i < profileFiles.length; i++) {
-    formData.append("profile_picture1[]", profileFiles[i]);
-}
+                        for (let i = 0; i < profileFiles.length; i++) {
+                            formData.append("profile_picture1[]", profileFiles[i]);
+                        }
 
-// Add horoscope images manually
-const horoscopeFiles = document.getElementById('horoscope_picture').files;
-for (let i = 0; i < horoscopeFiles.length; i++) {
-    formData.append("horoscope_picture1[]", horoscopeFiles[i]);
-}
+                        // Add horoscope images manually
+                        const horoscopeFiles = document.getElementById('horoscope_picture').files;
+                        for (let i = 0; i < horoscopeFiles.length; i++) {
+                            formData.append("horoscope_picture1[]", horoscopeFiles[i]);
+                        }
 
                         $.ajax({
                             type: "POST",
@@ -1185,9 +1215,9 @@ for (let i = 0; i < horoscopeFiles.length; i++) {
                                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                             },
                             data: formData,
-                            processData: false,  // Important for FormData
-                            contentType: false,  // Important for FormData
-                            success: function (response) {
+                            processData: false, // Important for FormData
+                            contentType: false, // Important for FormData
+                            success: function(response) {
                                 console.log(response);
                                 if (response.status == 200) {
                                     // window.location.href = "../user/user_dashboard";
@@ -1195,7 +1225,7 @@ for (let i = 0; i < horoscopeFiles.length; i++) {
                                     alert(response.message);
                                 }
                             },
-                            error: function (xhr) {
+                            error: function(xhr) {
                                 console.error("AJAX Error:", xhr.responseText);
                             }
                         });
@@ -1233,7 +1263,7 @@ for (let i = 0; i < horoscopeFiles.length; i++) {
 
                 const groups = Array.from(stepEl.querySelectorAll(".form-group"));
                 let valid = true;
-                return valid;
+                // return valid;
                 groups.forEach(group => {
                     const input = group.querySelector(".form-control");
                     const errorText = group.querySelector(".error-text");
