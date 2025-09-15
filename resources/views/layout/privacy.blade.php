@@ -24,176 +24,128 @@
                 <!-- Header -->
                 <div class="privacy-header" data-aos="fade-up">
                     <div class="header-content">
-                        <span class="update-badge">Last Updated: August 27, 2025</span>
-                        <h2>Privacy Policy</h2>
-                        <p>We respect your privacy and are committed to protecting your personal data. This privacy
-                            policy explains how we handle your information.</p>
-                        <div class="privacy-badges">
-                            <div class="badge-item">
-                                <i class="bi bi-shield-check"></i>
-                                <span>Data Protection</span>
-                            </div>
-                            <div class="badge-item">
-                                <i class="bi bi-lock"></i>
-                                <span>Secure Storage</span>
-                            </div>
-                            <div class="badge-item">
-                                <i class="bi bi-person-lock"></i>
-                                <span>Privacy First</span>
-                            </div>
-                        </div>
+                        <div class="last-updated">Effective Date: February 27, 2025</div>
+                        <h1>Privacy Policy</h1>
+                        <p class="intro-text">This Privacy Policy describes how we collect, use, process, and disclose
+                            your information, including personal information, in conjunction with your access to and use
+                            of our services.</p>
                     </div>
                 </div>
 
-                <!-- Information Collection -->
-                <div class="info-section" data-aos="fade-up">
-                    <div class="section-grid">
-                        <div class="info-card">
-                            <div class="card-header">
-                                <i class="bi bi-collection"></i>
-                                <h3>Information We Collect</h3>
-                            </div>
-                            <div class="card-content">
-                                <ul class="info-list">
-                                    <li>Name and contact information</li>
-                                    <li>Account credentials</li>
-                                    <li>Payment details</li>
-                                    <li>Device information</li>
-                                    <li>Usage data and preferences</li>
-                                    <li>Communication records</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="info-card">
-                            <div class="card-header">
-                                <i class="bi bi-graph-up"></i>
-                                <h3>How We Use Data</h3>
-                            </div>
-                            <div class="card-content">
-                                <ul class="info-list">
-                                    <li>Provide and improve services</li>
-                                    <li>Process transactions</li>
-                                    <li>Send updates and notifications</li>
-                                    <li>Personalize user experience</li>
-                                    <li>Analyze service usage</li>
-                                    <li>Ensure security</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="info-card">
-                            <div class="card-header">
-                                <i class="bi bi-share"></i>
-                                <h3>Information Sharing</h3>
-                            </div>
-                            <div class="card-content">
-                                <ul class="info-list">
-                                    <li>Service providers</li>
-                                    <li>Business partners</li>
-                                    <li>Legal requirements</li>
-                                    <li>With user consent</li>
-                                    <li>Business transactions</li>
-                                    <li>Analytics partners</li>
-                                </ul>
-                            </div>
-                        </div>
+                <!-- Main Content -->
+                <div class="privacy-content" data-aos="fade-up">
+                    <!-- Introduction -->
+                    <div class="content-section">
+                        <h2>1. Introduction</h2>
+                        <p>When you use our services, you're trusting us with your information. We understand this is a
+                            big responsibility and work hard to protect your information and put you in control.</p>
+                        <p>This Privacy Policy is meant to help you understand what information we collect, why we
+                            collect it, and how you can update, manage, export, and delete your information.</p>
                     </div>
-                </div>
 
-                <!-- Security Measures -->
-                <div class="security-section" data-aos="fade-up">
-                    <div class="section-header">
-                        <h3>Data Security Measures</h3>
-                        <p>We implement appropriate security measures to protect your data</p>
-                    </div>
-                    <div class="measures-grid">
-                        <div class="measure-item">
-                            <i class="bi bi-shield-lock"></i>
-                            <h4>Encryption</h4>
-                            <p>All data is encrypted during transmission and storage using industry-standard protocols
-                            </p>
-                        </div>
-                        <div class="measure-item">
-                            <i class="bi bi-fingerprint"></i>
-                            <h4>Access Control</h4>
-                            <p>Strict access controls and authentication measures protect your information</p>
-                        </div>
-                        <div class="measure-item">
-                            <i class="bi bi-eye-slash"></i>
-                            <h4>Data Privacy</h4>
-                            <p>Regular privacy assessments and data minimization practices</p>
-                        </div>
-                        <div class="measure-item">
-                            <i class="bi bi-patch-check"></i>
-                            <h4>Compliance</h4>
-                            <p>Adherence to international data protection regulations</p>
-                        </div>
-                    </div>
-                </div>
+                    <!-- Information Collection -->
+                    <div class="content-section">
+                        <h2>2. Information We Collect</h2>
+                        <p>We collect information to provide better services to our users. The types of information we
+                            collect include:</p>
 
-                <!-- User Rights -->
-                <div class="rights-section" data-aos="fade-up">
-                    <div class="rights-content">
-                        <h3>Your Privacy Rights</h3>
-                        <p>You have several rights regarding your personal data:</p>
-                        <div class="rights-grid">
-                            <div class="right-item">
-                                <i class="bi bi-eye"></i>
-                                <h4>Right to Access</h4>
-                                <p>You can request a copy of your personal data</p>
-                            </div>
-                            <div class="right-item">
-                                <i class="bi bi-pencil-square"></i>
-                                <h4>Right to Rectification</h4>
-                                <p>You can update or correct your information</p>
-                            </div>
-                            <div class="right-item">
-                                <i class="bi bi-trash"></i>
-                                <h4>Right to Erasure</h4>
-                                <p>Request deletion of your personal data</p>
-                            </div>
-                            <div class="right-item">
-                                <i class="bi bi-download"></i>
-                                <h4>Right to Data Portability</h4>
-                                <p>Transfer your data to another service</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        <h3>2.1 Information You Provide</h3>
+                        <p>When you create an account or use our services, you provide us with personal information that
+                            includes:</p>
+                        <ul>
+                            <li>Your name and contact information</li>
+                            <li>Account credentials</li>
+                            <li>Payment information when required</li>
+                            <li>Communication preferences</li>
+                        </ul>
 
-                <!-- Additional Information -->
-                <div class="additional-info" data-aos="fade-up">
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <h4>Cookies Policy</h4>
-                            <p>We use cookies to enhance your browsing experience. You can control cookie preferences
-                                through your browser settings.</p>
-                        </div>
-                        <div class="info-item">
-                            <h4>Children's Privacy</h4>
-                            <p>Our services are not intended for children under 13. We do not knowingly collect data
-                                from children.</p>
-                        </div>
-                        <div class="info-item">
-                            <h4>Policy Updates</h4>
-                            <p>We may update this policy periodically. We will notify you of any material changes.</p>
-                        </div>
+                        <h3>2.2 Automatic Information</h3>
+                        <p>We automatically collect and store certain information when you use our services:</p>
+                        <ul>
+                            <li>Device information and identifiers</li>
+                            <li>Log information and usage statistics</li>
+                            <li>Location information when enabled</li>
+                            <li>Browser type and settings</li>
+                        </ul>
+                    </div>
+
+                    <!-- Use of Information -->
+                    <div class="content-section">
+                        <h2>3. How We Use Your Information</h2>
+                        <p>We use the information we collect to provide, maintain, and improve our services.
+                            Specifically, we use your information to:</p>
+                        <ul>
+                            <li>Provide and personalize our services</li>
+                            <li>Process transactions and send related information</li>
+                            <li>Send notifications and updates about our services</li>
+                            <li>Maintain security and verify identity</li>
+                            <li>Analyze and improve our services</li>
+                        </ul>
+                    </div>
+
+                    <!-- Information Sharing -->
+                    <div class="content-section">
+                        <h2>4. Information Sharing and Disclosure</h2>
+                        <p>We do not share personal information with companies, organizations, or individuals outside of
+                            our company except in the following cases:</p>
+
+                        <h3>4.1 With Your Consent</h3>
+                        <p>We will share personal information with companies, organizations, or individuals outside of
+                            our company when we have your consent to do so.</p>
+
+                        <h3>4.2 For Legal Reasons</h3>
+                        <p>We will share personal information if we have a good-faith belief that access, use,
+                            preservation, or disclosure of the information is reasonably necessary to:</p>
+                        <ul>
+                            <li>Meet any applicable law, regulation, legal process, or enforceable governmental request
+                            </li>
+                            <li>Enforce applicable Terms of Service</li>
+                            <li>Detect, prevent, or otherwise address fraud, security, or technical issues</li>
+                            <li>Protect against harm to the rights, property, or safety of our users</li>
+                        </ul>
+                    </div>
+
+                    <!-- Data Security -->
+                    <div class="content-section">
+                        <h2>5. Data Security</h2>
+                        <p>We work hard to protect our users from unauthorized access to or unauthorized alteration,
+                            disclosure, or destruction of information we hold. In particular:</p>
+                        <ul>
+                            <li>We encrypt our services using SSL</li>
+                            <li>We review our information collection, storage, and processing practices</li>
+                            <li>We restrict access to personal information to employees who need that information</li>
+                        </ul>
+                    </div>
+
+                    <!-- Your Rights -->
+                    <div class="content-section">
+                        <h2>6. Your Rights and Choices</h2>
+                        <p>You have certain rights regarding your personal information, including:</p>
+                        <ul>
+                            <li>The right to access your personal information</li>
+                            <li>The right to correct inaccurate information</li>
+                            <li>The right to request deletion of your information</li>
+                            <li>The right to restrict or object to our processing of your information</li>
+                        </ul>
+                    </div>
+
+                    <!-- Policy Updates -->
+                    <div class="content-section">
+                        <h2>7. Changes to This Policy</h2>
+                        <p>We may update this Privacy Policy from time to time. We will notify you of any changes by
+                            posting the new Privacy Policy on this page and updating the effective date at the top.</p>
+                        <p>Your continued use of our services after any changes to this Privacy Policy constitutes your
+                            acceptance of such changes.</p>
                     </div>
                 </div>
 
                 <!-- Contact Section -->
                 <div class="privacy-contact" data-aos="fade-up">
-                    <div class="contact-box">
-                        <div class="contact-icon">
-                            <i class="bi bi-envelope-open"></i>
-                        </div>
-                        <div class="contact-content">
-                            <h4>Privacy Questions?</h4>
-                            <p>If you have any questions about this Privacy Policy, please contact our Data Protection
-                                Officer</p>
-                            <a href="#" class="contact-button">Contact DPO</a>
-                        </div>
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions about this Privacy Policy or our practices, please contact us:</p>
+                    <div class="contact-details">
+                        <p><strong>Email:</strong> support@vazhithunai.com</p>
+                        <p><strong>Address:</strong> #48,Mukkannar Street, Kumbakonam</p>
                     </div>
                 </div>
 
