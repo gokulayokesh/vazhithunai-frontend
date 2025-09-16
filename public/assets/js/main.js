@@ -327,4 +327,40 @@
             target.scrollIntoView({ behavior: "smooth" });
         }
     }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const payButton = document.querySelector(".payNowBtn");
+
+        if (payButton) {
+            payButton.addEventListener("click", function () {
+                fetch("/initiate-payment", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": document
+                            .querySelector('meta[name="csrf-token"]')
+                            .getAttribute("content"),
+                    },
+                    body: JSON.stringify({}),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data);
+                        if (
+                            data.code === "PAYMENT_INITIATED" &&
+                            data.data?.redirectUrl
+                        ) {
+                            window.location.href = data.data.redirectUrl;
+                        } else {
+                            console.error("Payment initiation failed:", data);
+                            alert("Payment initiation failed.");
+                        }
+                    })
+                    .catch((error) => {
+                        // console.error("Error:", error);
+                        alert("Something went wrong.");
+                    });
+            });
+        }
+    });
 })();

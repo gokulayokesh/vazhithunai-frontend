@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileSearchController;
 use App\Http\Controllers\RegisterController;
@@ -53,3 +54,7 @@ Route::get('/profiles/search', [ProfileSearchController::class, 'search'])
 
 Route::post('/shortlist/{user}', [ProfileController::class, 'toggleShortlist'])
     ->name('shortlist.add');
+
+Route::post('/initiate-payment', [PaymentController::class, 'initiatePayment'])->name('payment.initiate');
+Route::get('/payment-success', [PaymentController::class, 'handleSuccess'])->name('payment.success');
+Route::post('/payment-callback', [PaymentController::class, 'handleCallback'])->name('payment.callback');

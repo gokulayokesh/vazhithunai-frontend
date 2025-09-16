@@ -1154,7 +1154,7 @@
                                 </li>
                             </ul>
 
-                            <a href="#" class="btn btn-primary">
+                            <a href="#" class="btn btn-primary payNowBtn">
                                 Buy Now
                                 <i class="bi bi-arrow-right"></i>
                             </a>
@@ -1201,7 +1201,7 @@
                                 </li>
                             </ul>
 
-                            <a href="#" class="btn btn-light">
+                            <a href="#" class="btn btn-light payNowBtn">
                                 Buy Now
                                 <i class="bi bi-arrow-right"></i>
                             </a>
@@ -1247,7 +1247,7 @@
                                 </li>
                             </ul>
 
-                            <a href="#" class="btn btn-primary">
+                            <a href="#" class="btn btn-primary payNowBtn">
                                 Buy Now
                                 <i class="bi bi-arrow-right"></i>
                             </a>
