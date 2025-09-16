@@ -358,7 +358,7 @@
                         }
                     })
                     .catch((error) => {
-                        // console.error("Error:", error);
+                        console.error(error);
                         alert("Something went wrong.");
                     });
             });
