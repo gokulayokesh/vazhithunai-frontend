@@ -328,40 +328,28 @@
         }
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const payButton = document.querySelector(".payNowBtn");
+    document.querySelectorAll(".pay-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+            let amount = this.getAttribute("data-amount"); // in paise
 
-        if (payButton) {
-            payButton.addEventListener("click", function () {
-                let amount = this.getAttribute("data-amount"); // in paise
-                fetch("/api/initiate-payment", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-CSRF-TOKEN": document
-                            .querySelector('meta[name="csrf-token"]')
-                            .getAttribute("content"),
-                    },
-                    body: JSON.stringify({ amount: amount }),
+            fetch("/api/initiate-payment", {
+                // <-- note the /api prefix
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ amount: amount }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log("Response:", data);
+                    if (data.success && data.data?.data?.redirectUrl) {
+                        window.location.href = data.data.data.redirectUrl;
+                    } else {
+                        alert("Payment initiation failed");
+                    }
                 })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        console.log(data);
-                        if (
-                            data.code === "PAYMENT_INITIATED" &&
-                            data.data?.redirectUrl
-                        ) {
-                            window.location.href = data.data.redirectUrl;
-                        } else {
-                            console.error("Payment initiation failed:", data);
-                            alert("Payment initiation failed.");
-                        }
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                        alert("Something went wrong.");
-                    });
-            });
-        }
+                .catch((err) => {
+                    console.error("Fetch error:", err);
+                });
+        });
     });
 })();
