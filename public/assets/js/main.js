@@ -334,7 +334,7 @@
         if (payButton) {
             payButton.addEventListener("click", function () {
                 let amount = this.getAttribute("data-amount"); // in paise
-                fetch("/api/initiate-payment", {
+                fetch("/initiate-payment", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
