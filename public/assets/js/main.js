@@ -341,8 +341,8 @@
                 .then((res) => res.json())
                 .then((data) => {
                     console.log("Response:", data);
-                    if (data.success && data.data?.data?.redirectUrl) {
-                        window.location.href = data.data.data.redirectUrl;
+                    if (data.success && data.data?.redirectUrl) {
+                        window.location.href = data.data.redirectUrl;
                     } else {
                         alert("Payment initiation failed");
                     }
