@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use PhonePe\Env;
 use PhonePe\payments\v2\standardCheckout\StandardCheckoutClient;
@@ -28,68 +29,72 @@ class PaymentController extends Controller
 
     public function initiatePayment(Request $request)
     {
-        try{
+        try {
             $baseUrl = 'https://api-preprod.phonepe.com/apis/pg-sandbox';
-            $authEndpoint = '/v1/oauth/token';
-            $payEndpoint = '/checkout/v2/pay';
-        
-            // Step 1: Get Access Token
-            $authPayload = [
-                'client_id' => env('PHONEPE_CLIENT_ID'),
-                'client_version' => env('PHONEPE_CLIENT_VERSION'),
-                'client_secret' => env('PHONEPE_CLIENT_SECRET'),
-                'grant_type'=>'client_credentials'
-            ];
+            $authUrl = $baseUrl.'/v1/oauth/token';
+            $paymentUrl = $baseUrl.'/checkout/v2/pay';
 
-            Log::info('PhonePe Auth Payload', [
-                'client_id' => env('PHONEPE_CLIENT_ID'),
-                'client_version' => env('PHONEPE_CLIENT_VERSION'),
-                'client_secret' => env('PHONEPE_CLIENT_SECRET'),
-            ]);
+            // 1. Get Access Token (cached for 1 hour)
+            $accessToken = Cache::remember('phonepe_access_token', 3500, function () use ($authUrl) {
+                $payload = [
+                    'client_id' => env('PHONEPE_CLIENT_ID'),
+                    'client_version' => env('PHONEPE_CLIENT_VERSION'),
+                    'client_secret' => env('PHONEPE_CLIENT_SECRET'),
+                    'grant_type' => 'client_credentials',
+                ];
 
-            $response = Http::withHeaders([
-                'Content-Type' => 'application/json',
-            ])->post('https://api-preprod.phonepe.com/apis/pg-sandbox/v1/oauth/token', [
-                'client_id' => env('PHONEPE_CLIENT_ID'),
-                'client_version' => env('PHONEPE_CLIENT_VERSION'),
-                'client_secret' => env('PHONEPE_CLIENT_SECRET'),
-            ]);
-            return $response->json();
-            
-        
-            $authResponse = Http::withHeaders([
-                'Content-Type' => 'application/json',
-            ])->post($baseUrl . $authEndpoint, $authPayload);
-            Log::info($authResponse);
-            if (!$authResponse->ok()) {
-                return ['error' => 'Authorization failed', 'details' => $authResponse->json()];
-            }
-            
-            $accessToken = $authResponse['access_token'];
-        
+                $response = Http::asForm()->post($authUrl, $payload);
+
+                if (! $response->ok()) {
+                    throw new \Exception('PhonePe Auth Failed: '.$response->body());
+                }
+
+                return $response['access_token'];
+            });
+
+            $amount = (int) $request->input('amount', 10000);
             $paymentData = [
-                'merchantId' => 'TEST-M23NS8XTG75OG',
-                'transactionId' => 'TXN123456789',
-                'amount' => 10000, // in paise
-                'merchantOrderId' => 'ORDER123',
-                'redirectUrl' => 'https://vazhithunai.com/payment-success',
-                'callbackUrl' => 'https://vazhithunai.com/payment-callback',
-                'paymentInstrument' => [
-                    'type' => 'PAY_PAGE',
+                'merchantOrderId' => 'newtxn123456',
+                'amount' => $amount,
+                'expireAfter' => 1200,
+                'metaInfo' => [
+                    'udf1' => 'test1',
+                    'udf2' => 'new param2',
+                    'udf3' => 'test3',
+                    'udf4' => 'dummy value 4',
+                    'udf5' => 'addition infor ref1',
+                ],
+                'paymentFlow' => [
+                    'type' => 'PG_CHECKOUT',
+                    'message' => 'Payment message used for collect requests',
+                    'merchantUrls' => [
+                        'redirectUrl' => 'https://vazhithunai.com/payment-callback',
+                    ],
                 ],
             ];
-            // Step 2: Create Payment
-            $paymentResponse = Http::withHeaders([
+
+            // 3. Make Payment Request
+            $response = Http::withHeaders([
+                'Authorization' => 'O-Bearer '.$accessToken,
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer ' . $accessToken,
-            ])->post($baseUrl . $payEndpoint, $paymentData);
-        
-            if (!$paymentResponse->ok()) {
-                return ['error' => 'Payment failed', 'details' => $paymentResponse->json()];
+                'Accept' => 'application/json',
+            ])->post($paymentUrl, $paymentData);
+
+            // 4. Handle Response
+            if (! $response->ok()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Payment initiation failed',
+                    'details' => $response->json(),
+                ], $response->status());
             }
-        
-            dd($paymentResponse->json());
-        }catch(\Exception $e){
+
+            return response()->json([
+                'success' => true,
+                'code' => 'PAYMENT_INITIATED',
+                'data' => $response->json(),
+            ]);
+        } catch (\Exception $e) {
             dd($e->getMessage());
         }
     }
@@ -99,6 +104,7 @@ class PaymentController extends Controller
     {
         $transactionId = $request->query('transactionId');
         $status = $request->query('status');
+
         // dd($transactionId,$status);
         // You can verify the transaction status here if needed
         return view('payment.success', compact('transactionId', 'status'));

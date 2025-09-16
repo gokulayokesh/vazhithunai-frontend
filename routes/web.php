@@ -57,4 +57,4 @@ Route::post('/shortlist/{user}', [ProfileController::class, 'toggleShortlist'])
 
 Route::post('/initiate-payment', [PaymentController::class, 'initiatePayment'])->name('payment.initiate');
 Route::get('/payment-success', [PaymentController::class, 'handleSuccess'])->name('payment.success');
-Route::post('/payment-callback', [PaymentController::class, 'handleCallback'])->name('payment.callback');
+Route::get('/payment-callback', [PaymentController::class, 'handleCallback'])->name('payment.callback');

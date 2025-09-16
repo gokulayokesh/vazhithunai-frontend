@@ -333,7 +333,8 @@
 
         if (payButton) {
             payButton.addEventListener("click", function () {
-                fetch("/initiate-payment", {
+                let amount = this.getAttribute("data-amount"); // in paise
+                fetch("/api/initiate-payment", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -341,7 +342,7 @@
                             .querySelector('meta[name="csrf-token"]')
                             .getAttribute("content"),
                     },
-                    body: JSON.stringify({}),
+                    body: JSON.stringify({ amount: amount }),
                 })
                     .then((response) => response.json())
                     .then((data) => {
