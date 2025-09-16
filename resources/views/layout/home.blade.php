@@ -1154,10 +1154,10 @@
                                 </li>
                             </ul>
 
-                            <a href="" class="btn btn-primary payNowBtn" data-amount="49900">
+                            <button class="btn btn-primary payNowBtn" data-amount="49900">
                                 Buy Now
                                 <i class="bi bi-arrow-right"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -1201,10 +1201,10 @@
                                 </li>
                             </ul>
 
-                            <a href="" class="btn btn-light payNowBtn" data-amount="99900">
+                            <button class="btn btn-light payNowBtn" data-amount="99900">
                                 Buy Now
                                 <i class="bi bi-arrow-right"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -1247,10 +1247,10 @@
                                 </li>
                             </ul>
 
-                            <a href="" class="btn btn-primary payNowBtn" data-amount="149900">
+                            <button class="btn btn-primary payNowBtn" data-amount="149900">
                                 Buy Now
                                 <i class="bi bi-arrow-right"></i>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>

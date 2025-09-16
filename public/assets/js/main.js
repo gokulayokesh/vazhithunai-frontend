@@ -328,7 +328,7 @@
         }
     }
 
-    document.querySelectorAll(".pay-btn").forEach((btn) => {
+    document.querySelectorAll(".payNowBtn").forEach((btn) => {
         btn.addEventListener("click", function () {
             let amount = this.getAttribute("data-amount"); // in paise
 
