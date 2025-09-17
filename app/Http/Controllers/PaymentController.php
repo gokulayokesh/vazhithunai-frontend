@@ -126,7 +126,7 @@ class PaymentController extends Controller
 
     private function checkPaymentStatus($orderId)
     {
-        $baseUrl = env('PHONEPE_SANDBOX_BASE_URL');
+        $baseUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox');
         $path = '/checkout/v2/order/'.$orderId.'/status';
         $url = $baseUrl.$path;
 
