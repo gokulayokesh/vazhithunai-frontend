@@ -128,7 +128,7 @@ class PaymentController extends Controller
         $payload = $request->all();
         $transactionId = $request->query('transactionId');
         $status = $request->query('status');
-        dd($payload);
+        dd($transactionId);
 
         // dd($transactionId,$status);
         // You can verify the transaction status here if needed
