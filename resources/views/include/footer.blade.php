@@ -56,7 +56,7 @@
                 Reserved</span>
         </p>
         <div class="credits">
-            Designed by Hashtag.academy</a>
+            Managed by R.Balasubramanian</a>
         </div>
     </div>
 
