@@ -125,7 +125,9 @@ class PaymentController extends Controller
     // Handles server-to-server callback from PhonePe
     public function handleCallback(Request $request)
     {
-        $payment = Payment::where('user_id', '=', Auth::id())->first();
+        $payment = Payment::where('user_id', Auth::id())
+            ->latest() // defaults to created_at
+            ->first();
 
         $order_id = $payment->order_id;
 
