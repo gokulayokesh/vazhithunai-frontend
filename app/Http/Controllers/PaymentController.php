@@ -65,7 +65,6 @@ class PaymentController extends Controller
 
             // 7. Update DB with gateway response
             $payment->update([
-                'order_id' => $response['orderId'],
                 'gateway_response' => $response->json(),
             ]);
 
