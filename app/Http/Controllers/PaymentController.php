@@ -125,8 +125,7 @@ class PaymentController extends Controller
     // Handles server-to-server callback from PhonePe
     public function handleCallback(Request $request)
     {
-
-        $payment = Payment::where('user_id', Auth::id())->first();
+        $payment = Payment::where('user_id', '=', Auth::id())->first();
         if (! $payment) {
             return response()->json(['error' => 'Payment not found'], 404);
         }
