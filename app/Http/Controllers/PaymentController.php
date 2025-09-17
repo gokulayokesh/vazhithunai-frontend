@@ -126,9 +126,7 @@ class PaymentController extends Controller
     public function handleCallback(Request $request)
     {
         $payment = Payment::where('user_id', '=', Auth::id())->first();
-        if ($payment) {
-            return response()->json(['error' => 'Payment not found'], 404);
-        }
+
         $order_id = $payment->order_id;
 
         $baseUrl = env('PHONEPE_SANDBOX_BASE_URL');
