@@ -5,28 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-use PhonePe\Env;
-use PhonePe\payments\v2\standardCheckout\StandardCheckoutClient;
 
 class PaymentController extends Controller
 {
-    public function index()
-    {
-        $clientId = env('PHONEPE_CLIENT_ID');
-        $clientSecret = env('PHONEPE_CLIENT_SECRET');
-        $clientVersion = env('PHONEPE_CLIENT_VERSION');
-
-        $env = Env::PRODUCTION; // Use Env::PRODUCTION for live environment
-
-        $client = StandardCheckoutClient::getInstance(
-            $clientId,
-            $clientVersion,
-            $clientSecret,
-            $env
-        );
-    }
+    public function index() {}
 
     public function initiatePayment(Request $request)
     {
@@ -36,22 +19,7 @@ class PaymentController extends Controller
             $paymentUrl = $baseUrl.'/checkout/v2/pay';
 
             // 1. Get Access Token (cached for 1 hour)
-            $accessToken = Cache::remember('phonepe_access_token', 3500, function () use ($authUrl) {
-                $payload = [
-                    'client_id' => env('PHONEPE_CLIENT_ID'),
-                    'client_version' => env('PHONEPE_CLIENT_VERSION'),
-                    'client_secret' => env('PHONEPE_CLIENT_SECRET'),
-                    'grant_type' => 'client_credentials',
-                ];
-
-                $response = Http::asForm()->post($authUrl, $payload);
-
-                if (! $response->ok()) {
-                    throw new \Exception('PhonePe Auth Failed: '.$response->body());
-                }
-
-                return $response['access_token'];
-            });
+            $accessToken = $this->getAccessToken();
 
             $amount = (int) $request->input('amount', 10000);
 
@@ -182,7 +150,9 @@ class PaymentController extends Controller
             'client_secret' => env('PHONEPE_CLIENT_SECRET'),
             'grant_type' => 'client_credentials',
         ];
+
         $response = Http::asForm()->post($authUrl, $payload);
+
         if (! $response->ok()) {
             throw new \Exception('PhonePe Auth Failed: '.$response->body());
         }
