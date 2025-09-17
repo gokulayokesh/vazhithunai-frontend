@@ -113,7 +113,8 @@ class PaymentController extends Controller
 
         $payment->update([
             'status' => $finalStatus,
-            'gateway_response_order' => json_encode($statusResponse),
+            'gateway_order_response_json' => json_encode($statusResponse),
+            'gateway_order_response' => $statusResponse,
         ]);
 
         // You can now use $userId for any post-payment logic
