@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('amount'); // in paise
             $table->string('status')->default('initiated'); // initiated, success, failed
             $table->json('gateway_response')->nullable(); // store raw PhonePe response
+            $table->json('gateway_order_response_json')->nullable(); // store raw PhonePe response
+            $table->string('gateway_order_response')->nullable(); // store raw PhonePe response
             $table->timestamps();
         });
     }
