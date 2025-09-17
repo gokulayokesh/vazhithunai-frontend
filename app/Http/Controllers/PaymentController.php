@@ -151,8 +151,8 @@ class PaymentController extends Controller
         });
 
         $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
             'Authorization' => 'O-Bearer '.$accessToken,
+            'Content-Type' => 'application/json',
         ])->get($url);
 
         if (! $response->ok()) {
