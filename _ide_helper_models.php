@@ -48,7 +48,7 @@ namespace App\Models{
  * @property array<array-key, mixed>|null $gateway_response
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property array<array-key, mixed>|null $gateway_order_response
+ * @property string|null $gateway_order_response
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment newQuery()
