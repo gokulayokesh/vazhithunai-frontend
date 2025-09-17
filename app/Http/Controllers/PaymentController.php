@@ -139,6 +139,12 @@ class PaymentController extends Controller
             'Accept' => 'application/json',
         ])->get($url);
 
+        if (! $response->ok()) {
+            \Log::error('PhonePe status check failed', ['body' => $response->body()]);
+
+            return response()->json(['error' => 'Failed to fetch status'], 500);
+        }
+
         return $response->json();
     }
 
