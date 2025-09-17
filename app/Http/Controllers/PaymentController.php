@@ -83,7 +83,8 @@ class PaymentController extends Controller
                     'type' => 'PG_CHECKOUT',
                     'message' => 'Payment message used for collect requests',
                     'merchantUrls' => [
-                        'redirectUrl' => 'https://vazhithunai.com/payment-callback',
+                        'redirectUrl' => url('/payment-callback'),
+                        'callbackUrl' => url('/api/payment-callback'),
                     ],
                 ],
             ];
@@ -125,58 +126,67 @@ class PaymentController extends Controller
     // Handles server-to-server callback from PhonePe
     public function handleCallback(Request $request)
     {
-        $payment = Payment::where('user_id', Auth::id())
-            ->latest() // defaults to created_at
-            ->first();
+        $transactionId = $request->input('transactionId')
+        ?? $request->input('transaction_id'); // depends on PhonePe payload
 
-        $order_id = $payment->order_id;
+        $payment = Payment::where('transaction_id', $transactionId)->first();
 
-        $baseUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox');
-        $path = '/checkout/v2/order/'.$order_id.'/status';
-        $url = $baseUrl.$path;
-
-        // Make sure you already have a valid access token (from your auth flow)
-        $accessToken = Cache::remember('phonepe_access_token', 3500, function () {
-            $authUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox').'/v1/oauth/token';
-            $payload = [
-                'client_id' => env('PHONEPE_CLIENT_ID'),
-                'client_version' => env('PHONEPE_CLIENT_VERSION'),
-                'client_secret' => env('PHONEPE_CLIENT_SECRET'),
-                'grant_type' => 'client_credentials',
-            ];
-            $response = Http::asForm()->post($authUrl, $payload);
-            if (! $response->ok()) {
-                throw new \Exception('PhonePe Auth Failed: '.$response->body());
-            }
-
-            return $response['access_token'];
-        });
-
-        $response = Http::withHeaders([
-            'Authorization' => 'O-Bearer '.$accessToken,
-            'Content-Type' => 'application/json',
-        ])->get($url);
-
-        if (! $response->ok()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to fetch status',
-                'details' => $response->json(),
-            ], $response->status());
+        if (! $payment) {
+            return response()->json(['error' => 'Payment not found'], 404);
         }
 
-        $statusResponse = $response->json();
+        // Now you have the user_id from the DB
+        $userId = $payment->user_id;
+
+        // Call PhonePe status API to confirm
+        $statusResponse = $this->checkPaymentStatus($payment->order_id);
 
         $finalStatus = $statusResponse['code'] === 'PAYMENT_SUCCESS' ? 'success' : 'failed';
+
         $payment->update([
             'status' => $finalStatus,
             'gateway_response' => $statusResponse,
         ]);
 
+        // You can now use $userId for any post-payment logic
         return response()->json([
             'success' => true,
-            'code' => 'PAYMENT_INITIATED',
-            'data' => $finalStatus,
+            'user_id' => $userId,
+            'status' => $finalStatus,
         ]);
+    }
+
+    private function checkPaymentStatus($orderId)
+    {
+        $baseUrl = env('PHONEPE_SANDBOX_BASE_URL');
+        $path = '/checkout/v2/order/'.$orderId.'/status';
+        $url = $baseUrl.$path;
+
+        $accessToken = $this->getAccessToken(); // same as before
+
+        $response = Http::withHeaders([
+            'Authorization' => 'O-Bearer '.$accessToken,
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ])->get($url);
+
+        return $response->json();
+    }
+
+    private function getAccessToken()
+    {
+        $authUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox').'/v1/oauth/token';
+        $payload = [
+            'client_id' => env('PHONEPE_CLIENT_ID'),
+            'client_version' => env('PHONEPE_CLIENT_VERSION'),
+            'client_secret' => env('PHONEPE_CLIENT_SECRET'),
+            'grant_type' => 'client_credentials',
+        ];
+        $response = Http::asForm()->post($authUrl, $payload);
+        if (! $response->ok()) {
+            throw new \Exception('PhonePe Auth Failed: '.$response->body());
+        }
+
+        return $response['access_token'];
     }
 }
