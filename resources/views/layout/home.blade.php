@@ -1630,7 +1630,7 @@
 
                 let amount = this.getAttribute("data-amount"); // in paise
 
-                fetch("/api/initiate-payment", {
+                fetch("/initiate-payment", {
                         // <-- note the /api prefix
                         method: "POST",
                         headers: {
