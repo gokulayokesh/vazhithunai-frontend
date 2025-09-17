@@ -129,7 +129,7 @@ class PaymentController extends Controller
         $transactionId = $request->input('transactionId')
         ?? $request->input('transaction_id'); // depends on PhonePe payload
 
-        $payment = Payment::where('transaction_id', $transactionId)->first();
+        $payment = Payment::latest('id')->first();
 
         if (! $payment) {
             return response()->json(['error' => 'Payment not found'], 404);
