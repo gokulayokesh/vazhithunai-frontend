@@ -140,6 +140,8 @@ class PaymentController extends Controller
             'Accept' => 'application/json',
         ])->get($url);
 
+        dd($response);
+
         if (! $response->ok()) {
             \Log::error('PhonePe status check failed', ['body' => $response->body()]);
 
