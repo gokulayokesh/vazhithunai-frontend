@@ -110,6 +110,7 @@ class PaymentController extends Controller
 
         \Log::info(json_encode($statusResponse));
 
+        dd($statusResponse);
         $finalStatus = $statusResponse['state'] === 'COMPLETED' ? 'success' : 'failed';
 
         $payment->update([
