@@ -10,4 +10,4 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/initiate-payment', [PaymentController::class, 'initiatePayment']);
 Route::get('/payment-success', [PaymentController::class, 'handleSuccess'])->name('payment.success');
-Route::get('/initiate-payment', [PaymentController::class, 'initiatePayment'])->name('payment.initiate');
+Route::get('/payment-callback', [PaymentController::class, 'handleCallback'])->name('payment.handleCallback');
