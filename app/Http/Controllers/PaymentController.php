@@ -31,7 +31,7 @@ class PaymentController extends Controller
     public function initiatePayment(Request $request)
     {
         try {
-            $baseUrl = 'https://api-preprod.phonepe.com/apis/pg-sandbox';
+            $baseUrl = env('PHONEPE_SANDBOX_BASE_URL');
             $authUrl = $baseUrl.'/v1/oauth/token';
             $paymentUrl = $baseUrl.'/checkout/v2/pay';
 
@@ -97,6 +97,7 @@ class PaymentController extends Controller
 
             // 7. Update DB with gateway response
             $payment->update([
+                'order_id' => $response['orderId'],
                 'gateway_response' => $response->json(),
             ]);
 
@@ -121,50 +122,41 @@ class PaymentController extends Controller
         }
     }
 
-    // Handles user redirect after payment
-    public function handleSuccess(Request $request)
-    {
-        $payload = $request->all();
-        $transactionId = $request->query('transactionId');
-        $status = $request->query('status');
-        dd($transactionId);
-
-        // dd($transactionId,$status);
-        // You can verify the transaction status here if needed
-        return view('payment.success', compact('transactionId', 'status'));
-    }
-
     // Handles server-to-server callback from PhonePe
     public function handleCallback(Request $request)
     {
-        // 1. Get transactionId from your DB or query param
-        $transactionId = $request->input('transactionId');
 
-        // If PhonePe didn’t send it, fall back to your own DB (e.g. last initiated txn for this user)
-        if (! $transactionId) {
-            return response()->json(['error' => 'No transactionId received'], 400);
-        }
-
-        // 2. Find payment in DB
-        $payment = Payment::where('transaction_id', $transactionId)->first();
+        $payment = Payment::where('user_id', Auth::id())->first();
         if (! $payment) {
             return response()->json(['error' => 'Payment not found'], 404);
         }
+        $order_id = $payment->order_id;
 
-        // 3. Call PhonePe Status API
-        $baseUrl = 'https://api-preprod.phonepe.com/apis/pg-sandbox';
-        $path = '/v1/status/'.env('PHONEPE_MERCHANT_ID').'/'.$transactionId;
+        $baseUrl = env('PHONEPE_SANDBOX_BASE_URL');
+        $path = '/checkout/v2/order/'.$order_id.'/status';
         $url = $baseUrl.$path;
 
-        // Generate checksum if required
-        $saltKey = env('PHONEPE_SALT_KEY');
-        $saltIndex = env('PHONEPE_SALT_INDEX', 1);
-        $checksum = hash('sha256', $path.$saltKey).'###'.$saltIndex;
+        // Make sure you already have a valid access token (from your auth flow)
+        $accessToken = Cache::remember('phonepe_access_token', 3500, function () {
+            $authUrl = env('PHONEPE_SANDBOX_BASE_URL').'/v1/oauth/token';
+            $payload = [
+                'client_id' => env('PHONEPE_CLIENT_ID'),
+                'client_version' => env('PHONEPE_CLIENT_VERSION'),
+                'client_secret' => env('PHONEPE_CLIENT_SECRET'),
+                'grant_type' => 'client_credentials',
+            ];
+            $response = Http::asForm()->post($authUrl, $payload);
+            if (! $response->ok()) {
+                throw new \Exception('PhonePe Auth Failed: '.$response->body());
+            }
+
+            return $response['access_token'];
+        });
 
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-            'X-VERIFY' => $checksum,
+            'Authorization' => 'O-Bearer '.$accessToken,
         ])->get($url);
 
         if (! $response->ok()) {
@@ -177,14 +169,16 @@ class PaymentController extends Controller
 
         $statusResponse = $response->json();
 
-        // 4. Update DB
         $finalStatus = $statusResponse['code'] === 'PAYMENT_SUCCESS' ? 'success' : 'failed';
         $payment->update([
             'status' => $finalStatus,
             'gateway_response' => $statusResponse,
         ]);
 
-        // 5. Redirect user to a success/failure page
-        return redirect()->route('payment.result', ['status' => $finalStatus]);
+        return response()->json([
+            'success' => true,
+            'code' => 'PAYMENT_INITIATED',
+            'data' => $finalStatus,
+        ]);
     }
 }
