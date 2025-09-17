@@ -8,6 +8,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::post('/initiate-payment', [PaymentController::class, 'initiatePayment'])->middleware('auth:sanctum');
+Route::post('/initiate-payment', [PaymentController::class, 'initiatePayment']);
 
 Route::get('/payment-callback', [PaymentController::class, 'handleCallback'])->middleware('auth:sanctum');
