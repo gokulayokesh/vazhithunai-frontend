@@ -108,7 +108,9 @@ class PaymentController extends Controller
         // Call PhonePe status API to confirm
         $statusResponse = $this->checkPaymentStatus($payment->order_id);
 
-        $finalStatus = $statusResponse['code'] === 'PAYMENT_SUCCESS' ? 'success' : 'failed';
+        \Log::info(json_encode($statusResponse));
+
+        $finalStatus = $statusResponse['state'] === 'COMPLETED' ? 'success' : 'failed';
 
         $payment->update([
             'status' => $finalStatus,
