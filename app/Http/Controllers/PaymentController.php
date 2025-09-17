@@ -151,9 +151,9 @@ class PaymentController extends Controller
     {
         $authUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox').'/v1/oauth/token';
         $payload = [
-            'client_id' => env('PHONEPE_CLIENT_ID'),
-            'client_version' => env('PHONEPE_CLIENT_VERSION'),
-            'client_secret' => env('PHONEPE_CLIENT_SECRET'),
+            'client_id' => env('PHONEPE_CLIENT_ID', 'TEST-M23NS8XTG75OG_25091'),
+            'client_version' => env('PHONEPE_CLIENT_VERSION', '1'),
+            'client_secret' => env('PHONEPE_CLIENT_SECRET', 'ZWE2MWI2YjUtNWJjNy00ODQ5LWIwZWEtY2JkZDdkYmNmM2Qz'),
             'grant_type' => 'client_credentials',
         ];
 
