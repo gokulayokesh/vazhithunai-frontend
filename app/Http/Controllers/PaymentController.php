@@ -31,7 +31,7 @@ class PaymentController extends Controller
     public function initiatePayment(Request $request)
     {
         try {
-            $baseUrl = env('PHONEPE_SANDBOX_BASE_URL');
+            $baseUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox');
             $authUrl = $baseUrl.'/v1/oauth/token';
             $paymentUrl = $baseUrl.'/checkout/v2/pay';
 
@@ -131,13 +131,13 @@ class PaymentController extends Controller
 
         $order_id = $payment->order_id;
 
-        $baseUrl = env('PHONEPE_SANDBOX_BASE_URL');
+        $baseUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox');
         $path = '/checkout/v2/order/'.$order_id.'/status';
         $url = $baseUrl.$path;
 
         // Make sure you already have a valid access token (from your auth flow)
         $accessToken = Cache::remember('phonepe_access_token', 3500, function () {
-            $authUrl = env('PHONEPE_SANDBOX_BASE_URL').'/v1/oauth/token';
+            $authUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox').'/v1/oauth/token';
             $payload = [
                 'client_id' => env('PHONEPE_CLIENT_ID'),
                 'client_version' => env('PHONEPE_CLIENT_VERSION'),
