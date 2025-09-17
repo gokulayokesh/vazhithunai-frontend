@@ -109,7 +109,6 @@ class PaymentController extends Controller
 
         \Log::info(json_encode($statusResponse));
 
-        dd($statusResponse);
         $finalStatus = $statusResponse['state'] === 'COMPLETED' ? 'success' : 'failed';
 
         $payment->update([
@@ -138,8 +137,6 @@ class PaymentController extends Controller
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
         ])->get($url);
-
-        dd($response->body());
 
         if (! $response->ok()) {
             \Log::error('PhonePe status check failed', ['body' => $response->body()]);
