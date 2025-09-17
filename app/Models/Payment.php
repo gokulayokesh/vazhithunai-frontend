@@ -13,6 +13,8 @@ class Payment extends Model
         'amount',
         'status',
         'gateway_response',
+        'gateway_order_response_json',
+        'gateway_order_response',
     ];
 
     protected $casts = [
