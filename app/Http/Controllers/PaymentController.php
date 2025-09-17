@@ -125,8 +125,10 @@ class PaymentController extends Controller
     // Handles user redirect after payment
     public function handleSuccess(Request $request)
     {
+        $payload = $request->all();
         $transactionId = $request->query('transactionId');
         $status = $request->query('status');
+        dd($payload);
 
         // dd($transactionId,$status);
         // You can verify the transaction status here if needed
@@ -145,6 +147,7 @@ class PaymentController extends Controller
         if (isset($payload['transactionId']) && isset($payload['status'])) {
             // Example: updateTransactionStatus($payload['transactionId'], $payload['status']);
         }
+        dd($payload);
 
         return response()->json(['message' => 'Callback processed'], 200);
     }
