@@ -15,7 +15,6 @@ class PaymentController extends Controller
     {
         try {
             $baseUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox');
-            $authUrl = $baseUrl.'/v1/oauth/token';
             $paymentUrl = $baseUrl.'/checkout/v2/pay';
 
             // 1. Get Access Token (cached for 1 hour)
