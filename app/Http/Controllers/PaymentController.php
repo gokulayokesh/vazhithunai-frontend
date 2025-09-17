@@ -139,8 +139,6 @@ class PaymentController extends Controller
             'Accept' => 'application/json',
         ])->get($url);
 
-        dd($url, 'O-Bearer '.$accessToken);
-
         dd($response->body());
 
         if (! $response->ok()) {
