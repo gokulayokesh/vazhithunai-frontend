@@ -9,4 +9,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/initiate-payment', [PaymentController::class, 'initiatePayment']);
-Route::post('/payment-callback', [PaymentController::class, 'handleCallback']);
+Route::get('/payment-success', [PaymentController::class, 'handleSuccess'])->name('payment.success');
+Route::get('/initiate-payment', [PaymentController::class, 'initiatePayment'])->name('payment.initiate');
