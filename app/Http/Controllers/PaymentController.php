@@ -83,7 +83,7 @@ class PaymentController extends Controller
                     'type' => 'PG_CHECKOUT',
                     'message' => 'Payment message used for collect requests',
                     'merchantUrls' => [
-                        'redirectUrl' => 'https://vazhithunai.com/api/payment-callback',
+                        'redirectUrl' => 'https://vazhithunai.com/payment-callback',
                     ],
                 ],
             ];

@@ -55,4 +55,4 @@ Route::get('/profiles/search', [ProfileSearchController::class, 'search'])
 Route::post('/shortlist/{user}', [ProfileController::class, 'toggleShortlist'])
     ->name('shortlist.add');
 
-
+Route::get('/payment-callback', [PaymentController::class, 'handleCallback'])->middleware('auth');
