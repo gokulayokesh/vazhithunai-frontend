@@ -126,6 +126,7 @@ class PaymentController extends Controller
     public function handleCallback(Request $request)
     {
         $payment = Payment::where('user_id', '=', Auth::id())->first();
+        dd(Auth::id(), $payment);
         if (! $payment) {
             return response()->json(['error' => 'Payment not found'], 404);
         }
