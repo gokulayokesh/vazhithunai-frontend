@@ -17,6 +17,8 @@ class Payment extends Model
 
     protected $casts = [
         'gateway_response' => 'array',
+        'gateway_order_response_json' => 'array',
+        'gateway_order_response' => 'array',
     ];
 
     public function user()
