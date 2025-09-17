@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use PhonePe\Env;
 use PhonePe\payments\v2\standardCheckout\StandardCheckoutClient;
 
@@ -138,17 +137,54 @@ class PaymentController extends Controller
     // Handles server-to-server callback from PhonePe
     public function handleCallback(Request $request)
     {
-        $payload = $request->all();
+        // 1. Get transactionId from your DB or query param
+        $transactionId = $request->input('transactionId');
 
-        // Log callback for debugging
-        Log::info('PhonePe Callback Received', $payload);
-
-        // Validate and update transaction status in DB
-        if (isset($payload['transactionId']) && isset($payload['status'])) {
-            // Example: updateTransactionStatus($payload['transactionId'], $payload['status']);
+        // If PhonePe didn’t send it, fall back to your own DB (e.g. last initiated txn for this user)
+        if (! $transactionId) {
+            return response()->json(['error' => 'No transactionId received'], 400);
         }
-        dd($payload);
 
-        return response()->json(['message' => 'Callback processed'], 200);
+        // 2. Find payment in DB
+        $payment = Payment::where('transaction_id', $transactionId)->first();
+        if (! $payment) {
+            return response()->json(['error' => 'Payment not found'], 404);
+        }
+
+        // 3. Call PhonePe Status API
+        $baseUrl = 'https://api-preprod.phonepe.com/apis/pg-sandbox';
+        $path = '/v1/status/'.env('PHONEPE_MERCHANT_ID').'/'.$transactionId;
+        $url = $baseUrl.$path;
+
+        // Generate checksum if required
+        $saltKey = env('PHONEPE_SALT_KEY');
+        $saltIndex = env('PHONEPE_SALT_INDEX', 1);
+        $checksum = hash('sha256', $path.$saltKey).'###'.$saltIndex;
+
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'X-VERIFY' => $checksum,
+        ])->get($url);
+
+        if (! $response->ok()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to fetch status',
+                'details' => $response->json(),
+            ], $response->status());
+        }
+
+        $statusResponse = $response->json();
+
+        // 4. Update DB
+        $finalStatus = $statusResponse['code'] === 'PAYMENT_SUCCESS' ? 'success' : 'failed';
+        $payment->update([
+            'status' => $finalStatus,
+            'gateway_response' => $statusResponse,
+        ]);
+
+        // 5. Redirect user to a success/failure page
+        return redirect()->route('payment.result', ['status' => $finalStatus]);
     }
 }
