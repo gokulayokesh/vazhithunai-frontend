@@ -118,11 +118,7 @@ class PaymentController extends Controller
         ]);
 
         // You can now use $userId for any post-payment logic
-        return response()->json([
-            'success' => true,
-            'user_id' => $userId,
-            'status' => $finalStatus,
-        ]);
+        return view('payment.success');
     }
 
     private function checkPaymentStatus($orderId)
