@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('payments', function (Blueprint $table) {
-            $table->json('gateway_response_order')->nullable(); // store raw PhonePe response
+            $table->string('gateway_order_response')->nullable(); // store raw PhonePe response
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('payments', function (Blueprint $table) {
-            $table->dropColumn('gateway_response_order');
+            $table->dropColumn('gateway_order_response');
         });
     }
 };
