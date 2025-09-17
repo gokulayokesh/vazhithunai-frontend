@@ -58,12 +58,12 @@ class PaymentController extends Controller
             // 3. Generate IDs
             $transactionId = 'TXN'.time();
             $orderId = 'ORDER'.time();
-
+            $userId = Auth::id() ?? 0;
             // 4. Save entry BEFORE hitting PhonePe
             $payment = Payment::create([
                 'transaction_id' => $transactionId,
                 'order_id' => $orderId,
-                'user_id' => Auth::id(),
+                'user_id' => $userId,
                 'amount' => $amount,
                 'status' => 'initiated',
             ]);
