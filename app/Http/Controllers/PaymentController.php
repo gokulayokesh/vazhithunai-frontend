@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -17,7 +19,7 @@ class PaymentController extends Controller
         $clientSecret = env('PHONEPE_CLIENT_SECRET');
         $clientVersion = env('PHONEPE_CLIENT_VERSION');
 
-        $env = Env::PRODUCTION;  // Use Env::PRODUCTION for live environment
+        $env = Env::PRODUCTION; // Use Env::PRODUCTION for live environment
 
         $client = StandardCheckoutClient::getInstance(
             $clientId,
@@ -53,8 +55,22 @@ class PaymentController extends Controller
             });
 
             $amount = (int) $request->input('amount', 10000);
+
+            // 3. Generate IDs
+            $transactionId = 'TXN'.time();
+            $orderId = 'ORDER'.time();
+
+            // 4. Save entry BEFORE hitting PhonePe
+            $payment = Payment::create([
+                'transaction_id' => $transactionId,
+                'order_id' => $orderId,
+                'user_id' => Auth::id(),
+                'amount' => $amount,
+                'status' => 'initiated',
+            ]);
+
             $paymentData = [
-                'merchantOrderId' => 'newtxn123456',
+                'merchantOrderId' => $orderId,
                 'amount' => $amount,
                 'expireAfter' => 1200,
                 'metaInfo' => [
@@ -80,8 +96,15 @@ class PaymentController extends Controller
                 'Accept' => 'application/json',
             ])->post($paymentUrl, $paymentData);
 
+            // 7. Update DB with gateway response
+            $payment->update([
+                'gateway_response' => $response->json(),
+            ]);
+
             // 4. Handle Response
             if (! $response->ok()) {
+                $payment->update(['status' => 'failed']);
+
                 return response()->json([
                     'success' => false,
                     'message' => 'Payment initiation failed',

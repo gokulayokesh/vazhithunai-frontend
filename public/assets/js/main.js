@@ -328,28 +328,5 @@
         }
     }
 
-    document.querySelectorAll(".payNowBtn").forEach((btn) => {
-        btn.addEventListener("click", function () {
-            let amount = this.getAttribute("data-amount"); // in paise
-
-            fetch("/api/initiate-payment", {
-                // <-- note the /api prefix
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ amount: amount }),
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log("Response:", data);
-                    if (data.success && data.data?.redirectUrl) {
-                        window.location.href = data.data.redirectUrl;
-                    } else {
-                        alert("Payment initiation failed");
-                    }
-                })
-                .catch((err) => {
-                    console.error("Fetch error:", err);
-                });
-        });
-    });
+    
 })();

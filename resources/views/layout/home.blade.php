@@ -1615,4 +1615,44 @@
     @include('include.login')
     @include('include.footer')
     @include('include.script')
+    <script>
+        document.querySelectorAll(".payNowBtn").forEach((btn) => {
+            btn.addEventListener("click", function() {
+                // Blade injects auth state into JS
+                let isLoggedIn = @json(auth()->check());
+
+                if (!isLoggedIn) {
+                    // Show login modal instead of payment
+                    let loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                    loginModal.show();
+                    return;
+                }
+
+                let amount = this.getAttribute("data-amount"); // in paise
+
+                fetch("/api/initiate-payment", {
+                        // <-- note the /api prefix
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            amount: amount
+                        }),
+                    })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        console.log("Response:", data);
+                        if (data.success && data.data?.redirectUrl) {
+                            window.location.href = data.data.redirectUrl;
+                        } else {
+                            alert("Payment initiation failed");
+                        }
+                    })
+                    .catch((err) => {
+                        console.error("Fetch error:", err);
+                    });
+            });
+        });
+    </script>
 </body>

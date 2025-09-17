@@ -40,6 +40,34 @@ namespace App\Models{
 namespace App\Models{
 /**
  * @property int $id
+ * @property string $transaction_id
+ * @property string $order_id
+ * @property int|null $user_id
+ * @property int $amount
+ * @property string $status
+ * @property array<array-key, mixed>|null $gateway_response
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereGatewayResponse($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereTransactionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereUserId($value)
+ */
+	class Payment extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
  * @property int $user_id
  * @property int $shortlisted_user_id
  * @property \Illuminate\Support\Carbon|null $created_at
