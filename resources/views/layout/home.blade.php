@@ -1648,7 +1648,8 @@
                         if (data.success && data.data?.redirectUrl) {
                             window.location.href = data.data.redirectUrl;
                         } else {
-                            alert("Payment initiation failed");
+                            showToast(data.message, "error");
+                            // alert(data.message);
                         }
                     })
                     .catch((err) => {
