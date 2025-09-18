@@ -53,7 +53,7 @@
                             <div class="info-content">
                                 <h4>Phone &amp; Email</h4>
                                 <p>+91 94438 74110</p>
-                                <p>connect@example.com</p>
+                                <p>support@vazhithunai.com</p>
                             </div>
                         </div>
                     </div>
