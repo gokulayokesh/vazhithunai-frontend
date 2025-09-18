@@ -1154,7 +1154,7 @@
                                 </li>
                             </ul>
 
-                            <button class="btn btn-primary payNowBtn" data-amount="49900">
+                            <button class="btn btn-primary payNowBtn" data-planId="1">
                                 Buy Now
                                 <i class="bi bi-arrow-right"></i>
                             </button>
@@ -1201,7 +1201,7 @@
                                 </li>
                             </ul>
 
-                            <button class="btn btn-light payNowBtn" data-amount="99900">
+                            <button class="btn btn-light payNowBtn" data-planId="2">
                                 Buy Now
                                 <i class="bi bi-arrow-right"></i>
                             </button>
@@ -1247,7 +1247,7 @@
                                 </li>
                             </ul>
 
-                            <button class="btn btn-primary payNowBtn" data-amount="149900">
+                            <button class="btn btn-primary payNowBtn" data-planId="3">
                                 Buy Now
                                 <i class="bi bi-arrow-right"></i>
                             </button>
@@ -1628,7 +1628,7 @@
                     return;
                 }
 
-                let amount = this.getAttribute("data-amount"); // in paise
+                let planId = this.getAttribute("data-planId"); // in paise
 
                 fetch("/initiate-payment", {
                         // <-- note the /api prefix
@@ -1639,7 +1639,7 @@
                                 .getAttribute("content")
                         },
                         body: JSON.stringify({
-                            amount: amount
+                            planId: planId
                         }),
                     })
                     .then((res) => res.json())

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use App\Models\Subscription;
+use App\Models\SubscriptionHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -20,8 +22,9 @@ class PaymentController extends Controller
             // 1. Get Access Token (cached for 1 hour)
             $accessToken = $this->getAccessToken();
 
-            $amount = (int) $request->input('amount', 10000);
-
+            $planId = (int) $request->input('planId', 1);
+            $amount = Subscription::where('id', $planId)->pluck('price')->first();
+            $amount = (int) $amount * 100;
             // 3. Generate IDs
             $transactionId = 'TXN'.time();
             $orderId = 'ORDER'.time();
@@ -30,6 +33,7 @@ class PaymentController extends Controller
             $payment = Payment::create([
                 'transaction_id' => $transactionId,
                 'order_id' => $orderId,
+                'subscription_id' => $planId,
                 'user_id' => $userId,
                 'amount' => $amount,
                 'status' => 'initiated',
@@ -115,6 +119,24 @@ class PaymentController extends Controller
             'status' => $finalStatus,
             'gateway_order_response_json' => $statusResponse,
         ]);
+
+        if ($finalStatus === 'success') {
+            $subscription = Subscription::findOrFail($payment->subscription_id);
+            $startDate = now();
+            $endDate = $startDate->copy()->addDays($subscription->validity_days);
+
+            SubscriptionHistory::create([
+                'user_id' => $userId,
+                'subscription_id' => $subscription->id,
+                'plan_name' => $subscription->name,
+                'plan_code' => $subscription->code,
+                'amount' => $subscription->price,
+                'currency' => $subscription->currency,
+                'start_date' => $startDate,
+                'end_date' => $endDate,
+                'status' => 'active',
+            ]);
+        }
 
         // You can now use $userId for any post-payment logic
         if ($finalStatus == 'success') {

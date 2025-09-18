@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('transaction_id')->unique();
             $table->string('order_id')->unique();
             $table->unsignedBigInteger('user_id')->nullable(); // link to users table
+            $table->unsignedBigInteger('subscription_id')->nullable(); // link to users table
             $table->integer('amount'); // in paise
             $table->string('status')->default('initiated'); // initiated, success, failed
             $table->json('gateway_response')->nullable(); // store raw PhonePe response
