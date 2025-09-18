@@ -153,7 +153,6 @@ class PaymentController extends Controller
                 'plan_name' => $subscription->name,
                 'plan_code' => $subscription->code,
                 'amount' => $subscription->price,
-                'currency' => $subscription->currency,
                 'start_date' => $startDate,
                 'end_date' => $endDate,
                 'status' => 'active',
