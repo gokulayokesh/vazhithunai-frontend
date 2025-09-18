@@ -88,29 +88,31 @@
                                     </form>
                                 </div>
 
-                                <div class="achievement-grid" data-aos="fade-up" data-aos-delay="400">
-                                    <div class="achievement-item">
-                                        <div class="achievement-number">
-                                            <span data-purecounter-start="0" data-purecounter-end="1250"
-                                                data-purecounter-duration="1" class="purecounter"></span>+
+                                @if (0)
+                                    <div class="achievement-grid" data-aos="fade-up" data-aos-delay="400">
+                                        <div class="achievement-item">
+                                            <div class="achievement-number">
+                                                <span data-purecounter-start="0" data-purecounter-end="100"
+                                                    data-purecounter-duration="1" class="purecounter"></span>+
+                                            </div>
+                                            <span class="achievement-text">Active Listings</span>
                                         </div>
-                                        <span class="achievement-text">Active Listings</span>
-                                    </div>
-                                    <div class="achievement-item">
-                                        <div class="achievement-number">
-                                            <span data-purecounter-start="0" data-purecounter-end="89"
-                                                data-purecounter-duration="1" class="purecounter"></span>+
+                                        <div class="achievement-item">
+                                            <div class="achievement-number">
+                                                <span data-purecounter-start="0" data-purecounter-end="89"
+                                                    data-purecounter-duration="1" class="purecounter"></span>+
+                                            </div>
+                                            <span class="achievement-text">Expert Agents</span>
                                         </div>
-                                        <span class="achievement-text">Expert Agents</span>
-                                    </div>
-                                    <div class="achievement-item">
-                                        <div class="achievement-number">
-                                            <span data-purecounter-start="0" data-purecounter-end="96"
-                                                data-purecounter-duration="1" class="purecounter"></span>%
+                                        <div class="achievement-item">
+                                            <div class="achievement-number">
+                                                <span data-purecounter-start="0" data-purecounter-end="96"
+                                                    data-purecounter-duration="1" class="purecounter"></span>%
+                                            </div>
+                                            <span class="achievement-text">Success Rate</span>
                                         </div>
-                                        <span class="achievement-text">Success Rate</span>
                                     </div>
-                                </div>
+                                @endif
                             </div>
                         </div><!-- End Hero Content -->
 
