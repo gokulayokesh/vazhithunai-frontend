@@ -10,6 +10,7 @@ class Payment extends Model
         'transaction_id',
         'order_id',
         'user_id',
+        'subscription_id',
         'amount',
         'status',
         'gateway_response',

@@ -43,12 +43,14 @@ namespace App\Models{
  * @property string $transaction_id
  * @property string $order_id
  * @property int|null $user_id
+ * @property int|null $subscription_id
  * @property int $amount
  * @property string $status
  * @property array<array-key, mixed>|null $gateway_response
+ * @property array<array-key, mixed>|null $gateway_order_response_json
+ * @property string|null $gateway_order_response
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $gateway_order_response
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment newQuery()
@@ -56,10 +58,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereGatewayOrderResponse($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereGatewayOrderResponseJson($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereGatewayResponse($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereOrderId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereSubscriptionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereTransactionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Payment whereUserId($value)
@@ -134,10 +138,30 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * @property-read \App\Models\User|null $user
+ * @property int $id
+ * @property int $user_id
+ * @property string $plan_name
+ * @property string|null $plan_code
+ * @property string|null $amount
+ * @property \Illuminate\Support\Carbon $start_date
+ * @property \Illuminate\Support\Carbon $end_date
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory whereEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory wherePlanCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory wherePlanName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory whereUserId($value)
  */
 	class SubscriptionHistory extends \Eloquent {}
 }
