@@ -113,11 +113,33 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property string $name
+ * @property int $validity_days
+ * @property string $price
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription whereValidityDays($value)
  */
 	class Subscription extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|SubscriptionHistory query()
+ */
+	class SubscriptionHistory extends \Eloquent {}
 }
 
 namespace App\Models{
