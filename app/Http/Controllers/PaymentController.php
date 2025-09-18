@@ -16,19 +16,38 @@ class PaymentController extends Controller
     public function initiatePayment(Request $request)
     {
         try {
+            $userId = Auth::id();
+
+            // 🔍 1. Check if user already has an active subscription
+            $activeSubscription = SubscriptionHistory::where('user_id', $userId)
+                ->where('status', 'active')
+                ->whereDate('end_date', '>=', now()) // still valid
+                ->latest('end_date')
+                ->first();
+
+            if ($activeSubscription) {
+                return response()->json([
+                    'success' => false,
+                    'code' => 'ACTIVE_PLAN_EXISTS',
+                    'message' => 'You already have an active subscription until '.$activeSubscription->end_date->format('d M Y'),
+                ], 400);
+            }
+
+            // 2. Proceed with payment initiation
             $baseUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox');
             $paymentUrl = $baseUrl.'/checkout/v2/pay';
 
-            // 1. Get Access Token (cached for 1 hour)
+            // 3. Get Access Token
             $accessToken = $this->getAccessToken();
 
             $planId = (int) $request->input('planId', 1);
             $amount = Subscription::where('id', $planId)->pluck('price')->first();
             $amount = (int) $amount * 100;
+
             // 3. Generate IDs
             $transactionId = 'TXN'.time();
             $orderId = 'ORDER'.time();
-            $userId = Auth::id();
+
             // 4. Save entry BEFORE hitting PhonePe
             $payment = Payment::create([
                 'transaction_id' => $transactionId,
