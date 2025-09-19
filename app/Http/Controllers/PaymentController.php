@@ -34,7 +34,7 @@ class PaymentController extends Controller
             }
 
             // 2. Proceed with payment initiation
-            $baseUrl = env('PHONEPE_PRODUCTION_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox');
+            $baseUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox');
             $paymentUrl = $baseUrl.'/checkout/v2/pay';
 
             // 3. Get Access Token
@@ -169,7 +169,7 @@ class PaymentController extends Controller
 
     private function checkPaymentStatus($orderId)
     {
-        $baseUrl = env('PHONEPE_PRODUCTION_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox');
+        $baseUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox');
         $path = '/checkout/v2/order/'.$orderId.'/status';
         $url = $baseUrl.$path;
 
@@ -192,11 +192,11 @@ class PaymentController extends Controller
 
     private function getAccessToken()
     {
-        $authUrl = env('PHONEPE_PRODUCTION_AUTH_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox').'/v1/oauth/token';
+        $authUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox').'/v1/oauth/token';
         $payload = [
-            'client_id' => env('PHONEPE_PRODUCTION_CLIENT_ID', 'TEST-M23NS8XTG75OG_25091'),
-            'client_version' => env('PHONEPE_PRODUCTION_CLIENT_VERSION', '1'),
-            'client_secret' => env('PHONEPE_PRODUCTION_CLIENT_SECRET', 'ZWE2MWI2YjUtNWJjNy00ODQ5LWIwZWEtY2JkZDdkYmNmM2Qz'),
+            'client_id' => env('PHONEPE_CLIENT_ID', 'TEST-M23NS8XTG75OG_25091'),
+            'client_version' => env('PHONEPE_CLIENT_VERSION', '1'),
+            'client_secret' => env('PHONEPE_CLIENT_SECRET', 'ZWE2MWI2YjUtNWJjNy00ODQ5LWIwZWEtY2JkZDdkYmNmM2Qz'),
             'grant_type' => 'client_credentials',
         ];
 
