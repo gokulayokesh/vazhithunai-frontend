@@ -192,7 +192,7 @@ class PaymentController extends Controller
 
     private function getAccessToken()
     {
-        $authUrl = env('PHONEPE_PRODUCTION_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox').'/v1/oauth/token';
+        $authUrl = env('PHONEPE_PRODUCTION_AUTH_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox').'/v1/oauth/token';
         $payload = [
             'client_id' => env('PHONEPE_PRODUCTION_CLIENT_ID', 'TEST-M23NS8XTG75OG_25091'),
             'client_version' => env('PHONEPE_PRODUCTION_CLIENT_VERSION', '1'),
