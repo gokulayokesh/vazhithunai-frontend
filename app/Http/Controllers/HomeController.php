@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\RegistrationOtpMail;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
@@ -18,6 +19,11 @@ class HomeController extends Controller
         // Decode JSON into an array
         $cities = json_decode($citiesJson, true);
 
+        $latestUsers = User::has('userDetails')
+            ->with('userDetails')
+            ->latest('id')
+            ->take(4)
+            ->get();
         // $email = 'gokulayokesh@gmail.com';
         // $name = 'Gokul';
         // // Generate OTP
@@ -29,6 +35,6 @@ class HomeController extends Controller
         // // Send email
         // Mail::to($email)->send(new RegistrationOtpMail($otp, $name));
 
-        return view('layout.home', compact('cities'));
+        return view('layout.home', compact('cities', 'latestUsers'));
     }
 }

@@ -660,7 +660,7 @@
                                                                                         data-toggle="tooltip"
                                                                                         title="Add to Favorites"
                                                                                         data-user-id="{{ $profile->id }}">
-                                                                                        @if (auth()->user() && auth()->user()->shortlistedUsers->contains('shortlisted_user_id', $profile->id))
+                                                                                        @if (auth()->user() && auth()->user()->shortlistedUsers->contains('id', $profile->id))
                                                                                             <i
                                                                                                 class="bi bi-heart-fill text-danger"></i>
                                                                                         @else

@@ -2961,7 +2961,7 @@ section,
 .featured-agents .agent-photo .overlay-info .contact-actions .contact-btn {
     width: 55px;
     height: 55px;
-    background: var(--contrast-color);
+    background: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -2971,6 +2971,7 @@ section,
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px
         color-mix(in srgb, var(--default-color), transparent 80%);
+    border: none;
 }
 
 .featured-agents
@@ -2978,8 +2979,8 @@ section,
     .overlay-info
     .contact-actions
     .contact-btn:hover {
-    background: var(--accent-color);
-    color: var(--contrast-color);
+    background: white;
+    color: var(--accent-color);
     transform: translateY(-3px) scale(1.1);
     box-shadow: 0 6px 20px
         color-mix(in srgb, var(--accent-color), transparent 60%);
@@ -2990,7 +2991,7 @@ section,
     .overlay-info
     .contact-actions
     .contact-btn.phone:hover {
-    background: #28a745;
+    /* background: #fff; */
 }
 
 .featured-agents
@@ -2998,7 +2999,7 @@ section,
     .overlay-info
     .contact-actions
     .contact-btn.email:hover {
-    background: #dc3545;
+    /* background: #fff; */
 }
 
 .featured-agents .agent-photo .achievement-badge {
@@ -13290,3 +13291,74 @@ select:focus {
         justify-content: center;
     }
 }
+.shimmer {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: #007bff; /* base button color */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden; /* hide shimmer overflow */
+  }
+
+  .shimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.6) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      left: -150%;
+    }
+    100% {
+      left: 150%;
+    }
+  }
+
+  .header-silver-plan-badge{
+    white-space: nowrap;
+    background: linear-gradient(135deg, #C0C0C0, #D9D9D9, #E5E4E2);
+    padding: 3px 10px;
+    border-radius: 25px;
+    color: #000000d1;
+    overflow: clip;
+    font-size: small;
+    margin-left: -60px;
+  }
+
+  .header-gold-plan-badge{
+    white-space: nowrap;
+    background: linear-gradient(135deg, #D4AF37, #FFD700, #FFCC00);
+    padding: 3px 10px;
+    border-radius: 25px;
+    color: #000000d1;
+    overflow: clip;
+    font-size: small;
+    margin-left: -60px;
+  }
+
+  .header-premium-plan-badge{
+    white-space: nowrap;
+    background: blanchedalmond;
+    padding: 3px 10px;
+    border-radius: 25px;
+    color: #000000d1;
+    overflow: clip;
+    font-size: small;
+    margin-left: -50px;
+  }

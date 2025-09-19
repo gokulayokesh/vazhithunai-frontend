@@ -14,6 +14,25 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
+        // First, fetch the user by email
+        $user = \App\Models\User::where('email', $credentials['email'])->first();
+
+        if (! $user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'The provided credentials do not match our records.',
+            ], 422);
+        }
+
+        // Check if email is verified
+        if (is_null($user->email_verified_at)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Please verify your email address before logging in.',
+            ], 403);
+        }
+
+        // Attempt login only if verified
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
@@ -24,10 +43,6 @@ class LoginController extends Controller
             'success' => false,
             'message' => 'The provided credentials do not match our records.',
         ], 422);
-
-        // return back()->withErrors([
-        //     'email' => 'The provided credentials do not match our records.',
-        // ])->onlyInput('email');
     }
 
     public function logout(Request $request)
