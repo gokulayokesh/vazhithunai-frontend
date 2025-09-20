@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentController;
@@ -57,3 +58,11 @@ Route::post('/shortlist/{user}', [ProfileController::class, 'toggleShortlist'])
 
 Route::post('/initiate-payment', [PaymentController::class, 'initiatePayment'])->middleware('auth');
 Route::get('/payment-callback', [PaymentController::class, 'handleCallback']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/chats', [ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chats/{chatId}', [ChatController::class, 'show'])->name('chat.show');
+    Route::get('/chats/start/{user}', [ChatController::class, 'start'])->name('chat.start');
+    Route::post('/chats/{chat}/send', [ChatController::class, 'send'])->name('chat.send');
+    Route::delete('/chats/{chat}', [ChatController::class, 'destroy'])->name('chat.destroy');
+});

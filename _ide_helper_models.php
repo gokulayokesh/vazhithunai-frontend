@@ -13,6 +13,19 @@
 
 namespace App\Models{
 /**
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Message> $messages
+ * @property-read int|null $messages_count
+ * @property-read \App\Models\User|null $userOne
+ * @property-read \App\Models\User|null $userTwo
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Chat newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Chat newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Chat query()
+ */
+	class Chat extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * @property int $id
  * @property string $name
  * @property string $tamil_name
@@ -35,6 +48,17 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|City whereUpdatedAt($value)
  */
 	class City extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property-read \App\Models\Chat|null $chat
+ * @property-read \App\Models\User|null $sender
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Message newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Message newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Message query()
+ */
+	class Message extends \Eloquent {}
 }
 
 namespace App\Models{

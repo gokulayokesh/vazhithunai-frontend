@@ -248,14 +248,15 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="agent-actions mt-3">
-                                    <a href="tel:{{ $profile->mobile }}" class="btn btn-success w-100 mb-2">
+                                <div class="agent-actions mt-3">
+                                    {{-- <a href="tel:{{ $profile->mobile }}" class="btn btn-success w-100 mb-2">
                                         <i class="bi bi-telephone"></i> Call Now
-                                    </a>
-                                    <a href="mailto:{{ $profile->user->email }}" class="btn btn-outline w-100">
+                                    </a> --}}
+                                    <a href="{{ route('chat.start', $profile->user->id) }}"
+                                        class="btn btn-outline w-100">
                                         <i class="bi bi-chat-dots"></i> Send Message
                                     </a>
-                                </div> --}}
+                                </div>
                             </div>
 
 

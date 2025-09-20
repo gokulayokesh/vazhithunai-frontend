@@ -13362,3 +13362,10 @@ select:focus {
     font-size: small;
     margin-left: -50px;
   }
+
+  .chat-body .bg-primary {
+    border-radius: 15px 15px 0 15px;
+}
+.chat-body .bg-light {
+    border-radius: 15px 15px 15px 0;
+}
