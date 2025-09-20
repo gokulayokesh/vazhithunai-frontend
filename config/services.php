@@ -36,8 +36,8 @@ return [
     ],
 
     'msg91' => [
-        'auth_key' => env('MSG91_AUTH_KEY'),
-        'template_id' => env('MSG91_TEMPLATE_ID'),
+        'auth_key' => env('MSG91_AUTH_KEY', '469919AL6mpvwWL68cdaab4P1'),
+        'template_id' => env('MSG91_TEMPLATE_ID', '68cdad67af24d54a280ba689'),
     ],
 
 ];
