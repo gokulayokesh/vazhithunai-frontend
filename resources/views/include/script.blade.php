@@ -47,3 +47,23 @@
          });
      }
  </script>
+
+ <script type="text/javascript">
+     var configuration = {
+         widgetId: "356973735335323932343834",
+         tokenAuth: "469919TnbuxVIbA68ce3b11P1",
+         identifier: "<enter mobile number/email here> (optional)",
+         exposeMethods: "<true | false> (optional)", // When true will expose the methods for OTP verification. Refer 'How it works?' for more details
+         success: (data) => {
+             // get verified token in response
+             console.log('success response', data);
+         },
+         failure: (error) => {
+             // handle error
+             console.log('failure reason', error);
+         },
+
+     };
+ </script>
+ <script type="text/javascript" onload="initSendOTP(configuration)" src="https://verify.msg91.com/otp-provider.js">
+ </script>

@@ -19,7 +19,7 @@ class ProfileController extends Controller
     {
 
         $sendOtp = new RegisterController;
-        dd($sendOtp->sendOtpMobile(6380145929));
+        $sendOtp->sendOtpMobile(6380145929);
         $userId = User::getIdByIdentifier($request->identifier);
 
         $profile = UserDetails::with([
