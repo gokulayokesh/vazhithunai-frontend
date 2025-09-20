@@ -18,7 +18,7 @@
                             @endphp
                             <a href="{{ route('chat.show', $chatItem->id) }}"
                                 class="list-group-item list-group-item-action d-flex align-items-center {{ $chatItem->id == $chat->id ? 'active' : '' }}">
-                                <img src="{{ $otherUser->userImages->first()?->image_path ?? asset('assets/img/default-profile.jpg') }}"
+                                <img src="{{ asset($otherUser->userImages->first()?->image_path) ?? asset('assets/img/default-profile.jpg') }}"
                                     alt="{{ $otherUser->name }}" class="rounded-circle me-2" width="40"
                                     height="40">
                                 <div class="flex-grow-1">
@@ -39,7 +39,7 @@
                     @endphp
 
                     <div class="chat-header border-bottom py-2 px-3 d-flex align-items-center">
-                        <img src="{{ $activeUser->userImages->first()?->image_path ?? asset('assets/img/default-profile.jpg') }}"
+                        <img src="{{ asset($activeUser->userImages->first()?->image_path) ?? asset('assets/img/default-profile.jpg') }}"
                             alt="{{ $activeUser->name }}" class="rounded-circle me-2" width="45" height="45">
                         <div>
                             <h6 class="mb-0">{{ $activeUser->name }}</h6>
