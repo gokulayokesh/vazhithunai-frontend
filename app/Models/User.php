@@ -76,4 +76,32 @@ class User extends Authenticatable
     {
         return static::where('identifier', $identifier)->value('id');
     }
+
+    // Masked Email
+    public function getEmailAttribute($value)
+    {
+        if (! $value) {
+            return null;
+        }
+
+        $parts = explode('@', $value);
+        $name = substr($parts[0], 0, 3).str_repeat('*', max(strlen($parts[0]) - 3, 0));
+
+        return $name.'@'.$parts[1];
+    }
+
+    // Masked Mobile
+    public function getMobileAttribute($value)
+    {
+        if (! $value) {
+            return null;
+        }
+
+        $len = strlen($value);
+        if ($len <= 4) {
+            return str_repeat('*', $len);
+        }
+
+        return substr($value, 0, 2).str_repeat('*', $len - 4).substr($value, -2);
+    }
 }

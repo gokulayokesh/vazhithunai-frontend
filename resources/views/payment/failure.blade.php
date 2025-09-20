@@ -17,10 +17,10 @@
                                 Unfortunately, your payment could not be processed.
                                 <br> மன்னிக்கவும், உங்கள் கட்டணம் செயல்படுத்தப்படவில்லை.
                             </p>
-                            <a href="/" class="btn btn-danger mt-4">
+                            <a href="/#pricing" class="btn btn-danger mt-4">
                                 <i class="bi bi-arrow-repeat"></i> Try Again / மீண்டும் முயற்சிக்கவும்
                             </a>
-                            <a href="/" class="btn btn-outline-secondary mt-2">
+                            <a href="/contact" class="btn btn-outline-secondary mt-2">
                                 <i class="bi bi-headset"></i> Contact Support
                             </a>
                         </div>

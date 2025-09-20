@@ -199,15 +199,15 @@
 
                         <!-- Floor Plan -->
                         <div class="floor-plan-section mb-5" data-aos="fade-up" data-aos-delay="500">
-                            <h3>Floor Plan</h3>
+                            <h3>Horoscope Image</h3>
                             <div class="floor-plan-card">
                                 <img src="{{ asset($profile->userHoroscopeImages->first()?->image_path ?? asset('assets/img/person/person-f-8.webp')) }}"
                                     class="img-fluid" alt="Floor Plan">
-                                <div class="plan-details">
+                                {{-- <div class="plan-details">
                                     <h5>3 Bedroom Penthouse Layout</h5>
                                     <p>Open concept living and dining area with private balcony access. Master suite
                                         features ensuite bathroom and city views.</p>
-                                </div>
+                                </div> --}}
                             </div>
                         </div><!-- End Floor Plan -->
 
@@ -240,7 +240,7 @@
                                 <div class="agent-contact">
                                     <div class="contact-item">
                                         <i class="bi bi-telephone"></i>
-                                        <span>{{ $profile->parent_mobile }}</span>
+                                        <span>{{ $profile->user->mobile }}</span>
                                     </div>
                                     <div class="contact-item">
                                         <i class="bi bi-envelope"></i>
@@ -248,14 +248,14 @@
                                     </div>
                                 </div>
 
-                                <div class="agent-actions mt-3">
-                                    <a href="tel:{{ $profile->parent_mobile }}" class="btn btn-success w-100 mb-2">
+                                {{-- <div class="agent-actions mt-3">
+                                    <a href="tel:{{ $profile->mobile }}" class="btn btn-success w-100 mb-2">
                                         <i class="bi bi-telephone"></i> Call Now
                                     </a>
                                     <a href="mailto:{{ $profile->user->email }}" class="btn btn-outline w-100">
                                         <i class="bi bi-chat-dots"></i> Send Message
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
 
 
@@ -328,22 +328,7 @@
                                 </form>
                             </div><!-- End Contact Form -->
 
-                            {{-- Similar Profiles --}}
-                            <div class="similar-properties" data-aos="fade-up" data-aos-delay="650">
-                                <h4>Similar Profiles</h4>
-                                @foreach ($similarProfiles as $sim)
-                                    <div class="similar-property-item">
-                                        <img src="{{ $sim->userImages->first()?->image_path ?? asset('assets/img/person/person-f-8.webp') }}"
-                                            class="img-fluid" alt="{{ $sim->user->name }}">
-                                        <div class="similar-info">
-                                            <h6>{{ $sim->user->name }}</h6>
-                                            <p class="similar-price">{{ \Carbon\Carbon::parse($sim->dob)->age }} yrs •
-                                                {{ ucfirst($sim->gender) }}</p>
-                                            <p class="similar-specs">{{ $sim->city }}, {{ $sim->state }}</p>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
+
 
                         </div>
                     </div>
@@ -351,49 +336,106 @@
 
                 <!-- Location Section -->
                 <div class="location-section mt-5" data-aos="fade-up" data-aos-delay="700">
-                    <h3>Location</h3>
+                    {{-- <h3>Location</h3> --}}
                     <div class="row">
-                        <div class="col-lg-8">
+                        {{-- <div class="col-lg-8">
                             <div class="map-wrapper">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.5!2d-73.935!3d40.796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ3JzQ1LjYiTiA3M8KwNTYnMDYuMCJX!5e0!3m2!1sen!2sus!4v1234567890"
                                     width="100%" height="350" style="border:0;" allowfullscreen=""
                                     loading="lazy"></iframe>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-lg-4">
                             <div class="neighborhood-info">
-                                <h5>Highlights</h5>
+                                <h5>Education</h5>
                                 <div class="poi-item">
                                     <i class="bi bi-mortarboard"></i>
                                     <div class="poi-content">
                                         <span class="poi-name">{{ $profile->institution }}</span>
-                                        <span class="poi-distance">{{ $profile->completion_year }}</span>
+                                        <span class="poi-distance">Year: {{ $profile->completion_year }}</span>
                                     </div>
                                 </div>
                                 <div class="poi-item">
-                                    <i class="bi bi-cup-hot"></i>
+                                    <i class="bi bi-book"></i>
                                     <div class="poi-content">
-                                        <span class="poi-name">Local Coffee Shops</span>
-                                        <span class="poi-distance">2 min walk</span>
+                                        <span class="poi-name">{{ $profile->highest_education }}</span>
+                                        <span class="poi-distance">Field:
+                                            {{ $profile->education_field ?? 'N/A' }}</span>
                                     </div>
                                 </div>
                                 <div class="poi-item">
-                                    <i class="bi bi-tree"></i>
+                                    <i class="bi bi-award"></i>
                                     <div class="poi-content">
-                                        <span class="poi-name">Marcus Garvey Park</span>
-                                        <span class="poi-distance">0.3 miles</span>
-                                    </div>
-                                </div>
-                                <div class="poi-item">
-                                    <i class="bi bi-train-lightrail-front"></i>
-                                    <div class="poi-content">
-                                        <span class="poi-name">125th St Station</span>
-                                        <span class="poi-distance">0.6 miles</span>
+                                        <span class="poi-name">Achievements</span>
+                                        <span
+                                            class="poi-distance">{{ $profile->achievements ?? 'Not specified' }}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-4">
+                            <div class="neighborhood-info">
+                                <h5>Career</h5>
+                                <div class="poi-item">
+                                    <i class="bi bi-briefcase"></i>
+                                    <div class="poi-content">
+                                        <span class="poi-name">{{ $profile->occupation_category }}</span>
+                                        <span class="poi-distance">{{ $profile->company_name ?? '—' }}</span>
+                                    </div>
+                                </div>
+                                <div class="poi-item">
+                                    <i class="bi bi-cash-coin"></i>
+                                    <div class="poi-content">
+                                        <span class="poi-name">Annual Income</span>
+                                        <span
+                                            class="poi-distance">{{ $profile->annual_income ?? 'Not disclosed' }}</span>
+                                    </div>
+                                </div>
+                                <div class="poi-item">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <div class="poi-content">
+                                        <span class="poi-name">Work Location</span>
+                                        <span
+                                            class="poi-distance">{{ $profile->work_location ?? $profile->city }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="neighborhood-info">
+                                <h5>Family</h5>
+                                <div class="poi-item">
+                                    <i class="bi bi-people"></i>
+                                    <div class="poi-content">
+                                        <span class="poi-name">Father’s Occupation</span>
+                                        <span class="poi-distance">{{ $profile->father_work ?? 'N/A' }}</span>
+                                    </div>
+                                </div>
+                                <div class="poi-item">
+                                    <i class="bi bi-person-heart"></i>
+                                    <div class="poi-content">
+                                        <span class="poi-name">Mother’s Occupation</span>
+                                        <span class="poi-distance">{{ $profile->mother_work ?? 'N/A' }}</span>
+                                    </div>
+                                </div>
+                                <div class="poi-item">
+                                    <i class="bi bi-people-fill"></i>
+                                    <div class="poi-content">
+                                        <span class="poi-name">Siblings</span>
+                                        <span class="poi-distance">
+                                            {{ $profile->brothers_count }} Brothers ({{ $profile->married_brothers }}
+                                            Married),
+                                            {{ $profile->sisters_count }} Sisters ({{ $profile->married_sisters }}
+                                            Married)
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div><!-- End Location Section -->
             </div>

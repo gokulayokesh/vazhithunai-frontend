@@ -17,9 +17,6 @@ class ProfileController extends Controller
 
     public function profile(Request $request)
     {
-
-        $sendOtp = new RegisterController;
-        $sendOtp->sendOtpMobile(6380145929);
         $userId = User::getIdByIdentifier($request->identifier);
 
         $profile = UserDetails::with([
