@@ -7,12 +7,14 @@ use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\UserHoroscopeImages;
 use App\Models\UserImages;
+use App\Services\SmsService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -110,7 +112,7 @@ class RegisterController extends Controller
             $user->name = $validated['name'];
             $user->email = $validated['email'];
             $user->mobile = $validated['mobile'];
-            $user->show_password = $plainPassword; 
+            $user->show_password = $plainPassword;
             $user->password = Hash::make($plainPassword);
             $user->save();
 
@@ -161,7 +163,7 @@ class RegisterController extends Controller
 
             if ($request->hasFile('horoscope_picture')) {
                 foreach ($request->file('horoscope_picture') as $file) {
-                    $path = $file->store('horoscope_pictures', 'public'); 
+                    $path = $file->store('horoscope_pictures', 'public');
                     UserHoroscopeImages::create([
                         'user_id' => $user->id,
                         'image_path' => $path,
@@ -171,9 +173,11 @@ class RegisterController extends Controller
             }
 
             DB::commit();
+
             return redirect()->back()->with('success', 'Registration details saved successfully!');
         } catch (\Exception $e) {
             DB::rollBack();
+
             return redirect()->back()->withErrors(['error' => 'Failed to save details: '.$e->getMessage()]);
         }
     }
@@ -195,6 +199,23 @@ class RegisterController extends Controller
             ]);
         } catch (Exception $e) {
             dd($e->getMessage());
+        }
+    }
+
+    public function sendOtpMobile($mobile)
+    {
+        $mobile = '+91'.$mobile;
+
+        try {
+            $result = SmsService::sendOtp($mobile, 2221, [
+                'Param1' => 'John',
+                'Param2' => 'Matrimony',
+                'Param3' => 'Profile Verification',
+            ]);
+
+            return response()->json(['success' => true, 'data' => $result]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
 }

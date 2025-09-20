@@ -17,6 +17,9 @@ class ProfileController extends Controller
 
     public function profile(Request $request)
     {
+
+        $sendOtp = new RegisterController;
+        dd($sendOtp->sendOtpMobile(6380145929));
         $userId = User::getIdByIdentifier($request->identifier);
 
         $profile = UserDetails::with([
@@ -46,7 +49,14 @@ class ProfileController extends Controller
 
     public function toggleShortlist(Request $request, $shortlistedUserId)
     {
-        $userId = auth()->id();
+        if (! Auth::check()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Please log in to shortlist users',
+            ], 401);
+        }
+
+        $userId = Auth::id();
 
         // Prevent self-shortlisting
         if ($userId == $shortlistedUserId) {

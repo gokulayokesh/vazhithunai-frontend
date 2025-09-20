@@ -31,7 +31,7 @@ class RegistrationOtpMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Registration Otp Mail',
+            subject: 'Vazhithunai - Complete Your Registration – OTP: '.$this->otp,
         );
     }
 

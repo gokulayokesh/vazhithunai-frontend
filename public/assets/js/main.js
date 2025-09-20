@@ -306,17 +306,22 @@
                         if (data.status === "added") {
                             icon.classList.remove("bi-heart");
                             icon.classList.add("bi-heart-fill", "text-danger");
+                            showToast(data.message, "success");
                         } else if (data.status === "removed") {
                             icon.classList.remove(
                                 "bi-heart-fill",
                                 "text-danger"
                             );
                             icon.classList.add("bi-heart");
+                            showToast(data.message, "success");
+                        } else if (data.status === "error") {
+                            showToast(data.message, "error");
                         }
-
-                        showToast(data.message, "success");
                     })
-                    .catch((error) => console.error("Error:", error));
+                    .catch((error) => {
+                        console.error("Error:", error);
+                        showToast(error, "error");
+                    });
             });
         });
     });

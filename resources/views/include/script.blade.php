@@ -26,4 +26,24 @@
              });
          }
      }
+
+     function shareProfile(profileUrl) {
+         // Copy to clipboard
+         navigator.clipboard.writeText(profileUrl).then(() => {
+             console.log("Profile link copied!");
+
+             // Open native share popup if supported
+             if (navigator.share) {
+                 navigator
+                     .share({
+                         title: "Check out this profile",
+                         text: "Here’s a profile I wanted to share with you:",
+                         url: profileUrl,
+                     })
+                     .catch((err) => console.log("Share failed:", err));
+             } else {
+                 alert("Link copied! Share it anywhere you like.");
+             }
+         });
+     }
  </script>

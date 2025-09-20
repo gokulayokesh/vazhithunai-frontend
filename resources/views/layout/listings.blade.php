@@ -151,8 +151,18 @@
                                         <div class="property-image-wrapper">
                                             <a href="{{ route('profile', ['identifier' => $profile->user->identifier ?? '']) }}"
                                                 class="property-link">
-                                                <img src="{{ $profile->userImages->first()->image_path }}"
-                                                    alt="{{ $profile->user->name }}" class="img-fluid">
+                                                @if (!Auth::user())
+                                                    @if ($profile->gender == 'Male')
+                                                        <img src="{{ asset('assets/img/m-default.png') }}"
+                                                            alt="Featured Agent" class="img-fluid">
+                                                    @else
+                                                        <img src="{{ asset('assets/img/f-default.png') }}"
+                                                            alt="Featured Agent" class="img-fluid">
+                                                    @endif
+                                                @else
+                                                    <img src="{{ $profile->userImages->first()->image_path }}"
+                                                        alt="{{ $profile->user->name }}" class="img-fluid">
+                                                @endif
                                             </a>
                                             <div class="property-status">
                                                 @if ($profile->featured)
@@ -173,7 +183,7 @@
                                                 </button>
 
                                                 <button class="action-btn share-btn" data-toggle="tooltip"
-                                                    title="Share Profile">
+                                                    onclick="shareProfile('{{ route('profile', ['identifier' => $profile->user->identifier ?? '']) }}')">
                                                     <i class="bi bi-share"></i>
                                                 </button>
                                                 <button class="action-btn gallery-btn" data-toggle="tooltip"
