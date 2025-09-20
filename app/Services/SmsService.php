@@ -29,7 +29,6 @@ class SmsService
             'Param2' => $params['Param2'] ?? 'value2',
             'Param3' => $params['Param3'] ?? 'value3',
         ];
-        dd($body);
 
         $response = Http::withHeaders([
             'content-type' => 'application/json',
