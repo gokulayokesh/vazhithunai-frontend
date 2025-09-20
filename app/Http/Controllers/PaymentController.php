@@ -34,7 +34,7 @@ class PaymentController extends Controller
             }
 
             // 2. Proceed with payment initiation
-            $baseUrl = env('PHONEPE_SANDBOX_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox');
+            $baseUrl = env('PHONEPE_PRODUCTION_BASE_URL', 'https://api.phonepe.com/apis/pg');
             $paymentUrl = $baseUrl.'/checkout/v2/pay';
 
             // 3. Get Access Token
@@ -169,7 +169,7 @@ class PaymentController extends Controller
 
     private function checkPaymentStatus($orderId)
     {
-        $baseUrl = env('PHONEPE_PRODUCTION_BASE_URL', 'https://api-preprod.phonepe.com/apis/pg-sandbox');
+        $baseUrl = env('PHONEPE_PRODUCTION_BASE_URL', 'https://api.phonepe.com/apis/pg');
         $path = '/checkout/v2/order/'.$orderId.'/status';
         $url = $baseUrl.$path;
 
