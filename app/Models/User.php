@@ -104,4 +104,9 @@ class User extends Authenticatable
 
         return substr($value, 0, 2).str_repeat('*', $len - 4).substr($value, -2);
     }
+
+    public function isOnline()
+    {
+        return $this->last_seen && $this->last_seen->gt(now()->subMinutes(2));
+    }
 }

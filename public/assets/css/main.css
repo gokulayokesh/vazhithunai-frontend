@@ -13369,3 +13369,15 @@ select:focus {
 .chat-body .bg-light {
     border-radius: 15px 15px 15px 0;
 }
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    .text-muted {
+        --bs-text-opacity: 1;
+        color: #fff !important;
+    }
+}
+

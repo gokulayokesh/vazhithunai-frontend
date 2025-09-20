@@ -43,8 +43,13 @@
                             alt="{{ $activeUser->name }}" class="rounded-circle me-2" width="45" height="45">
                         <div>
                             <h6 class="mb-0">{{ $activeUser->name }}</h6>
-                            <small class="text-muted">{{ $activeUser->city ?? '' }},
-                                {{ $activeUser->state ?? '' }}</small>
+                            @if ($activeUser->isOnline())
+                                <small class="text-success">● Online</small>
+                            @else
+                                <small class="text-muted">Last seen
+                                    {{ $activeUser->last_seen?->diffForHumans() ?? 'a while ago' }}</small>
+                            @endif
+                            {{-- <small class="text-muted">{{ $activeUser->userDetails->city->name ?? '' }}</small> --}}
                         </div>
                     </div>
 
@@ -64,7 +69,7 @@
                             @else
                                 {{-- Received messages (left aligned) --}}
                                 <div class="d-flex justify-content-start mb-3">
-                                    <div class="p-2 rounded bg-light"
+                                    <div class="p-2 rounded bg-secondary-subtle"
                                         style="max-width: 70%; border-radius:15px 15px 15px 0;">
                                         {{ $msg->content }}
                                         <div class="small text-muted mt-1">{{ $msg->created_at->format('h:i A') }}
@@ -82,7 +87,7 @@
                         <form action="{{ route('chat.send', $chat->id) }}" method="POST" class="d-flex">
                             @csrf
                             <input type="text" name="content" class="form-control me-2"
-                                placeholder="Type a message..." required>
+                                placeholder="Type a message..." style="text-transform: capitalize;" required>
                             <button class="btn btn-primary"><i class="bi bi-send"></i></button>
                         </form>
                     </div>
