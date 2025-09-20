@@ -27,12 +27,8 @@
             @endif
         @endif
 
-
-
-
-
         <nav id="navmenu" class="navmenu">
-            <ul class="navmenu-list">   
+            <ul class="navmenu-list">
                 <li><a href="/" @if (request()->segment(1) == '') class="active" @endif>Home</a></li>
                 <li><a href="/about" @if (request()->segment(1) == 'about') class="active" @endif>About</a></li>
                 <li><a href="/contact" @if (request()->segment(1) == 'contact') class="active" @endif>Contact</a></li>
@@ -61,7 +57,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="/my-account">
-                                    <span class="bi bi-person"></span>&nbsp;My Account
+                                    <span class="bi bi-person-fill-gear"></span>&nbsp;My Account
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/chats">
+                                    <span class="bi bi-chat-heart"></span>&nbsp;My Chats
                                 </a>
                             </li>
                             <form action="{{ route('logout') }}" method="POST">
