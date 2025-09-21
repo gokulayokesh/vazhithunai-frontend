@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSent;
 use App\Models\Chat;
 use Illuminate\Http\Request;
 
@@ -71,10 +72,13 @@ class ChatController extends Controller
 
         $chat = Chat::findOrFail($chatId);
 
-        $chat->messages()->create([
+        $message = $chat->messages()->create([
             'sender_id' => auth()->id(),
             'content' => $request->content,
         ]);
+
+        // Broadcast the full message model + user
+        event(new MessageSent($message, auth()->user()));
 
         return back();
     }

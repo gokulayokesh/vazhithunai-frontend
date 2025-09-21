@@ -106,6 +106,34 @@
             if (chatBody) {
                 chatBody.scrollTop = chatBody.scrollHeight;
             }
+
         });
     </script>
+    <script>
+        // Enable logging for debugging
+        Pusher.logToConsole = true;
+
+        // Initialize Pusher with your key/cluster
+        var pusher = new Pusher("{{ env('PUSHER_APP_KEY') }}", {
+            cluster: "{{ env('PUSHER_APP_CLUSTER') }}",
+            authEndpoint: "/broadcasting/auth",
+            auth: {
+                headers: {
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content")
+                }
+            }
+        });
+
+
+        // Subscribe to the same channel Laravel broadcasts to
+        var channel = pusher.subscribe("private-chat.{{ $chat->id }}")
+
+
+        // Bind to your event
+        channel.bind("message.sent", function(data) {
+            console.log("New message:", data);
+            // appendMessage(data.message, data.user); // update UI
+        });
+    </script>
+
 </body>

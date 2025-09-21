@@ -109,4 +109,10 @@ class User extends Authenticatable
     {
         return $this->last_seen && $this->last_seen->gt(now()->subMinutes(2));
     }
+
+    public function chats()
+    {
+        return $this->hasMany(Chat::class, 'user_one_id')
+            ->orWhere('user_two_id', $this->id);
+    }
 }
