@@ -115,4 +115,21 @@ class User extends Authenticatable
         return $this->hasMany(Chat::class, 'user_one_id')
             ->orWhere('user_two_id', $this->id);
     }
+
+    // app/Models/User.php
+    public function subscriptions()
+    {
+        return $this->hasMany(SubscriptionHistory::class, 'user_id', 'id');
+    }
+
+    public function latestActiveSubscription()
+    {
+        $today = now()->toDateString();
+
+        return $this->hasOne(SubscriptionHistory::class)
+            ->where('status', 'active')
+            ->whereDate('start_date', '<=', $today)
+            ->whereDate('end_date', '>=', $today)
+            ->latest('start_date');
+    }
 }

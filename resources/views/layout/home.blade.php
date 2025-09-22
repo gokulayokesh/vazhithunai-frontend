@@ -31,7 +31,7 @@
                                         <p>Discover thousands of verified listings</p>
                                     </div>
 
-                                    <form action="#" class="property-search-form">
+                                    <form action="{{ route('listings.search') }}" class="property-search-form">
                                         <div class="search-grid">
                                             <div class="search-field">
                                                 <label for="search-location" class="field-label">Location</label>
@@ -81,10 +81,10 @@
                                             </div>
                                         </div>
 
-                                        <a onclick="scrollToSection()" class="search-btn">
+                                        <button type="submit" class="search-btn">
                                             <i class="bi bi-search-heart-fill"></i>
                                             <span>Find Partner</span>
-                                        </a>
+                                        </button>
                                     </form>
                                 </div>
 
@@ -712,10 +712,18 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            {{-- <span class="achievement-badge">Star Agent</span> --}}
-                                            <span class="shimmer achievement-badge rising"><span
-                                                    class="bi bi-patch-check-fill"></span>
-                                                Verified</span>
+                                            @if (($user->latestActiveSubscription->plan_code ?? 0) == 3)
+                                                <span class="shimmer achievement-badge"
+                                                    style="margin-left: 115px;"><span style="font-size: small;"
+                                                        class="bi bi-bookmark-heart"></span>Premium</span>
+                                            @endif
+                                            @if (($user->email_verified_at ?? null) != null)
+                                                <span class="shimmer achievement-badge rising"><span
+                                                        style="font-size: small;"
+                                                        class="bi bi-patch-check-fill"></span>
+                                                    Verified</span>
+                                            @endif
+
                                         </div>
                                         <div class="agent-details">
                                             <h4>{{ $user->name ?? '' }}</h4>

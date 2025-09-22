@@ -9,6 +9,8 @@ class SubscriptionHistory extends Model
 {
     use HasFactory;
 
+    protected $table = 'subscription_histories'; // 👈 important
+
     protected $fillable = [
         'user_id',
         'plan_name',

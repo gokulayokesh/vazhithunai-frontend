@@ -13,8 +13,8 @@ class ProfileSearchController extends Controller
     public function search(Request $request)
     {
         $query = UserDetails::with([
-            'user:id,name,email,identifier', // Load basic user info
-            'userImages:id,user_id,image_path', // Load profile images
+            'user:id,name,email,identifier',
+            'userImages:id,user_id,image_path',
         ]);
 
         // Exclude logged-in user
@@ -23,24 +23,24 @@ class ProfileSearchController extends Controller
             $query->where('user_id', '!=', $loggedInUserId);
         }
 
-        // Age filter (convert to DOB range)
+        // Age filter
         if ($request->filled('age_from') || $request->filled('age_to')) {
             $today = Carbon::today();
 
             if ($request->filled('age_from')) {
-                $maxDob = $today->copy()->subYears($request->age_from); // youngest allowed
+                $maxDob = $today->copy()->subYears($request->age_from);
                 $query->where('dob', '<=', $maxDob);
             }
 
             if ($request->filled('age_to')) {
-                $minDob = $today->copy()->subYears($request->age_to + 1)->addDay(); // oldest allowed
+                $minDob = $today->copy()->subYears($request->age_to + 1)->addDay();
                 $query->where('dob', '>=', $minDob);
             }
         }
 
         // City filter
         if ($request->filled('city')) {
-            $query->where('city', $request->city);
+            $query->where('city_id', $request->city);
         }
 
         // Gender filter
@@ -48,15 +48,65 @@ class ProfileSearchController extends Controller
             $query->where('gender', $request->gender);
         }
 
-        // Fetch results (you can paginate)
-        $profiles = $query->orderBy('created_at', 'desc')->paginate(20);
+        // Salary filter (if stored in DB as numeric)
+        if ($request->filled('salary')) {
+            $salary = $request->salary;
+            switch ($salary) {
+                case '1': $query->where('salary', '<', 10000);
+                    break;
+                case '2': $query->whereBetween('salary', [10000, 20000]);
+                    break;
+                case '3': $query->whereBetween('salary', [20000, 30000]);
+                    break;
+                    // ... continue mapping ...
+                case '20': $query->where('salary', '>=', 600000);
+                    break;
+                case '21': $query->whereNull('salary');
+                    break;
+            }
+        }
 
-        // Read the JSON file from storage/app/public/json/cities.json
-        $citiesJson = Storage::disk('public')->get('json/cities.json');
+        // Fetch DB results first
+        $profiles = $query->orderBy('created_at', 'desc')->paginate(9);
 
-        // Decode JSON into an array
-        $cities = json_decode($citiesJson, true);
+        // Load JSON reference data
+        $birthStars = json_decode(Storage::disk('public')->get('json/birthstar.json'), true);
+        $zodiacs = json_decode(Storage::disk('public')->get('json/zodiac.json'), true);
+        $educations = json_decode(Storage::disk('public')->get('json/education.json'), true);
+        $jobs = json_decode(Storage::disk('public')->get('json/job.json'), true);
+        $salaries = json_decode(Storage::disk('public')->get('json/salary.json'), true);
+        $cities = json_decode(Storage::disk('public')->get('json/cities.json'), true);
 
-        return view('layout.listings', compact('profiles', 'cities'));
+        // Now filter in PHP for JSON-based fields
+        $profiles->getCollection()->transform(function ($profile) use ($request) {
+            // Example: assuming profile has string fields like birth_star, zodiac, education, job
+            if ($request->filled('birth_star') && $profile->birth_star != $request->birth_star) {
+                return null;
+            }
+            if ($request->filled('zodiac') && $profile->zodiac != $request->zodiac) {
+                return null;
+            }
+            if ($request->filled('education') && $profile->education != $request->education) {
+                return null;
+            }
+            if ($request->filled('job_type') && $profile->job_type != $request->job_type) {
+                return null;
+            }
+
+            return $profile;
+        });
+
+        // Remove nulls after filtering
+        $profiles->setCollection($profiles->getCollection()->filter());
+
+        return view('layout.listings', compact(
+            'profiles',
+            'cities',
+            'birthStars',
+            'zodiacs',
+            'educations',
+            'jobs',
+            'salaries'
+        ));
     }
 }

@@ -229,10 +229,13 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Chat> $chats
  * @property-read int|null $chats_count
  * @property-read mixed $mobile
+ * @property-read \App\Models\SubscriptionHistory|null $latestActiveSubscription
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, User> $shortlistedUsers
  * @property-read int|null $shortlisted_users_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\SubscriptionHistory> $subscriptions
+ * @property-read int|null $subscriptions_count
  * @property-read \App\Models\UserDetails|null $userDetails
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserImages> $userImages
  * @property-read int|null $user_images_count
