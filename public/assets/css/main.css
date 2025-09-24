@@ -13382,3 +13382,704 @@ select:focus {
     }
 }
 
+
+/*--------------------------------------------------------------
+# Login Section
+--------------------------------------------------------------*/
+.login .auth-container {
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--surface-color);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  @media (max-width: 576px) {
+    .login .auth-container {
+      margin: 0 15px;
+    }
+  }
+  
+  .login .auth-form {
+    padding: 40px 35px;
+    display: none;
+  }
+  
+  .login .auth-form.active {
+    display: block;
+    animation: slideIn 0.5s ease-out;
+  }
+  
+  @media (max-width: 576px) {
+    .login .auth-form {
+      padding: 30px 25px;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .login .form-header {
+    text-align: center;
+    margin-bottom: 35px;
+  }
+  
+  .login .form-header h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--heading-color);
+    margin-bottom: 8px;
+  }
+  
+  .login .form-header p {
+    color: color-mix(in srgb, var(--default-color), transparent 40%);
+    font-size: 15px;
+    margin: 0;
+  }
+  
+  .login .input-group {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .login .input-group .input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    color: color-mix(in srgb, var(--default-color), transparent 50%);
+    font-size: 16px;
+    transition: color 0.3s;
+    pointer-events: none;
+  }
+  
+  .login .input-group .form-control {
+    padding: 16px 16px 16px 50px;
+    border: 1.5px solid color-mix(in srgb, var(--default-color), transparent 85%);
+    background: var(--background-color);
+    color: var(--default-color);
+    font-size: 15px;
+    transition: all 0.3s;
+    position: relative;
+    z-index: 1;
+    border-radius: 12px !important;
+  }
+  
+  .login .input-group .form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color), transparent 90%);
+    outline: none;
+  }
+  
+  .login .input-group .form-control:focus~.input-icon {
+    color: var(--accent-color);
+  }
+  
+  .login .input-group .form-control::placeholder {
+    color: color-mix(in srgb, var(--default-color), transparent 60%);
+  }
+  
+  .login .input-group .password-toggle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: color-mix(in srgb, var(--default-color), transparent 50%);
+    font-size: 16px;
+    z-index: 3;
+    transition: color 0.3s;
+  }
+  
+  .login .input-group .password-toggle:hover {
+    color: var(--accent-color);
+  }
+  
+  .login .name-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  @media (max-width: 576px) {
+    .login .name-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+  
+  .login .form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .login .form-options .remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .login .form-options .remember-me input[type=checkbox] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid color-mix(in srgb, var(--default-color), transparent 70%);
+    border-radius: 4px;
+    background: var(--background-color);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .login .form-options .remember-me input[type=checkbox]:checked {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+  
+  .login .form-options .remember-me input[type=checkbox]:checked::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+  .login .form-options .remember-me label {
+    font-size: 14px;
+    color: var(--default-color);
+    cursor: pointer;
+  }
+  
+  .login .form-options .forgot-password {
+    font-size: 14px;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .login .form-options .forgot-password:hover {
+    color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  }
+  
+  .login .terms-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .login .terms-check input[type=checkbox] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid color-mix(in srgb, var(--default-color), transparent 70%);
+    border-radius: 4px;
+    background: var(--background-color);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  
+  .login .terms-check input[type=checkbox]:checked {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+  
+  .login .terms-check input[type=checkbox]:checked::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+  .login .terms-check label {
+    font-size: 13px;
+    color: color-mix(in srgb, var(--default-color), transparent 20%);
+    line-height: 1.4;
+    cursor: pointer;
+  }
+  
+  .login .terms-check label a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .login .terms-check label a:hover {
+    text-decoration: underline;
+  }
+  
+  .login .auth-btn {
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .login .auth-btn.primary-btn {
+    background: var(--accent-color);
+    color: var(--contrast-color);
+  }
+  
+  .login .auth-btn.primary-btn:hover {
+    background: color-mix(in srgb, var(--accent-color), #000 10%);
+    transform: translateY(-1px);
+  }
+  
+  .login .auth-btn.primary-btn:active {
+    transform: translateY(0);
+  }
+  
+  .login .auth-btn.social-btn {
+    background: var(--background-color);
+    color: var(--default-color);
+    border: 1.5px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  }
+  
+  .login .auth-btn.social-btn:hover {
+    background: color-mix(in srgb, var(--default-color), transparent 97%);
+    border-color: color-mix(in srgb, var(--default-color), transparent 75%);
+  }
+  
+  .login .auth-btn.social-btn i {
+    font-size: 18px;
+  }
+  
+  .login .auth-btn i {
+    font-size: 16px;
+  }
+  
+  .login .divider {
+    position: relative;
+    text-align: center;
+    margin: 25px 0;
+  }
+  
+  .login .divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: color-mix(in srgb, var(--default-color), transparent 85%);
+  }
+  
+  .login .divider span {
+    background: var(--surface-color);
+    color: color-mix(in srgb, var(--default-color), transparent 50%);
+    padding: 0 20px;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .login .switch-form {
+    text-align: center;
+    margin-top: 25px;
+  }
+  
+  .login .switch-form span {
+    color: color-mix(in srgb, var(--default-color), transparent 40%);
+    font-size: 14px;
+  }
+  
+  .login .switch-form .switch-btn {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: color 0.3s;
+  }
+  
+  .login .switch-form .switch-btn:hover {
+    color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  }
+  
+  /*--------------------------------------------------------------
+  # Register Section
+  --------------------------------------------------------------*/
+  .register .registration-form-wrapper {
+    position: relative;
+    background-color: var(--surface-color);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin: 60px 0;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  }
+  
+  .register .decorative-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  .register .decorative-elements .circle {
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  .register .decorative-elements .circle.circle-1 {
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 85%), color-mix(in srgb, var(--accent-color), transparent 95%));
+  }
+  
+  .register .decorative-elements .circle.circle-2 {
+    bottom: -80px;
+    left: -80px;
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--heading-color), transparent 90%), color-mix(in srgb, var(--heading-color), transparent 97%));
+  }
+  
+  .register .decorative-elements .circle.circle-3 {
+    top: 40%;
+    right: 10%;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 70%), color-mix(in srgb, var(--accent-color), transparent 90%));
+  }
+  
+  .register .decorative-elements .square {
+    position: absolute;
+    transform: rotate(45deg);
+  }
+  
+  .register .decorative-elements .square.square-1 {
+    top: 20%;
+    left: 5%;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 80%), color-mix(in srgb, var(--accent-color), transparent 95%));
+  }
+  
+  .register .decorative-elements .square.square-2 {
+    bottom: 15%;
+    right: 10%;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--heading-color), transparent 85%), color-mix(in srgb, var(--heading-color), transparent 95%));
+  }
+  
+  .register .form-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2.5rem;
+  }
+  
+  .register .form-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, var(--heading-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .register .form-header p {
+    font-size: 1.1rem;
+    color: color-mix(in srgb, var(--default-color), transparent 30%);
+  }
+  
+  .register form {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .register form .form-floating {
+    margin-bottom: 1rem;
+  }
+  
+  .register form .form-floating .form-control,
+  .register form .form-floating .form-select {
+    height: 60px;
+    padding: 1rem 1rem 0.5rem;
+    border-radius: 12px;
+    border: 2px solid color-mix(in srgb, var(--default-color), transparent 85%);
+    background-color: color-mix(in srgb, var(--surface-color), transparent 30%);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s;
+    color: var(--default-color);
+  }
+  
+  .register form .form-floating .form-control:focus,
+  .register form .form-floating .form-select:focus {
+    border-color: var(--accent-color);
+    box-shadow: none;
+  }
+  
+  .register form .form-floating .form-control:focus~label,
+  .register form .form-floating .form-select:focus~label {
+    color: var(--accent-color);
+  }
+  
+  .register form .form-floating .form-control:focus~label:after,
+  .register form .form-floating .form-select:focus~label:after {
+    background: transparent;
+  }
+  
+  .register form .form-floating .form-control::placeholder,
+  .register form .form-floating .form-select::placeholder {
+    color: transparent;
+  }
+  
+  .register form .form-floating .form-control:not(:placeholder-shown)~label,
+  .register form .form-floating .form-select:not(:placeholder-shown)~label {
+    color: color-mix(in srgb, var(--default-color), transparent 40%);
+  }
+  
+  .register form .form-floating .form-control:not(:placeholder-shown)~label:after,
+  .register form .form-floating .form-select:not(:placeholder-shown)~label:after {
+    background: transparent;
+  }
+  
+  .register form .form-floating label {
+    padding: 1rem 1rem 0;
+    color: color-mix(in srgb, var(--default-color), transparent 40%);
+    font-weight: 500;
+  }
+  
+  .register form .form-floating label:after {
+    background: transparent;
+  }
+  
+  .register form .form-check {
+    padding-left: 1.8rem;
+    margin-top: 1rem;
+  }
+  
+  .register form .form-check .form-check-input {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: -1.8rem;
+    margin-top: 0.15rem;
+    border: 2px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  }
+  
+  .register form .form-check .form-check-input:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+  
+  .register form .form-check .form-check-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--accent-color), transparent 85%);
+  }
+  
+  .register form .form-check .form-check-label {
+    font-size: 0.9rem;
+    color: color-mix(in srgb, var(--default-color), transparent 25%);
+  }
+  
+  .register form .form-check .form-check-label a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .register form .form-check .form-check-label a:hover {
+    text-decoration: underline;
+  }
+  
+  .register .btn-register-1 {
+    position: relative;
+    height: 56px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent-color), color-mix(in srgb, var(--accent-color), var(--heading-color) 30%));
+    color: var(--contrast-color);
+    border: none;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  
+  .register .btn-register-1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s;
+  }
+  
+  .register .btn-register-1:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px color-mix(in srgb, var(--accent-color), transparent 85%);
+  }
+  
+  .register .btn-register-1:hover::before {
+    left: 100%;
+  }
+  
+  .register .btn-register-1:active {
+    transform: translateY(0);
+  }
+  
+  .register .login-link {
+    margin-top: 1.5rem;
+  }
+  
+  .register .login-link p {
+    font-size: 0.95rem;
+    color: color-mix(in srgb, var(--default-color), transparent 30%);
+  }
+  
+  .register .login-link p a {
+    color: var(--accent-color);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .register .login-link p a:hover {
+    text-decoration: underline;
+  }
+  
+  .register .social-login {
+    position: relative;
+    z-index: 1;
+    margin-top: 2rem;
+  }
+  
+  .register .social-login .divider {
+    position: relative;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .register .social-login .divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+  }
+  
+  .register .social-login .divider span {
+    position: relative;
+    background-color: var(--surface-color);
+    padding: 0 1rem;
+    font-size: 0.9rem;
+    color: color-mix(in srgb, var(--default-color), transparent 40%);
+  }
+  
+  .register .social-login .social-buttons {
+    /* display: grid; */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .register .social-login .social-buttons .btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 48px;
+    border-radius: 12px;
+    background-color: var(--surface-color);
+    border: 2px solid color-mix(in srgb, var(--default-color), transparent 85%);
+    color: var(--default-color);
+    font-weight: 500;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  
+  .register .social-login .social-buttons .btn-social i {
+    font-size: 1.2rem;
+  }
+  
+  .register .social-login .social-buttons .btn-social i.bi-google {
+    color: #DB4437;
+  }
+  
+  .register .social-login .social-buttons .btn-social i.bi-facebook {
+    color: #4267B2;
+  }
+  
+  .register .social-login .social-buttons .btn-social i.bi-apple {
+    color: #000000;
+  }
+  
+  .register .social-login .social-buttons .btn-social:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--default-color), transparent 70%);
+    background-color: color-mix(in srgb, var(--surface-color), transparent 50%);
+  }
+  
+  .register .social-login .social-buttons .btn-social:active {
+    transform: translateY(0);
+  }
+  
+  @media (max-width: 767.98px) {
+    .register {
+      padding: 2rem 1.5rem;
+      margin: 40px 0;
+    }
+  
+    .register .form-header h2 {
+      font-size: 1.8rem;
+    }
+  
+    .register .form-header p {
+      font-size: 1rem;
+    }
+  
+    .register .social-buttons {
+      grid-template-columns: 1fr;
+    }
+  }
+  

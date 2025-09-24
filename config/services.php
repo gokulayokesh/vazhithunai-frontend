@@ -40,4 +40,11 @@ return [
         'template_id' => env('MSG91_TEMPLATE_ID', '68cdad67af24d54a280ba689'),
     ],
 
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT_URI'),
+    ],
+
+
 ];

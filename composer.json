@@ -13,6 +13,7 @@
         "craftsys/msg91-php": "^0.15.4",
         "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.2",
+        "laravel/socialite": "^5.23",
         "laravel/tinker": "^2.10.1",
         "netresearch/jsonmapper": "^5.0",
         "phonepe/pg-php-sdk-v2": "^2.0",

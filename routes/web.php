@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileSearchController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 // Route::get('/', function () {
 //     return view('layout.home');
@@ -35,6 +36,14 @@ Route::get('/terms', function () {
 
 Route::get('/privacy-policy', function () {
     return view('layout.privacy');
+});
+
+Route::get('/login', function () {
+    return view('layout.login');
+});
+
+Route::get('/sign-up', function () {
+    return view('layout.signup');
 });
 
 Route::get('/listings', [ProfileSearchController::class, 'search'])->name('listings.search');
@@ -65,4 +74,26 @@ Route::middleware('auth')->group(function () {
     Route::get('/chats/start/{user}', [ChatController::class, 'start'])->name('chat.start');
     Route::post('/chats/{chat}/send', [ChatController::class, 'send'])->name('chat.send');
     Route::delete('/chats/{chat}', [ChatController::class, 'destroy'])->name('chat.destroy');
+});
+
+Route::get('auth/google', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('auth/google/callback', function () {
+    $user = Socialite::driver('google')->user();
+
+    // Example: find or create user
+    $authUser = App\Models\User::updateOrCreate(
+        ['email' => $user->getEmail()],
+        [
+            'name' => $user->getName(),
+            'google_id' => $user->getId(),
+            'avatar' => $user->getAvatar(),
+        ]
+    );
+
+    Auth::login($authUser);
+
+    return redirect('/dashboard');
 });

@@ -6,6 +6,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Vazhithunai Matrimony | Home</title>
+    <meta name="google-signin-client_id"
+        content="930369423455-8jsjucb90ns0glstji99v8gdjugo2sl2.apps.googleusercontent.com">
     <meta name="description" content="">
     <meta name="keywords" content="">
 
