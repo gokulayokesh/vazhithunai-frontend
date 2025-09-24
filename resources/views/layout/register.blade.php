@@ -1,4 +1,6 @@
 @extends('include.header')
+@section('title', 'Registration | Vazhithunai Matrimony')
+@section('content')
 
 @section('content')
 

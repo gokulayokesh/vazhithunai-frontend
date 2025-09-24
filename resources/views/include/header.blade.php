@@ -17,12 +17,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Vazhithunai Matrimony | Home</title>
     <meta name="google-signin-client_id"
         content="930369423455-8jsjucb90ns0glstji99v8gdjugo2sl2.apps.googleusercontent.com">
     <meta name="description" content="">
     <meta name="keywords" content="">
 
+    <title>@yield('title', 'Vazhithunai Matrimony | Home')</title>
     <!-- Favicons -->
     <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
     <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
@@ -47,13 +47,7 @@
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/register.css') }}" rel="stylesheet">
-
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 
 </head>
-
-<body>
-    @yield('content')
-
-    @stack('scripts')
-
-</body>
+@yield('content')
