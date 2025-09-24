@@ -165,6 +165,105 @@
                             </div>
                         </div>
 
+                        <!-- Location Section -->
+                        <div class="location-section mt-5" data-aos="fade-up" data-aos-delay="700">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="neighborhood-info">
+                                        <h5>Education</h5>
+                                        <div class="poi-item">
+                                            <i class="bi bi-mortarboard"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">{{ $profile->institution }}</span>
+                                                <span class="poi-distance">Year:
+                                                    {{ $profile->completion_year }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="poi-item">
+                                            <i class="bi bi-book"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">{{ $profile->highest_education }}</span>
+                                                <span class="poi-distance">Field:
+                                                    {{ $profile->education_field ?? 'N/A' }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="poi-item">
+                                            <i class="bi bi-award"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Achievements</span>
+                                                <span
+                                                    class="poi-distance">{{ $profile->achievements ?? 'Not specified' }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="neighborhood-info">
+                                        <h5>Career</h5>
+                                        <div class="poi-item">
+                                            <i class="bi bi-briefcase"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">{{ $profile->occupation_category }}</span>
+                                                <span class="poi-distance">{{ $profile->company_name ?? '—' }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="poi-item">
+                                            <i class="bi bi-cash-coin"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Annual Income</span>
+                                                <span
+                                                    class="poi-distance">{{ $profile->annual_income ?? 'Not disclosed' }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="poi-item">
+                                            <i class="bi bi-geo-alt"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Work Location</span>
+                                                <span
+                                                    class="poi-distance">{{ $profile->work_location ?? $profile->city }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="neighborhood-info">
+                                        <h5>Family</h5>
+                                        <div class="poi-item">
+                                            <i class="bi bi-people"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Father’s Occupation</span>
+                                                <span class="poi-distance">{{ $profile->father_work ?? 'N/A' }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="poi-item">
+                                            <i class="bi bi-person-heart"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Mother’s Occupation</span>
+                                                <span class="poi-distance">{{ $profile->mother_work ?? 'N/A' }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="poi-item">
+                                            <i class="bi bi-people-fill"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Siblings</span>
+                                                <span class="poi-distance">
+                                                    {{ $profile->brothers_count }} Brothers
+                                                    ({{ $profile->married_brothers }}
+                                                    Married),
+                                                    {{ $profile->sisters_count }} Sisters
+                                                    ({{ $profile->married_sisters }}
+                                                    Married)
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Location Section -->
+
                         {{-- About Section --}}
                         <div class="property-details mb-5" data-aos="fade-up" data-aos-delay="400">
                             <h3>About {{ $profile->user->name }}</h3>
@@ -197,6 +296,8 @@
                             </div>
                         </div>
 
+
+
                         <!-- Floor Plan -->
                         <div class="floor-plan-section mb-5" data-aos="fade-up" data-aos-delay="500">
                             <h3>Horoscope Image</h3>
@@ -212,6 +313,7 @@
                         </div><!-- End Floor Plan -->
 
                     </div>
+
 
 
                     {{-- Sidebar --}}
@@ -289,7 +391,7 @@
                             </div><!-- End Quick Actions -->
 
                             <!-- Contact Form -->
-                            <div class="contact-form-card mb-4" data-aos="fade-up" data-aos-delay="450">
+                            {{-- <div class="contact-form-card mb-4" data-aos="fade-up" data-aos-delay="450">
                                 <h4>Request Information</h4>
                                 <form action="forms/contact.php" method="post" class="php-email-form">
                                     <div class="row">
@@ -327,7 +429,7 @@
 
                                     <button type="submit" class="btn btn-primary w-100">Send Request</button>
                                 </form>
-                            </div><!-- End Contact Form -->
+                            </div><!-- End Contact Form --> --}}
 
 
 
@@ -335,110 +437,7 @@
                     </div>
                 </div>
 
-                <!-- Location Section -->
-                <div class="location-section mt-5" data-aos="fade-up" data-aos-delay="700">
-                    {{-- <h3>Location</h3> --}}
-                    <div class="row">
-                        {{-- <div class="col-lg-8">
-                            <div class="map-wrapper">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.5!2d-73.935!3d40.796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ3JzQ1LjYiTiA3M8KwNTYnMDYuMCJX!5e0!3m2!1sen!2sus!4v1234567890"
-                                    width="100%" height="350" style="border:0;" allowfullscreen=""
-                                    loading="lazy"></iframe>
-                            </div>
-                        </div> --}}
-                        <div class="col-lg-4">
-                            <div class="neighborhood-info">
-                                <h5>Education</h5>
-                                <div class="poi-item">
-                                    <i class="bi bi-mortarboard"></i>
-                                    <div class="poi-content">
-                                        <span class="poi-name">{{ $profile->institution }}</span>
-                                        <span class="poi-distance">Year: {{ $profile->completion_year }}</span>
-                                    </div>
-                                </div>
-                                <div class="poi-item">
-                                    <i class="bi bi-book"></i>
-                                    <div class="poi-content">
-                                        <span class="poi-name">{{ $profile->highest_education }}</span>
-                                        <span class="poi-distance">Field:
-                                            {{ $profile->education_field ?? 'N/A' }}</span>
-                                    </div>
-                                </div>
-                                <div class="poi-item">
-                                    <i class="bi bi-award"></i>
-                                    <div class="poi-content">
-                                        <span class="poi-name">Achievements</span>
-                                        <span
-                                            class="poi-distance">{{ $profile->achievements ?? 'Not specified' }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-lg-4">
-                            <div class="neighborhood-info">
-                                <h5>Career</h5>
-                                <div class="poi-item">
-                                    <i class="bi bi-briefcase"></i>
-                                    <div class="poi-content">
-                                        <span class="poi-name">{{ $profile->occupation_category }}</span>
-                                        <span class="poi-distance">{{ $profile->company_name ?? '—' }}</span>
-                                    </div>
-                                </div>
-                                <div class="poi-item">
-                                    <i class="bi bi-cash-coin"></i>
-                                    <div class="poi-content">
-                                        <span class="poi-name">Annual Income</span>
-                                        <span
-                                            class="poi-distance">{{ $profile->annual_income ?? 'Not disclosed' }}</span>
-                                    </div>
-                                </div>
-                                <div class="poi-item">
-                                    <i class="bi bi-geo-alt"></i>
-                                    <div class="poi-content">
-                                        <span class="poi-name">Work Location</span>
-                                        <span
-                                            class="poi-distance">{{ $profile->work_location ?? $profile->city }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="neighborhood-info">
-                                <h5>Family</h5>
-                                <div class="poi-item">
-                                    <i class="bi bi-people"></i>
-                                    <div class="poi-content">
-                                        <span class="poi-name">Father’s Occupation</span>
-                                        <span class="poi-distance">{{ $profile->father_work ?? 'N/A' }}</span>
-                                    </div>
-                                </div>
-                                <div class="poi-item">
-                                    <i class="bi bi-person-heart"></i>
-                                    <div class="poi-content">
-                                        <span class="poi-name">Mother’s Occupation</span>
-                                        <span class="poi-distance">{{ $profile->mother_work ?? 'N/A' }}</span>
-                                    </div>
-                                </div>
-                                <div class="poi-item">
-                                    <i class="bi bi-people-fill"></i>
-                                    <div class="poi-content">
-                                        <span class="poi-name">Siblings</span>
-                                        <span class="poi-distance">
-                                            {{ $profile->brothers_count }} Brothers ({{ $profile->married_brothers }}
-                                            Married),
-                                            {{ $profile->sisters_count }} Sisters ({{ $profile->married_sisters }}
-                                            Married)
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div><!-- End Location Section -->
             </div>
         </section>
 
