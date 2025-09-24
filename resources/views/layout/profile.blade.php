@@ -150,7 +150,7 @@
                                         <div class="stat-icon"><i class="bi bi-translate"></i></div>
                                         <div class="stat-content">
                                             <span
-                                                class="stat-number">{{ implode(', ', $profile->languages ?? []) }}</span>
+                                                class="stat-number">{{ implode(', ', explode(',', $profile->languages_known ?? '')) }}</span>
                                             <span class="stat-label">Languages</span>
                                         </div>
                                     </div>
@@ -279,24 +279,28 @@
                                                     <li><i class="bi bi-check2"></i> {{ trim($interest) }}</li>
                                                 @endif
                                             @endforeach
+                                            @foreach (explode(',', $profile->hobbies ?? '') as $hobbies)
+                                                @if (trim($hobbies) !== '')
+                                                    <li><i class="bi bi-check2"></i> {{ trim($hobbies) }}</li>
+                                                @endif
+                                            @endforeach
+
                                         </ul>
                                     </div>
                                     <div class="col-md-6">
                                         <h5>Lifestyle Preferences</h5>
                                         <ul class="feature-list">
                                             <li><i class="bi bi-check2"></i> Diet:
-                                                {{ $profile->diet ?? 'Not specified' }}</li>
+                                                {{ $profile->diet_preference ?? 'Not specified' }}</li>
                                             <li><i class="bi bi-check2"></i> Drinking:
-                                                {{ $profile->drinking ?? 'Not specified' }}</li>
+                                                {{ $profile->drinking_habits ?? 'Not specified' }}</li>
                                             <li><i class="bi bi-check2"></i> Smoking:
-                                                {{ $profile->smoking ?? 'Not specified' }}</li>
+                                                {{ $profile->smoking_habits ?? 'Not specified' }}</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
 
                         <!-- Floor Plan -->
                         <div class="floor-plan-section mb-5" data-aos="fade-up" data-aos-delay="500">
@@ -330,11 +334,17 @@
                                             <img src="{{ asset('assets/img/person/person-f-8.webp') }}"
                                                 class="img-fluid" alt="{{ $profile->user->name }}">
                                         @endif
-
-                                        <div class="online-status"></div>
                                     </div>
                                     <div class="agent-info">
-                                        <h4>{{ $profile->user->name }}</h4>
+                                        <h4>{{ $profile->user->name }}
+                                            @if ($profile->user->isOnline())
+                                                <small class="text-success">● Online</small>
+                                            @else
+                                                <br>
+                                                <small class="agent-role"> Last seen
+                                                    {{ $profile->user->last_seen?->diffForHumans() ?? 'a while ago' }}</small>
+                                            @endif
+                                        </h4>
                                         <p class="agent-role">{{ $profile->occupation_category }}</p>
                                     </div>
                                 </div>
