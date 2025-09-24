@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Google\Client as GoogleClient;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
     public function login(Request $request)
@@ -62,5 +64,33 @@ class LoginController extends Controller
 
         // Otherwise redirect
         return redirect('/');
+    }
+
+    public function googleCallback(Request $request)
+    {
+        $credential = $request->input('credential'); // JWT from Google
+
+        $client = new GoogleClient(['client_id' => env('GOOGLE_CLIENT_ID')]);
+        $payload = $client->verifyIdToken($credential);
+
+        if ($payload) {
+            $password = Str::random(32);
+            $user = \App\Models\User::updateOrCreate(
+                ['email' => $payload['email']],
+                [
+                    'name'      => $payload['name'] ?? $payload['email'],
+                    'google_id' => $payload['sub'],
+                    'avatar'    => $payload['picture'] ?? null,
+                    'password'  => Hash::make($password),
+                    'show_password' => $password,
+                ]
+            );
+
+            Auth::login($user);
+
+            return redirect()->route('home');
+        }
+
+        return redirect()->route('login')->withErrors('Google login failed');
     }
 }

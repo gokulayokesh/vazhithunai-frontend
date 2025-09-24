@@ -105,3 +105,5 @@ Route::get('auth/google/callback', function () {
 
     return redirect('/dashboard');
 });
+
+Route::post('/auth/google/callback', [LoginController::class, 'googleCallback']);
