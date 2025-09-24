@@ -715,7 +715,7 @@
                                             @if (($user->latestActiveSubscription->plan_code ?? 0) == 3)
                                                 <span class="shimmer achievement-badge"
                                                     style="margin-left: 115px;"><span style="font-size: small;"
-                                                        class="bi bi-bookmark-heart"></span>Premium</span>
+                                                        class="bi bi-award"></span>Premium</span>
                                             @endif
                                             @if (($user->email_verified_at ?? null) != null)
                                                 <span class="shimmer achievement-badge rising"><span

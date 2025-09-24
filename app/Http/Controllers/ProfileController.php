@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\UserDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -20,8 +21,8 @@ class ProfileController extends Controller
         $userId = User::getIdByIdentifier($request->identifier);
 
         $profile = UserDetails::with([
-            'user',          // relation to users table
-            'userImages',    // relation to profile images
+            'user',       // relation to users table
+            'userImages', // relation to profile images
             'userHoroscopeImages',
         ])
             ->where('user_id', $userId)
@@ -93,8 +94,58 @@ class ProfileController extends Controller
 
     public function myaccount()
     {
+        // Load JSON reference data
+        $referenceData = json_decode(Storage::disk('public')->get('json/data.json'), true);
+
+        $employmentTypes = $referenceData['employmentTypes'];
+        $industries = $referenceData['industries'];
+        $maritalStatuses = $referenceData['maritalStatuses'];
+        $bodyTypes = $referenceData['bodyTypes'];
+        $complexions = $referenceData['complexions'];
+        $languagesKnown = $motherTongues = $referenceData['motherTongues'];
+        $interests = $referenceData['interests'];
+        $hobbies = $referenceData['hobbies'];
+        $cuisines = $referenceData['cuisines'];
+        $musicGenres = $referenceData['musicGenres'];
+        $sportsFitness = $referenceData['sportsFitness'];
+        $petPreferences = $referenceData['petPreferences'];
+        $travelPreferences = $referenceData['travelPreferences'];
+        $dietaryPreferences = $referenceData['dietaryPreferences'];
+        $smokingHabits = $referenceData['smokingHabits'];
+        $drinkingHabits = $referenceData['drinkingHabits'];
+        $birthStars = $referenceData['birthStars'];
+        $zodiacs = $referenceData['zodiacs'];
+        $educations = $referenceData['educations'][0];
+        $jobs = $referenceData['jobs'][0];
+        $salaries = $referenceData['salaries'][0];
+        $cities = $referenceData['cities'];
+
         $user = Auth::user()->load(['userDetails', 'userImages', 'shortlistedUsers']);
 
-        return view('layout.account', compact('user'));
+        return view('layout.account', compact('user',
+            'cities',
+            'birthStars',
+            'zodiacs',
+            'educations',
+            'jobs',
+            'salaries',
+            'employmentTypes',
+            'industries',
+            'maritalStatuses',
+            'bodyTypes',
+            'complexions',
+            'motherTongues',
+            'interests',
+            'hobbies',
+            'cuisines',
+            'musicGenres',
+            'sportsFitness',
+            'petPreferences',
+            'travelPreferences',
+            'dietaryPreferences',
+            'smokingHabits',
+            'drinkingHabits',
+            'languagesKnown',
+        ));
     }
 }

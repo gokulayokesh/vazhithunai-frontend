@@ -39,14 +39,28 @@
                             <!-- User Info -->
                             <div class="user-info" data-aos="fade-right">
                                 <div class="user-avatar">
-                                    <img src="assets/img/person/person-f-1.webp" alt="Profile" loading="lazy">
+                                    <img src="{{ Auth::user()->userImages()->first()->image_path }}"
+                                        alt="{{ Auth::user()->name }}" alt="Profile" loading="lazy">
                                     <span class="status-badge"><i class="bi bi-shield-check"></i></span>
                                 </div>
                                 <h4>{{ $user->name }}</h4>
-                                <div class="user-status">
-                                    <i class="bi bi-award"></i>
-                                    <span>Premium Member</span>
-                                </div>
+                                @if (Auth::user()->latestActiveSubscription->plan_code == '1')
+                                    <div class="user-status">
+                                        <i class="bi bi-award">Silver User</i>
+                                        <span></span>
+                                    </div>
+                                @elseif(Auth::user()->latestActiveSubscription->plan_code == '2')
+                                    <div class="user-status">
+                                        <i class="bi bi-award">Gold User</i>
+                                        <span></span>
+                                    </div>
+                                @elseif(Auth::user()->latestActiveSubscription->plan_code == '3')
+                                    <div class="user-status">
+                                        <i class="bi bi-award">Premium User</i>
+                                        <span></span>
+                                    </div>
+                                @endif
+
                             </div>
 
                             <!-- Navigation Menu -->
@@ -946,42 +960,605 @@
                                     </div>
 
                                     <div class="settings-content">
-                                        <!-- Personal Information -->
+
+                                        <!-- Birth Details -->
                                         <div class="settings-section" data-aos="fade-up">
-                                            <h3>Personal Information</h3>
+                                            <h3>பிறப்பு விவரங்கள் / Birth Details</h3>
+                                            <div class="row g-3">
+                                                <div class="col-md-6">
+                                                    <label for="name" class="form-label">பெயர் / Name</label>
+                                                    <input type="text" class="form-control" id="name"
+                                                        name="name" value="{{ $user->name }}" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="dob" class="form-label">பிறந்த தேதி / Birth
+                                                        Date</label>
+                                                    <input type="date" class="form-control" id="dob"
+                                                        name="dob" value="{{ $user->dob }}" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="birth_time" class="form-label">பிறந்த நேரம் / Birth
+                                                        Time</label>
+                                                    <input type="time" class="form-control" id="birth_time"
+                                                        name="birth_time" value="{{ $user->birth_time }}">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="age" class="form-label">வயது / Age</label>
+                                                    <input type="number" class="form-control" id="age"
+                                                        name="age" value="{{ $user->age }}" min="18"
+                                                        max="99">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="birth_place" class="form-label">பிறந்த ஊர் / Birth
+                                                        Place</label>
+                                                    <input type="text" class="form-control" id="birth_place"
+                                                        name="birth_place" value="{{ $user->birth_place }}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Education & Occupation Details -->
+                                        <div class="settings-section" data-aos="fade-up">
+                                            <h3>கல்வி மற்றும் தொழில் விவரங்கள் / Education & Occupation Details</h3>
+                                            <div class="row g-3">
+                                                <div class="col-md-6">
+                                                    <label for="highest_education" class="form-label">உயர்ந்த கல்வி /
+                                                        Highest Education</label>
+                                                    <select class="form-control" id="highest_education"
+                                                        name="highest_education" required>
+                                                        @foreach ($educations as $level)
+                                                            <option value="{{ $level }}"
+                                                                {{ $user->highest_education == $level ? 'selected' : '' }}>
+                                                                {{ $level }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                {{-- <div class="col-md-6">
+                                                    <label for="education_field" class="form-label">பிரிவு / Education
+                                                        Field</label>
+                                                    <select class="form-control" id="education_field"
+                                                        name="education_field">
+                                                        @foreach ($educationFields as $field)
+                                                            <option value="{{ $field }}"
+                                                                {{ $user->education_field == $field ? 'selected' : '' }}>
+                                                                {{ $field }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div> --}}
+
+                                                {{-- <div class="col-md-6">
+                                                    <label for="specialization" class="form-label">சிறப்பு /
+                                                        Specialization</label>
+                                                    <select class="form-control" id="specialization"
+                                                        name="specialization">
+                                                        @foreach ($specializations as $spec)
+                                                            <option value="{{ $spec }}"
+                                                                {{ $user->specialization == $spec ? 'selected' : '' }}>
+                                                                {{ $spec }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div> --}}
+
+                                                <div class="col-md-6">
+                                                    <label for="institution" class="form-label">கல்லூரி /
+                                                        பல்கலைக்கழகம் / Institution</label>
+                                                    <input type="text" class="form-control" id="institution"
+                                                        name="institution" value="{{ $user->institution }}">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="completion_year" class="form-label">பட்டம் பெற்ற ஆண்டு
+                                                        / Year of Completion</label>
+                                                    <input type="number" class="form-control" id="completion_year"
+                                                        name="completion_year" value="{{ $user->completion_year }}"
+                                                        min="1950" max="{{ now()->year }}">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="additional_qualifications" class="form-label">கூடுதல்
+                                                        தகுதிகள் / Additional Qualifications</label>
+                                                    <input type="text" class="form-control"
+                                                        id="additional_qualifications"
+                                                        name="additional_qualifications"
+                                                        value="{{ $user->additional_qualifications }}">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="occupation_category" class="form-label">தொழில் வகை /
+                                                        Occupation Category</label>
+                                                    <select class="form-control" id="occupation_category"
+                                                        name="occupation_category">
+                                                        @foreach ($jobs as $cat)
+                                                            <option value="{{ $cat }}"
+                                                                {{ $user->occupation_category == $cat ? 'selected' : '' }}>
+                                                                {{ $cat }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="job_title" class="form-label">பணி / Job Title</label>
+                                                    <input type="text" class="form-control" id="job_title"
+                                                        name="job_title" value="{{ $user->job_title }}">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="company_name" class="form-label">நிறுவனம் / Company
+                                                        Name</label>
+                                                    <input type="text" class="form-control" id="company_name"
+                                                        name="company_name" value="{{ $user->company_name }}">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="employment_type" class="form-label">வேலை வகை /
+                                                        Employment Type</label>
+                                                    <select class="form-control" id="employment_type"
+                                                        name="employment_type">
+                                                        @foreach ($employmentTypes as $type)
+                                                            <option value="{{ $type }}"
+                                                                {{ $user->employment_type == $type ? 'selected' : '' }}>
+                                                                {{ $type }}
+                                                            </option>
+                                                            <option value="">Select</option>
+                                                            <option>Permanent</option>
+                                                            <option>Contract</option>
+                                                            <option>Self-employed</option>
+                                                            <option>Freelancer</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="industry" class="form-label">தொழில் துறை /
+                                                        Industry</label>
+                                                    <select class="form-control" id="industry" name="industry">
+                                                        @foreach ($industries as $ind)
+                                                            <option value="{{ $ind }}"
+                                                                {{ $user->industry == $ind ? 'selected' : '' }}>
+                                                                {{ $ind }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="work_location" class="form-label">பணியிடம் / Work
+                                                        Location</label>
+                                                    <input type="text" class="form-control" id="work_location"
+                                                        name="work_location" value="{{ $user->work_location }}">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="annual_income" class="form-label">வருடாந்திர வருமானம்
+                                                        / Annual Income</label>
+                                                    <select class="form-control" id="annual_income"
+                                                        name="annual_income">
+                                                        @foreach ($salaries as $range)
+                                                            <option value="{{ $range }}"
+                                                                {{ $user->annual_income == $range ? 'selected' : '' }}>
+                                                                {{ $range }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="experience" class="form-label">அனுபவம் / Years of
+                                                        Experience</label>
+                                                    <input type="number" class="form-control" id="experience"
+                                                        name="experience" value="{{ $user->experience }}"
+                                                        min="0" max="60">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Personal Details -->
+                                        <div class="settings-section" data-aos="fade-up">
+                                            <h3>சொந்த விவரங்கள் / Personal Details</h3>
+                                            <div class="row g-3">
+                                                <div class="col-md-6">
+                                                    <label for="gender" class="form-label">பாலினம் / Gender</label>
+                                                    <select class="form-control" id="gender" name="gender"
+                                                        required>
+                                                        <option value="Male"
+                                                            {{ $user->gender == 'Male' ? 'selected' : '' }}>Male
+                                                        </option>
+                                                        <option value="Female"
+                                                            {{ $user->gender == 'Female' ? 'selected' : '' }}>Female
+                                                        </option>
+                                                        <option value="Other"
+                                                            {{ $user->gender == 'Other' ? 'selected' : '' }}>Other
+                                                        </option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="height" class="form-label">ஜாதகரின் உயரம் /
+                                                        Height</label>
+                                                    <input type="text" class="form-control" id="height"
+                                                        name="height" value="{{ $user->height }}"
+                                                        placeholder="e.g., 5 ft 7 in or 170 cm">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="complexion" class="form-label">ஜாதகரின் நிறம் /
+                                                        Complexion</label>
+                                                    <input type="text" class="form-control" id="complexion"
+                                                        name="complexion" value="{{ $user->complexion }}">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="caste" class="form-label">ஜாதகரின் உட்பிரிவு /
+                                                        Caste</label>
+                                                    <input type="text" class="form-control" id="caste"
+                                                        name="caste" value="{{ $user->caste }}">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="marital_status" class="form-label">திருமண நிலை /
+                                                        Marital Status</label>
+                                                    <select class="form-control" id="marital_status"
+                                                        name="marital_status">
+                                                        @foreach ($maritalStatuses as $status)
+                                                            <option value="{{ $status }}"
+                                                                {{ $user->marital_status == $status ? 'selected' : '' }}>
+                                                                {{ $status }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="city" class="form-label">நகரம் / City</label>
+                                                    <input type="text" class="form-control" id="city"
+                                                        name="city" value="{{ $user->city }}">
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <label for="address" class="form-label">முகவரி / Address</label>
+                                                    <textarea class="form-control" id="address" name="address" rows="3">{{ $user->address }}</textarea>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="body_type" class="form-label">உடல் அமைப்பு / Body
+                                                        Type</label>
+                                                    <select class="form-control" id="body_type" name="body_type">
+                                                        @foreach ($bodyTypes as $type)
+                                                            <option value="{{ $type }}"
+                                                                {{ $user->body_type == $type ? 'selected' : '' }}>
+                                                                {{ $type }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="physical_status" class="form-label">உடல் நிலை /
+                                                        Physical Status</label>
+                                                    <select class="form-control" id="physical_status"
+                                                        name="physical_status">
+                                                        @foreach ($bodyTypes as $ps)
+                                                            <option value="{{ $ps }}"
+                                                                {{ $user->physical_status == $ps ? 'selected' : '' }}>
+                                                                {{ $ps }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="mother_tongue" class="form-label">தாய்மொழி / Mother
+                                                        Tongue</label>
+                                                    <select class="form-control" id="mother_tongue"
+                                                        name="mother_tongue">
+                                                        @foreach ($motherTongues as $lang)
+                                                            <option value="{{ $lang }}"
+                                                                {{ $user->mother_tongue == $lang ? 'selected' : '' }}>
+                                                                {{ $lang }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <!-- Interests (checkbox group) -->
+                                                <div class="col-md-12">
+                                                    <label class="form-label">விருப்பங்கள் / Interests</label>
+                                                    <div class="row">
+                                                        @foreach ($interests as $interest)
+                                                            <div class="col-md-3">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        id="interest_{{ Str::slug($interest) }}"
+                                                                        name="interests[]"
+                                                                        value="{{ $interest }}"
+                                                                        {{ in_array($interest, $user->interests ?? []) ? 'checked' : '' }}>
+                                                                    <label class="form-check-label"
+                                                                        for="interest_{{ Str::slug($interest) }}">{{ $interest }}</label>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+
+                                                <!-- Hobbies (checkbox group) -->
+                                                <div class="col-md-12">
+                                                    <label class="form-label">பொழுதுபோக்குகள் / Hobbies</label>
+                                                    <div class="row">
+                                                        @foreach ($hobbies as $hobby)
+                                                            <div class="col-md-3">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        id="hobby_{{ Str::slug($hobby) }}"
+                                                                        name="hobbies[]" value="{{ $hobby }}"
+                                                                        {{ in_array($hobby, $user->hobbies ?? []) ? 'checked' : '' }}>
+                                                                    <label class="form-check-label"
+                                                                        for="hobby_{{ Str::slug($hobby) }}">{{ $hobby }}</label>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+
+                                                <!-- Favourite Cuisine -->
+                                                <div class="col-md-6">
+                                                    <label for="favourite_cuisine" class="form-label">விருப்பமான
+                                                        சமையல் / Favourite Cuisine</label>
+                                                    <select class="form-control" id="favourite_cuisine"
+                                                        name="favourite_cuisine">
+                                                        @foreach ($cuisines as $cuisine)
+                                                            <option value="{{ $cuisine }}"
+                                                                {{ $user->favourite_cuisine == $cuisine ? 'selected' : '' }}>
+                                                                {{ $cuisine }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <!-- Favourite Music Genre -->
+                                                <div class="col-md-6">
+                                                    <label for="favourite_music" class="form-label">விருப்பமான இசை வகை
+                                                        / Favourite Music Genre</label>
+                                                    <select class="form-control" id="favourite_music"
+                                                        name="favourite_music">
+                                                        @foreach ($musicGenres as $genre)
+                                                            <option value="{{ $genre }}"
+                                                                {{ $user->favourite_music == $genre ? 'selected' : '' }}>
+                                                                {{ $genre }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <!-- Sports / Fitness (checkbox group) -->
+                                                <div class="col-md-12">
+                                                    <label class="form-label">விளையாட்டு / உடற்பயிற்சி / Sports /
+                                                        Fitness</label>
+                                                    <div class="row">
+                                                        @foreach ($sportsFitness as $sf)
+                                                            <div class="col-md-3">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        id="sf_{{ Str::slug($sf) }}"
+                                                                        name="sports_fitness[]"
+                                                                        value="{{ $sf }}"
+                                                                        {{ in_array($sf, $user->sports_fitness ?? []) ? 'checked' : '' }}>
+                                                                    <label class="form-check-label"
+                                                                        for="sf_{{ Str::slug($sf) }}">{{ $sf }}</label>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+
+                                                <!-- Preferences -->
+                                                <div class="col-md-6">
+                                                    <label for="pet_preference" class="form-label">செல்லப்பிராணி
+                                                        விருப்பம் / Pet Preference</label>
+                                                    <select class="form-control" id="pet_preference"
+                                                        name="pet_preference">
+                                                        @foreach ($petPreferences as $opt)
+                                                            <option value="{{ $opt }}"
+                                                                {{ $user->pet_preference == $opt ? 'selected' : '' }}>
+                                                                {{ $opt }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="travel_preference" class="form-label">பயண விருப்பம் /
+                                                        Travel Preference</label>
+                                                    <select class="form-control" id="travel_preference"
+                                                        name="travel_preference">
+                                                        @foreach ($travelPreferences as $opt)
+                                                            <option value="{{ $opt }}"
+                                                                {{ $user->travel_preference == $opt ? 'selected' : '' }}>
+                                                                {{ $opt }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="dietary_preference" class="form-label">உணவு விருப்பம்
+                                                        / Dietary Preference</label>
+                                                    <select class="form-control" id="dietary_preference"
+                                                        name="dietary_preference">
+                                                        @foreach ($dietaryPreferences as $opt)
+                                                            <option value="{{ $opt }}"
+                                                                {{ $user->dietary_preference == $opt ? 'selected' : '' }}>
+                                                                {{ $opt }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="smoking_habit" class="form-label">புகைபிடிக்கும்
+                                                        பழக்கம் / Smoking Habit</label>
+                                                    <select class="form-control" id="smoking_habit"
+                                                        name="smoking_habit">
+                                                        @foreach ($smokingHabits as $opt)
+                                                            <option value="{{ $opt }}"
+                                                                {{ $user->smoking_habit == $opt ? 'selected' : '' }}>
+                                                                {{ $opt }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="drinking_habit" class="form-label">மது அருந்தும்
+                                                        பழக்கம் / Drinking Habit</label>
+                                                    <select class="form-control" id="drinking_habit"
+                                                        name="drinking_habit">
+                                                        @foreach ($drinkingHabits as $opt)
+                                                            <option value="{{ $opt }}"
+                                                                {{ $user->drinking_habit == $opt ? 'selected' : '' }}>
+                                                                {{ $opt }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <!-- Languages Known (checkbox or multi-select) -->
+                                                <div class="col-md-12">
+                                                    <label class="form-label">தெரிந்த மொழிகள் / Languages Known</label>
+                                                    <div class="row">
+                                                        @foreach ($languagesKnown as $lang)
+                                                            <div class="col-md-3">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        id="lang_{{ Str::slug($lang) }}"
+                                                                        name="languages_known[]"
+                                                                        value="{{ $lang }}"
+                                                                        {{ in_array($lang, $user->languages_known ?? []) ? 'checked' : '' }}>
+                                                                    <label class="form-check-label"
+                                                                        for="lang_{{ Str::slug($lang) }}">{{ $lang }}</label>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+
+                                                <!-- Life Motto -->
+                                                <div class="col-md-12">
+                                                    <label for="life_motto" class="form-label">வாழ்க்கை குறிக்கோள் /
+                                                        Your life motto</label>
+                                                    <textarea class="form-control" id="life_motto" name="life_motto" rows="3">{{ $user->life_motto }}</textarea>
+                                                </div>
+
+                                                <!-- Contact & Social -->
+                                                <div class="col-md-6">
+                                                    <label for="mobile_number" class="form-label">தொலைபேசி எண் /
+                                                        Mobile Number</label>
+                                                    <input type="tel" class="form-control" id="mobile_number"
+                                                        name="mobile_number" value="{{ $user->mobile_number }}">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="email" class="form-label">மின்னஞ்சல் முகவரி /
+                                                        E-mail</label>
+                                                    <input type="email" class="form-control" id="email"
+                                                        name="email" value="{{ $user->email }}" required>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="facebook_profile" class="form-label">FaceBook
+                                                        Profile</label>
+                                                    <input type="url" class="form-control" id="facebook_profile"
+                                                        name="facebook_profile"
+                                                        value="{{ $user->facebook_profile }}">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="instagram_profile" class="form-label">Instagram
+                                                        profile url</label>
+                                                    <input type="url" class="form-control" id="instagram_profile"
+                                                        name="instagram_profile"
+                                                        value="{{ $user->instagram_profile }}">
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <label for="twitter_profile" class="form-label">Twitter profile
+                                                        url</label>
+                                                    <input type="url" class="form-control" id="twitter_profile"
+                                                        name="twitter_profile" value="{{ $user->twitter_profile }}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Family Details -->
+                                        <div class="settings-section" data-aos="fade-up">
+                                            <h3>Family Details</h3>
                                             <form class="php-email-form settings-form">
                                                 <div class="row g-3">
                                                     <div class="col-md-6">
-                                                        <label for="firstName" class="form-label">First Name</label>
-                                                        <input type="text" class="form-control" id="firstName"
-                                                            value="Sarah" required="">
+                                                        <label for="fatherName" class="form-label">Father's
+                                                            Name</label>
+                                                        <input type="text" class="form-control" id="fatherName"
+                                                            value="<?= $user->father_name ?>">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="lastName" class="form-label">Last Name</label>
-                                                        <input type="text" class="form-control" id="lastName"
-                                                            value="Anderson" required="">
+                                                        <label for="motherName" class="form-label">Mother's
+                                                            Name</label>
+                                                        <input type="text" class="form-control" id="motherName"
+                                                            value="<?= $user->mother_name ?>">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="email" class="form-label">Email</label>
-                                                        <input type="email" class="form-control" id="email"
-                                                            value="sarah@example.com" required="">
+                                                        <label for="siblings" class="form-label">Siblings</label>
+                                                        <input type="text" class="form-control" id="siblings"
+                                                            value="<?= $user->siblings ?>">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="phone" class="form-label">Phone</label>
-                                                        <input type="tel" class="form-control" id="phone"
-                                                            value="+1 (555) 123-4567">
+                                                        <label for="familyStatus" class="form-label">Family
+                                                            Status</label>
+                                                        <input type="text" class="form-control" id="familyStatus"
+                                                            value="<?= $user->family_status ?>">
                                                     </div>
-                                                </div>
-
-                                                <div class="form-buttons">
-                                                    <button type="submit" class="btn-save">Save Changes</button>
-                                                </div>
-
-                                                <div class="loading">Loading</div>
-                                                <div class="error-message"></div>
-                                                <div class="sent-message">Your changes have been saved successfully!
                                                 </div>
                                             </form>
+                                        </div>
+
+                                        <!-- Horoscope Details -->
+                                        <div class="settings-section" data-aos="fade-up">
+                                            <h3>Horoscope Details</h3>
+                                            <form class="php-email-form settings-form">
+                                                <div class="row g-3">
+                                                    <div class="col-md-6">
+                                                        <label for="zodiac" class="form-label">Zodiac Sign</label>
+                                                        <input type="text" class="form-control" id="zodiac"
+                                                            value="<?= $user->zodiac ?>">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="birthStar" class="form-label">Birth Star</label>
+                                                        <input type="text" class="form-control" id="birthStar"
+                                                            value="<?= $user->birth_star ?>">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="rasi" class="form-label">Rasi</label>
+                                                        <input type="text" class="form-control" id="rasi"
+                                                            value="<?= $user->rasi ?>">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="horoscopeMatch" class="form-label">Horoscope
+                                                            Match</label>
+                                                        <input type="text" class="form-control"
+                                                            id="horoscopeMatch"
+                                                            value="<?= $user->horoscope_match ?>">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <!-- Save Button -->
+                                        <div class="form-buttons">
+                                            <button type="submit" class="btn-save">Save Changes</button>
                                         </div>
 
                                         <!-- Email Preferences -->
@@ -1037,8 +1614,8 @@
                                                     <div class="col-md-6">
                                                         <label for="newPassword" class="form-label">New
                                                             Password</label>
-                                                        <input type="password" class="form-control" id="newPassword"
-                                                            required="">
+                                                        <input type="password" class="form-control"
+                                                            id="newPassword" required="">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="confirmPassword" class="form-label">Confirm

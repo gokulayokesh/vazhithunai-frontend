@@ -45,7 +45,7 @@
                                     <hr>
                                     <br>
                                     <div class="row">
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="first_name">பெயர் / Name</label>
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1"><span
@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="error-text">Name is required</div>
                                         </div>
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="last_name">பிறந்த தேதி / Birth Date
                                             </label>
                                             <div class="input-group">
@@ -66,7 +66,7 @@
                                             </div>
                                             <div class="error-text">Birth date is required</div>
                                         </div>
-                                        <div class="form-group col-12 col-md-4 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="email">பிறந்த நேரம் / Birth Time</label>
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1"><span
@@ -76,7 +76,7 @@
                                             </div>
                                             <div class="error-text">Birth time is required</div>
                                         </div>
-                                        <div class="form-group col-12 col-md-4 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="email">வயது / Age</label>
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1"><span
@@ -87,7 +87,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="email">பிறந்த ஊர் / Birth Place</label>
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1"><span
@@ -106,7 +106,7 @@
                                     <br>
                                     <div class="row">
                                         <!--  Education Details -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="highest_education">உயர்ந்த கல்வி / Highest
                                                 Education</label>
                                             <div class="input-group">
@@ -126,7 +126,7 @@
                                             <div class="error-text">Highest Education is required</div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="education_field">பிரிவு / Education
                                                 Field</label>
                                             <div class="input-group">
@@ -148,7 +148,7 @@
                                             <div class="error-text">Education Field is required</div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="specialization">சிறப்பு /
                                                 Specialization</label>
                                             <div class="input-group">
@@ -162,7 +162,7 @@
                                             <div class="error-text">Specialization is required</div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="institution">கல்லூரி / பல்கலைக்கழகம் /
                                                 Institution</label>
                                             <div class="input-group">
@@ -172,7 +172,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="completion_year">பட்டம் பெற்ற ஆண்டு / Year of
                                                 Completion</label>
                                             <div class="input-group">
@@ -183,7 +183,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="certifications">கூடுதல் தகுதிகள் / Additional
                                                 Qualifications</label>
                                             <div class="input-group">
@@ -194,7 +194,7 @@
                                         </div>
 
                                         <!-- 💼 Occupation Details -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="occupation_category">தொழில் வகை / Occupation
                                                 Category</label>
                                             <div class="input-group">
@@ -215,7 +215,7 @@
                                             <div class="error-text">Occupation Category is required</div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="job_title">பணி / Job Title</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
@@ -226,7 +226,7 @@
                                             <div class="error-text">Job Title is required</div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="company_name">நிறுவனம் / Company Name</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
@@ -236,7 +236,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="employment_type">வேலை வகை / Employment
                                                 Type</label>
                                             <div class="input-group">
@@ -252,7 +252,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="industry">தொழில் துறை / Industry</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
@@ -269,7 +269,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="work_location">பணியிடம் / Work Location</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-geo-alt"></span></span>
@@ -279,7 +279,7 @@
                                             <div class="error-text">Work Location is required</div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="annual_income">வருடாந்திர வருமானம் / Annual
                                                 Income</label>
                                             <div class="input-group">
@@ -296,7 +296,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="experience_years">அனுபவம் / Years of
                                                 Experience</label>
                                             <div class="input-group">
@@ -319,7 +319,7 @@
 
                                     <div class="row">
                                         <!-- பாலினம் / Gender -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="gender">பாலினம் / Gender</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
@@ -335,7 +335,7 @@
                                         </div>
 
                                         <!-- ஜாதகரின் உயரம் / Height -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="height">ஜாதகரின் உயரம் / Height</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
@@ -386,7 +386,7 @@
                                         </div>
 
                                         <!-- ஜாதகரின் நிறம் / Color -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="color">ஜாதகரின் நிறம் / Complexion</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-palette"></span></span>
@@ -401,7 +401,7 @@
                                         </div>
 
                                         <!-- ஜாதகரின் உட்பிரிவு / Caste -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="caste">ஜாதகரின் உட்பிரிவு / Caste</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-people"></span></span>
@@ -412,7 +412,7 @@
                                         </div>
 
                                         <!-- திருமண நிலை / Marital Status -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="marital_status">திருமண நிலை / Marital
                                                 Status</label>
                                             <div class="input-group">
@@ -429,7 +429,7 @@
                                         </div>
 
                                         <!-- நகரம் / City -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="city">நகரம் / City</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-geo-alt"></span></span>
@@ -453,7 +453,7 @@
                                         <!-- கூடுதல் தனிப்பட்ட விவரங்கள் / Additional Personal Details -->
 
                                         <!-- உடல் அமைப்பு / Body Type -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="body_type">உடல் அமைப்பு / Body Type</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
@@ -469,7 +469,7 @@
                                         </div>
 
                                         <!-- உடல் நிலை / Physical Status -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="physical_status">உடல் நிலை / Physical
                                                 Status</label>
                                             <div class="input-group">
@@ -484,7 +484,7 @@
                                         </div>
 
                                         <!-- தாய்மொழி / Mother Tongue -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="mother_tongue">தாய்மொழி / Mother Tongue</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
@@ -524,7 +524,7 @@
 
 
                                         <!-- Interests -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="interests">விருப்பங்கள் / Interests</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-star"></span></span>
@@ -539,7 +539,7 @@
                                         </div>
 
                                         <!-- Hobbies -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="hobbies">பொழுதுபோக்குகள் / Hobbies</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-heart"></span></span>
@@ -554,7 +554,7 @@
                                         </div>
 
                                         <!-- Favourite Cuisine -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="fav_cuisine">விருப்பமான சமையல் / Favourite
                                                 Cuisine</label>
                                             <div class="input-group">
@@ -571,7 +571,7 @@
                                         </div>
 
                                         <!-- Favourite Music Genre -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="fav_music">விருப்பமான இசை வகை / Favourite Music
                                                 Genre</label>
                                             <div class="input-group">
@@ -588,7 +588,7 @@
                                         </div>
 
                                         <!-- Sports / Fitness -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="sports">விளையாட்டு / உடற்பயிற்சி / Sports /
                                                 Fitness</label>
                                             <div class="input-group">
@@ -603,7 +603,7 @@
                                         </div>
 
                                         <!-- Pet Preference -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="pet_pref">செல்லப்பிராணி விருப்பம் / Pet
                                                 Preference</label>
                                             <div class="input-group">
@@ -620,7 +620,7 @@
                                         </div>
 
                                         <!-- Travel Preference -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="travel_pref">பயண விருப்பம் / Travel
                                                 Preference</label>
                                             <div class="input-group">
@@ -636,7 +636,7 @@
                                         </div>
 
                                         <!-- Dietary Preference -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="diet">உணவு விருப்பம் / Dietary
                                                 Preference</label>
                                             <div class="input-group">
@@ -652,7 +652,7 @@
                                         </div>
 
                                         <!-- Smoking Habit -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="smoking">புகைபிடிக்கும் பழக்கம் / Smoking
                                                 Habit</label>
                                             <div class="input-group">
@@ -668,7 +668,7 @@
                                         </div>
 
                                         <!-- Drinking Habit -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="drinking">மது அருந்தும் பழக்கம் / Drinking
                                                 Habit</label>
                                             <div class="input-group">
@@ -684,7 +684,7 @@
                                         </div>
 
                                         <!-- Languages Known -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="languages">தெரிந்த மொழிகள் / Languages
                                                 Known</label>
                                             <div class="input-group">
@@ -722,7 +722,7 @@
                                         </div>
 
                                         <!-- Life Motto -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="life_motto">வாழ்க்கை குறிக்கோள் / Life
                                                 Motto</label>
                                             <div class="input-group">
@@ -736,7 +736,7 @@
 
 
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="first_name">தொலைபேசி எண் / Mobile
                                                 Number</label>
                                             <div class="input-group">
@@ -747,7 +747,7 @@
                                             </div>
                                             <div class="error-text">Mobile Number is required</div>
                                         </div>
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="first_name">மின்னஞ்சல் முகவரி / E-mail</label>
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1">@</span>
@@ -756,7 +756,7 @@
                                             </div>
                                             <div class="error-text">E-mail is required</div>
                                         </div>
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="f_book">FaceBook Profile</label>
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1">@</span>
@@ -765,7 +765,7 @@
                                             </div>
                                             <div class="error-text">FaceBook Profile Required</div>
                                         </div>
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="instagram_profile_url">Instagram profile
                                                 url</label>
                                             <div class="input-group">
@@ -776,7 +776,7 @@
                                             <div class="error-text">instagram Profile Required</div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="instagram_profile_url">Twitter profile
                                                 url</label>
                                             <div class="input-group">
@@ -793,7 +793,7 @@
                                 <section class="form-step" data-step="2">
                                     <div class="row">
                                         <!-- குடும்ப நிலை / Family Status -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="family_status">குடும்ப நிலை / Family
                                                 Status</label>
                                             <div class="input-group">
@@ -810,7 +810,7 @@
                                         </div>
 
                                         <!-- குலதெய்வம் / Family God -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="family_god">குலதெய்வம் / Family God</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-flower1"></span></span>
@@ -820,7 +820,7 @@
                                         </div>
 
                                         <!-- தகப்பனார் / Father - உண்டு / இல்லை -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="father_alive">தகப்பனார் / Father</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-person"></span></span>
@@ -835,7 +835,7 @@
                                         </div>
 
                                         <!-- தாயார் / Mother - உண்டு / இல்லை -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="mother_alive">தாயார் / Mother</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
@@ -851,7 +851,7 @@
                                         </div>
 
                                         <!-- மொபைல் எண் (பெற்றோர் அல்லது கார்டியன்) -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="parent_mobile">மொபைல் எண் (பெற்றோர்/கார்டியன்)
                                                 / Mobile Number (Parent/Guardian)</label>
                                             <div class="input-group">
@@ -864,7 +864,7 @@
                                         </div>
 
                                         <!-- தகப்பனரின் தொழில், மாத வருமானம் -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="father_work">தகப்பனரின் தொழில், மாத வருமானம் /
                                                 Father Work, Monthly Salary</label>
                                             <div class="input-group">
@@ -876,7 +876,7 @@
                                         </div>
 
                                         <!-- தாயார் தொழில், மாத வருமானம் -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="mother_work">தாயார் தொழில், மாத வருமானம் /
                                                 Mother Work, Monthly Salary</label>
                                             <div class="input-group">
@@ -941,7 +941,7 @@
                                         </div>
 
                                         <!-- வீடு / Own House -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="own_house">வீடு / Own House</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-house"></span></span>
@@ -972,7 +972,7 @@
                                 <section class="form-step" data-step="3">
                                     <div class="row">
                                         <!-- ஜென்ம நட்சத்திரம் / Birth Star -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="birth_star">ஜென்ம நட்சத்திரம் / Birth
                                                 Star</label>
                                             <div class="input-group">
@@ -984,7 +984,7 @@
                                         </div>
 
                                         <!-- ராகு & கேது / Rahu & Ketu -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="rahu_ketu">ராகு & கேது / Rahu & Ketu</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
@@ -999,7 +999,7 @@
                                         </div>
 
                                         <!-- செவ்வாய் / Chevvai (Mars) -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="chevvai">செவ்வாய் / Chevvai (Mars)</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
@@ -1014,7 +1014,7 @@
                                         </div>
 
                                         <!-- ஜென்ம ராசி / Zodiac Sign -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="zodiac_sign">ஜென்ம ராசி / Zodiac Sign</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
@@ -1026,7 +1026,7 @@
                                         </div>
 
                                         <!-- ஜென்ம லக்கினம் / Birth Lagnam -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="birth_lagnam">ஜென்ம லக்கினம் / Birth
                                                 Lagnam</label>
                                             <div class="input-group">
@@ -1038,7 +1038,7 @@
                                         </div>
 
                                         <!-- சுயவிவர படம் / Profile Picture -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-4 mb-3">
                                             <label class="form-label" for="profile_picture">சுயவிவர படம் / Profile
                                                 Picture</label>
                                             <div class="input-group">
@@ -1051,7 +1051,7 @@
                                         </div>
 
                                         <!-- ஜாதகம் படம் / Horoscope Picture -->
-                                        <div class="form-group col-12 col-md-6 mb-3">
+                                        <div class="form-group col-12 col-md-4 mb-3">
                                             <label class="form-label" for="horoscope_picture">ஜாதகம் படம் / Horoscope
                                                 Picture</label>
                                             <div class="input-group">

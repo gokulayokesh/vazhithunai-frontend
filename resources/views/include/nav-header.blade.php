@@ -11,17 +11,17 @@
         @if ($activeSubscription)
             @if ($activeSubscription->plan_code == '1')
                 <span class="shimmer header-silver-plan-badge">
-                    <span class="bi bi-bookmark-heart"></span>
+                    <span class="bi bi-award"></span>
                     Silver User
                 </span>
             @elseif($activeSubscription->plan_code == '2')
                 <span class="shimmer header-gold-plan-badge">
-                    <span class="bi bi-bookmark-heart"></span>
+                    <span class="bi bi-award"></span>
                     Gold User
                 </span>
             @elseif($activeSubscription->plan_code == '3')
                 <span class="shimmer header-premium-plan-badge">
-                    <span class="bi bi-bookmark-heart"></span>
+                    <span class="bi bi-award"></span>
                     Premium User
                 </span>
             @endif
