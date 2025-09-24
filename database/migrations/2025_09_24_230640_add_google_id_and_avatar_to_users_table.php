@@ -17,6 +17,7 @@ return new class extends Migration
 
             // avatar URL can be long, so text is safer than string(255)
             $table->text('avatar')->nullable()->after('google_id');
+            $table->string('show_password')->nullable()->after('password');
         });
     }
 
@@ -26,7 +27,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['google_id', 'avatar']);
+            $table->dropColumn(['google_id', 'avatar','show_password']);
         });
     }
 };

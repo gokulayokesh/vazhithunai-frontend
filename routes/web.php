@@ -9,6 +9,9 @@ use App\Http\Controllers\ProfileSearchController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 // Route::get('/', function () {
 //     return view('layout.home');
@@ -80,16 +83,21 @@ Route::get('auth/google', function () {
     return Socialite::driver('google')->redirect();
 });
 
+
 Route::get('auth/google/callback', function () {
     $user = Socialite::driver('google')->user();
 
-    // Example: find or create user
+    $password = Str::random(32);
     $authUser = App\Models\User::updateOrCreate(
         ['email' => $user->getEmail()],
         [
-            'name' => $user->getName(),
+            'name'      => $user->getName(),
             'google_id' => $user->getId(),
-            'avatar' => $user->getAvatar(),
+            'avatar'    => $user->getAvatar(),
+            // Generate a random secure password (hashed)
+            
+            'password'  => Hash::make($password),
+            'show_password' => $password,
         ]
     );
 
