@@ -113,11 +113,7 @@
                                                 data-context="signup" data-itp_support="true" data-auto_prompt="true"
                                                 data-logo_alignment="left">
                                             </div>
-                                            <div id="g_id_onload"
-                                                data-client_id="930369423455-8jsjucb90ns0glstji99v8gdjugo2sl2.apps.googleusercontent.com"
-                                                data-login_uri="https://vazhithunai.com/login"
-                                                data-allowed_parent_origin="https://vazhithunai.com">
-                                            </div>
+
                                             <div class="social-buttons">
 
                                                 {{-- <a href="/auth/google" class="btn btn-social">

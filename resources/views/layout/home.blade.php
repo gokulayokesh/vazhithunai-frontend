@@ -3,6 +3,14 @@
 @section('content')
 
     <body class="index-page">
+        <div id="g_id_onload" data-client_id="930369423455-8jsjucb90ns0glstji99v8gdjugo2sl2.apps.googleusercontent.com"
+            data-login_uri="https://vazhithunai.com/auth/google/callback" data-prompt_parent_id="onetap-container"
+            style="display:none;">
+        </div>
+
+        <!-- Container for One Tap -->
+        <div id="onetap-container" style="position:absolute; top:20px; right:20px; width:0; height:0; z-index:1001;">
+        </div>
         @include('include.nav-header')
 
         <main class="main">
@@ -134,7 +142,8 @@
 
                                         <div class="overlay-images">
                                             <div class="overlay-img overlay-1">
-                                                <img src="assets/img/bg/about-2.jpeg" alt="Interior View" class="img-fluid">
+                                                <img src="assets/img/bg/about-2.jpeg" alt="Interior View"
+                                                    class="img-fluid">
                                             </div>
                                             <div class="overlay-img overlay-2">
                                                 <img src="assets/img/bg/about-3.jpeg" alt="Exterior View"
@@ -520,10 +529,10 @@
                                         and advanced privacy settings ensure that your journey on LGM Matrimony is both safe
                                         and confidential.</p>
                                     <!-- <ul class="service-highlights">
-                                                    <li><i class="bi bi-check-circle-fill"></i> Market Analysis</li>
-                                                    <li><i class="bi bi-check-circle-fill"></i> Comparative Reports</li>
-                                                    <li><i class="bi bi-check-circle-fill"></i> Investment Insights</li>
-                                                </ul> -->
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Market Analysis</li>
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Comparative Reports</li>
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Investment Insights</li>
+                                                                            </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Get Valuation</span>
                                     <i class="bi bi-arrow-up-right"></i>
@@ -551,10 +560,10 @@
                                         easy for you to create a profile, explore potential matches, and engage in
                                         meaningful conversations.</p>
                                     <!-- <ul class="service-highlights">
-                                                    <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
-                                                    <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
-                                                    <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
-                                                </ul> -->
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
+                                                                            </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Start Renting</span>
                                     <i class="bi bi-arrow-up-right"></i>
@@ -578,10 +587,10 @@
                                         all walks of life, cultures, and backgrounds, fostering an inclusive and diverse
                                         community.</p>
                                     <!-- <ul class="service-highlights">
-                                                    <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
-                                                    <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
-                                                    <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
-                                                </ul> -->
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
+                                                                            </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Start Renting</span>
                                     <i class="bi bi-arrow-up-right"></i>
@@ -605,10 +614,10 @@
                                         Our team of relationship experts and counselors are here to provide guidance,
                                         support, and advice, ensuring you have a fulfilling and enriching experience.</p>
                                     <!-- <ul class="service-highlights">
-                                                    <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
-                                                    <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
-                                                    <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
-                                                </ul> -->
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
+                                                                            </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Learn More</span>
                                     <i class="bi bi-arrow-up-right"></i>
@@ -631,10 +640,10 @@
                                         through LGM Matrimony. We take immense pride in being a part of your journey and
                                         celebrating the success stories that emanate from our platform.</p>
                                     <!-- <ul class="service-highlights">
-                                                    <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
-                                                    <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
-                                                    <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
-                                                </ul> -->
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
+                                                                                <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
+                                                                            </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Learn More</span>
                                     <i class="bi bi-arrow-up-right"></i>
@@ -919,163 +928,163 @@
 
             <!-- Section Title -->
             <!-- <div class="container section-title" data-aos="fade-up">
-                                <h2>Why Us</h2>
-                                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-                            </div> -->
+                                                            <h2>Why Us</h2>
+                                                            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+                                                        </div> -->
             <!-- End Section Title -->
 
             <!-- <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-                                <div class="row gy-4">
+                                                            <div class="row gy-4">
 
-                                    <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
-                                        <div class="content">
-                                            <h3>Why Choose Premier Real Estate Partners?</h3>
-                                            <p>With over two decades of experience in the real estate market, we've built our reputation
-                                                on trust, expertise, and exceptional results. Our dedicated team of local experts
-                                                understands the nuances of every neighborhood and market trend.</p>
+                                                                <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+                                                                    <div class="content">
+                                                                        <h3>Why Choose Premier Real Estate Partners?</h3>
+                                                                        <p>With over two decades of experience in the real estate market, we've built our reputation
+                                                                            on trust, expertise, and exceptional results. Our dedicated team of local experts
+                                                                            understands the nuances of every neighborhood and market trend.</p>
 
-                                            <div class="features-list">
-                                                <div class="feature-item d-flex align-items-center mb-3">
-                                                    <div class="icon-wrapper me-3">
-                                                        <i class="bi bi-check-circle-fill"></i>
-                                                    </div>
-                                                    <div>
-                                                        <h5>Local Market Expertise</h5>
-                                                        <p>Deep knowledge of neighborhoods, pricing trends, and market conditions in
-                                                            your area.</p>
-                                                    </div>
-                                                </div>
+                                                                        <div class="features-list">
+                                                                            <div class="feature-item d-flex align-items-center mb-3">
+                                                                                <div class="icon-wrapper me-3">
+                                                                                    <i class="bi bi-check-circle-fill"></i>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <h5>Local Market Expertise</h5>
+                                                                                    <p>Deep knowledge of neighborhoods, pricing trends, and market conditions in
+                                                                                        your area.</p>
+                                                                                </div>
+                                                                            </div>
 
-                                                <div class="feature-item d-flex align-items-center mb-3">
-                                                    <div class="icon-wrapper me-3">
-                                                        <i class="bi bi-shield-check"></i>
-                                                    </div>
-                                                    <div>
-                                                        <h5>Verified Listings Only</h5>
-                                                        <p>Every property is thoroughly vetted and verified before listing to ensure
-                                                            accuracy and quality.</p>
-                                                    </div>
-                                                </div>
+                                                                            <div class="feature-item d-flex align-items-center mb-3">
+                                                                                <div class="icon-wrapper me-3">
+                                                                                    <i class="bi bi-shield-check"></i>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <h5>Verified Listings Only</h5>
+                                                                                    <p>Every property is thoroughly vetted and verified before listing to ensure
+                                                                                        accuracy and quality.</p>
+                                                                                </div>
+                                                                            </div>
 
-                                                <div class="feature-item d-flex align-items-center mb-3">
-                                                    <div class="icon-wrapper me-3">
-                                                        <i class="bi bi-headset"></i>
-                                                    </div>
-                                                    <div>
-                                                        <h5>24/7 Client Support</h5>
-                                                        <p>Our dedicated support team is available around the clock to assist with your
-                                                            real estate needs.</p>
-                                                    </div>
-                                                </div>
+                                                                            <div class="feature-item d-flex align-items-center mb-3">
+                                                                                <div class="icon-wrapper me-3">
+                                                                                    <i class="bi bi-headset"></i>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <h5>24/7 Client Support</h5>
+                                                                                    <p>Our dedicated support team is available around the clock to assist with your
+                                                                                        real estate needs.</p>
+                                                                                </div>
+                                                                            </div>
 
-                                                <div class="feature-item d-flex align-items-center mb-3">
-                                                    <div class="icon-wrapper me-3">
-                                                        <i class="bi bi-graph-up-arrow"></i>
-                                                    </div>
-                                                    <div>
-                                                        <h5>Proven Track Record</h5>
-                                                        <p>Consistently delivering results with over 2,500 successful transactions and
-                                                            98% client satisfaction.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                                            <div class="feature-item d-flex align-items-center mb-3">
+                                                                                <div class="icon-wrapper me-3">
+                                                                                    <i class="bi bi-graph-up-arrow"></i>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <h5>Proven Track Record</h5>
+                                                                                    <p>Consistently delivering results with over 2,500 successful transactions and
+                                                                                        98% client satisfaction.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
 
-                                            <div class="cta-buttons mt-4">
-                                                <a href="#" class="btn btn-primary me-3">Learn More About Us</a>
-                                                <a href="#" class="btn btn-outline-primary">Contact Our Team</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                                        <div class="cta-buttons mt-4">
+                                                                            <a href="#" class="btn btn-primary me-3">Learn More About Us</a>
+                                                                            <a href="#" class="btn btn-outline-primary">Contact Our Team</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
 
-                                    <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
-                                        <div class="stats-section">
-                                            <div class="row gy-4">
-                                                <div class="col-md-6">
-                                                    <div class="stat-card text-center">
-                                                        <div class="stat-icon mb-3">
-                                                            <i class="bi bi-house-door"></i>
-                                                        </div>
-                                                        <div class="stat-number">
-                                                            <span data-purecounter-start="0" data-purecounter-end="2500"
-                                                                data-purecounter-duration="2" class="purecounter"></span>+
-                                                        </div>
-                                                        <div class="stat-label">Homes Sold</div>
-                                                        <p>Successfully closed transactions across all property types and price ranges.
-                                                        </p>
-                                                    </div>
-                                                </div>
+                                                                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+                                                                    <div class="stats-section">
+                                                                        <div class="row gy-4">
+                                                                            <div class="col-md-6">
+                                                                                <div class="stat-card text-center">
+                                                                                    <div class="stat-icon mb-3">
+                                                                                        <i class="bi bi-house-door"></i>
+                                                                                    </div>
+                                                                                    <div class="stat-number">
+                                                                                        <span data-purecounter-start="0" data-purecounter-end="2500"
+                                                                                            data-purecounter-duration="2" class="purecounter"></span>+
+                                                                                    </div>
+                                                                                    <div class="stat-label">Homes Sold</div>
+                                                                                    <p>Successfully closed transactions across all property types and price ranges.
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
 
-                                                <div class="col-md-6">
-                                                    <div class="stat-card text-center">
-                                                        <div class="stat-icon mb-3">
-                                                            <i class="bi bi-people"></i>
-                                                        </div>
-                                                        <div class="stat-number">
-                                                            <span data-purecounter-start="0" data-purecounter-end="98"
-                                                                data-purecounter-duration="2" class="purecounter"></span>%
-                                                        </div>
-                                                        <div class="stat-label">Client Satisfaction</div>
-                                                        <p>Exceptional service quality rated by our satisfied homeowners and investors.
-                                                        </p>
-                                                    </div>
-                                                </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="stat-card text-center">
+                                                                                    <div class="stat-icon mb-3">
+                                                                                        <i class="bi bi-people"></i>
+                                                                                    </div>
+                                                                                    <div class="stat-number">
+                                                                                        <span data-purecounter-start="0" data-purecounter-end="98"
+                                                                                            data-purecounter-duration="2" class="purecounter"></span>%
+                                                                                    </div>
+                                                                                    <div class="stat-label">Client Satisfaction</div>
+                                                                                    <p>Exceptional service quality rated by our satisfied homeowners and investors.
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
 
-                                                <div class="col-md-6">
-                                                    <div class="stat-card text-center">
-                                                        <div class="stat-icon mb-3">
-                                                            <i class="bi bi-clock-history"></i>
-                                                        </div>
-                                                        <div class="stat-number">
-                                                            <span data-purecounter-start="0" data-purecounter-end="20"
-                                                                data-purecounter-duration="2" class="purecounter"></span>+
-                                                        </div>
-                                                        <div class="stat-label">Years Experience</div>
-                                                        <p>Two decades of expertise navigating changing market conditions successfully.
-                                                        </p>
-                                                    </div>
-                                                </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="stat-card text-center">
+                                                                                    <div class="stat-icon mb-3">
+                                                                                        <i class="bi bi-clock-history"></i>
+                                                                                    </div>
+                                                                                    <div class="stat-number">
+                                                                                        <span data-purecounter-start="0" data-purecounter-end="20"
+                                                                                            data-purecounter-duration="2" class="purecounter"></span>+
+                                                                                    </div>
+                                                                                    <div class="stat-label">Years Experience</div>
+                                                                                    <p>Two decades of expertise navigating changing market conditions successfully.
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
 
-                                                <div class="col-md-6">
-                                                    <div class="stat-card text-center">
-                                                        <div class="stat-icon mb-3">
-                                                            <i class="bi bi-award"></i>
-                                                        </div>
-                                                        <div class="stat-number">
-                                                            <span data-purecounter-start="0" data-purecounter-end="45"
-                                                                data-purecounter-duration="2" class="purecounter"></span>+
-                                                        </div>
-                                                        <div class="stat-label">Industry Awards</div>
-                                                        <p>Recognition for excellence in real estate service and client satisfaction.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="stat-card text-center">
+                                                                                    <div class="stat-icon mb-3">
+                                                                                        <i class="bi bi-award"></i>
+                                                                                    </div>
+                                                                                    <div class="stat-number">
+                                                                                        <span data-purecounter-start="0" data-purecounter-end="45"
+                                                                                            data-purecounter-duration="2" class="purecounter"></span>+
+                                                                                    </div>
+                                                                                    <div class="stat-label">Industry Awards</div>
+                                                                                    <p>Recognition for excellence in real estate service and client satisfaction.
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
 
-                                            <div class="testimonial-preview mt-5">
-                                                <div class="testimonial-card">
-                                                    <div class="quote-icon mb-2">
-                                                        <i class="bi bi-quote"></i>
-                                                    </div>
-                                                    <p>"Working with this team made buying our first home a seamless experience. Their
-                                                        knowledge of the local market and dedication to finding the perfect property
-                                                        exceeded our expectations."</p>
-                                                    <div class="testimonial-author d-flex align-items-center mt-3">
-                                                        <img src="assets/img/person/person-f-3.png" alt="Client"
-                                                            class="author-image me-3">
-                                                        <div>
-                                                            <h6>Sarah Martinez</h6>
-                                                            <span>First-time Homebuyer</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                                                        <div class="testimonial-preview mt-5">
+                                                                            <div class="testimonial-card">
+                                                                                <div class="quote-icon mb-2">
+                                                                                    <i class="bi bi-quote"></i>
+                                                                                </div>
+                                                                                <p>"Working with this team made buying our first home a seamless experience. Their
+                                                                                    knowledge of the local market and dedication to finding the perfect property
+                                                                                    exceeded our expectations."</p>
+                                                                                <div class="testimonial-author d-flex align-items-center mt-3">
+                                                                                    <img src="assets/img/person/person-f-3.png" alt="Client"
+                                                                                        class="author-image me-3">
+                                                                                    <div>
+                                                                                        <h6>Sarah Martinez</h6>
+                                                                                        <span>First-time Homebuyer</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
 
-                                </div>
+                                                            </div>
 
-                            </div> -->
+                                                        </div> -->
 
             <!-- </section> -->
             <!-- /Why Us Section -->
@@ -1087,7 +1096,7 @@
                     <h2>Pricing</h2>
                     <p>
                         <!-- Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
-                            consectetur velit -->
+                                                        consectetur velit -->
                     </p>
                 </div>
                 <!-- End Section Title -->

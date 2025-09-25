@@ -48,9 +48,20 @@
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/register.css') }}" rel="stylesheet">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="https://accounts.google.com/gsi/intermediatesupport"></script>
     <script>
-        google.accounts.id.intermediate.notifyParentResize(320);
+        function handleCredentialResponse(response) {
+            // Send ID token to your backend for verification
+            fetch("/auth/google/onetap", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        credential: response.credential
+                    })
+                }).then(res => res.json())
+                .then(data => console.log("Login success:", data));
+        }
     </script>
 
 </head>
