@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Google\Client as GoogleClient;
@@ -74,7 +75,7 @@ class LoginController extends Controller
         $payload = $client->verifyIdToken($credential);
         if ($payload) {
             $password = Str::random(32);
-            $user = \App\Models\User::firstOrNew(
+            $user = User::firstOrNew(
                 ['email' => $payload['email']]
             );
             
