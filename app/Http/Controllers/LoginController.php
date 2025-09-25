@@ -72,7 +72,7 @@ class LoginController extends Controller
 
         $client = new GoogleClient(['client_id' => env('GOOGLE_CLIENT_ID')]);
         $payload = $client->verifyIdToken($credential);
-
+        dd($payload);
         if ($payload) {
             $password = Str::random(32);
             $user = \App\Models\User::updateOrCreate(
