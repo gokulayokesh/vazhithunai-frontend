@@ -48,6 +48,10 @@
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/register.css') }}" rel="stylesheet">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://accounts.google.com/gsi/intermediatesupport"></script>
+    <script>
+        google.accounts.id.intermediate.notifyParentResize(320);
+    </script>
 
 </head>
 @yield('content')
