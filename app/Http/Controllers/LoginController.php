@@ -74,21 +74,23 @@ class LoginController extends Controller
         $payload = $client->verifyIdToken($credential);
         if ($payload) {
             $password = Str::random(32);
-            $user = \App\Models\User::updateOrCreate(
-                ['email' => $payload['email']],
-                [
-                    'name'      => $payload['name'] ?? $payload['email'],
-                    'google_id' => $payload['sub'],
-                    'avatar'    => $payload['picture'] ?? null,
-                ]
+            $user = \App\Models\User::firstOrNew(
+                ['email' => $payload['email']]
             );
             
-            // Only set password if it's a new user
-            if ($user->wasRecentlyCreated) {
+            $user->fill([
+                'name'      => $payload['name'] ?? $payload['email'],
+                'google_id' => $payload['sub'],
+                'avatar'    => $payload['picture'] ?? null,
+            ]);
+            
+            if (! $user->exists) {
+                // Only for new users
                 $user->password = Hash::make($password);
                 $user->show_password = $password;
-                $user->save();
             }
+            
+            $user->save();
 
             Auth::login($user);
 
