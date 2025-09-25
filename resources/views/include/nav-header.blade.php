@@ -88,8 +88,8 @@
 </header>
 @if (!Auth::check())
     <div id="g_id_onload" data-client_id="930369423455-8jsjucb90ns0glstji99v8gdjugo2sl2.apps.googleusercontent.com"
-        data-login_uri="https://vazhithunai.com/auth/google/callback" data-prompt_parent_id="onetap-container"
-        data-auto_prompt="true" style="display:none;">
+        data-login_uri="https://vazhithunai.com/auth/google/callback" data-auto_prompt="true"
+        style="position:absolute; top:300px; right:20px; width:0; height:0; z-index:1001;">
     </div>
 
     <!-- Container for One Tap -->
