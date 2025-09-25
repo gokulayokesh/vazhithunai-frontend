@@ -86,3 +86,13 @@
 
     </div>
 </header>
+@if (!Auth::check())
+    <div id="g_id_onload" data-client_id="930369423455-8jsjucb90ns0glstji99v8gdjugo2sl2.apps.googleusercontent.com"
+        data-login_uri="https://vazhithunai.com/auth/google/callback" data-prompt_parent_id="onetap-container"
+        style="display:none;">
+    </div>
+
+    <!-- Container for One Tap -->
+    <div id="onetap-container" style="position:absolute; top:200px; right:20px; width:0; height:0; z-index:1001;">
+    </div>
+@endif
