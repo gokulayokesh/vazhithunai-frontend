@@ -72,7 +72,6 @@ class LoginController extends Controller
 
         $client = new GoogleClient(['client_id' => env('GOOGLE_CLIENT_ID')]);
         $payload = $client->verifyIdToken($credential);
-        dd($payload);
         if ($payload) {
             $password = Str::random(32);
             $user = \App\Models\User::updateOrCreate(
@@ -81,10 +80,15 @@ class LoginController extends Controller
                     'name'      => $payload['name'] ?? $payload['email'],
                     'google_id' => $payload['sub'],
                     'avatar'    => $payload['picture'] ?? null,
-                    'password'  => Hash::make($password),
-                    'show_password' => $password,
                 ]
             );
+            
+            // Only set password if it's a new user
+            if ($user->wasRecentlyCreated) {
+                $user->password = Hash::make($password);
+                $user->show_password = $password;
+                $user->save();
+            }
 
             Auth::login($user);
 

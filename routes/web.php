@@ -79,31 +79,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/chats/{chat}', [ChatController::class, 'destroy'])->name('chat.destroy');
 });
 
-Route::get('auth/google', function () {
-    return Socialite::driver('google')->redirect();
-});
-
-
-Route::get('auth/google/callback', function () {
-    $user = Socialite::driver('google')->user();
-
-    $password = Str::random(32);
-    $authUser = App\Models\User::updateOrCreate(
-        ['email' => $user->getEmail()],
-        [
-            'name'      => $user->getName(),
-            'google_id' => $user->getId(),
-            'avatar'    => $user->getAvatar(),
-            // Generate a random secure password (hashed)
-            
-            'password'  => Hash::make($password),
-            'show_password' => $password,
-        ]
-    );
-
-    Auth::login($authUser);
-
-    return redirect('/dashboard');
-});
-
 Route::post('/auth/google/callback', [LoginController::class, 'googleCallback']);
