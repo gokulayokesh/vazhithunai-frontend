@@ -35,27 +35,31 @@
                                         <h3>Welcome Back</h3>
                                         <p>Sign in to your account</p>
                                     </div>
-
-                                    <form class="auth-form-content">
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger py-2">
+                                            {{ $errors->first() }}
+                                        </div>
+                                    @endif
+                                    <form class="auth-form-content" action="{{ route('login') }}" method="POST">
                                         <div class="input-group mb-3">
                                             <span class="input-icon">
                                                 <i class="bi bi-envelope"></i>
                                             </span>
-                                            <input type="email" class="form-control" placeholder="Email address"
-                                                required="" autocomplete="email">
+                                            <input type="email" name="email" class="form-control"
+                                                placeholder="Email address" required="" autocomplete="email">
                                         </div>
 
                                         <div class="input-group mb-3">
                                             <span class="input-icon">
                                                 <i class="bi bi-lock"></i>
                                             </span>
-                                            <input type="password" class="form-control" placeholder="Password"
-                                                required="" autocomplete="current-password">
+                                            <input type="password" name="password" class="form-control"
+                                                placeholder="Password" required="" autocomplete="current-password">
                                             <span class="password-toggle">
                                                 <i class="bi bi-eye"></i>
                                             </span>
                                         </div>
-
+                                        <input type="hidden" name="from_form" value="1">
                                         <div class="form-options mb-4">
                                             <div class="remember-me">
                                                 <input type="checkbox" id="rememberLogin">
@@ -88,7 +92,7 @@
                                 </div>
 
                                 <!-- Register Form -->
-                                <div class="auth-form register-form">
+                                {{-- <div class="auth-form register-form">
                                     <div class="form-header">
                                         <h3>Create Account</h3>
                                         <p>Join us today and get started</p>
@@ -161,7 +165,7 @@
                                                 in</button>
                                         </div>
                                     </form>
-                                </div>
+                                </div> --}}
 
                             </div>
                         </div>
@@ -172,7 +176,7 @@
             </section><!-- /Login Section -->
 
         </main>
-        @include('include.login')
+        @include('include.login-modal')
         @include('include.footer')
         @include('include.script')
     </body>

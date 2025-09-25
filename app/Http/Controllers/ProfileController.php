@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProfileWatchHistory;
 use App\Models\Shortlist;
 use App\Models\User;
 use App\Models\UserDetails;
@@ -19,6 +20,7 @@ class ProfileController extends Controller
     public function profile(Request $request)
     {
         $userId = User::getIdByIdentifier($request->identifier);
+        $viewerId = Auth::id();
 
         $profile = UserDetails::with([
             'user',       // relation to users table
@@ -32,6 +34,11 @@ class ProfileController extends Controller
         $profiles = UserDetails::with(['user', 'userImages'])
             ->findOrFail($userId);
 
+        // Check if this viewer has already viewed this profile
+        $alreadyViewed = ProfileWatchHistory::where('viewer_id', $viewerId)
+                        ->where('profile_id', $profile->user_id)
+                        ->exists();
+            
         // Build a simple "similar profiles" query (tune filters as needed)
         $similarProfiles = UserDetails::with(['user', 'userImages'])
             ->where('id', '!=', $profiles->id)
@@ -42,7 +49,7 @@ class ProfileController extends Controller
             ->limit(6)
             ->get();
 
-        return view('layout.profile', compact('profile', 'similarProfiles'));
+        return view('layout.profile', compact('profile', 'similarProfiles','alreadyViewed'));
     }
 
     public function toggleShortlist(Request $request, $shortlistedUserId)
@@ -147,5 +154,30 @@ class ProfileController extends Controller
             'drinkingHabits',
             'languagesKnown',
         ));
+    }
+
+    public function decrementView($id)
+    {
+        $profile = User::findOrFail($id);
+        $viewer  = Auth::user();
+
+        // Record watch history
+        $history = ProfileWatchHistory::firstOrCreate(
+            ['viewer_id' => $viewer->id, 'profile_id' => $profile->id],
+            ['view_count' => 0]
+        );
+
+        $history->increment('view_count');
+
+        // Decrement profile’s available view count
+        if ($profile->view_count > 0) {
+            $profile->decrement('view_count');
+        }
+
+        return response()->json([
+            'success' => true,
+            'remaining_views' => $profile->view_count,
+            'history' => $history
+        ]);
     }
 }

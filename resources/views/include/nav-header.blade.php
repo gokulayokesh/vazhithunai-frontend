@@ -43,7 +43,7 @@
                         </button>
 
                         <!-- Register (redirect) -->
-                        <a href="/register" class="btn-register">
+                        <a href="/sign-up" class="btn-register">
                             <i class="bi bi-person-plus-fill"></i>
                             <span>Register</span>
                         </a>

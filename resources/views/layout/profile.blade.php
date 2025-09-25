@@ -46,20 +46,27 @@
                                         }
                                       </script>
                                         <div class="swiper-wrapper">
-                                            @if (isset($profile->userImages) && count($profile->userImages) > 0)
-                                                @foreach ($profile->userImages as $image)
+                                            @if ($alreadyViewed)
+                                                @if (isset($profile->userImages) && count($profile->userImages) > 0)
+                                                    @foreach ($profile->userImages as $image)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset($image->image_path) }}"
+                                                                class="img-fluid hero-image"
+                                                                alt="{{ $profile->user->name }}">
+                                                        </div>
+                                                    @endforeach
+                                                @else
                                                     <div class="swiper-slide">
-                                                        <img src="{{ asset($image->image_path) }}"
+                                                        <img src="{{ asset('assets/img/m-default.png') }}"
                                                             class="img-fluid hero-image" alt="{{ $profile->user->name }}">
                                                     </div>
-                                                @endforeach
+                                                @endif
                                             @else
                                                 <div class="swiper-slide">
-                                                    <img src="{{ asset('assets/img/person/person-f-8.webp') }}"
+                                                    <img src="{{ asset('assets/img/m-default.png') }}"
                                                         class="img-fluid hero-image" alt="{{ $profile->user->name }}">
                                                 </div>
                                             @endif
-
                                         </div>
                                         <div class="swiper-button-next"></div>
                                         <div class="swiper-button-prev"></div>
@@ -87,17 +94,25 @@
                                         }
                                       </script>
                                         <div class="swiper-wrapper">
-                                            @if (isset($profile->userImages) && count($profile->userImages) > 0)
-                                                @foreach ($profile->userImages as $image)
+                                            @if ($alreadyViewed)
+                                                @if (isset($profile->userImages) && count($profile->userImages) > 0)
+                                                    @foreach ($profile->userImages as $image)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset($image->image_path) }}"
+                                                                class="img-fluid thumbnail-img"
+                                                                alt="{{ $profile->user->name }}">
+                                                        </div>
+                                                    @endforeach
+                                                @else
                                                     <div class="swiper-slide">
-                                                        <img src="{{ asset($image->image_path) }}"
+                                                        <img src="{{ asset('assets/img/m-default.png') }}"
                                                             class="img-fluid thumbnail-img"
                                                             alt="{{ $profile->user->name }}">
                                                     </div>
-                                                @endforeach
+                                                @endif
                                             @else
                                                 <div class="swiper-slide">
-                                                    <img src="{{ asset('assets/img/person/person-f-8.webp') }}"
+                                                    <img src="{{ asset('assets/img/m-default.png') }}"
                                                         class="img-fluid thumbnail-img" alt="{{ $profile->user->name }}">
                                                 </div>
                                             @endif
@@ -308,13 +323,23 @@
                             <div class="floor-plan-section mb-5" data-aos="fade-up" data-aos-delay="500">
                                 <h3>Horoscope Image</h3>
                                 <div class="floor-plan-card">
-                                    <img src="{{ asset($profile->userHoroscopeImages->first()?->image_path ?? asset('assets/img/person/person-f-8.webp')) }}"
-                                        class="img-fluid" alt="Floor Plan">
-                                    {{-- <div class="plan-details">
+                                    @if ($alreadyViewed)
+                                        @if (isset($profile->userHoroscopeImages) && $profile->userHoroscopeImages->count() > 0)
+                                            <img src="{{ asset($profile->userHoroscopeImages->first()?->image_path) }}"
+                                                class="img-fluid" alt="Floor Plan">
+                                        @else
+                                            <img src="{{ asset('assets/img/m-default.png') }}" class="img-fluid"
+                                                alt="Floor Plan">
+                                        @endif
+                                    @else
+                                        <img src="{{ asset('assets/img/m-default.png') }}" class="img-fluid"
+                                            alt="Floor Plan">
+                                        {{-- <div class="plan-details">
                                     <h5>3 Bedroom Penthouse Layout</h5>
                                     <p>Open concept living and dining area with private balcony access. Master suite
                                         features ensuite bathroom and city views.</p>
                                 </div> --}}
+                                    @endif
                                 </div>
                             </div><!-- End Floor Plan -->
 
@@ -329,12 +354,17 @@
                                 <div class="agent-card mb-4" data-aos="fade-up" data-aos-delay="350">
                                     <div class="agent-header">
                                         <div class="agent-avatar">
-                                            @if (isset($profile->userImages) && $profile->userImages->count() > 0)
-                                                <img src="{{ asset($profile->userImages->first()?->image_path) }}"
-                                                    class="img-fluid" alt="{{ $profile->user->name }}">
+                                            @if ($alreadyViewed)
+                                                @if (isset($profile->userImages) && $profile->userImages->count() > 0)
+                                                    <img src="{{ asset($profile->userImages->first()?->image_path) }}"
+                                                        class="img-fluid" alt="{{ $profile->user->name }}">
+                                                @else
+                                                    <img src="{{ asset('assets/img/m-default.png') }}" class="img-fluid"
+                                                        alt="{{ $profile->user->name }}">
+                                                @endif
                                             @else
-                                                <img src="{{ asset('assets/img/person/person-f-8.webp') }}"
-                                                    class="img-fluid" alt="{{ $profile->user->name }}">
+                                                <img src="{{ asset('assets/img/m-default.png') }}" class="img-fluid"
+                                                    alt="{{ $profile->user->name }}">
                                             @endif
                                         </div>
                                         <div class="agent-info">
@@ -362,15 +392,29 @@
                                         </div>
                                     </div>
 
-                                    <div class="agent-actions mt-3">
-                                        {{-- <a href="tel:{{ $profile->mobile }}" class="btn btn-success w-100 mb-2">
+                                    @guest
+                                        <div class="alert alert-info mt-3" role="alert">
+                                            <i class="bi bi-info-circle"></i>
+                                            To view full profile details, please <a href="{{ url('/sign-up') }}">Register</a>
+                                            or <a href="{{ url('/login') }}" data-bs-toggle="modal"
+                                                data-bs-target="#loginModal">Login</a>.
+
+                                        </div>
+                                    @endguest
+
+
+                                    @auth
+                                        <div class="agent-actions mt-3">
+                                            {{-- <a href="tel:{{ $profile->mobile }}" class="btn btn-success w-100 mb-2">
                                         <i class="bi bi-telephone"></i> Call Now
                                     </a> --}}
-                                        <a href="{{ route('chat.start', $profile->user->id) }}"
-                                            class="btn btn-outline w-100">
-                                            <i class="bi bi-chat-dots"></i> Send Message
-                                        </a>
-                                    </div>
+                                            <a href="{{ route('chat.start', $profile->user->id) }}"
+                                                class="btn btn-outline w-100">
+                                                <i class="bi bi-chat-dots"></i> Send Message
+                                            </a>
+                                        </div>
+                                    @endauth
+
                                 </div>
 
 
@@ -456,7 +500,7 @@
 
         </main>
 
-        @include('include.login')
+        @include('include.login-modal')
         @include('include.footer')
         @include('include.script')
 

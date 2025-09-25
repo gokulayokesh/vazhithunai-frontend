@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
-            <div class="modal-body p-4">
+            <div class="modal-body p-4 login">
                 <form id="loginForm" action="{{ route('login') }}" method="POST">
                     <!-- CSRF Token (Laravel) -->
                     @csrf
@@ -30,32 +30,37 @@
                         <input type="password" class="form-control" id="password" name="password"
                             placeholder="Enter your password" required>
                     </div>
-
+                    <input type="hidden" name="from_form" value="0">
                     <!-- Remember Me & Forgot Password -->
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="remember" name="remember">
                             <label class="form-check-label" for="remember">Remember me</label>
                         </div>
-                        <a href="/forgot-password" class="small text-decoration-none">Forgot Password?</a>
+                        <a href="#" class="small text-decoration-none" data-bs-toggle="modal"
+                            data-bs-target="#forgotPasswordModal" aria-haspopup="dialog" aria-expanded="false"
+                            aria-controls="forgotPasswordModal">Forgot Password?</a>
                     </div>
 
                     <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
                         Login
                     </button>
+
+                    <div class="divider">
+                        <span>or</span>
+                    </div>
+                    <div class="g_id_signin" data-type="standard" data-shape="square" data-theme="filled_blue"
+                        data-text="signin_with" data-size="large" data-context="signin" data-itp_support="true"
+                        data-auto_prompt="true" data-logo_alignment="left">
+                    </div>
                 </form>
-                <div class="divider">
-                    <span>or</span>
-                </div>
-                <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
-                    data-text="signin_with" data-size="large" data-logo_alignment="left">
-                </div>
+
             </div>
             <div class="modal-footer justify-content-center">
                 <p class="mb-0 small">
                     New to our community?
-                    <a href="/register" class="fw-semibold text-primary text-decoration-none">Create an account</a>
+                    <a href="/sign-up" class="fw-semibold text-primary text-decoration-none">Create an account</a>
                 </p>
             </div>
         </div>
@@ -104,3 +109,4 @@
         });
     </script>
 @endsection
+@include('include.forgot-password')

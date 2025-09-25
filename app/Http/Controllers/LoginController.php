@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ForgotPasswordOtpMail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Google\Client as GoogleClient;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+
 class LoginController extends Controller
 {
     public function login(Request $request)
@@ -18,7 +21,7 @@ class LoginController extends Controller
         ]);
 
         // First, fetch the user by email
-        $user = \App\Models\User::where('email', $credentials['email'])->first();
+        $user = User::where('email', $credentials['email'])->first();
 
         if (! $user) {
             return response()->json([
@@ -38,10 +41,16 @@ class LoginController extends Controller
         // Attempt login only if verified
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
+            if($request->input('from_form')){
+                return redirect()->route('home');
+            }
             return response()->json(['success' => true]);
         }
-
+        if($request->input('from_form')){
+            return back()->withErrors([
+                'login' => 'The provided credentials do not match our records.',
+            ])->onlyInput('email');
+        }
         return response()->json([
             'success' => false,
             'message' => 'The provided credentials do not match our records.',
@@ -99,5 +108,63 @@ class LoginController extends Controller
         }
 
         return redirect()->route('login')->withErrors('Google login failed');
+    }
+
+    public function sendOtp(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+        if (! $user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No user found with this email address.',
+            ], 404);
+        }
+
+        // Generate a 6-digit OTP
+        $otp = rand(100000, 999999);
+        $user->otp = $otp;
+        $user->otp_created_at = now();
+        $user->save();
+
+        Mail::to($user->email)->send(new ForgotPasswordOtpMail($otp, $user->name));
+
+        return response()->json(['success' => true, 'message' => 'OTP sent to your email.']);
+    }
+
+    public function verifyOtp(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'otp'   => 'required|digits:6',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+        if (! $user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No user found with this email address.',
+            ], 404);
+        }
+
+        if ($user->otp != $request->otp || now()->diffInMinutes($user->otp_created_at) > 5) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid or expired OTP.',
+            ], 422);
+        }
+
+        $user->password = Hash::make($request->newPassword);
+        $user->show_password = $request->newPassword;
+        $user->otp = null;
+        $user->otp_created_at = null;
+        $user->save();
+
+        Auth::login($user);
+
+        return response()->json(['success' => true, 'message' => 'OTP verified successfully.']);
     }
 }

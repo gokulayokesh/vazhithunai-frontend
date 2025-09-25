@@ -24,7 +24,11 @@ class User extends Authenticatable
         'email',
         'password',
         'google_id',
-        'avatar'
+        'avatar',
+        'otp',
+        'otp_created_at',
+        'profile_completed',
+        'last_seen',
     ];
 
     /**
@@ -133,5 +137,10 @@ class User extends Authenticatable
             ->whereDate('start_date', '<=', $today)
             ->whereDate('end_date', '>=', $today)
             ->latest('start_date');
+    }
+
+    public function profileWatchHistory()
+    {
+        return $this->belongsTo(User::class, 'viewer_id');
     }
 }

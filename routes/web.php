@@ -80,3 +80,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::post('/auth/google/callback', [LoginController::class, 'googleCallback']);
+
+Route::post('/send-otp', [LoginController::class, 'sendOtp'])->name('send.otp');
+Route::post('/verify-otp', [LoginController::class, 'verifyOtp'])->name('verify.otp');
+Route::post('/resend-otp', [LoginController::class, 'resendOtp'])->name('resend.otp');  

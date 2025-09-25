@@ -26,6 +26,11 @@ class UserDetails extends Model
         return $this->hasMany(UserImages::class, 'user_id', 'user_id');
     }
 
+    public function profileWatchHistories()
+    {
+        return $this->hasMany(ProfileWatchHistory::class, 'profile_id', 'user_id');
+    }
+
     public function userHoroscopeImages()
     {
         return $this->hasMany(UserImages::class, 'user_id', 'user_id');

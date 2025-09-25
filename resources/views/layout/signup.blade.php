@@ -76,14 +76,14 @@
                                                 </label>
                                             </div>
 
-                                            <div class="form-check mb-4">
+                                            {{-- <div class="form-check mb-4">
                                                 <input class="form-check-input" type="checkbox" id="marketingCheck"
                                                     name="marketingCheck">
                                                 <label class="form-check-label" for="marketingCheck">
                                                     I would like to receive marketing communications about products,
                                                     services, and promotions
                                                 </label>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="d-grid mb-4">
                                                 <button type="submit" class="btn btn-register-1">Create Account</button>
@@ -144,7 +144,7 @@
             </section><!-- /Register Section -->
 
         </main>
-        @include('include.login')
+        @include('include.login-modal')
         @include('include.footer')
         @include('include.script')
     </body>

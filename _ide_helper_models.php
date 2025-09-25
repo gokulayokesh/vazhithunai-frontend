@@ -122,6 +122,29 @@ namespace App\Models{
 namespace App\Models{
 /**
  * @property int $id
+ * @property int $viewer_id
+ * @property int $profile_id
+ * @property int $view_count
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $profile
+ * @property-read \App\Models\User $viewer
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ProfileWatchHistory newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ProfileWatchHistory newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ProfileWatchHistory query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ProfileWatchHistory whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ProfileWatchHistory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ProfileWatchHistory whereProfileId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ProfileWatchHistory whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ProfileWatchHistory whereViewCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ProfileWatchHistory whereViewerId($value)
+ */
+	class ProfileWatchHistory extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
  * @property int $user_id
  * @property int $shortlisted_user_id
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -224,6 +247,9 @@ namespace App\Models{
  * @property string|null $avatar
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
+ * @property string|null $otp
+ * @property string|null $otp_created_at
+ * @property int $profile_completed
  * @property string|null $show_password
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -235,6 +261,7 @@ namespace App\Models{
  * @property-read \App\Models\SubscriptionHistory|null $latestActiveSubscription
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
+ * @property-read User|null $profileWatchHistory
  * @property-read \Illuminate\Database\Eloquent\Collection<int, User> $shortlistedUsers
  * @property-read int|null $shortlisted_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\SubscriptionHistory> $subscriptions
@@ -255,7 +282,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereIdentifier($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereLastSeen($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereOtp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereOtpCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereProfileCompleted($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereShowPassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
@@ -335,6 +365,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\City|null $city
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProfileWatchHistory> $profileWatchHistories
+ * @property-read int|null $profile_watch_histories_count
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserImages> $userHoroscopeImages
  * @property-read int|null $user_horoscope_images_count

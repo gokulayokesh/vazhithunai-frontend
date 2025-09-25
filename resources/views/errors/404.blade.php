@@ -61,7 +61,7 @@
             </section><!-- /Error 404 Section -->
 
         </main>
-        @include('include.login')
+        @include('include.login-modal')
         @include('include.footer')
         @include('include.script')
     </body>
