@@ -78,9 +78,15 @@
                                             data-login_uri="{{ url('/auth/google/callback') }}" data-auto_prompt="false">
                                         </div>
 
-                                        <div class="g_id_signin" data-type="standard" data-shape="rectangular"
-                                            data-theme="outline" data-text="signin_with" data-size="large"
+                                        <div class="g_id_signin" data-type="standard" data-shape="square"
+                                            data-theme="filled_blue" data-text="signin_with" data-size="large"
+                                            data-context="signin" data-itp_support="true" data-auto_prompt="true"
                                             data-logo_alignment="left">
+                                        </div>
+                                        <div id="g_id_onload"
+                                            data-client_id="930369423455-8jsjucb90ns0glstji99v8gdjugo2sl2.apps.googleusercontent.com"
+                                            data-login_uri="https://vazhithunai.com/login"
+                                            data-allowed_parent_origin="https://vazhithunai.com">
                                         </div>
 
                                         <div class="switch-form">
