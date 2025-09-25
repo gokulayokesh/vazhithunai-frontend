@@ -88,10 +88,8 @@
 </header>
 @if (!Auth::check())
     <div id="g_id_onload" data-client_id="930369423455-8jsjucb90ns0glstji99v8gdjugo2sl2.apps.googleusercontent.com"
-        data-login_uri="https://vazhithunai.com/auth/google/callback" ddata-prompt_parent_id="onetap-container"
-        data-auto_prompt="true" style="display:none;">
-    </div>
-    <!-- Container for positioning -->
-    <div id="onetap-container" style="position:absolute; top:100px; right:30px; width:0; height:0; z-index:1001;">
+        data-login_uri="https://vazhithunai.com/auth/google/callback" data-prompt_parent_id="g_id_onload"
+        style="position: absolute; top: 100px; right: 30px;
+               width: 0; height: 0; z-index: 1001;">
     </div>
 @endif
