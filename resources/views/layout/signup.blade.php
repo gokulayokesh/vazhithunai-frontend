@@ -102,11 +102,6 @@
                                             <div class="divider">
                                                 <span>or sign up with</span>
                                             </div>
-                                            <div id="g_id_onload"
-                                                data-client_id="930369423455-8jsjucb90ns0glstji99v8gdjugo2sl2.apps.googleusercontent.com"
-                                                data-login_uri="{{ url('/auth/google/callback') }}"
-                                                data-auto_prompt="false">
-                                            </div>
 
                                             <div class="btn btn-social g_id_signin" data-type="standard" data-shape="square"
                                                 data-theme="filled_blue" data-text="signup_with" data-size="large"

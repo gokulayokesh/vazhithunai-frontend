@@ -48,12 +48,6 @@
                 <div class="divider">
                     <span>or</span>
                 </div>
-
-                <div id="g_id_onload"
-                    data-client_id="930369423455-8jsjucb90ns0glstji99v8gdjugo2sl2.apps.googleusercontent.com"
-                    data-login_uri="{{ url('/auth/google/callback') }}" data-auto_prompt="false">
-                </div>
-
                 <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
                     data-text="signin_with" data-size="large" data-logo_alignment="left">
                 </div>
