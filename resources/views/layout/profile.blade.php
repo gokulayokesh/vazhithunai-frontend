@@ -498,7 +498,7 @@
                             </div>
                         </div>
 
-                        <!-- Location Section -->
+
                         <div class="location-section mt-5" data-aos="fade-up" data-aos-delay="700">
                             <div class="row">
                                 <div class="col-lg-4">
@@ -591,7 +591,7 @@
                                 </div>
 
                             </div>
-                        </div><!-- End Location Section -->
+                        </div>
                     </div>
 
 

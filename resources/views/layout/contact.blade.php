@@ -23,14 +23,6 @@
             <!-- Contact 2 Section -->
             <section id="contact-2" class="contact-2 section">
 
-                <!-- Map Section -->
-                <div class="map-container mb-5">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d288.25489266379117!2d79.365336713564!3d10.956229576923452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baacd46ec5abce1%3A0xa18fc3807b03295b!2s57%2F1%2C%20Eb%20Colony%2C%20Kumbakonam%2C%20Tamil%20Nadu%20612001!5e0!3m2!1sen!2sin!4v1757351773559!5m2!1sen!2sin"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-
                 <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                     <!-- Contact Info -->
@@ -54,12 +46,25 @@
                                 </div>
                                 <div class="info-content">
                                     <h4>Phone &amp; Email</h4>
-                                    <p>+91 94438 74110</p>
-                                    <p>support@vazhithunai.com</p>
+                                    <p><a href="tel:+919443874110">+91 94438 74110</a></p>
+                                    <p><a href="tel:04352422836">(0435) 2422836</a></p>
+                                    <p><a href="mailto:support@vazhithunai.com">support@vazhithunai.com</a></p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+
+                <!-- Map Section -->
+                <div class="map-container mb-5">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d288.25489266379117!2d79.365336713564!3d10.956229576923452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baacd46ec5abce1%3A0xa18fc3807b03295b!2s57%2F1%2C%20Eb%20Colony%2C%20Kumbakonam%2C%20Tamil%20Nadu%20612001!5e0!3m2!1sen!2sin!4v1757351773559!5m2!1sen!2sin"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                     <!-- Contact Form -->
                     <div class="row justify-content-center mb-5" data-aos="fade-up" data-aos-delay="200">
