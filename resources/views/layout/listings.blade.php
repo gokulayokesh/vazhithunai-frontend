@@ -369,12 +369,12 @@
                                                     @endif
                                                     {{-- <span class="status-badge sale">Active</span> --}}
                                                     @if (($profile->user->latestActiveSubscription->plan_code ?? 0) == 3)
-                                                        <span class="shimmer status-badge featured"><span
+                                                        <span class="shimmer status-badge premium"><span
                                                                 style="font-size: small;"
                                                                 class="bi bi-award"></span>Premium</span>
                                                     @endif
                                                     @if (($profile->user->email_verified_at ?? null) != null)
-                                                        <span class="shimmer status-badge featured"><span
+                                                        <span class="shimmer status-badge verified"><span
                                                                 style="font-size: small;"
                                                                 class="bi bi-patch-check-fill"></span>
                                                             Verified</span>

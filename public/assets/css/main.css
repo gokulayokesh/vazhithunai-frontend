@@ -14084,3 +14084,23 @@ select:focus {
     }
   }
   
+  .status-badge.featured {
+    background: linear-gradient(135deg, #ff6b35, #ff8e53);
+    color: white;
+}
+
+.status-badge.verified {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+}
+
+.status-badge.premium {
+    background: linear-gradient(135deg, #ffd700, #ffb700);
+    color: #333;
+}
+
+.agent-info .status-badge{
+    padding: 3px 10px;
+    font-size: small;
+}
+
