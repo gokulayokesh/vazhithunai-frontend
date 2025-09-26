@@ -4960,6 +4960,7 @@ section,
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    white-space: nowrap !important;
 }
 
 .properties .property-item .property-details .property-title {
@@ -5237,6 +5238,7 @@ section,
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 8px;
+    white-space: nowrap !important;
 }
 
 .properties

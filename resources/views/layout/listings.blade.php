@@ -412,7 +412,7 @@
                                                         <div class="property-price">
                                                             {{ $profile->user->name }} </div>
                                                         <div class="property-type">
-                                                            {{ $profile->user->identifier ?? '' }}
+                                                            #{{ $profile->user->identifier ?? '' }}
                                                         </div>
                                                     </div>
 
@@ -454,11 +454,11 @@
                                                             <span>{{ $profile->caste }}</span>
                                                         </div>
                                                     </a>
-                                                    <div class="agent-contact">
+                                                    {{-- <div class="agent-contact">
                                                         <a href="tel:{{ $profile->parent_mobile }}" class="contact-btn">
                                                             <i class="bi bi-telephone"></i>
                                                         </a>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>

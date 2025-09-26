@@ -21,6 +21,9 @@ class ProfileController extends Controller
     {
         $userId = User::getIdByIdentifier($request->identifier);
         $viewerId = Auth::id();
+        if($userId == $viewerId){
+            return redirect()->route('myaccount');
+        }
 
         $profile = UserDetails::with([
             'user',       // relation to users table
