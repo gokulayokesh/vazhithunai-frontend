@@ -29,6 +29,7 @@ class User extends Authenticatable
         'otp_created_at',
         'profile_completed',
         'last_seen',
+        'email_verified_at',
     ];
 
     /**

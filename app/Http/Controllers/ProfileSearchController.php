@@ -13,9 +13,9 @@ class ProfileSearchController extends Controller
     public function search(Request $request)
     {
         $query = UserDetails::with([
-            'user:id,name,email,identifier',
+            'user:id,name,email,identifier,email_verified_at,avatar',
             'userImages:id,user_id,image_path',
-        ]);
+        ]);        
 
         // Exclude logged-in user
         $loggedInUserId = Auth::id();

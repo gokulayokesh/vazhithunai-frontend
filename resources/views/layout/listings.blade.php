@@ -367,7 +367,18 @@
                                                     @if ($profile->featured)
                                                         <span class="status-badge featured">Featured</span>
                                                     @endif
-                                                    <span class="status-badge sale">Active</span>
+                                                    {{-- <span class="status-badge sale">Active</span> --}}
+                                                    @if (($profile->user->latestActiveSubscription->plan_code ?? 0) == 3)
+                                                        <span class="shimmer status-badge featured"><span
+                                                                style="font-size: small;"
+                                                                class="bi bi-award"></span>Premium</span>
+                                                    @endif
+                                                    @if (($profile->user->email_verified_at ?? null) != null)
+                                                        <span class="shimmer status-badge featured"><span
+                                                                style="font-size: small;"
+                                                                class="bi bi-patch-check-fill"></span>
+                                                            Verified</span>
+                                                    @endif
                                                 </div>
 
                                                 <div class="property-actions">
