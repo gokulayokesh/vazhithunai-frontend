@@ -133,8 +133,11 @@
                                 </div>
 
                                 <div class="pricing-section">
-                                    <div class="main-price">{{ \Carbon\Carbon::parse($profile->dob)->age }} yrs</div>
+                                    <div class="main-price">
+                                        {{ \Carbon\Carbon::parse($profile->dob)->age }} yrs</div>
                                     <div class="price-breakdown">
+                                        <span class="deposit">DOB:
+                                            {{ \Carbon\Carbon::parse($profile->dob)->format('d-m-Y') . ' ' . $profile->birth_time }}</span>
                                         <span class="deposit">Height: {{ $profile->height }}</span>
                                         <span class="available">Marital Status: {{ $profile->marital_status }}</span>
                                     </div>
@@ -307,12 +310,15 @@
                                         <div class="col-md-6">
                                             <h5>Lifestyle Preferences</h5>
                                             <ul class="feature-list">
-                                                <li><i class="bi bi-check2"></i> Diet:
+                                                <li><i class="bi bi-egg-fried"></i> Diet:
                                                     {{ $profile->diet_preference ?? 'Not specified' }}</li>
-                                                <li><i class="bi bi-check2"></i> Drinking:
+                                                <li><i class="bi bi-person-hearts"></i> Pet:
+                                                    {{ $profile->pet_preference ?? 'Not specified' }}</li>
+                                                <li><i class="bi bi-cup-straw"></i> Drinking:
                                                     {{ $profile->drinking_habits ?? 'Not specified' }}</li>
-                                                <li><i class="bi bi-check2"></i> Smoking:
+                                                <li><i class="bi bi-lungs"></i> Smoking:
                                                     {{ $profile->smoking_habits ?? 'Not specified' }}</li>
+
                                             </ul>
                                         </div>
                                     </div>
@@ -395,9 +401,9 @@
                                     @guest
                                         <div class="alert alert-info mt-3" role="alert">
                                             <i class="bi bi-info-circle"></i>
-                                            To view full profile details, please <a href="{{ url('/sign-up') }}">Register</a>
-                                            or <a href="{{ url('/login') }}" data-bs-toggle="modal"
-                                                data-bs-target="#loginModal">Login</a>.
+                                            To view full profile details, Please <a href="{{ url('/login') }}"
+                                                data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                                            or <a href="{{ url('/sign-up') }}">Register</a>.
 
                                         </div>
                                     @endguest
@@ -491,6 +497,101 @@
 
                             </div>
                         </div>
+
+                        <!-- Location Section -->
+                        <div class="location-section mt-5" data-aos="fade-up" data-aos-delay="700">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="neighborhood-info">
+                                        <h5>Horoscope Details</h5>
+                                        <div class="poi-item">
+                                            <i class="bi bi-star"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Star - {{ $profile->birth_star }}</span>
+                                                <span class="poi-distance">Zodiac:
+                                                    {{ $profile->zodiac_sign }}</span>
+                                                <span class="poi-distance">Lagnam: {{ $profile->birth_lagnam }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="poi-item">
+                                            <i class="bi bi-0-circle"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Rahu Ketu</span>
+                                                <span
+                                                    class="poi-distance">{{ $profile->rahu_ketu ?? 'Not specified' }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="poi-item">
+                                            <i class="bi bi-circle-square"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Chevvai</span>
+                                                <span
+                                                    class="poi-distance">{{ $profile->chevvai ?? 'Not specified' }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="poi-item">
+                                            <i class="bi bi-person-add"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Additional Details</span>
+                                                <span
+                                                    class="poi-distance">{{ $profile->additional_horoscope ?? 'N/A' }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="neighborhood-info">
+                                        <h5>Favorites</h5>
+                                        <div class="poi-item">
+                                            <i class="bi bi-heart"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Cuisine</span>
+                                                <span
+                                                    class="poi-distance">{{ $profile->favorite_cuisine ?? 'Not specified' }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="poi-item">
+                                            <i class="bi bi-music-note-beamed"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Music</span>
+                                                <span
+                                                    class="poi-distance">{{ $profile->favorite_music ?? 'Not specified' }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="poi-item">
+                                            <i class="bi bi-joystick"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Sports</span>
+                                                <span
+                                                    class="poi-distance">{{ $profile->sports ?? 'Not specified' }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="neighborhood-info">
+                                        <h5>Expectations</h5>
+                                        <div class="poi-item">
+                                            <i class="bi bi-people"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Expectations</span>
+                                                <span class="poi-distance">{{ $profile->expectations ?? 'N/A' }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="poi-item">
+                                            <i class="bi bi-person-heart"></i>
+                                            <div class="poi-content">
+                                                <span class="poi-name">Life's Motto</span>
+                                                <span class="poi-distance">{{ $profile->life_motto ?? 'N/A' }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Location Section -->
                     </div>
 
 
