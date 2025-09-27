@@ -52,7 +52,7 @@
                     </div>
                     <div class="g_id_signin" data-type="standard" data-shape="square" data-theme="filled_blue"
                         data-text="signin_with" data-size="large" data-context="signin" data-itp_support="true"
-                        data-auto_prompt="true" data-logo_alignment="left">
+                        data-auto_prompt="true" data-logo_alignment="left" style="justify-items: center;">
                     </div>
                 </form>
 
