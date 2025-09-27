@@ -487,7 +487,8 @@
                                                     style="display:none;"></div>
                                             </div>
                                             <div class="col-6">
-                                                <button class="btn btn-outline-primary w-100">
+                                                <button class="btn btn-outline-primary w-100"
+                                                    onclick="shareProfile('{{ route('profile', ['identifier' => $profile->user->identifier ?? '']) }}')">
                                                     <i class="bi bi-share"></i>
                                                     Share
                                                 </button>
