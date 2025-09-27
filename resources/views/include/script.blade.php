@@ -28,23 +28,38 @@
          }
      }
 
-     function shareProfile(profileUrl) {
-         // Copy to clipboard
-         navigator.clipboard.writeText(profileUrl).then(() => {
-             console.log("Profile link copied!");
-
-             // Open native share popup if supported
-             if (navigator.share) {
-                 navigator
-                     .share({
-                         title: "Check out this profile",
-                         text: "Here’s a profile I wanted to share with you:",
-                         url: profileUrl,
-                     })
-                     .catch((err) => console.log("Share failed:", err));
+     async function shareProfile(profileUrl) {
+         try {
+             // Try copying to clipboard first
+             if (navigator.clipboard && window.isSecureContext) {
+                 await navigator.clipboard.writeText(profileUrl);
+                 console.log("Profile link copied to clipboard!");
              } else {
-                 alert("Link copied! Share it anywhere you like.");
+                 // Fallback for older browsers
+                 const tempInput = document.createElement("input");
+                 tempInput.value = profileUrl;
+                 document.body.appendChild(tempInput);
+                 tempInput.select();
+                 document.execCommand("copy");
+                 document.body.removeChild(tempInput);
+                 console.log("Profile link copied (fallback)!");
              }
-         });
+
+             // If Web Share API is supported, open native share
+             if (navigator.share) {
+                 await navigator.share({
+                     title: "Check out this profile",
+                     text: "Here’s a profile I wanted to share with you:",
+                     url: profileUrl
+                     // files: [file] // optional: add a File object if you want to share an image/logo
+                 });
+                 console.log("Shared successfully!");
+             } else {
+                 //  alert("Link copied! Share it anywhere you like.");
+             }
+         } catch (err) {
+             console.error("Share failed:", err);
+             //  alert("Something went wrong while sharing.");
+         }
      }
  </script>
