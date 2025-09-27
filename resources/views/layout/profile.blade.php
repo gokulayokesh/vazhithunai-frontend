@@ -420,6 +420,26 @@
                                             <i class="bi bi-envelope"></i>
                                             <span>{{ $profile->user->email }}</span>
                                         </div>
+                                        @auth
+                                            @if ($profile->instagram_profile_url != null)
+                                                <div class="contact-item">
+                                                    <i class="bi bi-instagram"></i>
+                                                    <span>{{ $profile->instagram_profile_url }}</span>
+                                                </div>
+                                            @endif
+                                            @if ($profile->facebook_profile_url != null)
+                                                <div class="contact-item">
+                                                    <i class="bi bi-facebook"></i>
+                                                    <span>{{ $profile->facebook_profile_url }}</span>
+                                                </div>
+                                            @endif
+                                            @if ($profile->twitter_profile_url != null)
+                                                <div class="contact-item">
+                                                    <i class="bi bi-twitter"></i>
+                                                    <span>{{ $profile->twitter_profile_url }}</span>
+                                                </div>
+                                            @endif
+                                        @endauth
                                     </div>
 
                                     @guest
