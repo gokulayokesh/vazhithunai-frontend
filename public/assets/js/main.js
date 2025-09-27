@@ -163,7 +163,7 @@
                 },
             })
                 .then(() => {
-                    window.location.href = "/";
+                    location.reload(true);
                 })
                 .catch(() => alert("Logout failed"));
         });
@@ -332,6 +332,4 @@
             target.scrollIntoView({ behavior: "smooth" });
         }
     }
-
-    
 })();

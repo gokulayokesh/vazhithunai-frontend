@@ -94,7 +94,7 @@
                 .then(res => res.json())
                 .then(data => {
                     if (data.success) {
-                        window.location.href = '/';
+                        location.reload(true);
                     } else {
                         let errorBox = document.getElementById('loginError');
                         errorBox.textContent = data.message || 'Login failed';
