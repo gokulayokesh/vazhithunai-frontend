@@ -400,14 +400,29 @@
                                                 @endif
                                             </h4>
                                             <p class="agent-role">{{ $profile->occupation_category }}</p>
-                                            @auth()
+                                            @auth
                                                 @if (!$alreadyViewed && $profile->user->view_profile_count > 0)
                                                     <a class="btn btn-primary"
                                                         href="{{ url('/add-watch-history', $profile->user->id) }}">
                                                         <span class="bi bi-eye"></span> View Profile
                                                     </a>
+                                                @elseif($profile->user->view_profile_count == 0)
+                                                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
+                                                        data-bs-trigger="hover focus"
+                                                        data-bs-content="Buy a subscription plan to view the Profile Details">
+                                                        <button class="btn btn-primary" type="button" disabled><span
+                                                                class="bi bi-eye"></span> View Profile</button>
+                                                    </span>
                                                 @endif
                                             @endauth
+                                            @guest
+                                                <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
+                                                    data-bs-trigger="hover focus"
+                                                    data-bs-content="Login to View the Profile details">
+                                                    <button class="btn btn-primary" type="button" disabled><span
+                                                            class="bi bi-eye"></span> View Profile</button>
+                                                </span>
+                                            @endguest
                                         </div>
                                     </div>
 
@@ -421,23 +436,25 @@
                                             <span>{{ $profile->user->email }}</span>
                                         </div>
                                         @auth
-                                            @if ($profile->instagram_profile_url != null)
-                                                <div class="contact-item">
-                                                    <i class="bi bi-instagram"></i>
-                                                    <span>{{ $profile->instagram_profile_url }}</span>
-                                                </div>
-                                            @endif
-                                            @if ($profile->facebook_profile_url != null)
-                                                <div class="contact-item">
-                                                    <i class="bi bi-facebook"></i>
-                                                    <span>{{ $profile->facebook_profile_url }}</span>
-                                                </div>
-                                            @endif
-                                            @if ($profile->twitter_profile_url != null)
-                                                <div class="contact-item">
-                                                    <i class="bi bi-twitter"></i>
-                                                    <span>{{ $profile->twitter_profile_url }}</span>
-                                                </div>
+                                            @if ((auth()->user()->latestActiveSubscription->plan_code ?? 0) >= 1)
+                                                @if ($profile->instagram_profile_url != null)
+                                                    <div class="contact-item">
+                                                        <i class="bi bi-instagram"></i>
+                                                        <span>{{ $profile->instagram_profile_url }}</span>
+                                                    </div>
+                                                @endif
+                                                @if ($profile->facebook_profile_url != null)
+                                                    <div class="contact-item">
+                                                        <i class="bi bi-facebook"></i>
+                                                        <span>{{ $profile->facebook_profile_url }}</span>
+                                                    </div>
+                                                @endif
+                                                @if ($profile->twitter_profile_url != null)
+                                                    <div class="contact-item">
+                                                        <i class="bi bi-twitter"></i>
+                                                        <span>{{ $profile->twitter_profile_url }}</span>
+                                                    </div>
+                                                @endif
                                             @endif
                                         @endauth
                                     </div>
@@ -454,15 +471,17 @@
 
 
                                     @auth
-                                        <div class="agent-actions mt-3">
-                                            {{-- <a href="tel:{{ $profile->mobile }}" class="btn btn-success w-100 mb-2">
-                                        <i class="bi bi-telephone"></i> Call Now
-                                    </a> --}}
-                                            <a href="{{ route('chat.start', $profile->user->id) }}"
-                                                class="btn btn-outline w-100">
-                                                <i class="bi bi-chat-dots"></i> Send Message
-                                            </a>
-                                        </div>
+                                        @if ((auth()->user()->latestActiveSubscription->plan_code ?? 0) > 1)
+                                            <div class="agent-actions mt-3">
+                                                {{-- <a href="tel:{{ $profile->mobile }}" class="btn btn-success w-100 mb-2">
+                                                    <i class="bi bi-telephone"></i> Call Now
+                                                </a> --}}
+                                                <a href="{{ route('chat.start', $profile->user->id) }}"
+                                                    class="btn btn-outline w-100">
+                                                    <i class="bi bi-chat-dots"></i> Send Message
+                                                </a>
+                                            </div>
+                                        @endif
                                     @endauth
 
                                 </div>
