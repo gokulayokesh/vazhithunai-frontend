@@ -13297,9 +13297,9 @@ select:focus {
 .shimmer {
     position: relative;
     display: inline-block;
-    padding: 12px 24px;
+    /* padding: 12px 24px;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: bold; */
     color: #fff;
     background: #007bff; /* base button color */
     border: none;
@@ -14104,5 +14104,10 @@ select:focus {
 .agent-info .status-badge{
     padding: 3px 10px;
     font-size: small;
+}
+
+.status-badge.viewed {
+    background: linear-gradient(135deg, #007bff, #007bff);
+    color: #fff;
 }
 

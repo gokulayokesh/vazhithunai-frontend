@@ -30,6 +30,7 @@ class User extends Authenticatable
         'profile_completed',
         'last_seen',
         'email_verified_at',
+        'view_profile_count',
     ];
 
     /**

@@ -243,6 +243,7 @@ namespace App\Models{
  * @property string|null $identifier Unique public identifier for user
  * @property string $name
  * @property string $email
+ * @property int $view_profile_count
  * @property string|null $google_id
  * @property string|null $avatar
  * @property \Illuminate\Support\Carbon|null $email_verified_at
@@ -289,6 +290,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereShowPassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereViewProfileCount($value)
  */
 	class User extends \Eloquent {}
 }

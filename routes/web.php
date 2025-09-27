@@ -84,3 +84,5 @@ Route::post('/auth/google/callback', [LoginController::class, 'googleCallback'])
 Route::post('/send-otp', [LoginController::class, 'sendOtp'])->name('send.otp');
 Route::post('/verify-otp', [LoginController::class, 'verifyOtp'])->name('verify.otp');
 Route::post('/resend-otp', [LoginController::class, 'resendOtp'])->name('resend.otp');  
+
+Route::get('/add-watch-history/{id}', [ProfileController::class, 'decrementView'])->middleware('auth');

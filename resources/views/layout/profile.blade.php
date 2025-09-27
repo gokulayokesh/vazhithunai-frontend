@@ -386,8 +386,13 @@
                                                             class="bi bi-patch-check-fill"></span>
                                                         Verified</span>
                                                 @endif
+                                                @if ($alreadyViewed)
+                                                    <span class="shimmer status-badge viewed"><span
+                                                            style="font-size: small;" class="bi bi-eye"></span>
+                                                        Viewed</span>
+                                                @endif
                                                 @if ($profile->user->isOnline())
-                                                    <small class="text-success">● Online</small>
+                                                    <br><small class="text-success">● Online</small>
                                                 @else
                                                     <br>
                                                     <small class="agent-role"> Last seen
@@ -395,6 +400,14 @@
                                                 @endif
                                             </h4>
                                             <p class="agent-role">{{ $profile->occupation_category }}</p>
+                                            @auth()
+                                                @if (!$alreadyViewed && $profile->user->view_profile_count > 0)
+                                                    <a class="btn btn-primary"
+                                                        href="{{ url('/add-watch-history', $profile->user->id) }}">
+                                                        <span class="bi bi-eye"></span> View Profile
+                                                    </a>
+                                                @endif
+                                            @endauth
                                         </div>
                                     </div>
 
