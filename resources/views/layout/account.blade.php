@@ -46,17 +46,17 @@
                                         <span class="status-badge"><i class="bi bi-shield-check"></i></span>
                                     </div>
                                     <h4>{{ $user->name }}</h4>
-                                    @if (Auth::user()->latestActiveSubscription->plan_code == '1')
+                                    @if ((Auth::user()->latestActiveSubscription->plan_code ?? 0) == '1')
                                         <div class="user-status">
                                             <i class="bi bi-award">Silver User</i>
                                             <span></span>
                                         </div>
-                                    @elseif(Auth::user()->latestActiveSubscription->plan_code == '2')
+                                    @elseif((Auth::user()->latestActiveSubscription->plan_code ?? 0) == '2')
                                         <div class="user-status">
                                             <i class="bi bi-award">Gold User</i>
                                             <span></span>
                                         </div>
-                                    @elseif(Auth::user()->latestActiveSubscription->plan_code == '3')
+                                    @elseif((Auth::user()->latestActiveSubscription->plan_code ?? 0) == '3')
                                         <div class="user-status">
                                             <i class="bi bi-award">Premium User</i>
                                             <span></span>

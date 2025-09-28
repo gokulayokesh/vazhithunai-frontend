@@ -106,8 +106,8 @@ class ProfileController extends Controller
     {
         // Load JSON reference data
         $referenceData = json_decode(Storage::disk('public')->get('json/data.json'), true);
-
-        $employmentTypes = $referenceData['employmentTypes'];
+        
+        $employmentTypes = $referenceData['employmentTypes']??[];
         $industries = $referenceData['industries'];
         $maritalStatuses = $referenceData['maritalStatuses'];
         $bodyTypes = $referenceData['bodyTypes'];
