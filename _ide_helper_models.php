@@ -62,6 +62,15 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage query()
+ */
+	class ContactMessage extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * @property int $id
  * @property int $chat_id
  * @property int $sender_id

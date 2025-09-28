@@ -493,15 +493,26 @@
 
                                         <div class="row g-2">
                                             <div class="col-6">
-                                                <button class="btn btn-outline-primary w-100 shortlist-btn"
-                                                    data-user-id="{{ $profile->id }}">
-                                                    @if (auth()->user() && auth()->user()->shortlistedUsers->contains('id', $profile->id))
-                                                        <i class="bi bi-heart-fill text-danger"></i>
-                                                    @else
-                                                        <i class="bi bi-heart"></i>
-                                                    @endif
-                                                    Shortlist
-                                                </button>
+                                                @auth
+                                                    <button class="btn btn-outline-primary w-100 shortlist-btn"
+                                                        data-user-id="{{ $profile->id }}">
+                                                        @if (auth()->user() && auth()->user()->shortlistedUsers->contains('id', $profile->id))
+                                                            <i class="bi bi-heart-fill text-danger"></i>
+                                                        @else
+                                                            <i class="bi bi-heart"></i>
+                                                        @endif
+                                                        Shortlist
+                                                    </button>
+                                                @endauth
+                                                @guest
+                                                    <span tabindex="0" data-bs-toggle="popover"
+                                                        data-bs-trigger="hover focus" data-bs-placement="top"
+                                                        data-bs-content="Login to Shortlist the Profile">
+                                                        <button class="btn btn-outline-primary w-100 shortlist-btn"
+                                                            type="button" disabled><span class="bi bi-eye"></span>
+                                                            Shortlist</button>
+                                                    </span>
+                                                @endguest
                                                 <div id="shortlist-message" class="mt-2 text-success"
                                                     style="display:none;"></div>
                                             </div>

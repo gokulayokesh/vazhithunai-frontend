@@ -71,19 +71,37 @@
                         <div class="col-lg-10">
                             <div class="contact-form-wrapper">
                                 <h2 class="text-center mb-4">Send a Message</h2>
-
-                                <form action="forms/contact.php" method="post" class="php-email-form">
+                                {{--  display successfully --}}
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+                                @if ($errors->any())
+                                    <div class="alert alert-danger py-2">
+                                        {{ $errors->first() }}
+                                    </div>
+                                @endif
+                                <form action="{{ url('/contact-us') }}" method="post" class="php-email-form">
+                                    @csrf
                                     <div class="row g-3">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="name"
                                                     placeholder="Your Name" required="">
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <input type="email" class="form-control" name="email"
+                                                <input type="number" class="form-control" name="mobile"
+                                                    placeholder="Mobile Number" required="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" name="mail_id"
                                                     placeholder="Email Address" required="">
                                             </div>
                                         </div>

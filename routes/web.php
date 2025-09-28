@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentController;
@@ -86,3 +87,5 @@ Route::post('/verify-otp', [LoginController::class, 'verifyOtp'])->name('verify.
 Route::post('/resend-otp', [LoginController::class, 'resendOtp'])->name('resend.otp');  
 
 Route::get('/add-watch-history/{id}', [ProfileController::class, 'decrementView'])->middleware('auth');
+
+Route::post('/contact-us', [ContactMessageController::class, 'store'])->name('contact.store');
