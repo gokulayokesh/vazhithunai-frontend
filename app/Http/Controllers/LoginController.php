@@ -13,49 +13,62 @@ use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
-    public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
+    public function login(Request $request){
+        $request->validate([
+            'login'    => ['required'],   // can be email or mobile
             'password' => ['required'],
         ]);
 
-        // First, fetch the user by email
-        $user = User::where('email', $credentials['email'])->first();
+        $loginInput = $request->input('login');
+        $password   = $request->input('password');
+
+        // Determine if login is email or mobile
+        $fieldType = filter_var($loginInput, FILTER_VALIDATE_EMAIL) ? 'email' : 'mobile';
+
+        // Fetch user by email or mobile
+        $user = User::where($fieldType, $loginInput)->first();
 
         if (! $user) {
-            return response()->json([
-                'success' => false,
-                'message' => 'The provided credentials do not match our records.',
-            ], 422);
+            return $request->input('from_form')
+                ? back()->withErrors(['login' => 'The provided credentials do not match our records.'])->onlyInput('login')
+                : response()->json([
+                    'success' => false,
+                    'message' => 'The provided credentials do not match our records.',
+                ], 422);
         }
 
-        // Check if email is verified
-        if (is_null($user->email_verified_at)) {
+        // Check email verification only if logging in with email
+        if ($fieldType === 'email' && is_null($user->email_verified_at)) {
             return response()->json([
                 'success' => false,
                 'message' => 'Please verify your email address before logging in.',
             ], 403);
         }
 
-        // Attempt login only if verified
+        // Attempt login
+        $credentials = [
+            $fieldType => $loginInput,
+            'password' => $password,
+        ];
+
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            if($request->input('from_form')){
+
+            if ($request->input('from_form')) {
                 return redirect()->route('home');
             }
+
             return response()->json(['success' => true]);
         }
-        if($request->input('from_form')){
-            return back()->withErrors([
-                'login' => 'The provided credentials do not match our records.',
-            ])->onlyInput('email');
-        }
-        return response()->json([
-            'success' => false,
-            'message' => 'The provided credentials do not match our records.',
-        ], 422);
+
+        return $request->input('from_form')
+            ? back()->withErrors(['login' => 'The provided credentials do not match our records.'])->onlyInput('login')
+            : response()->json([
+                'success' => false,
+                'message' => 'The provided credentials do not match our records.',
+            ], 422);
     }
+
 
     public function logout(Request $request)
     {

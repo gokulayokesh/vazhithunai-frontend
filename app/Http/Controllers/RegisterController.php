@@ -18,6 +18,13 @@ use Mail;
 
 class RegisterController extends Controller
 {
+
+    public function index(Request $request)
+    {
+        return view('layout.register');
+    }
+
+
     public function store(Request $request)
     {
         // Validate all sections

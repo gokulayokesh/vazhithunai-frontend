@@ -45,8 +45,9 @@
                                             <span class="input-icon">
                                                 <i class="bi bi-envelope"></i>
                                             </span>
-                                            <input type="email" name="email" class="form-control"
-                                                placeholder="Email address" required="" autocomplete="email">
+                                            <input type="text" name="login" class="form-control"
+                                                placeholder="Email address / Mobile Number" required=""
+                                                autocomplete="email">
                                         </div>
 
                                         <div class="input-group mb-3">

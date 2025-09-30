@@ -20,7 +20,7 @@
                     <!-- Email -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Email / Mobile Number</label>
-                        <input type="text" class="form-control" id="email" name="email"
+                        <input type="text" class="form-control" id="login" name="login"
                             placeholder="Enter your registered email or mobile" required>
                     </div>
 

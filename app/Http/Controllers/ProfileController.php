@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\ProfileWatchHistory;
@@ -19,9 +18,9 @@ class ProfileController extends Controller
 
     public function profile(Request $request)
     {
-        $userId = User::getIdByIdentifier($request->identifier);
+        $userId   = User::getIdByIdentifier($request->identifier);
         $viewerId = Auth::id();
-        if($userId == $viewerId){
+        if ($userId == $viewerId) {
             return redirect()->route('myaccount');
         }
 
@@ -39,27 +38,27 @@ class ProfileController extends Controller
 
         // Check if this viewer has already viewed this profile
         $alreadyViewed = ProfileWatchHistory::where('viewer_id', $viewerId)
-                        ->where('profile_id', $profile->user_id)
-                        ->exists();
-            
+            ->where('profile_id', $profile->user_id)
+            ->exists();
+
         // Build a simple "similar profiles" query (tune filters as needed)
         $similarProfiles = UserDetails::with(['user', 'userImages'])
             ->where('id', '!=', $profiles->id)
-            ->when($profiles->gender, fn ($q) => $q->where('gender', $profiles->gender)) // or opposite gender if desired
-            ->when($profiles->state, fn ($q) => $q->where('state', $profiles->state))
-            ->when($profiles->caste, fn ($q) => $q->where('caste', $profiles->caste))
+            ->when($profiles->gender, fn($q) => $q->where('gender', $profiles->gender)) // or opposite gender if desired
+            ->when($profiles->state, fn($q) => $q->where('state', $profiles->state))
+            ->when($profiles->caste, fn($q) => $q->where('caste', $profiles->caste))
             ->latest()
             ->limit(6)
             ->get();
 
-        return view('layout.profile', compact('profile', 'similarProfiles','alreadyViewed'));
+        return view('layout.profile', compact('profile', 'similarProfiles', 'alreadyViewed'));
     }
 
     public function toggleShortlist(Request $request, $shortlistedUserId)
     {
         if (! Auth::check()) {
             return response()->json([
-                'status' => 'error',
+                'status'  => 'error',
                 'message' => 'Please log in to shortlist users',
             ], 401);
         }
@@ -69,7 +68,7 @@ class ProfileController extends Controller
         // Prevent self-shortlisting
         if ($userId == $shortlistedUserId) {
             return response()->json([
-                'status' => 'error',
+                'status'  => 'error',
                 'message' => 'You cannot shortlist yourself',
             ], 422);
         }
@@ -84,20 +83,20 @@ class ProfileController extends Controller
             $existing->delete();
 
             return response()->json([
-                'status' => 'removed',
+                'status'  => 'removed',
                 'message' => 'User removed from shortlist',
             ]);
         } else {
             // Add to shortlist
             $shortlist = Shortlist::create([
-                'user_id' => $userId,
+                'user_id'             => $userId,
                 'shortlisted_user_id' => $shortlistedUserId,
             ]);
 
             return response()->json([
-                'status' => 'added',
+                'status'  => 'added',
                 'message' => 'User added to shortlist',
-                'data' => $shortlist,
+                'data'    => $shortlist,
             ]);
         }
     }
@@ -106,29 +105,29 @@ class ProfileController extends Controller
     {
         // Load JSON reference data
         $referenceData = json_decode(Storage::disk('public')->get('json/data.json'), true);
-        
-        $employmentTypes = $referenceData['employmentTypes']??[];
-        $industries = $referenceData['industries'];
-        $maritalStatuses = $referenceData['maritalStatuses'];
-        $bodyTypes = $referenceData['bodyTypes'];
-        $complexions = $referenceData['complexions'];
-        $languagesKnown = $motherTongues = $referenceData['motherTongues'];
-        $interests = $referenceData['interests'];
-        $hobbies = $referenceData['hobbies'];
-        $cuisines = $referenceData['cuisines'];
-        $musicGenres = $referenceData['musicGenres'];
-        $sportsFitness = $referenceData['sportsFitness'];
-        $petPreferences = $referenceData['petPreferences'];
-        $travelPreferences = $referenceData['travelPreferences'];
+
+        $employmentTypes    = $referenceData['employmentTypes'];
+        $industries         = $referenceData['industries'];
+        $maritalStatuses    = $referenceData['maritalStatuses'];
+        $bodyTypes          = $referenceData['bodyTypes'];
+        $complexions        = $referenceData['complexions'];
+        $motherTongues      = $referenceData['motherTongues'];
+        $interests          = $referenceData['interests'];
+        $hobbies            = $referenceData['hobbies'];
+        $cuisines           = $referenceData['cuisines'];
+        $musicGenres        = $referenceData['musicGenres'];
+        $sportsFitness      = $referenceData['sportsFitness'];
+        $petPreferences     = $referenceData['petPreferences'];
+        $travelPreferences  = $referenceData['travelPreferences'];
         $dietaryPreferences = $referenceData['dietaryPreferences'];
-        $smokingHabits = $referenceData['smokingHabits'];
-        $drinkingHabits = $referenceData['drinkingHabits'];
-        $birthStars = $referenceData['birthStars'];
-        $zodiacs = $referenceData['zodiacs'];
-        $educations = $referenceData['educations'][0];
-        $jobs = $referenceData['jobs'][0];
-        $salaries = $referenceData['salaries'][0];
-        $cities = $referenceData['cities'];
+        $smokingHabits      = $referenceData['smokingHabits'];
+        $drinkingHabits     = $referenceData['drinkingHabits'];
+        $birthStars         = $referenceData['birthStars'];
+        $zodiacs            = $referenceData['zodiacs'];
+        $educations         = $referenceData['educations'][0];
+        $jobs               = $referenceData['jobs'][0];
+        $salaries           = $referenceData['salaries'][0];
+        $cities             = $referenceData['cities'];
 
         $user = Auth::user()->load(['userDetails', 'userImages', 'shortlistedUsers']);
 
@@ -155,11 +154,10 @@ class ProfileController extends Controller
             'dietaryPreferences',
             'smokingHabits',
             'drinkingHabits',
-            'languagesKnown',
         ));
     }
 
-    public function decrementView($id)
+    public function viewProfile($id)
     {
         $profile = User::findOrFail($id);
         $viewer  = Auth::user();

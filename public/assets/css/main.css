@@ -14113,7 +14113,7 @@ select:focus {
 
 .profile-alert {
     position: sticky;   /* sticks within its parent container */
-    top: 70px;             /* stick to the very top */
+    top: 65px;             /* stick to the very top */
     z-index: 99;      /* ensure it stays above other elements */
     overflow: hidden;
     white-space: nowrap;
