@@ -651,87 +651,92 @@
                                                         <div class="properties-masonry view-masonry active"
                                                             data-aos="fade-up" data-aos-delay="250">
                                                             <div class="row g-4">
-                                                                @foreach ($user->shortlistedUsers as $profile)
-                                                                    <div class="col-lg-4 col-md-6">
-                                                                        <div class="property-item">
-                                                                            <a href="{{ route('profile', ['identifier' => $profile->identifier ?? '']) }}"
-                                                                                class="property-link">
-                                                                                <div class="property-image-wrapper">
-                                                                                    <img src="{{ $profile->userImages->first()->image_path }}"
-                                                                                        alt="{{ $profile->name }}"
-                                                                                        class="img-fluid">
-
-                                                                                    <div class="property-status">
-                                                                                        @if ($profile->featured)
-                                                                                            <span
-                                                                                                class="status-badge featured">Featured</span>
-                                                                                        @endif
-                                                                                        <span
-                                                                                            class="status-badge sale">Active</span>
-                                                                                    </div>
-
-                                                                                    <div class="property-actions">
-                                                                                        <button
-                                                                                            class="action-btn favorite-btn shortlist-btn"
-                                                                                            data-toggle="tooltip"
-                                                                                            title="Add to Favorites"
-                                                                                            data-user-id="{{ $profile->id }}">
-                                                                                            @if (auth()->user() && auth()->user()->shortlistedUsers->contains('id', $profile->id))
-                                                                                                <i
-                                                                                                    class="bi bi-heart-fill text-danger"></i>
-                                                                                            @else
-                                                                                                <i class="bi bi-heart"></i>
-                                                                                            @endif
-                                                                                        </button>
-
-                                                                                        <button
-                                                                                            class="action-btn share-btn"
-                                                                                            data-toggle="tooltip"
-                                                                                            title="Share Profile">
-                                                                                            <i class="bi bi-share"></i>
-                                                                                        </button>
-                                                                                        <button
-                                                                                            class="action-btn gallery-btn"
-                                                                                            data-toggle="tooltip"
-                                                                                            title="View Gallery">
-                                                                                            <i class="bi bi-images"></i>
-                                                                                            <span
-                                                                                                class="gallery-count">{{ $profile->userImages->count() }}</span>
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </a>
-
-                                                                            <div class="property-details">
+                                                                @if (count($user->shortlistedUsers) > 0)
+                                                                    @foreach ($user->shortlistedUsers as $profile)
+                                                                        <div class="col-lg-5 col-md-6">
+                                                                            <div class="property-item">
                                                                                 <a href="{{ route('profile', ['identifier' => $profile->identifier ?? '']) }}"
                                                                                     class="property-link">
-                                                                                    <div class="property-header">
-                                                                                        <div class="property-price"
-                                                                                            style="font-size: 20px">
-                                                                                            {{ $profile->name }}
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="property-header">
-                                                                                        <div class="property-type">
-                                                                                            {{ $profile->identifier ?? '' }}
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <h4 class="property-title">
-                                                                                        {{ $profile->userDetails->gender ?? '' }}
-                                                                                        -
-                                                                                        {{ \Carbon\Carbon::parse($profile->userDetails->dob)->age }}
-                                                                                        yrs
-                                                                                    </h4>
+                                                                                    <div class="property-image-wrapper">
+                                                                                        <img src="{{ $profile->userImages->first()->image_path }}"
+                                                                                            alt="{{ $profile->name }}"
+                                                                                            class="img-fluid">
 
-                                                                                    <p class="property-address">
-                                                                                        <i class="bi bi-geo-alt"></i>
-                                                                                        {{ $profile->userDetails->city->name }}{{ $profile->userDetails->city->state->name ? ', ' . $profile->userDetails->city->state->name : '' }}
-                                                                                    </p>
+                                                                                        <div class="property-status">
+                                                                                            @if ($profile->featured)
+                                                                                                <span
+                                                                                                    class="status-badge featured">Featured</span>
+                                                                                            @endif
+                                                                                            <span
+                                                                                                class="status-badge sale">Active</span>
+                                                                                        </div>
+
+                                                                                        <div class="property-actions">
+                                                                                            <button
+                                                                                                class="action-btn favorite-btn shortlist-btn"
+                                                                                                data-toggle="tooltip"
+                                                                                                title="Add to Favorites"
+                                                                                                data-user-id="{{ $profile->id }}">
+                                                                                                @if (auth()->user() && auth()->user()->shortlistedUsers->contains('id', $profile->id))
+                                                                                                    <i
+                                                                                                        class="bi bi-heart-fill text-danger"></i>
+                                                                                                @else
+                                                                                                    <i
+                                                                                                        class="bi bi-heart"></i>
+                                                                                                @endif
+                                                                                            </button>
+
+                                                                                            <button
+                                                                                                class="action-btn share-btn"
+                                                                                                data-toggle="tooltip"
+                                                                                                title="Share Profile">
+                                                                                                <i class="bi bi-share"></i>
+                                                                                            </button>
+                                                                                            <button
+                                                                                                class="action-btn gallery-btn"
+                                                                                                data-toggle="tooltip"
+                                                                                                title="View Gallery">
+                                                                                                <i
+                                                                                                    class="bi bi-images"></i>
+                                                                                                <span
+                                                                                                    class="gallery-count">{{ $profile->userImages->count() }}</span>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </a>
+
+                                                                                <div class="property-details">
+                                                                                    <a href="{{ route('profile', ['identifier' => $profile->identifier ?? '']) }}"
+                                                                                        class="property-link">
+                                                                                        <div class="property-header">
+                                                                                            <div class="property-price"
+                                                                                                style="font-size: 20px">
+                                                                                                {{ $profile->name }}
+                                                                                            </div>
+                                                                                            <div class="property-type">
+                                                                                                {{ '#' . $profile->identifier ?? '' }}
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <h4 class="property-title">
+                                                                                            {{ $profile->userDetails->gender ?? '' }}
+                                                                                            -
+                                                                                            {{ \Carbon\Carbon::parse($profile->userDetails->dob)->age }}
+                                                                                            yrs
+                                                                                        </h4>
+
+                                                                                        <p class="property-address">
+                                                                                            <i class="bi bi-geo-alt"></i>
+                                                                                            {{ $profile->userDetails->city->name }}{{ $profile->userDetails->city->state->name ? ', ' . $profile->userDetails->city->state->name : '' }}
+                                                                                        </p>
+                                                                                    </a>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                @endforeach
+                                                                    @endforeach
+                                                                @else
+                                                                    <p>No Shorlisted Profile.</p>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>

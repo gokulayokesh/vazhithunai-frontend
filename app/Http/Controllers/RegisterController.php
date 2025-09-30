@@ -113,6 +113,7 @@ class RegisterController extends Controller
             $user->mobile = $validated['mobile'];
             $user->show_password = $plainPassword;
             $user->password = Hash::make($plainPassword);
+            $user->profile_completed = 1;
             $user->save();
 
             // Save all details into UserDetails

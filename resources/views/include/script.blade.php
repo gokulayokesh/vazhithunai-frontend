@@ -62,73 +62,83 @@
              //  alert("Something went wrong while sharing.");
          }
      }
-     document.getElementById('contactForm').addEventListener('submit', async function(e) {
-         e.preventDefault();
 
-         // Clear old errors
-         document.querySelectorAll('small.text-danger').forEach(el => el.textContent = '');
-         document.getElementById('successMsg').classList.add('d-none');
-         document.getElementById('errorMsg').classList.add('d-none');
+     document.addEventListener("DOMContentLoaded", function() {
+         const form = document.getElementById('contactForm');
+         if (form) {
+             document.getElementById('contactForm').addEventListener('submit', async function(e) {
+                 e.preventDefault();
 
-         const form = e.target;
-         const formData = new FormData(form);
+                 // Clear old errors
+                 document.querySelectorAll('small.text-danger').forEach(el => el.textContent = '');
+                 document.getElementById('successMsg').classList.add('d-none');
+                 document.getElementById('errorMsg').classList.add('d-none');
 
-         // Client-side validation
-         let hasError = false;
+                 const form = e.target;
+                 const formData = new FormData(form);
 
-         if (!formData.get('name').trim()) {
-             document.querySelector('.error-name').textContent = "Name is required";
-             hasError = true;
-         }
+                 // Client-side validation
+                 let hasError = false;
 
-         const mobile = formData.get('mobile').trim();
-         if (!/^[0-9]{10}$/.test(mobile)) {
-             document.querySelector('.error-mobile').textContent = "Enter a valid 10-digit mobile number";
-             hasError = true;
-         }
+                 if (!formData.get('name').trim()) {
+                     document.querySelector('.error-name').textContent = "Name is required";
+                     hasError = true;
+                 }
 
-         const email = formData.get('mail_id').trim();
-         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-             document.querySelector('.error-mail_id').textContent = "Enter a valid email address";
-             hasError = true;
-         }
+                 const mobile = formData.get('mobile').trim();
+                 if (!/^[0-9]{10}$/.test(mobile)) {
+                     document.querySelector('.error-mobile').textContent =
+                         "Enter a valid 10-digit mobile number";
+                     hasError = true;
+                 }
 
-         if (!formData.get('subject').trim()) {
-             document.querySelector('.error-subject').textContent = "Subject is required";
-             hasError = true;
-         }
+                 const email = formData.get('mail_id').trim();
+                 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                     document.querySelector('.error-mail_id').textContent =
+                         "Enter a valid email address";
+                     hasError = true;
+                 }
 
-         if (!formData.get('message').trim()) {
-             document.querySelector('.error-message-field').textContent = "Message cannot be empty";
-             hasError = true;
-         }
+                 if (!formData.get('subject').trim()) {
+                     document.querySelector('.error-subject').textContent = "Subject is required";
+                     hasError = true;
+                 }
 
-         if (hasError) return;
+                 if (!formData.get('message').trim()) {
+                     document.querySelector('.error-message-field').textContent =
+                         "Message cannot be empty";
+                     hasError = true;
+                 }
 
-         try {
-             const response = await fetch("{{ url('/contact-us') }}", {
-                 method: "POST",
-                 headers: {
-                     "X-CSRF-TOKEN": "{{ csrf_token() }}",
-                     "Accept": "application/json"
-                 },
-                 body: formData
+                 if (hasError) return;
+
+                 try {
+                     const response = await fetch("{{ url('/contact-us') }}", {
+                         method: "POST",
+                         headers: {
+                             "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                             "Accept": "application/json"
+                         },
+                         body: formData
+                     });
+
+                     const result = await response.json();
+
+                     if (response.ok && result.status === "success") {
+                         document.getElementById('successMsg').classList.remove('d-none');
+                         document.getElementById('successMsg').textContent = result.message ||
+                             "Message sent successfully!";
+                         form.reset();
+                     } else {
+                         document.getElementById('errorMsg').classList.remove('d-none');
+                         document.getElementById('errorMsg').textContent = result.message ||
+                             "Something went wrong!";
+                     }
+                 } catch (error) {
+                     document.getElementById('errorMsg').classList.remove('d-none');
+                     document.getElementById('errorMsg').textContent = "Network error: " + error;
+                 }
              });
-
-             const result = await response.json();
-
-             if (response.ok && result.status === "success") {
-                 document.getElementById('successMsg').classList.remove('d-none');
-                 document.getElementById('successMsg').textContent = result.message ||
-                     "Message sent successfully!";
-                 form.reset();
-             } else {
-                 document.getElementById('errorMsg').classList.remove('d-none');
-                 document.getElementById('errorMsg').textContent = result.message || "Something went wrong!";
-             }
-         } catch (error) {
-             document.getElementById('errorMsg').classList.remove('d-none');
-             document.getElementById('errorMsg').textContent = "Network error: " + error;
          }
      });
  </script>

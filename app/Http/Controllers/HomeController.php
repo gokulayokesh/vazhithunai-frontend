@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\RegistrationOtpMail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -22,31 +23,34 @@ class HomeController extends Controller
 
         // Step 1: Get subscribed users with custom subscription ordering
         $subscribedUsers = User::has('userDetails')
-            ->with('userDetails')
-            ->join(DB::raw('(SELECT user_id, MAX(id) as latest_sub_id 
-                     FROM subscription_histories 
-                     GROUP BY user_id) sh'), 'sh.user_id', '=', 'users.id')
-            ->orderByRaw('FIELD(sh.latest_sub_id, 3, 2, 1) DESC')
-            ->select('users.*')
-            ->take(4)
-            ->get();
+        ->with('userDetails')
+        ->join(DB::raw('(SELECT user_id, MAX(id) as latest_sub_id 
+                FROM subscription_histories 
+                GROUP BY user_id) sh'), 'sh.user_id', '=', 'users.id')
+        ->where('users.id', '<>', Auth::id()) // exclude logged-in user
+        ->orderByRaw('FIELD(sh.latest_sub_id, 3, 2, 1) DESC')
+        ->select('users.*')
+        ->take(4)
+        ->get();
 
         // Step 2: If less than 4, fill with unsubscribed users
         if ($subscribedUsers->count() < 4) {
-            $remaining = 4 - $subscribedUsers->count();
+        $remaining = 4 - $subscribedUsers->count();
 
-            $unsubscribedUsers = User::has('userDetails')
-                ->doesntHave('subscriptions')
-                ->with('userDetails')
-                ->latest('id')
-                ->take($remaining)
-                ->get();
+        $unsubscribedUsers = User::where('id', '<>', Auth::id()) // exclude logged-in user
+            ->has('userDetails')
+            ->doesntHave('subscriptions')
+            ->with('userDetails')
+            ->latest('id')
+            ->take($remaining)
+            ->get();
 
-            // Merge results
-            $latestUsers = $subscribedUsers->concat($unsubscribedUsers);
+        // Merge results
+        $latestUsers = $subscribedUsers->concat($unsubscribedUsers);
         } else {
-            $latestUsers = $subscribedUsers;
+        $latestUsers = $subscribedUsers;
         }
+
 
         // $email = 'gokulayokesh@gmail.com';
         // $name = 'Gokul';
