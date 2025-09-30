@@ -173,8 +173,8 @@ class ProfileController extends Controller
         $history->increment('view_count');
 
         // Decrement profile’s available view count
-        if ($profile->view_profile_count > 0) {
-            $profile->decrement('view_profile_count');
+        if ($viewer->view_profile_count > 0) {
+            $viewer->decrement('view_profile_count');
         }
 
         return redirect()->route('profile', $profile->identifier);

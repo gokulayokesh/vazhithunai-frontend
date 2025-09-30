@@ -71,58 +71,41 @@
                         <div class="col-lg-10">
                             <div class="contact-form-wrapper">
                                 <h2 class="text-center mb-4">Send a Message</h2>
-                                {{--  display successfully --}}
-                                @if (session('success'))
-                                    <div class="alert alert-success">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
-                                @if ($errors->any())
-                                    <div class="alert alert-danger py-2">
-                                        {{ $errors->first() }}
-                                    </div>
-                                @endif
-                                <form action="{{ url('/contact-us') }}" method="post" class="php-email-form">
+
+                                <form id="contactForm" class="php-email-form">
                                     @csrf
                                     <div class="row g-3">
                                         <div class="col-md-4">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="name"
-                                                    placeholder="Your Name" required="">
-                                            </div>
+                                            <input type="text" class="form-control" name="name"
+                                                placeholder="Your Name">
+                                            <small class="text-danger error-name"></small>
                                         </div>
 
                                         <div class="col-md-4">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" name="mobile"
-                                                    placeholder="Mobile Number" required="">
-                                            </div>
+                                            <input type="text" class="form-control" name="mobile"
+                                                placeholder="Mobile Number">
+                                            <small class="text-danger error-mobile"></small>
                                         </div>
 
                                         <div class="col-md-4">
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" name="mail_id"
-                                                    placeholder="Email Address" required="">
-                                            </div>
+                                            <input type="email" class="form-control" name="mail_id"
+                                                placeholder="Email Address">
+                                            <small class="text-danger error-mail_id"></small>
                                         </div>
 
                                         <div class="col-12">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="subject"
-                                                    placeholder="Subject" required="">
-                                            </div>
+                                            <input type="text" class="form-control" name="subject" placeholder="Subject">
+                                            <small class="text-danger error-subject"></small>
                                         </div>
 
                                         <div class="col-12">
-                                            <div class="form-group">
-                                                <textarea class="form-control" name="message" placeholder="Your Message" rows="6" required=""></textarea>
-                                            </div>
+                                            <textarea class="form-control" name="message" placeholder="Your Message" rows="6"></textarea>
+                                            <small class="text-danger error-message-field"></small>
                                         </div>
 
                                         <div class="col-12">
-                                            <div class="loading">Loading</div>
-                                            <div class="error-message"></div>
-                                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                                            <div class="alert alert-success d-none" id="successMsg"></div>
+                                            <div class="alert alert-danger d-none" id="errorMsg"></div>
                                         </div>
 
                                         <div class="col-12 text-center">
@@ -131,6 +114,7 @@
                                     </div>
                                 </form>
                             </div>
+
                         </div>
                     </div>
 

@@ -390,23 +390,25 @@
                                                     <span class="shimmer status-badge viewed"><span
                                                             style="font-size: small;" class="bi bi-eye"></span>
                                                         Viewed</span>
+
+                                                    @if ($profile->user->isOnline())
+                                                        <br><small class="text-success">● Online</small>
+                                                    @else
+                                                        <br>
+                                                        <small class="agent-role"> Last seen
+                                                            {{ $profile->user->last_seen?->diffForHumans() ?? 'a while ago' }}</small>
+                                                    @endif
                                                 @endif
-                                                @if ($profile->user->isOnline())
-                                                    <br><small class="text-success">● Online</small>
-                                                @else
-                                                    <br>
-                                                    <small class="agent-role"> Last seen
-                                                        {{ $profile->user->last_seen?->diffForHumans() ?? 'a while ago' }}</small>
-                                                @endif
+
                                             </h4>
                                             <p class="agent-role">{{ $profile->occupation_category }}</p>
                                             @auth
-                                                @if (!$alreadyViewed && $profile->user->view_profile_count > 0)
+                                                @if (!$alreadyViewed && (Auth::user()->view_profile_count ?? 0) > 0)
                                                     <a class="btn btn-primary"
                                                         href="{{ url('/add-watch-history', $profile->user->id) }}">
                                                         <span class="bi bi-eye"></span> View Profile
                                                     </a>
-                                                @elseif($profile->user->view_profile_count == 0)
+                                                @elseif((Auth::user()->view_profile_count ?? 0) == 0)
                                                     <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
                                                         data-bs-trigger="hover focus"
                                                         data-bs-content="Buy a subscription plan to view the Profile Details">
@@ -415,6 +417,7 @@
                                                     </span>
                                                 @endif
                                             @endauth
+
                                             @guest
                                                 <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"
                                                     data-bs-trigger="hover focus"
@@ -429,30 +432,50 @@
                                     <div class="agent-contact">
                                         <div class="contact-item">
                                             <i class="bi bi-telephone"></i>
-                                            <span>{{ $profile->user->mobile }}</span>
+                                            @if ($alreadyViewed)
+                                                <span>{{ $profile->user->getRawOriginal('mobile') }}</span>
+                                            @else
+                                                <span>{{ $profile->user->mobile }}</span>
+                                            @endif
                                         </div>
                                         <div class="contact-item">
                                             <i class="bi bi-envelope"></i>
-                                            <span>{{ $profile->user->email }}</span>
+                                            @if ($alreadyViewed)
+                                                <span>{{ $profile->user->getRawOriginal('email') }}</span>
+                                            @else
+                                                <span>{{ $profile->user->email }}</span>
+                                            @endif
                                         </div>
                                         @auth
                                             @if ((auth()->user()->latestActiveSubscription->plan_code ?? 0) >= 1)
                                                 @if ($profile->instagram_profile_url != null)
                                                     <div class="contact-item">
                                                         <i class="bi bi-instagram"></i>
-                                                        <span>{{ $profile->instagram_profile_url }}</span>
+                                                        @if ($alreadyViewed)
+                                                            <span>{{ $profile->getRawOriginal('instagram_profile_url') }}</span>
+                                                        @else
+                                                            <span>{{ $profile->instagram_profile_url }}</span>
+                                                        @endif
                                                     </div>
                                                 @endif
                                                 @if ($profile->facebook_profile_url != null)
                                                     <div class="contact-item">
                                                         <i class="bi bi-facebook"></i>
-                                                        <span>{{ $profile->facebook_profile_url }}</span>
+                                                        @if ($alreadyViewed)
+                                                            <span>{{ $profile->getRawOriginal('facebook_profile_url') }}</span>
+                                                        @else
+                                                            <span>{{ $profile->facebook_profile_url }}</span>
+                                                        @endif
                                                     </div>
                                                 @endif
                                                 @if ($profile->twitter_profile_url != null)
                                                     <div class="contact-item">
                                                         <i class="bi bi-twitter"></i>
-                                                        <span>{{ $profile->twitter_profile_url }}</span>
+                                                        @if ($alreadyViewed)
+                                                            <span>{{ $profile->getRawOriginal('twitter_profile_url') }}</span>
+                                                        @else
+                                                            <span>{{ $profile->twitter_profile_url }}</span>
+                                                        @endif
                                                     </div>
                                                 @endif
                                             @endif

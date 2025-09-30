@@ -42,4 +42,65 @@ class UserDetails extends Model
     {
         return $this->belongsTo(City::class);
     }
+
+    // Masked Facebook Profile URL
+    public function getFacebookProfileUrlAttribute($value)
+    {
+        if (! $value) {
+            return null;
+        }
+
+        // Show only the domain + first 5 chars of username, mask the rest
+        $parts = parse_url($value);
+        $host  = $parts['host'] ?? '';
+        $path  = $parts['path'] ?? '';
+
+        if ($path) {
+            $username = ltrim($path, '/');
+            $masked   = substr($username, 0, 5) . str_repeat('*', max(strlen($username) - 5, 0));
+            return $host . '/' . $masked;
+        }
+
+        return $host;
+    }
+
+    // Masked Instagram Profile URL
+    public function getInstagramProfileUrlAttribute($value)
+    {
+        if (! $value) {
+            return null;
+        }
+
+        $parts = parse_url($value);
+        $host  = $parts['host'] ?? '';
+        $path  = $parts['path'] ?? '';
+
+        if ($path) {
+            $username = ltrim($path, '/');
+            $masked   = substr($username, 0, 3) . str_repeat('*', max(strlen($username) - 3, 0));
+            return $host . '/' . $masked;
+        }
+
+        return $host;
+    }
+
+    // Masked Twitter Profile URL
+    public function getTwitterProfileUrlAttribute($value)
+    {
+        if (! $value) {
+            return null;
+        }
+
+        $parts = parse_url($value);
+        $host  = $parts['host'] ?? '';
+        $path  = $parts['path'] ?? '';
+
+        if ($path) {
+            $username = ltrim($path, '/');
+            $masked   = substr($username, 0, 2) . str_repeat('*', max(strlen($username) - 2, 0));
+            return $host . '/' . $masked;
+        }
+
+        return $host;
+    }
 }
