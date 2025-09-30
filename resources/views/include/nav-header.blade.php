@@ -85,11 +85,21 @@
 
 
     </div>
+
 </header>
+@auth
+    @if (Auth::user()->profile_completed == 0)
+        <div class="profile-alert">
+            <div class="profile-alert-text">
+                ⚠️ Please complete your profile details to get your profile listed! | ⚠️ உங்கள் சுயவிவர விவரங்களை பூர்த்தி
+                செய்யுங்கள், அப்போதுதான் உங்கள் சுயவிவரம் பட்டியலில் காணப்படும்! - <a href="/register">Click Here To
+                    Complete Your Profile</a>
+            </div>
+        </div>
+    @endif
+@endauth
 @if (!Auth::check())
     <div id="g_id_onload" data-client_id="930369423455-8jsjucb90ns0glstji99v8gdjugo2sl2.apps.googleusercontent.com"
-        data-login_uri="https://vazhithunai.com/auth/google/callback" data-prompt_parent_id="g_id_onload"
-        style="position: absolute; top: 100px; right: 30px;
-               width: 0; height: 0; z-index: 1001;">
+        data-login_uri="https://vazhithunai.com/auth/google/callback" data-prompt_parent_id="g_id_onload">
     </div>
 @endif

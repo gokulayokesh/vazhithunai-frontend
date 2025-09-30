@@ -14111,3 +14111,27 @@ select:focus {
     color: #fff;
 }
 
+.profile-alert {
+    position: sticky;   /* sticks within its parent container */
+    top: 70px;             /* stick to the very top */
+    z-index: 9999;      /* ensure it stays above other elements */
+    overflow: hidden;
+    white-space: nowrap;
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    border-radius: 0;   /* flat edges look better for banners */
+    padding: 8px 0;
+    font-weight: bold;
+}
+
+.profile-alert-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-left 25s linear infinite;
+}
+
+@keyframes scroll-left {
+    0%   { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
