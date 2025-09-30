@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('mobile')->unique()->default(null)->nullable()->after('email');
-        });
+        if (!Schema::hasColumn('users', 'mobile')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->string('mobile')
+                      ->unique()
+                      ->nullable()
+                      ->after('email');
+            });
+        }
     }
 
     /**
@@ -21,8 +26,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['mobile']);
-        });
+        if (Schema::hasColumn('users', 'mobile')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->dropUnique(['mobile']);
+                $table->dropColumn('mobile');
+            });
+        }
     }
 };
