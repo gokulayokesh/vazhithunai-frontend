@@ -269,7 +269,7 @@ h6 {
         opacity: 0;
         transition: 0.3s;
         border-radius: 4px;
-        z-index: 99;
+        z-index: 9999;
         box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
     }
 
@@ -14114,7 +14114,7 @@ select:focus {
 .profile-alert {
     position: sticky;   /* sticks within its parent container */
     top: 70px;             /* stick to the very top */
-    z-index: 9999;      /* ensure it stays above other elements */
+    z-index: 99;      /* ensure it stays above other elements */
     overflow: hidden;
     white-space: nowrap;
     background: #fff3cd;

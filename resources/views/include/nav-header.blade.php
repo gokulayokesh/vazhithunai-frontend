@@ -31,8 +31,9 @@
             <ul class="navmenu-list">
                 <li><a href="/" @if (request()->segment(1) == '') class="active" @endif>Home</a></li>
                 <li><a href="/about" @if (request()->segment(1) == 'about') class="active" @endif>About</a></li>
-                <li><a href="/contact" @if (request()->segment(1) == 'contact') class="active" @endif>Contact</a></li>
                 <li><a href="/#pricing" @if (request()->segment(index: 0) == '#pricing') class="active" @endif>Pricing</a></li>
+                <li><a href="/contact" @if (request()->segment(1) == 'contact') class="active" @endif>Contact</a></li>
+
                 @if (!Auth::user())
                     <li class="nav-auth">
                         <!-- Login (modal trigger) -->

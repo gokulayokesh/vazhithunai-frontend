@@ -537,10 +537,10 @@
                                         safe
                                         and confidential.</p>
                                     <!-- <ul class="service-highlights">
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Market Analysis</li>
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Comparative Reports</li>
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Investment Insights</li>
-                                                                                                                                                                                                                                </ul> -->
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Market Analysis</li>
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Comparative Reports</li>
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Investment Insights</li>
+                                                                                                                                                                                                                                    </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Get Valuation</span>
                                     <i class="bi bi-arrow-up-right"></i>
@@ -569,10 +569,10 @@
                                         easy for you to create a profile, explore potential matches, and engage in
                                         meaningful conversations.</p>
                                     <!-- <ul class="service-highlights">
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
-                                                                                                                                                                                                                                </ul> -->
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
+                                                                                                                                                                                                                                    </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Start Renting</span>
                                     <i class="bi bi-arrow-up-right"></i>
@@ -597,10 +597,10 @@
                                         all walks of life, cultures, and backgrounds, fostering an inclusive and diverse
                                         community.</p>
                                     <!-- <ul class="service-highlights">
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
-                                                                                                                                                                                                                                </ul> -->
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
+                                                                                                                                                                                                                                    </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Start Renting</span>
                                     <i class="bi bi-arrow-up-right"></i>
@@ -626,10 +626,10 @@
                                         support, and advice, ensuring you have a fulfilling and enriching experience.
                                     </p>
                                     <!-- <ul class="service-highlights">
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
-                                                                                                                                                                                                                                </ul> -->
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
+                                                                                                                                                                                                                                    </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Learn More</span>
                                     <i class="bi bi-arrow-up-right"></i>
@@ -652,10 +652,10 @@
                                         through LGM Matrimony. We take immense pride in being a part of your journey and
                                         celebrating the success stories that emanate from our platform.</p>
                                     <!-- <ul class="service-highlights">
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
-                                                                                                                                                                                                                                    <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
-                                                                                                                                                                                                                                </ul> -->
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
+                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
+                                                                                                                                                                                                                                    </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Learn More</span>
                                     <i class="bi bi-arrow-up-right"></i>
