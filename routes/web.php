@@ -58,9 +58,6 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/my-account', [ProfileController::class, 'myaccount'])->name('myaccount');
-});
 // Backend API
 
 Route::get('/profiles/search', [ProfileSearchController::class, 'search'])
@@ -73,6 +70,10 @@ Route::post('/initiate-payment', [PaymentController::class, 'initiatePayment'])-
 Route::get('/payment-callback', [PaymentController::class, 'handleCallback']);
 
 Route::middleware('auth')->group(function () {
+    
+    Route::get('/my-account', [ProfileController::class, 'myaccount'])->name('myaccount');
+
+
     Route::get('/chats', [ChatController::class, 'index'])->name('chat.index');
     Route::get('/chats/{chatId}', [ChatController::class, 'show'])->name('chat.show');
     Route::get('/chats/start/{user}', [ChatController::class, 'start'])->name('chat.start');
@@ -89,3 +90,6 @@ Route::post('/resend-otp', [LoginController::class, 'resendOtp'])->name('resend.
 Route::get('/add-watch-history/{id}', [ProfileController::class, 'decrementView'])->middleware('auth');
 
 Route::post('/contact-us', [ContactMessageController::class, 'store'])->name('contact.store');
+
+Route::post('/pre-register', [RegisterController::class, 'preRegistration'])
+     ->name('pre.register');

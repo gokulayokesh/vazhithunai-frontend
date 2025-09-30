@@ -13,7 +13,7 @@
                     <h1 class="mb-2 mb-lg-0">Login</h1>
                     <nav class="breadcrumbs">
                         <ol>
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="/">Home</a></li>
                             <li class="current">Login</li>
                         </ol>
                     </nav>
@@ -65,7 +65,10 @@
                                                 <input type="checkbox" id="rememberLogin">
                                                 <label for="rememberLogin">Remember me</label>
                                             </div>
-                                            <a href="#" class="forgot-password">Forgot password?</a>
+                                            <a href="#" class="forgot-password" data-bs-toggle="modal"
+                                                data-bs-target="#forgotPasswordModal" aria-haspopup="dialog"
+                                                aria-expanded="false" aria-controls="forgotPasswordModal">Forgot
+                                                password?</a>
                                         </div>
 
                                         <button type="submit" class="auth-btn primary-btn mb-3">
@@ -85,8 +88,8 @@
 
                                         <div class="switch-form">
                                             <span>Don't have an account?</span>
-                                            <button type="button" class="switch-btn" data-target="register">Create
-                                                account</button>
+                                            <a href="/sign-up" class="switch-btn" data-target="register">Create
+                                                account</a>
                                         </div>
                                     </form>
                                 </div>
@@ -177,6 +180,7 @@
 
         </main>
         @include('include.login-modal')
+        @include('include.forgot-password')
         @include('include.footer')
         @include('include.script')
     </body>

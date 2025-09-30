@@ -3,7 +3,7 @@
     <div class="container footer-top">
         <div class="row gy-4">
             <div class="col-lg-5 col-md-12 footer-about">
-                <a href="index.html" class="logo d-flex align-items-center">
+                <a href="/" class="logo d-flex align-items-center">
                     <span class="sitename">Vazhithunai</span>
                 </a>
                 <p>Where Souls Connect, Love Grows. At Vazhithunai Matrimony, we believe that love is the foundation

@@ -22,6 +22,7 @@ class User extends Authenticatable
         'identifier',
         'name',
         'email',
+        'mobile',
         'password',
         'google_id',
         'avatar',
@@ -51,6 +52,7 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
+            'mobile' => 'string',
             'email_verified_at' => 'datetime',
             'password' => 'hashed', 'last_seen' => 'datetime',
         ];

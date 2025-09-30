@@ -62,9 +62,25 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property string $name
+ * @property string $mail_id
+ * @property string|null $mobile
+ * @property string|null $subject
+ * @property string $message
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage whereMailId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage whereMobile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage whereSubject($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ContactMessage whereUpdatedAt($value)
  */
 	class ContactMessage extends \Eloquent {}
 }
@@ -252,6 +268,7 @@ namespace App\Models{
  * @property string|null $identifier Unique public identifier for user
  * @property string $name
  * @property string $email
+ * @property string|null $mobile
  * @property int $view_profile_count
  * @property string|null $google_id
  * @property string|null $avatar
@@ -267,7 +284,6 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $last_seen
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Chat> $chats
  * @property-read int|null $chats_count
- * @property-read mixed $mobile
  * @property-read \App\Models\SubscriptionHistory|null $latestActiveSubscription
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
@@ -291,6 +307,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereIdentifier($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereLastSeen($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereMobile($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereOtp($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereOtpCreatedAt($value)

@@ -13,7 +13,7 @@
                     <h1 class="mb-2 mb-lg-0">Register</h1>
                     <nav class="breadcrumbs">
                         <ol>
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="/">Home</a></li>
                             <li class="current">Register</li>
                         </ol>
                     </nav>
@@ -31,21 +31,36 @@
                                 <div class="form-header text-center">
                                     <h2>Create Your Account</h2>
                                     <p>Create your account and start shopping with us</p>
+                                    <p id="responseMessage"></p>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-8 mx-auto">
-                                        <form action="register.php" method="post">
+
+                                        <form id="preRegisterForm">
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" id="fullName" name="fullName"
+                                                <input type="text" class="form-control" id="name" name="name"
                                                     placeholder="Full Name" required="" autocomplete="name">
-                                                <label for="fullName">Full Name</label>
+                                                <label for="name">Full Name</label>
                                             </div>
 
-                                            <div class="form-floating mb-3">
-                                                <input type="email" class="form-control" id="email" name="email"
-                                                    placeholder="Email Address" required="" autocomplete="email">
-                                                <label for="email">Email Address</label>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="number" class="form-control" id="mobile"
+                                                            name="mobile" placeholder="Mobile Number" required=""
+                                                            autocomplete="mobile">
+                                                        <label for="mobile">Mobile Number</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3">
+                                                        <input type="email" class="form-control" id="email"
+                                                            name="email" placeholder="Email Address" required=""
+                                                            autocomplete="email">
+                                                        <label for="email">Email Address</label>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <div class="row mb-3">
@@ -71,8 +86,13 @@
                                                 <input class="form-check-input" type="checkbox" id="termsCheck"
                                                     name="termsCheck" required="">
                                                 <label class="form-check-label" for="termsCheck">
-                                                    I agree to the <a href="#">Terms of Service</a> and <a
-                                                        href="#">Privacy Policy</a>
+                                                    I agree to the <a href="#" data-bs-toggle="modal"
+                                                        data-bs-target="#termsModal" aria-haspopup="dialog"
+                                                        aria-expanded="false" aria-controls="termsModal">Terms of
+                                                        Service</a> and <a href="#" data-bs-toggle="modal"
+                                                        data-bs-target="#privacyModal" aria-haspopup="dialog"
+                                                        aria-expanded="false" aria-controls="privacyModal">Privacy
+                                                        Policy</a>
                                                 </label>
                                             </div>
 
@@ -90,7 +110,7 @@
                                             </div>
 
                                             <div class="login-link text-center">
-                                                <p>Already have an account? <a href="#">Sign in</a></p>
+                                                <p>Already have an account? <a href="/login">Sign in</a></p>
                                             </div>
                                         </form>
                                     </div>
@@ -103,10 +123,10 @@
                                                 <span>or sign up with</span>
                                             </div>
 
-                                            <div class="btn btn-social g_id_signin" data-type="standard" data-shape="square"
+                                            <div class="g_id_signin" data-type="standard" data-shape="square"
                                                 data-theme="filled_blue" data-text="signup_with" data-size="large"
                                                 data-context="signup" data-itp_support="true" data-auto_prompt="true"
-                                                data-logo_alignment="left">
+                                                data-logo_alignment="left" style="width: 100%;">
                                             </div>
 
                                             <div class="social-buttons">
@@ -147,5 +167,40 @@
         @include('include.login-modal')
         @include('include.footer')
         @include('include.script')
+        @include('include.terms-modal')
+        @include('include.privacy-modal')
     </body>
 @endsection
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('preRegisterForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            console.log(formData)
+            try {
+                const response = await fetch("{{ route('pre.register') }}", {
+                    method: "POST",
+                    headers: {
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        "Accept": "application/json"
+                    },
+                    body: formData
+                });
+
+                const result = await response.json();
+                console.log(result)
+                if (result.status === "success") {
+                    document.getElementById('responseMessage').innerHTML =
+                        `<span class="alert alert-success">${result.message}</span>`;
+                } else {
+                    document.getElementById('responseMessage').innerHTML =
+                        `<span class="alert alert-danger" >${result.message}</span>`;
+                }
+            } catch (error) {
+                document.getElementById('responseMessage').innerHTML =
+                    `<span class="alert alert-danger">Something went wrong: ${error}</span>`;
+            }
+        });
+    });
+</script>

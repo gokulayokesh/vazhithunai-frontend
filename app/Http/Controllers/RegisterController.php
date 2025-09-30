@@ -67,7 +67,6 @@ class RegisterController extends Controller
             'drinking_habits' => 'nullable|string|max:255',
             // 'languages_known' => 'nullable|string|max:255',
             'life_motto' => 'nullable|string|max:255',
-            'email' => 'required|string|email|max:255',
             'mobile' => 'required|string|max:20',
             'facebook_profile_url' => 'nullable|string|max:255',
             'instagram_profile_url' => 'nullable|string|max:255',
@@ -118,7 +117,6 @@ class RegisterController extends Controller
 
             // Save all details into UserDetails
             $details = new UserDetails;
-            // $details->user_id = auth()->id();
             $details->user_id = $user->id;
 
             $details->interests = is_array($request->interests) ? implode(',', $request->interests) : null;
@@ -131,15 +129,7 @@ class RegisterController extends Controller
             $details->fill($request->except(['interests', 'hobbies', 'favorite_cuisine', 'sports', 'languages_known', 'favorite_music']));
             $details->save();
 
-            // Save Profile Picture
-            // if ($request->hasFile('profile_picture')) {
-            //     $profilePath = $request->file('profile_picture')->store('profile_pictures', 'public');
-            //     UserImages::create([
-            //         'user_id' => $user->id,
-            //         'image_path' => $profilePath,
-            //         'type' => 'profile',
-            //     ]);
-            // }
+
             if ($request->hasFile('profile_picture')) {
                 foreach ($request->file('profile_picture') as $file) {
                     $path = $file->store('profile_pictures', 'public');
@@ -153,21 +143,13 @@ class RegisterController extends Controller
             }
 
             // Save Horoscope Picture
-            // if ($request->hasFile('horoscope_picture')) {
-            //     $horoscopePath = $request->file('horoscope_picture')->store('horoscope_pictures', 'public');
-            //     UserHoroscopeImages::create([
-            //         'user_id' => $user->id,
-            //         'image_path' => $horoscopePath,
-            //     ]);
-            // }
-
             if ($request->hasFile('horoscope_picture')) {
                 foreach ($request->file('horoscope_picture') as $file) {
                     $path = $file->store('horoscope_pictures', 'public');
                     UserHoroscopeImages::create([
                         'user_id' => $user->id,
                         'image_path' => $path,
-                        'type' => 'profile',
+                        'type' => 'horoscope',
                     ]);
                 }
             }
@@ -218,4 +200,49 @@ class RegisterController extends Controller
             return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
+
+    public function preRegistration(Request $request){
+        try {
+            // Validate input (recommended)
+            $request->validate([
+                'name'     => 'required|string|max:255',
+                'email'    => 'required|email|unique:users,email',
+                'mobile'   => 'required|string|max:15|unique:users,mobile',
+                'password' => 'required|string|min:6',
+            ]);
+
+            // Check if user already exists by email or mobile
+            $existingUser = User::where('email', $request->email)
+                                ->orWhere('mobile', $request->mobile)
+                                ->first();
+
+            if ($existingUser) {
+                return response()->json([
+                    'status'  => 'error',
+                    'message' => 'User already exists with this email or mobile number.',
+                ], 409);
+            }
+
+            // Create new user
+            $user = new User();
+            $user->name     = $request->name;
+            $user->email    = $request->email;
+            $user->mobile   = $request->mobile;
+            $user->password = bcrypt($request->password);
+            $user->save();
+
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'User registered successfully.',
+                'data'    => $user,
+            ], 201);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'status'  => 'error',
+                'message' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
 }
