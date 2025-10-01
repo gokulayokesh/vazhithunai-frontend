@@ -46,8 +46,8 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URI'),
     ],
     'recaptcha' => [
-        'site_key'   => env('RECAPTCHA_SITE_KEY'),
-        'secret_key' => env('RECAPTCHA_SECRET_KEY'),
+        'site_key'   => env('RECAPTCHA_SITE_KEY','6LcvE9orAAAAAD6V4lQVZk4iJxAtyVj9bl_RUdSa'),
+        'secret_key' => env('RECAPTCHA_SECRET_KEY','6LcvE9orAAAAAFr3IaOdh8-apj-lEULypWFLpQP9'),
     ],
 
 

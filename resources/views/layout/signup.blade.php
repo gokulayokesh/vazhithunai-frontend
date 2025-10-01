@@ -95,7 +95,12 @@
                                                         Policy</a>
                                                 </label>
                                             </div>
-                                            <x-recaptcha />
+                                            <div class="form-check mb-4">
+                                                <x-recaptcha />
+                                            </div>
+                                            @error('g-recaptcha-response')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                             {{-- <div class="form-check mb-4">
                                                 <input class="form-check-input" type="checkbox" id="marketingCheck"
                                                     name="marketingCheck">

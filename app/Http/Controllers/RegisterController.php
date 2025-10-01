@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Mail;
+use App\Rules\RecaptchaRule;
 
 class RegisterController extends Controller
 {
@@ -217,6 +218,7 @@ class RegisterController extends Controller
                 'email'    => 'required|email|unique:users,email',
                 'mobile'   => 'required|string|max:15|unique:users,mobile',
                 'password' => 'required|string|min:6',
+                'g-recaptcha-response' => ['required', new RecaptchaRule],
             ]);
 
             // Check if user already exists by email or mobile
