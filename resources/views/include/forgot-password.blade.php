@@ -16,6 +16,9 @@
                             id="forgot-password-email" required="" autocomplete="email"
                             placeholder="Enter your email">
                     </div>
+                    <div class="mb-4">
+                        <x-recaptcha />
+                    </div>
                     <button type="button" class="btn btn-primary" onclick="sendOTP()">Send OTP</button>
                 </div>
 
@@ -53,21 +56,32 @@
 
 <script>
     function sendOTP() {
-        // Add your email sending logic here
-        const email = document.getElementById('forgot-password-email').value;
-        console.log(email);
-        if (!email) {
+        const email = document.getElementById('forgot-password-email').value.trim();
+        const recaptchaResponse = document.querySelector('[name="g-recaptcha-response"]')?.value;
+
+        // Basic email regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!email || !emailRegex.test(email)) {
             showToast('Please enter a valid email address.', "error");
             return;
         }
+
+        if (!recaptchaResponse) {
+            showToast('Please complete the reCAPTCHA.', "error");
+            return;
+        }
+
         fetch('/send-otp', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Accept': 'application/json',
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 },
                 body: JSON.stringify({
-                    email: email
+                    email: email,
+                    'g-recaptcha-response': recaptchaResponse
                 })
             })
             .then(response => response.json())
@@ -76,33 +90,40 @@
                     showToast('OTP sent successfully!', "success");
                     document.getElementById('emailForm').style.display = 'none';
                     document.getElementById('otpForm').style.display = 'block';
+                    grecaptcha.reset(); // reset captcha for next use
                 } else {
-                    showToast('Failed to send OTP. Please try again.', "error");
+                    showToast(data.message || 'Failed to send OTP. Please try again.', "error");
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
                 showToast('An error occurred. Please try again.', "error");
             });
-
     }
 
+
     function verifyOTP() {
-        if (!document.getElementById('otp').value) {
-            showToast('Please enter the OTP sent to your email.', "error");
-            return;
-        }
-        if (!document.getElementById('forgot-password-newPassword').value || !document.getElementById(
-                'forgot-password-confirmPassword').value) {
-            showToast('Please enter and confirm your new password.', "error");
-            return;
-        }
-        // Add your OTP verification logic here
+        const otp = document.getElementById('otp').value.trim();
         const newPassword = document.getElementById('forgot-password-newPassword').value;
         const confirmPassword = document.getElementById('forgot-password-confirmPassword').value;
 
+        if (!otp) {
+            showToast('Please enter the OTP sent to your email.', "error");
+            return;
+        }
+
+        if (!newPassword || !confirmPassword) {
+            showToast('Please enter and confirm your new password.', "error");
+            return;
+        }
+
+        if (newPassword.length < 8) {
+            showToast('Password must be at least 8 characters.', "error");
+            return;
+        }
+
         if (newPassword !== confirmPassword) {
-            showToast('Passwords do not match!', 'error');
+            showToast('Passwords do not match!', "error");
             return;
         }
 
@@ -114,7 +135,7 @@
                 },
                 body: JSON.stringify({
                     email: document.getElementById('forgot-password-email').value,
-                    otp: document.getElementById('otp').value,
+                    otp: otp,
                     newPassword: newPassword
                 })
             })
@@ -124,6 +145,11 @@
                     showToast('Password reset successful!', "success");
                     document.getElementById('otpForm').style.display = 'none';
                     document.getElementById('successMessage').style.display = 'block';
+
+                    // Redirect to login after 3s
+                    setTimeout(() => {
+                        window.location.href = "{{ route('login') }}";
+                    }, 3000);
                 } else {
                     showToast(data.message || 'OTP verification failed. Please try again.', "error");
                 }
@@ -132,8 +158,8 @@
                 console.error('Error:', error);
                 showToast('An error occurred. Please try again.', "error");
             });
-
     }
+
 
     function showToast(message, type = "success") {
         let toastEl = document.getElementById("liveToast");

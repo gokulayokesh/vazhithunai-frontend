@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\ForgotPasswordOtpMail;
 use App\Models\User;
+use App\Rules\RecaptchaRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Google\Client as GoogleClient;
@@ -126,7 +127,8 @@ class LoginController extends Controller
     public function sendOtp(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|exists:users,email',
+            'g-recaptcha-response' => ['required', new RecaptchaRule], // custom rule we built earlier
         ]);
 
         $user = User::where('email', $request->email)->first();
