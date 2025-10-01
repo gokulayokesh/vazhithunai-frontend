@@ -194,4 +194,21 @@ class LoginController extends Controller
 
         return response()->json(['success' => true, 'message' => 'OTP verified successfully.']);
     }
+
+    public function verifyEmail($token)
+    {
+        $user = User::where('remember_token', $token)->first();
+
+        if (! $user) {
+            return redirect('/login')->with('error', 'Invalid or expired verification link.');
+        }
+
+        
+        $user->email_verified_at = now();
+        $user->remember_token = null; // clear token
+        $user->save();
+
+        return redirect('/login')->with('success', 'Your email has been verified. You can now log in.');
+    }
+
 }

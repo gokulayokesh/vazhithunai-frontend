@@ -84,3 +84,5 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/chats/{chat}', [ChatController::class, 'destroy'])->name('chat.destroy');
 });
+
+Route::get('/verify-email/{token}', [LoginController::class, 'verifyEmail'])->name('verify.email');

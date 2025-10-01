@@ -15,14 +15,17 @@ class RegistrationOtpMail extends Mailable
     public $otp;
 
     public $userName;
+    public $verifyUrl;
+
 
     /**
      * Create a new message instance.
      */
-    public function __construct($otp, $userName)
+    public function __construct($otp, $userName,$token)
     {
         $this->otp = $otp;
         $this->userName = $userName;
+        $this->verifyUrl = url('/verify-email/'.$token);
     }
 
     /**

@@ -65,6 +65,8 @@
             <p>Thank you for registering with <strong>Vazhithunai Matrimony</strong>.</p>
             <p>To complete your registration, please use the following One-Time Password (OTP):</p>
             <div class="otp">{{ $otp }}</div>
+            <p>Or simply click the link below to verify your email:</p>
+            <p><a href="{{ $verifyUrl }}">Verify Email</a></p>
             <p>This OTP is valid for the next <strong>10 minutes</strong>. Please do not share it with anyone for
                 security reasons.</p>
 
@@ -74,6 +76,8 @@
             <p><strong>வழித்துணை மணமுறை</strong> தளத்தில் பதிவு செய்ததற்கு நன்றி.</p>
             <p>உங்கள் பதிவை முடிக்க, கீழே உள்ள ஒருமுறை கடவுச்சொல்லை (OTP) பயன்படுத்தவும்:</p>
             <div class="otp">{{ $otp }}</div>
+            <p>அல்லது உங்கள் மின்னஞ்சலை சரிபார்க்க கீழே உள்ள இணைப்பை சொடுக்கவும்:</p>
+            <p><a href="{{ $verifyUrl }}">மின்னஞ்சல் சரிபார்க்க</a></p>
             <p>இந்த OTP அடுத்த <strong>10 நிமிடங்கள்</strong> மட்டுமே செல்லுபடியாகும். பாதுகாப்பிற்காக இதை யாருடனும்
                 பகிர வேண்டாம்.</p>
         </div>

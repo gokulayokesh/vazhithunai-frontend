@@ -17,7 +17,7 @@ class ForgotPasswordOtpMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct($otp, $userName)
+    public function __construct($otp, $userName,)
     {
         $this->otp = $otp;
         $this->userName = $userName;

@@ -22,7 +22,7 @@ class RegisterController extends Controller
 
     public function index(Request $request)
     {
-        return view('layout.register');
+        return view(view: 'layout.register');   
     }
 
 
@@ -176,37 +176,29 @@ class RegisterController extends Controller
     public function sendOtpEmail($email, $name)
     {
         try {
-            // Generate OTP
-            $otp = rand(100000, 999999);
+            $user = User::where('email', $email)->first();
+            if (! $user) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'No user found with this email address.',
+                ], 404);
+            }
 
-            // Store OTP in cache for 10 minutes
-            Cache::put('otp_'.$email, $otp, now()->addMinutes(10));
+            // Generate a 6-digit OTP
+            $otp = rand(100000, 999999);
+            $token = Str::random(64);
+            $user->otp = $otp;
+            $user->remember_token = $token;
+            $user->save();
 
             // Send email
-            Mail::to($email)->send(new RegistrationOtpMail($otp, $name));
+            Mail::to($email)->send(new RegistrationOtpMail($otp, $name,$token));
 
             return response()->json([
                 'message' => 'OTP sent successfully to '.$email,
             ]);
         } catch (Exception $e) {
             dd($e->getMessage());
-        }
-    }
-
-    public function sendOtpMobile($mobile)
-    {
-        $mobile = '+91'.$mobile;
-
-        try {
-            $result = SmsService::sendOtp($mobile, 2221, [
-                'Param1' => 'John',
-                'Param2' => 'Matrimony',
-                'Param3' => 'Profile Verification',
-            ]);
-
-            return response()->json(['success' => true, 'data' => $result]);
-        } catch (\Exception $e) {
-            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
 

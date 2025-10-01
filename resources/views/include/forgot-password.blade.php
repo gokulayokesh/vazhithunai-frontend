@@ -43,7 +43,7 @@
                 </div>
 
                 <!-- Success Message (Initially Hidden) -->
-                <div id="successMessage" class="alert alert-success" style="display: none;">
+                <div id="successMessage" class="alert alert-success alert-dismissible fade show" style="display: none;">
                     Password reset successful! You can now login with your new password.
                 </div>
             </div>

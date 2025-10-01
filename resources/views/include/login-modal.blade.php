@@ -12,7 +12,7 @@
                     <!-- CSRF Token (Laravel) -->
                     @csrf
                     @if ($errors->any())
-                        <div class="alert alert-danger py-2">
+                        <div class="alert alert-danger py-2 alert-dismissible fade show">
                             {{ $errors->first() }}
                         </div>
                     @endif
