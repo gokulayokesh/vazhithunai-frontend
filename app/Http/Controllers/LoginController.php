@@ -158,7 +158,7 @@ class LoginController extends Controller
         $user->save();
 
         try{
-            Mail::to($user->email)->send(new ForgotPasswordOtpMail($otp, $user->name));
+            Mail::to($user->getRawOriginal('email'))->send(new ForgotPasswordOtpMail($otp, $user->name));
         } catch (\Exception $e) {
             \Log::error("Mail send failed: ".$e->getMessage());
             return response()->json(['success'=>false, 'message' => 'Failed to send OTP. Please try again later.']);
