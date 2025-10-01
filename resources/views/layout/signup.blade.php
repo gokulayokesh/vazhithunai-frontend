@@ -179,11 +179,43 @@
 @endsection
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById('preRegisterForm').addEventListener('submit', async function(e) {
+        const form = document.getElementById('preRegisterForm');
+
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const formData = new FormData(this);
-            console.log(formData)
+            // Clear previous messages
+            document.getElementById('responseMessage')?.remove();
+
+            // Collect values
+            const name = document.getElementById('name').value.trim();
+            const mobile = document.getElementById('mobile').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const termsCheck = document.getElementById('termsCheck').checked;
+            const recaptchaResponse = document.querySelector('[name="g-recaptcha-response"]')
+                ?.value;
+
+            // Client-side validation
+            let errors = [];
+
+            if (name.length < 3) errors.push("Full Name must be at least 3 characters.");
+            if (!/^\d{10}$/.test(mobile)) errors.push("Mobile number must be 10 digits.");
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push("Invalid email format.");
+            if (password.length < 8) errors.push("Password must be at least 8 characters.");
+            if (password !== confirmPassword) errors.push("Passwords do not match.");
+            if (!termsCheck) errors.push("You must agree to the Terms and Privacy Policy.");
+            if (!recaptchaResponse) errors.push("Please complete the reCAPTCHA.");
+
+            if (errors.length > 0) {
+                showMessage(errors.join("<br>"), "danger");
+                return;
+            }
+
+            // If validation passes, submit via fetch
+            const formData = new FormData(form);
+
             try {
                 const response = await fetch("{{ route('pre.register') }}", {
                     method: "POST",
@@ -195,18 +227,32 @@
                 });
 
                 const result = await response.json();
-                console.log(result)
                 if (result.status === "success") {
-                    document.getElementById('responseMessage').innerHTML =
-                        `<span class="alert alert-success">${result.message}</span>`;
+                    showMessage(result.message, "success");
+                    form.reset();
+                    grecaptcha.reset(); // reset captcha if v2
+
+                    // Redirect after 3 seconds
+                    setTimeout(function() {
+                        window.location.href =
+                        "/login"; // or use route('login') if you render it in Blade
+                    }, 3000);
                 } else {
-                    document.getElementById('responseMessage').innerHTML =
-                        `<span class="alert alert-danger" >${result.message}</span>`;
+                    showMessage(result.message, "danger");
                 }
             } catch (error) {
-                document.getElementById('responseMessage').innerHTML =
-                    `<span class="alert alert-danger">Something went wrong: ${error}</span>`;
+                showMessage("Something went wrong: " + error, "danger");
             }
         });
+
+        function showMessage(msg, type) {
+            let container = document.getElementById('responseMessage');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'responseMessage';
+                form.prepend(container);
+            }
+            container.innerHTML = `<div class="alert alert-${type}">${msg}</div>`;
+        }
     });
 </script>
