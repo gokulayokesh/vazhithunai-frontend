@@ -1,1 +1,2 @@
-<div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY', '6LcvE9orAAAAAD6V4lQVZk4iJxAtyVj9bl_RUdSa') }}"></div>
+<div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
