@@ -187,7 +187,7 @@
                         <div class="col-lg-5" data-aos="zoom-in" data-aos-delay="200">
                             <div class="image-gallery">
                                 <div class="primary-image">
-                                    <img src="assets/img/homepage/img1.png" alt="Modern Partner" class="img-fluid">
+                                    <img src="assets/img/homepage/img1.webp" alt="Modern Partner" class="img-fluid">
                                     <div class="experience-badge">
                                         <div class="badge-content">
                                             <div class="number"><span data-purecounter-start="0"
@@ -198,7 +198,7 @@
                                     </div>
                                 </div>
                                 <div class="secondary-image">
-                                    <img src="assets/img/homepage/img2.png" alt="Luxury Interior" class="img-fluid">
+                                    <img src="assets/img/homepage/img2.webp" alt="Luxury Interior" class="img-fluid">
                                 </div>
                             </div>
                         </div>
@@ -305,7 +305,7 @@
 
                                 <div class="featured-property-main" data-aos="zoom-in" data-aos-delay="200">
                                     <div class="property-hero">
-                                        <img src="assets/img/homepage/img4.png" alt="Luxury Estate" class="img-fluid">
+                                        <img src="assets/img/homepage/img4.webp" alt="Luxury Estate" class="img-fluid">
                                         <div class="property-overlay">
                                             <div class="property-badge-main premium">Premium</div>
                                             <div class="property-stats">
@@ -363,7 +363,8 @@
 
                                     <div class="sidebar-property-card" data-aos="fade-left" data-aos-delay="300">
                                         <div class="sidebar-property-image">
-                                            <img src="assets/img/homepage/img1.png" alt="Modern Condo" class="img-fluid">
+                                            <img src="assets/img/homepage/img1.webp" alt="Modern Condo"
+                                                class="img-fluid">
                                             <div class="sidebar-property-badge hot">Hot Deal</div>
                                         </div>
                                         <div class="sidebar-property-content">
@@ -386,7 +387,7 @@
 
                                     <div class="sidebar-property-card" data-aos="fade-left" data-aos-delay="400">
                                         <div class="sidebar-property-image">
-                                            <img src="assets/img/homepage/img9.png" alt="Family Home" class="img-fluid">
+                                            <img src="assets/img/homepage/img9.webp" alt="Family Home" class="img-fluid">
                                             <div class="sidebar-property-badge new">New Listing</div>
                                         </div>
                                         <div class="sidebar-property-content">
@@ -418,7 +419,7 @@
                             <div class="col-xl-6" data-aos="fade-up" data-aos-delay="600">
                                 <div class="property-card-horizontal">
                                     <div class="property-image-horizontal">
-                                        <img src="assets/img/homepage/img5.png" alt="Penthouse" class="img-fluid">
+                                        <img src="assets/img/homepage/img5.webp" alt="Penthouse" class="img-fluid">
                                         <div class="property-badge-horizontal exclusive">Exclusive</div>
                                     </div>
                                     <div class="property-content-horizontal">
@@ -447,7 +448,7 @@
                             <div class="col-xl-6" data-aos="fade-up" data-aos-delay="700">
                                 <div class="property-card-horizontal">
                                     <div class="property-image-horizontal">
-                                        <img src="assets/img/homepage/img8.png" alt="Modern Home" class="img-fluid">
+                                        <img src="assets/img/homepage/img8.webp" alt="Modern Home" class="img-fluid">
                                         <div class="property-badge-horizontal new">New</div>
                                     </div>
                                     <div class="property-content-horizontal">
@@ -516,7 +517,7 @@
                                 </a> --}}
                                 </div>
                                 <div class="service-visual">
-                                    <img src="assets/img/homepage/img2.png" class="img-fluid" alt="Partner Search"
+                                    <img src="assets/img/homepage/img2.webp" class="img-fluid" alt="Partner Search"
                                         loading="lazy">
                                 </div>
                             </div>
@@ -535,17 +536,17 @@
                                         safe
                                         and confidential.</p>
                                     <!-- <ul class="service-highlights">
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Market Analysis</li>
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Comparative Reports</li>
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Investment Insights</li>
-                                                                                                                                                                                                                                                                    </ul> -->
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Market Analysis</li>
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Comparative Reports</li>
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Investment Insights</li>
+                                                                                                                                                                                                                                                                        </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Get Valuation</span>
                                     <i class="bi bi-arrow-up-right"></i>
                                 </a> --}}
                                 </div>
                                 <div class="service-visual">
-                                    <img src="assets/img/homepage/img1.png" class="img-fluid" alt="Partner Valuation"
+                                    <img src="assets/img/homepage/img1.webp" class="img-fluid" alt="Partner Valuation"
                                         loading="lazy">
                                 </div>
                             </div>
@@ -567,17 +568,17 @@
                                         easy for you to create a profile, explore potential matches, and engage in
                                         meaningful conversations.</p>
                                     <!-- <ul class="service-highlights">
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
-                                                                                                                                                                                                                                                                    </ul> -->
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
+                                                                                                                                                                                                                                                                        </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Start Renting</span>
                                     <i class="bi bi-arrow-up-right"></i>
                                 </a> --}}
                                 </div>
                                 <div class="service-visual">
-                                    <img src="assets/img/homepage/img8.png" class="img-fluid" alt="Partner Rental"
+                                    <img src="assets/img/homepage/img8.webp" class="img-fluid" alt="Partner Rental"
                                         loading="lazy">
                                 </div>
                             </div>
@@ -595,17 +596,17 @@
                                         all walks of life, cultures, and backgrounds, fostering an inclusive and diverse
                                         community.</p>
                                     <!-- <ul class="service-highlights">
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
-                                                                                                                                                                                                                                                                    </ul> -->
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Tenant Matching</li>
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Lease Management</li>
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Partner Maintenance</li>
+                                                                                                                                                                                                                                                                        </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Start Renting</span>
                                     <i class="bi bi-arrow-up-right"></i>
                                 </a> --}}
                                 </div>
                                 <div class="service-visual">
-                                    <img src="assets/img/homepage/img8.png" class="img-fluid" alt="Partner Rental"
+                                    <img src="assets/img/homepage/img8.webp" class="img-fluid" alt="Partner Rental"
                                         loading="lazy">
                                 </div>
                             </div>
@@ -624,17 +625,17 @@
                                         support, and advice, ensuring you have a fulfilling and enriching experience.
                                     </p>
                                     <!-- <ul class="service-highlights">
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
-                                                                                                                                                                                                                                                                    </ul> -->
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
+                                                                                                                                                                                                                                                                        </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Learn More</span>
                                     <i class="bi bi-arrow-up-right"></i>
                                 </a> --}}
                                 </div>
                                 <div class="service-visual">
-                                    <img src="assets/img/homepage/img4.png" class="img-fluid" alt="Investment Advisory"
+                                    <img src="assets/img/homepage/img4.webp" class="img-fluid" alt="Investment Advisory"
                                         loading="lazy">
                                 </div>
                             </div>
@@ -650,17 +651,17 @@
                                         through LGM Matrimony. We take immense pride in being a part of your journey and
                                         celebrating the success stories that emanate from our platform.</p>
                                     <!-- <ul class="service-highlights">
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
-                                                                                                                                                                                                                                                                        <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
-                                                                                                                                                                                                                                                                    </ul> -->
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Portfolio Planning</li>
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Risk Assessment</li>
+                                                                                                                                                                                                                                                                            <li><i class="bi bi-check-circle-fill"></i> Market Forecasting</li>
+                                                                                                                                                                                                                                                                        </ul> -->
                                     {{-- <a href="service-details.html" class="service-link">
                                     <span>Learn More</span>
                                     <i class="bi bi-arrow-up-right"></i>
                                 </a> --}}
                                 </div>
                                 <div class="service-visual">
-                                    <img src="assets/img/homepage/img4.png" class="img-fluid" alt="Investment Advisory"
+                                    <img src="assets/img/homepage/img4.webp" class="img-fluid" alt="Investment Advisory"
                                         loading="lazy">
                                 </div>
                             </div>
@@ -699,10 +700,10 @@
                                             <div class="agent-photo">
 
                                                 @if ($user->userDetails->gender == 'Male')
-                                                    <img src="assets/img/m-default.png" alt="Featured Agent"
+                                                    <img src="assets/img/m-default.webp" alt="Featured Agent"
                                                         class="img-fluid">
                                                 @else
-                                                    <img src="assets/img/f-default.png" alt="Featured Agent"
+                                                    <img src="assets/img/f-default.webp" alt="Featured Agent"
                                                         class="img-fluid">
                                                 @endif
                                                 <div class="overlay-info">
@@ -1092,7 +1093,7 @@
 
             <!-- Call To Action Section -->
             <section class="call-to-action-1 call-to-action section" id="call-to-action">
-                <div class="cta-bg" style="background-image: url('assets/img/homepage/img5.png');"></div>
+                <div class="cta-bg" style="background-image: url('assets/img/homepage/img5.webp');"></div>
                 <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                     <div class="row justify-content-center">
@@ -1149,7 +1150,7 @@
                             <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
                                 <article class="featured-post">
                                     <div class="featured-img">
-                                        <img src="assets/img/blog/blog-post-7.png" alt="" class="img-fluid"
+                                        <img src="assets/img/blog/blog-post-7.webp" alt="" class="img-fluid"
                                             loading="lazy">
                                         <div class="featured-badge">Featured</div>
                                     </div>
@@ -1176,7 +1177,7 @@
 
                                         <div class="post-footer">
                                             <div class="author-info">
-                                                <img src="assets/img/person/person-m-8.png" alt=""
+                                                <img src="assets/img/person/person-m-8.webp" alt=""
                                                     class="author-avatar">
                                                 <div class="author-details">
                                                     <span class="author-name">Marcus Johnson</span>
@@ -1190,7 +1191,7 @@
 
                                 <article class="featured-post" data-aos="fade-up" data-aos-delay="400">
                                     <div class="featured-img">
-                                        <img src="assets/img/blog/blog-post-3.png" alt="" class="img-fluid"
+                                        <img src="assets/img/blog/blog-post-3.webp" alt="" class="img-fluid"
                                             loading="lazy">
                                         <div class="featured-badge">Featured</div>
                                     </div>
@@ -1216,7 +1217,7 @@
 
                                         <div class="post-footer">
                                             <div class="author-info">
-                                                <img src="assets/img/person/person-f-7.png" alt=""
+                                                <img src="assets/img/person/person-f-7.webp" alt=""
                                                     class="author-avatar">
                                                 <div class="author-details">
                                                     <span class="author-name">Emma Rodriguez</span>
@@ -1233,7 +1234,7 @@
 
                                 <article class="recent-post" data-aos="fade-up" data-aos-delay="200">
                                     <div class="recent-img">
-                                        <img src="assets/img/blog/blog-post-5.png" alt="" class="img-fluid"
+                                        <img src="assets/img/blog/blog-post-5.webp" alt="" class="img-fluid"
                                             loading="lazy">
                                     </div>
                                     <div class="recent-content">
@@ -1250,7 +1251,7 @@
 
                                 <article class="recent-post" data-aos="fade-up" data-aos-delay="250">
                                     <div class="recent-img">
-                                        <img src="assets/img/blog/blog-post-9.png" alt="" class="img-fluid"
+                                        <img src="assets/img/blog/blog-post-9.webp" alt="" class="img-fluid"
                                             loading="lazy">
                                     </div>
                                     <div class="recent-content">
@@ -1267,7 +1268,7 @@
 
                                 <article class="recent-post" data-aos="fade-up" data-aos-delay="300">
                                     <div class="recent-img">
-                                        <img src="assets/img/blog/blog-post-6.png" alt="" class="img-fluid"
+                                        <img src="assets/img/blog/blog-post-6.webp" alt="" class="img-fluid"
                                             loading="lazy">
                                     </div>
                                     <div class="recent-content">
@@ -1284,7 +1285,7 @@
 
                                 <article class="recent-post" data-aos="fade-up" data-aos-delay="350">
                                     <div class="recent-img">
-                                        <img src="assets/img/blog/blog-post-8.png" alt="" class="img-fluid"
+                                        <img src="assets/img/blog/blog-post-8.webp" alt="" class="img-fluid"
                                             loading="lazy">
                                     </div>
                                     <div class="recent-content">

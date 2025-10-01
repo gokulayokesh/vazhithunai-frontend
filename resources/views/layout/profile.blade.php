@@ -57,13 +57,13 @@
                                                     @endforeach
                                                 @else
                                                     <div class="swiper-slide">
-                                                        <img src="{{ asset('assets/img/m-default.png') }}"
+                                                        <img src="{{ asset('assets/img/m-default.webp') }}"
                                                             class="img-fluid hero-image" alt="{{ $profile->user->name }}">
                                                     </div>
                                                 @endif
                                             @else
                                                 <div class="swiper-slide">
-                                                    <img src="{{ asset('assets/img/m-default.png') }}"
+                                                    <img src="{{ asset('assets/img/m-default.webp') }}"
                                                         class="img-fluid hero-image" alt="{{ $profile->user->name }}">
                                                 </div>
                                             @endif
@@ -105,14 +105,14 @@
                                                     @endforeach
                                                 @else
                                                     <div class="swiper-slide">
-                                                        <img src="{{ asset('assets/img/m-default.png') }}"
+                                                        <img src="{{ asset('assets/img/m-default.webp') }}"
                                                             class="img-fluid thumbnail-img"
                                                             alt="{{ $profile->user->name }}">
                                                     </div>
                                                 @endif
                                             @else
                                                 <div class="swiper-slide">
-                                                    <img src="{{ asset('assets/img/m-default.png') }}"
+                                                    <img src="{{ asset('assets/img/m-default.webp') }}"
                                                         class="img-fluid thumbnail-img" alt="{{ $profile->user->name }}">
                                                 </div>
                                             @endif
@@ -334,11 +334,11 @@
                                             <img src="{{ asset($profile->userHoroscopeImages->first()?->image_path) }}"
                                                 class="img-fluid" alt="Floor Plan">
                                         @else
-                                            <img src="{{ asset('assets/img/m-default.png') }}" class="img-fluid"
+                                            <img src="{{ asset('assets/img/m-default.webp') }}" class="img-fluid"
                                                 alt="Floor Plan">
                                         @endif
                                     @else
-                                        <img src="{{ asset('assets/img/m-default.png') }}" class="img-fluid"
+                                        <img src="{{ asset('assets/img/m-default.webp') }}" class="img-fluid"
                                             alt="Floor Plan">
                                         {{-- <div class="plan-details">
                                     <h5>3 Bedroom Penthouse Layout</h5>
@@ -365,11 +365,11 @@
                                                     <img src="{{ asset($profile->userImages->first()?->image_path) }}"
                                                         class="img-fluid" alt="{{ $profile->user->name }}">
                                                 @else
-                                                    <img src="{{ asset('assets/img/m-default.png') }}" class="img-fluid"
+                                                    <img src="{{ asset('assets/img/m-default.webp') }}" class="img-fluid"
                                                         alt="{{ $profile->user->name }}">
                                                 @endif
                                             @else
-                                                <img src="{{ asset('assets/img/m-default.png') }}" class="img-fluid"
+                                                <img src="{{ asset('assets/img/m-default.webp') }}" class="img-fluid"
                                                     alt="{{ $profile->user->name }}">
                                             @endif
                                         </div>

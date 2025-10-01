@@ -352,10 +352,10 @@
                                                     class="property-link">
                                                     @if (!Auth::user())
                                                         @if ($profile->gender == 'Male')
-                                                            <img src="{{ asset('assets/img/m-default.png') }}"
+                                                            <img src="{{ asset('assets/img/m-default.webp') }}"
                                                                 alt="Featured Agent" class="img-fluid">
                                                         @else
-                                                            <img src="{{ asset('assets/img/f-default.png') }}"
+                                                            <img src="{{ asset('assets/img/f-default.webp') }}"
                                                                 alt="Featured Agent" class="img-fluid">
                                                         @endif
                                                     @else

@@ -56,7 +56,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h2><img src="{{ asset('assets/img/logo.png') }}" style="max-height: 32px;margin-right: 8px;"
+            <h2><img src="{{ asset('assets/img/logo.webp') }}" style="max-height: 32px;margin-right: 8px;"
                     alt="">Vazhithunai Matrimony</h2>
             <h1>OTP Verification</h1>
         </div>

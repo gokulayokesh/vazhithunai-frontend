@@ -39,7 +39,7 @@
                                 <div class="row g-4 align-items-center">
                                     <div class="col-lg-6">
                                         <div class="primary-image-wrap">
-                                            <img src="assets/img/homepage/img4.png" alt="Luxury Partner" class="img-fluid">
+                                            <img src="assets/img/homepage/img4.webp" alt="Luxury Partner" class="img-fluid">
                                             <div class="floating-badge" data-aos="zoom-in" data-aos-delay="400">
                                                 <div class="badge-content">
                                                     <i class="bi bi-award"></i>
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="secondary-image-wrap">
-                                            <img src="assets/img/homepage/img3.png" alt="Professional Agent"
+                                            <img src="assets/img/homepage/img3.webp" alt="Professional Agent"
                                                 class="img-fluid">
                                         </div>
                                     </div>
@@ -188,7 +188,8 @@
                                         </blockquote>
                                         <div class="testimonial-author">
                                             <div class="author-image">
-                                                <img src="assets/img/homepage/img8.png" alt="Client" class="img-fluid">
+                                                <img src="assets/img/homepage/img8.webp" alt="Client"
+                                                    class="img-fluid">
                                             </div>
                                             <div class="author-info">
                                                 <h5>Jennifer Rodriguez</h5>

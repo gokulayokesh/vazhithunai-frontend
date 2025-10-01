@@ -2,7 +2,7 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
         <a href="/" class="logo d-flex align-items-center">
-            <img src="{{ asset('assets/img/logo1.png') }}" alt="">
+            <img src="{{ asset('assets/img/logo1.webp') }}" alt="">
             <h1 class="sitename logo-font">Vazhithunai</h1>
 
             <span class="logo-slogan">Find your perfect partner</span>
