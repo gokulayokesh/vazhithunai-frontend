@@ -131,7 +131,7 @@
                                             <div class="g_id_signin" data-type="standard" data-shape="square"
                                                 data-theme="filled_blue" data-text="signup_with" data-size="large"
                                                 data-context="signup" data-itp_support="true" data-auto_prompt="true"
-                                                data-logo_alignment="left">
+                                                data-logo_alignment="left" style="justify-items: center;">
                                             </div>
 
                                             <div class="social-buttons">
