@@ -16,8 +16,20 @@ class LoginController extends Controller
 {
     public function login(Request $request){
         $request->validate([
-            'login'    => ['required'],   // can be email or mobile
-            'password' => ['required'],
+            'login' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if (!filter_var($value, FILTER_VALIDATE_EMAIL) && !preg_match('/^\d{10}$/', $value)) {
+                        $fail('The login must be a valid email or 10‑digit mobile number.');
+                    }
+                },
+            ],
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#()[\]{}<>~+=._-]).+$/',
+            ],
         ]);
 
         $loginInput = $request->input('login');

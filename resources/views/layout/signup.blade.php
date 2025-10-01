@@ -131,8 +131,7 @@
                                             <div class="g_id_signin" data-type="standard" data-shape="square"
                                                 data-theme="filled_blue" data-text="signup_with" data-size="large"
                                                 data-context="signup" data-itp_support="true" data-auto_prompt="true"
-                                                data-logo_alignment="left"
-                                                style="width: 100%;max-width: 100%;justify-items: center;">
+                                                data-logo_alignment="left">
                                             </div>
 
                                             <div class="social-buttons">
@@ -196,6 +195,8 @@
             const termsCheck = document.getElementById('termsCheck').checked;
             const recaptchaResponse = document.querySelector('[name="g-recaptcha-response"]')
                 ?.value;
+            const passwordRegex =
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#()[\]{}<>~+=._-])[A-Za-z\d@$!%*?&^#()[\]{}<>~+=._-]{8,}$/;
 
             // Client-side validation
             let errors = [];
@@ -204,6 +205,9 @@
             if (!/^\d{10}$/.test(mobile)) errors.push("Mobile number must be 10 digits.");
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push("Invalid email format.");
             if (password.length < 8) errors.push("Password must be at least 8 characters.");
+            if (!passwordRegex.test(password)) errors.push(
+                "Password must be at least 8 characters and include uppercase, lowercase, number, and special character."
+            );
             if (password !== confirmPassword) errors.push("Passwords do not match.");
             if (!termsCheck) errors.push("You must agree to the Terms and Privacy Policy.");
             if (!recaptchaResponse) errors.push("Please complete the reCAPTCHA.");
@@ -235,7 +239,7 @@
                     // Redirect after 3 seconds
                     setTimeout(function() {
                         window.location.href =
-                        "/login"; // or use route('login') if you render it in Blade
+                            "/login"; // or use route('login') if you render it in Blade
                     }, 3000);
                 } else {
                     showMessage(result.message, "danger");

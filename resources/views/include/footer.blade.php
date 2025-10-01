@@ -1,3 +1,6 @@
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+</div>
+
 <footer id="footer" class="footer accent-background">
 
     <div class="container footer-top">

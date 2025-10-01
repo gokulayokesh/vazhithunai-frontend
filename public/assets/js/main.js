@@ -269,20 +269,6 @@
         width: "100%",
     });
 
-    function showToast(message, type = "success") {
-        let toastEl = document.getElementById("liveToast");
-        let toastBody = document.getElementById("toast-message");
-
-        // Change background color based on type
-        toastEl.classList.remove("bg-success", "bg-danger");
-        toastEl.classList.add(type === "error" ? "bg-danger" : "bg-success");
-
-        toastBody.textContent = message;
-
-        let toast = new bootstrap.Toast(toastEl);
-        toast.show();
-    }
-
     document.addEventListener("DOMContentLoaded", function () {
         const buttons = document.querySelectorAll(".shortlist-btn");
         console.log(buttons);

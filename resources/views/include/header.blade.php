@@ -47,6 +47,7 @@
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/register.css') }}" rel="stylesheet">
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    
 </head>
 @yield('content')

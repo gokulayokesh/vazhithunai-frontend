@@ -94,83 +94,6 @@
                                         </div>
                                     </form>
                                 </div>
-
-                                <!-- Register Form -->
-                                {{-- <div class="auth-form register-form">
-                                    <div class="form-header">
-                                        <h3>Create Account</h3>
-                                        <p>Join us today and get started</p>
-                                    </div>
-
-                                    <form class="auth-form-content">
-                                        <div class="name-row">
-                                            <div class="input-group">
-                                                <span class="input-icon">
-                                                    <i class="bi bi-person"></i>
-                                                </span>
-                                                <input type="text" class="form-control" placeholder="First name"
-                                                    required="" autocomplete="given-name">
-                                            </div>
-                                            <div class="input-group">
-                                                <span class="input-icon">
-                                                    <i class="bi bi-person"></i>
-                                                </span>
-                                                <input type="text" class="form-control" placeholder="Last name"
-                                                    required="" autocomplete="family-name">
-                                            </div>
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <span class="input-icon">
-                                                <i class="bi bi-envelope"></i>
-                                            </span>
-                                            <input type="email" class="form-control" placeholder="Email address"
-                                                required="" autocomplete="email">
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <span class="input-icon">
-                                                <i class="bi bi-lock"></i>
-                                            </span>
-                                            <input type="password" class="form-control" placeholder="Create password"
-                                                required="" autocomplete="new-password">
-                                            <span class="password-toggle">
-                                                <i class="bi bi-eye"></i>
-                                            </span>
-                                        </div>
-
-                                        <div class="input-group mb-3">
-                                            <span class="input-icon">
-                                                <i class="bi bi-lock-fill"></i>
-                                            </span>
-                                            <input type="password" class="form-control" placeholder="Confirm password"
-                                                required="" autocomplete="new-password">
-                                            <span class="password-toggle">
-                                                <i class="bi bi-eye"></i>
-                                            </span>
-                                        </div>
-
-                                        <div class="terms-check mb-4">
-                                            <input type="checkbox" id="termsRegister" required="">
-                                            <label for="termsRegister">
-                                                I agree to the <a href="#">Terms of Service</a> and <a
-                                                    href="#">Privacy Policy</a>
-                                            </label>
-                                        </div>
-
-                                        <button type="submit" class="auth-btn primary-btn mb-3">
-                                            Create Account
-                                            <i class="bi bi-arrow-right"></i>
-                                        </button>
-
-                                        <div class="switch-form">
-                                            <span>Already have an account?</span>
-                                            <button type="button" class="switch-btn" data-target="login">Sign
-                                                in</button>
-                                        </div>
-                                    </form>
-                                </div> --}}
-
                             </div>
                         </div>
                     </div>
@@ -186,3 +109,44 @@
         @include('include.script')
     </body>
 @endsection
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector(".auth-form-content");
+
+        form.addEventListener("submit", function(e) {
+            const loginInput = form.querySelector("input[name='login']");
+            const passwordInput = form.querySelector("input[name='password']");
+
+            const loginValue = loginInput.value.trim();
+            const passwordValue = passwordInput.value;
+
+            // Regex patterns
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const mobileRegex = /^\d{10}$/;
+            const passwordRegex =
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#()[\]{}<>~+=._-]).{8,}$/;
+
+            let errors = [];
+
+            // Validate login (email or mobile)
+            if (!(emailRegex.test(loginValue) || mobileRegex.test(loginValue))) {
+                errors.push("Enter a valid email address or 10‑digit mobile number.");
+            }
+
+            // Validate password
+            if (!passwordRegex.test(passwordValue)) {
+                errors.push(
+                    "Password must be at least 8 characters and include uppercase, lowercase, number, and special character."
+                );
+            }
+
+            if (errors.length > 0) {
+                e.preventDefault(); // stop form submission
+                errors.forEach(err => {
+                    showToast(err, "error", 'bottom');
+                });
+                return;
+            }
+        });
+    });
+</script>

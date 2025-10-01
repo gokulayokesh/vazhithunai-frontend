@@ -17,8 +17,29 @@
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
  <script src="{{ asset('assets/js/main.js') }}"></script>
+ <script src="https://accounts.google.com/gsi/client" async defer></script>
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
  <script>
+     function showToast(message, type = "success", gravity = 'top', position = 'right') {
+         Toastify({
+             text: message,
+             duration: 4000, // 4 seconds
+             close: true,
+             gravity: gravity, // top or bottom
+             position: position, // left, center or right
+             stopOnFocus: true,
+             style: {
+                 background: type === "error" ?
+                     "linear-gradient(to right, #e53935, #e35d5b)" :
+                     "linear-gradient(to right, #43a047, #66bb6a)",
+                 borderRadius: "6px",
+                 padding: "10px 20px",
+             },
+         }).showToast();
+     }
+
+
      function scrollToSection() {
          const target = document.getElementById("pricing");
          if (target) {

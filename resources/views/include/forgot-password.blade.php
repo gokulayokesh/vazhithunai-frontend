@@ -121,6 +121,15 @@
             showToast('Password must be at least 8 characters.', "error");
             return;
         }
+        const passwordRegex =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#()[\]{}<>~+=._-])[A-Za-z\d@$!%*?&^#()[\]{}<>~+=._-]{8,}$/;
+
+        if (!passwordRegex.test(password)) {
+            showToast(
+                "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.",
+                "error");
+            return;
+        }
 
         if (newPassword !== confirmPassword) {
             showToast('Passwords do not match!', "error");
@@ -158,20 +167,5 @@
                 console.error('Error:', error);
                 showToast('An error occurred. Please try again.', "error");
             });
-    }
-
-
-    function showToast(message, type = "success") {
-        let toastEl = document.getElementById("liveToast");
-        let toastBody = document.getElementById("toast-message");
-
-        // Change background color based on type
-        toastEl.classList.remove("bg-success", "bg-danger");
-        toastEl.classList.add(type === "error" ? "bg-danger" : "bg-success");
-
-        toastBody.textContent = message;
-
-        let toast = new bootstrap.Toast(toastEl);
-        toast.show();
     }
 </script>
