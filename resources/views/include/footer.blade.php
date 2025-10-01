@@ -12,12 +12,12 @@
                 <p>Where Souls Connect, Love Grows. At Vazhithunai Matrimony, we believe that love is the foundation
                     upon which
                     beautiful unions are built, and destiny is the guiding force that brings two souls together.</p>
-                <div class="social-links d-flex mt-4">
+                {{-- <div class="social-links d-flex mt-4">
                     <a href=""><i class="bi bi-twitter-x"></i></a>
                     <a href=""><i class="bi bi-facebook"></i></a>
                     <a href=""><i class="bi bi-instagram"></i></a>
                     <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
+                </div> --}}
             </div>
 
             <div class="col-lg-2 col-6 footer-links">
@@ -47,6 +47,7 @@
                 <p>#48, Mukkannar Street</p>
                 <p>Kumbakonam, TN 612001</p>
                 <p>India</p>
+                <p class="mt-4"><strong>Landline:</strong> <span>(0435) 2422836</span></p>
                 <p class="mt-4"><strong>Phone:</strong> <span>+91 94438 74110</span></p>
                 <p><strong>Email:</strong> <span>support@vazhithunai.com</span></p>
             </div>
