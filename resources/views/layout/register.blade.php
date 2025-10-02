@@ -1146,298 +1146,296 @@
 
     </body>
 @endsection
-@push('scripts')
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            console.log('hi');
-            const form = document.getElementById("multiStepForm");
-            const steps = Array.from(document.querySelectorAll(".form-step"));
-            const headerItems = Array.from(document.querySelectorAll(".step-item"));
-            const prevBtn = document.getElementById("prevBtn");
-            const nextBtn = document.getElementById("nextBtn");
-            let current = 0;
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log('hi');
+        const form = document.getElementById("multiStepForm");
+        const steps = Array.from(document.querySelectorAll(".form-step"));
+        const headerItems = Array.from(document.querySelectorAll(".step-item"));
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        let current = 0;
 
-            // Initialize
-            updateUI();
+        // Initialize
+        updateUI();
 
-            // Navigation buttons
-            prevBtn.addEventListener("click", () => go(-1));
-            nextBtn.addEventListener("click", () => go(1));
+        // Navigation buttons
+        prevBtn.addEventListener("click", () => go(-1));
+        nextBtn.addEventListener("click", () => go(1));
 
-            // Clickable headers — allow going back to completed steps
-            headerItems.forEach((item) => {
-                item.addEventListener("click", () => {
-                    const target = parseInt(item.dataset.step, 10);
-                    if (target <= current) {
-                        showStep(target);
-                    }
-                });
-            });
-
-            // Modal
-            // document.addEventListener("DOMContentLoaded", function() {
-            const tcModalTrigger = document.getElementById('tc_modal');
-            tcModalTrigger.addEventListener('click', function() {
-                console.log('in')
-                const modal = new bootstrap.Modal(document.getElementById('termsModal'));
-                modal.show();
-            });
-            // });
-
-            function go(dir) {
-                if (dir === 1 && !validateStep(current)) return;
-                const nextIndex = current + dir;
-                if (nextIndex < 0) return;
-                if (nextIndex >= steps.length) {
-                    // Submit safely
-                    var termsandconditionsAccepted = document.getElementById('terms_condition').checked;
-                    if (!termsandconditionsAccepted) {
-                        alert("Please accept the terms and conditions.");
-                        return;
-                    }
-                    if (validateStep(current)) {
-                        // form.submit();
-                        const formData = new FormData(form);
-
-                        const profileFiles = document.getElementById('profile_picture').files;
-                        for (let i = 0; i < profileFiles.length; i++) {
-                            formData.append("profile_picture1[]", profileFiles[i]);
-                        }
-
-                        // Add horoscope images manually
-                        const horoscopeFiles = document.getElementById('horoscope_picture').files;
-                        for (let i = 0; i < horoscopeFiles.length; i++) {
-                            formData.append("horoscope_picture1[]", horoscopeFiles[i]);
-                        }
-
-                        $.ajax({
-                            type: "POST",
-                            url: "../register", // Your actual endpoint
-                            headers: {
-                                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-                            },
-                            data: formData,
-                            processData: false, // Important for FormData
-                            contentType: false, // Important for FormData
-                            success: function(response) {
-                                console.log(response);
-                                if (response.status == 200) {
-                                    // window.location.href = "../user/user_dashboard";
-                                } else if (response.status == "404") {
-                                    alert(response.message);
-                                }
-                            },
-                            error: function(xhr) {
-                                console.error("AJAX Error:", xhr.responseText);
-                            }
-                        });
-                    }
-                    return;
+        // Clickable headers — allow going back to completed steps
+        headerItems.forEach((item) => {
+            item.addEventListener("click", () => {
+                const target = parseInt(item.dataset.step, 10);
+                if (target <= current) {
+                    showStep(target);
                 }
-                showStep(nextIndex);
-            }
-
-            function showStep(index) {
-                if (index < 0 || index >= steps.length) return;
-                steps[current].classList.remove("active");
-                steps[index].classList.add("active");
-                current = index;
-                updateUI();
-            }
-
-            function updateUI() {
-                // Header states
-                headerItems.forEach((el, i) => {
-                    el.setAttribute("aria-selected", i === current ? "true" : "false");
-                    el.setAttribute("aria-current", i === current ? "step" : "false");
-                    el.classList.toggle("completed", i < current);
-                });
-
-                // Buttons
-                prevBtn.disabled = current === 0;
-                nextBtn.textContent = current === steps.length - 1 ? "Submit" : "Next step";
-                console.log(current)
-            }
-
-            function validateStep(stepIndex) {
-                const stepEl = steps[stepIndex];
-                if (!stepEl) return true;
-
-                const groups = Array.from(stepEl.querySelectorAll(".form-group"));
-                let valid = true;
-                return valid;
-                groups.forEach(group => {
-                    const input = group.querySelector(".form-control");
-                    const errorText = group.querySelector(".error-text");
-                    if (!input) return;
-
-                    // Reset state
-                    group.classList.remove("error");
-
-                    // Required check
-                    if (input.hasAttribute("required")) {
-                        const value = input.value.trim();
-                        let fieldValid = value !== "";
-
-                        // Basic type checks
-                        if (fieldValid && input.type === "email") {
-                            const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-                            fieldValid = emailOk;
-                            if (!emailOk && errorText) errorText.textContent =
-                                "Enter a valid email address";
-                        }
-
-                        if (!fieldValid) {
-                            group.classList.add("error");
-                            if (errorText && errorText.textContent === "") {
-                                errorText.textContent = "This field is required";
-                            }
-                            valid = false;
-                        }
-                    }
-                });
-
-                return valid;
-            }
-
-            // document.getElementById('birth_date').addEventListener('change', function() {
-            //     const dob = new Date(this.value);
-            //     if (!isNaN(dob)) {
-            //         const today = new Date();
-            //         let age = today.getFullYear() - dob.getFullYear();
-            //         const monthDiff = today.getMonth() - dob.getMonth();
-
-            //         // Adjust if birthday hasn't occurred yet this year
-            //         if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
-            //             age--;
-            //         }
-
-            //         document.getElementById('age').value = age;
-            //     } else {
-            //         document.getElementById('age').value = '';
-            //     }
-            // });
-
-            // Set max date to today minus 18 years
-            const dobInput = document.getElementById('birth_date');
-            const today = new Date();
-            const minAgeDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
-            dobInput.max = minAgeDate.toISOString().split('T')[0];
-
-            // Auto-calculate age when DOB changes
-            dobInput.addEventListener('change', function() {
-                const dob = new Date(this.value);
-                if (!isNaN(dob)) {
-                    let age = today.getFullYear() - dob.getFullYear();
-                    const monthDiff = today.getMonth() - dob.getMonth();
-
-                    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
-                        age--;
-                    }
-
-                    document.getElementById('age').value = age;
-                } else {
-                    document.getElementById('age').value = '';
-                }
-            });
-
-
-            const specializationOptions = {
-                engineering: [
-                    "Computer Science Engineering",
-                    "Information Technology",
-                    "Electronics & Communication",
-                    "Electrical Engineering",
-                    "Mechanical Engineering",
-                    "Civil Engineering",
-                    "Biotechnology",
-                    "Chemical Engineering"
-                ],
-                medicine: [
-                    "MBBS (General Medicine)",
-                    "BDS (Dentistry)",
-                    "BAMS (Ayurveda)",
-                    "BHMS (Homeopathy)",
-                    "BUMS (Unani)",
-                    "Physiotherapy",
-                    "Pharmacy",
-                    "Nursing"
-                ],
-                arts: [
-                    "English Literature",
-                    "History",
-                    "Political Science",
-                    "Sociology",
-                    "Psychology",
-                    "Philosophy",
-                    "Fine Arts",
-                    "Performing Arts"
-                ],
-                science: [
-                    "Computer",
-                    "Physics",
-                    "Chemistry",
-                    "Mathematics",
-                    "Statistics",
-                    "Biotechnology",
-                    "Microbiology",
-                    "Environmental Science",
-                    "Forensic Science"
-                ],
-                commerce: [
-                    "Accounting & Finance",
-                    "Banking & Insurance",
-                    "Economics",
-                    "Business Administration",
-                    "Taxation",
-                    "International Business"
-                ],
-                law: [
-                    "Criminal Law",
-                    "Corporate Law",
-                    "Constitutional Law",
-                    "Intellectual Partner Law",
-                    "International Law"
-                ],
-                management: [
-                    "Human Resource Management",
-                    "Marketing",
-                    "Finance",
-                    "Operations Management",
-                    "Logistics & Supply Chain",
-                    "Entrepreneurship"
-                ],
-                others: [
-                    "Fashion Design",
-                    "Interior Design",
-                    "Animation & Multimedia",
-                    "Journalism & Mass Communication",
-                    "Photography",
-                    "Game Design"
-                ]
-            };
-
-            $('#education_field').on('change', function() {
-                console.log('changes');
-                const selectedField = $(this).val();
-                const specializationSelect = $('#specialization');
-
-                specializationSelect.empty().append('<option value="">Select specialization</option>');
-
-                if (specializationOptions[selectedField]) {
-                    specializationOptions[selectedField].forEach(spec => {
-                        specializationSelect.append(
-                            $('<option>', {
-                                value: spec,
-                                text: spec
-                            })
-                        );
-                    });
-                }
-
-                // If specialization is also Select2, refresh it
-                specializationSelect.trigger('change.select2');
             });
         });
-    </script>
-@endpush
+
+        // Modal
+        // document.addEventListener("DOMContentLoaded", function() {
+        const tcModalTrigger = document.getElementById('tc_modal');
+        tcModalTrigger.addEventListener('click', function() {
+            console.log('in')
+            const modal = new bootstrap.Modal(document.getElementById('termsModal'));
+            modal.show();
+        });
+        // });
+
+        function go(dir) {
+            if (dir === 1 && !validateStep(current)) return;
+            const nextIndex = current + dir;
+            if (nextIndex < 0) return;
+            if (nextIndex >= steps.length) {
+                // Submit safely
+                var termsandconditionsAccepted = document.getElementById('terms_condition').checked;
+                if (!termsandconditionsAccepted) {
+                    alert("Please accept the terms and conditions.");
+                    return;
+                }
+                if (validateStep(current)) {
+                    // form.submit();
+                    const formData = new FormData(form);
+
+                    const profileFiles = document.getElementById('profile_picture').files;
+                    for (let i = 0; i < profileFiles.length; i++) {
+                        formData.append("profile_picture1[]", profileFiles[i]);
+                    }
+
+                    // Add horoscope images manually
+                    const horoscopeFiles = document.getElementById('horoscope_picture').files;
+                    for (let i = 0; i < horoscopeFiles.length; i++) {
+                        formData.append("horoscope_picture1[]", horoscopeFiles[i]);
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: "../register", // Your actual endpoint
+                        headers: {
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                        },
+                        data: formData,
+                        processData: false, // Important for FormData
+                        contentType: false, // Important for FormData
+                        success: function(response) {
+                            console.log(response);
+                            if (response.status == 200) {
+                                // window.location.href = "../user/user_dashboard";
+                            } else if (response.status == "404") {
+                                alert(response.message);
+                            }
+                        },
+                        error: function(xhr) {
+                            console.error("AJAX Error:", xhr.responseText);
+                        }
+                    });
+                }
+                return;
+            }
+            showStep(nextIndex);
+        }
+
+        function showStep(index) {
+            if (index < 0 || index >= steps.length) return;
+            steps[current].classList.remove("active");
+            steps[index].classList.add("active");
+            current = index;
+            updateUI();
+        }
+
+        function updateUI() {
+            // Header states
+            headerItems.forEach((el, i) => {
+                el.setAttribute("aria-selected", i === current ? "true" : "false");
+                el.setAttribute("aria-current", i === current ? "step" : "false");
+                el.classList.toggle("completed", i < current);
+            });
+
+            // Buttons
+            prevBtn.disabled = current === 0;
+            nextBtn.textContent = current === steps.length - 1 ? "Submit" : "Next step";
+            console.log(current)
+        }
+
+        function validateStep(stepIndex) {
+            const stepEl = steps[stepIndex];
+            if (!stepEl) return true;
+
+            const groups = Array.from(stepEl.querySelectorAll(".form-group"));
+            let valid = true;
+            
+            groups.forEach(group => {
+                const input = group.querySelector(".form-control");
+                const errorText = group.querySelector(".error-text");
+                if (!input) return;
+
+                // Reset state
+                group.classList.remove("error");
+
+                // Required check
+                if (input.hasAttribute("required")) {
+                    const value = input.value.trim();
+                    let fieldValid = value !== "";
+
+                    // Basic type checks
+                    if (fieldValid && input.type === "email") {
+                        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+                        fieldValid = emailOk;
+                        if (!emailOk && errorText) errorText.textContent =
+                            "Enter a valid email address";
+                    }
+
+                    if (!fieldValid) {
+                        group.classList.add("error");
+                        if (errorText && errorText.textContent === "") {
+                            errorText.textContent = "This field is required";
+                        }
+                        valid = false;
+                    }
+                }
+            });
+
+            return valid;
+        }
+
+        // document.getElementById('birth_date').addEventListener('change', function() {
+        //     const dob = new Date(this.value);
+        //     if (!isNaN(dob)) {
+        //         const today = new Date();
+        //         let age = today.getFullYear() - dob.getFullYear();
+        //         const monthDiff = today.getMonth() - dob.getMonth();
+
+        //         // Adjust if birthday hasn't occurred yet this year
+        //         if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+        //             age--;
+        //         }
+
+        //         document.getElementById('age').value = age;
+        //     } else {
+        //         document.getElementById('age').value = '';
+        //     }
+        // });
+
+        // Set max date to today minus 18 years
+        const dobInput = document.getElementById('birth_date');
+        const today = new Date();
+        const minAgeDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+        dobInput.max = minAgeDate.toISOString().split('T')[0];
+
+        // Auto-calculate age when DOB changes
+        dobInput.addEventListener('change', function() {
+            const dob = new Date(this.value);
+            if (!isNaN(dob)) {
+                let age = today.getFullYear() - dob.getFullYear();
+                const monthDiff = today.getMonth() - dob.getMonth();
+
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+
+                document.getElementById('age').value = age;
+            } else {
+                document.getElementById('age').value = '';
+            }
+        });
+
+
+        const specializationOptions = {
+            engineering: [
+                "Computer Science Engineering",
+                "Information Technology",
+                "Electronics & Communication",
+                "Electrical Engineering",
+                "Mechanical Engineering",
+                "Civil Engineering",
+                "Biotechnology",
+                "Chemical Engineering"
+            ],
+            medicine: [
+                "MBBS (General Medicine)",
+                "BDS (Dentistry)",
+                "BAMS (Ayurveda)",
+                "BHMS (Homeopathy)",
+                "BUMS (Unani)",
+                "Physiotherapy",
+                "Pharmacy",
+                "Nursing"
+            ],
+            arts: [
+                "English Literature",
+                "History",
+                "Political Science",
+                "Sociology",
+                "Psychology",
+                "Philosophy",
+                "Fine Arts",
+                "Performing Arts"
+            ],
+            science: [
+                "Computer",
+                "Physics",
+                "Chemistry",
+                "Mathematics",
+                "Statistics",
+                "Biotechnology",
+                "Microbiology",
+                "Environmental Science",
+                "Forensic Science"
+            ],
+            commerce: [
+                "Accounting & Finance",
+                "Banking & Insurance",
+                "Economics",
+                "Business Administration",
+                "Taxation",
+                "International Business"
+            ],
+            law: [
+                "Criminal Law",
+                "Corporate Law",
+                "Constitutional Law",
+                "Intellectual Partner Law",
+                "International Law"
+            ],
+            management: [
+                "Human Resource Management",
+                "Marketing",
+                "Finance",
+                "Operations Management",
+                "Logistics & Supply Chain",
+                "Entrepreneurship"
+            ],
+            others: [
+                "Fashion Design",
+                "Interior Design",
+                "Animation & Multimedia",
+                "Journalism & Mass Communication",
+                "Photography",
+                "Game Design"
+            ]
+        };
+
+        $('#education_field').on('change', function() {
+            console.log('changes');
+            const selectedField = $(this).val();
+            const specializationSelect = $('#specialization');
+
+            specializationSelect.empty().append('<option value="">Select specialization</option>');
+
+            if (specializationOptions[selectedField]) {
+                specializationOptions[selectedField].forEach(spec => {
+                    specializationSelect.append(
+                        $('<option>', {
+                            value: spec,
+                            text: spec
+                        })
+                    );
+                });
+            }
+
+            // If specialization is also Select2, refresh it
+            specializationSelect.trigger('change.select2');
+        });
+    });
+</script>
