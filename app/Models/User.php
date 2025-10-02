@@ -77,8 +77,17 @@ class User extends Authenticatable
     protected static function booted()
     {
         static::creating(function ($user) {
-            $raw = Str::lower(Str::random(12));
-            $user->identifier = 'VTM-'.substr($raw, 4, 4).'-'.substr($raw, 8, 4);
+            // Generate a random alphanumeric string (A–Z, 0–9)
+            $pool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            $raw = strtoupper(Str::random(12, $pool)); // Laravel 11+ supports pool argument
+    
+            // If your Laravel version doesn’t support pool, use:
+            // $raw = collect(str_split($pool))
+            //     ->random(12)
+            //     ->implode('');
+    
+            // Format: VTM-XXXX-YYYY (letters + numbers)
+            $user->identifier = 'VTM-' . substr($raw, 4, 4) . '-' . substr($raw, 8, 4);
         });
     }
 
