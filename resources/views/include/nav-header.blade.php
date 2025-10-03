@@ -52,7 +52,13 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="user-greet">
-                            <span>Hi {{ ucfirst(Auth::user()->name) }}</span>
+                            <div class="agent-header">
+                                <div class="agent-avatar">
+                                    <img src="{{ Auth::user()->avatar ?? asset($profile->userImages->first()?->image_path) }}"
+                                        class="img-fluid" alt="{{ $profile->user->name }}">
+                                </div>
+                            </div>
+                            {{-- <span>Hi {{ ucfirst(Auth::user()->name) }}</span> --}}
                             <i class="bi bi-chevron-down toggle-dropdown"></i>
                         </a>
                         <ul class="dropdown-menu">
