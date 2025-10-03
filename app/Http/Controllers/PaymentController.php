@@ -119,9 +119,6 @@ class PaymentController extends Controller
     // Handles server-to-server callback from PhonePe
     public function handleCallback(Request $request)
     {
-        $transactionId = $request->input('transactionId')
-        ?? $request->input('transaction_id'); // depends on PhonePe payload
-
         $payment = Payment::where('user_id', Auth::id())->latest('id')->first();
 
         if (! $payment) {
