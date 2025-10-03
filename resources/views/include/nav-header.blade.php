@@ -54,8 +54,8 @@
                         <a href="#" class="user-greet">
                             <div class="agent-header">
                                 <div class="agent-avatar">
-                                    <img src="{{ Auth::user()->avatar ?? asset($profile->userImages->first()?->image_path) }}"
-                                        class="img-fluid" alt="{{ $profile->user->name }}">
+                                    <img src="{{ Auth::user()->avatar ?? asset(Auth::user()->userImages->first()?->image_path) }}"
+                                        class="img-fluid" alt="{{ Auth::user()->name }}">
                                 </div>
                             </div>
                             {{-- <span>Hi {{ ucfirst(Auth::user()->name) }}</span> --}}
