@@ -6,6 +6,7 @@ use App\Models\Payment;
 use App\Models\Subscription;
 use App\Models\SubscriptionHistory;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
@@ -137,26 +138,31 @@ class PaymentController extends Controller
 
         $finalStatus = $statusResponse['state'] === 'COMPLETED' ? 'success' : 'failed';
 
-        $payment->update([
-            'status' => $finalStatus,
-            'gateway_order_response_json' => $statusResponse,
-        ]);
-
-        if ($finalStatus === 'success') {
-            $subscription = Subscription::findOrFail($payment->subscription_id);
-            $startDate = now();
-            $endDate = $startDate->copy()->addDays($subscription->validity_days);
-
-            SubscriptionHistory::create([
-                'user_id' => $userId,
-                'subscription_id' => $subscription->id,
-                'plan_name' => $subscription->name,
-                'plan_code' => $subscription->id,
-                'amount' => $subscription->price,
-                'start_date' => $startDate,
-                'end_date' => $endDate,
-                'status' => 'active',
+        try{
+            $payment->update([
+                'status' => $finalStatus,
+                'gateway_order_response_json' => $statusResponse,
             ]);
+    
+            if ($finalStatus === 'success') {
+                $subscription = Subscription::findOrFail($payment->subscription_id);
+                $startDate = now();
+                $endDate = $startDate->copy()->addDays($subscription->validity_days);
+    
+                SubscriptionHistory::create([
+                    'user_id' => $userId,
+                    'subscription_id' => $subscription->id,
+                    'plan_name' => $subscription->name,
+                    'plan_code' => $subscription->id,
+                    'amount' => $subscription->price,
+                    'start_date' => $startDate,
+                    'end_date' => $endDate,
+                    'status' => 'active',
+                ]);
+                User::where('id', $userId)->update(['profile_view_count' => $subscription->profile_view_count]);
+            }
+        }catch(\Exception $e){
+            \Log::error($e->getMessage());
         }
 
         // You can now use $userId for any post-payment logic
