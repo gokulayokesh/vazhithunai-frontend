@@ -149,8 +149,8 @@
                                                 {{-- <a href="/auth/google" class="btn btn-social">
                                                     <i class="bi bi-google"></i>
                                                     <span>Google</span>
-                                                </a> --}}
-                                                {{-- <a href="#" class="btn btn-social">
+                                                </a>
+                                                <a href="#" class="btn btn-social">
                                                 <i class="bi bi-facebook"></i>
                                                 <span>Facebook</span>
                                             </a>

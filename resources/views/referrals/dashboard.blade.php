@@ -80,14 +80,3 @@
         @include('include.script')
     </body>
 @endsection
-
-<script>
-    function copyReferralCode() {
-        let input = document.getElementById("referralCode");
-        input.select();
-        input.setSelectionRange(0, 99999); // for mobile
-        navigator.clipboard.writeText(input.value).then(() => {
-            showToast("Referral code copied!");
-        });
-    }
-</script>
