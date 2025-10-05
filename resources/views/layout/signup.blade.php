@@ -82,6 +82,16 @@
                                                 </div>
                                             </div>
 
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input type="text" class="form-control" id="referralCode"
+                                                            name="referralCode" placeholder="Referral Code" value="">
+                                                        <label for="referralCode">Referral Code</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <div class="form-check mb-4">
                                                 <input class="form-check-input" type="checkbox" id="termsCheck"
                                                     name="termsCheck" required="">
@@ -257,6 +267,12 @@
                 form.prepend(container);
             }
             container.innerHTML = `<div class="alert alert-${type}">${msg}</div>`;
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const referralCode = urlParams.get('referral-code');
+        if (referralCode) {
+            document.getElementById('referralCode').value = referralCode;
         }
     });
 </script>
