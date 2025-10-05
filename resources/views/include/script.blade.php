@@ -14,11 +14,12 @@
 
  <!-- Main JS File -->
 
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+ <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
+ <script src="{{ asset('assets/vendor/select2/select2.min.js') }}"></script>
  <script src="{{ asset('assets/js/main.js') }}"></script>
+ <script src="{{ asset('assets/vendor/toastify/toastify.js') }}"></script>
  <script src="https://accounts.google.com/gsi/client" async defer></script>
- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 
  <script>
      function showToast(message, type = "success", gravity = 'top', position = 'right') {

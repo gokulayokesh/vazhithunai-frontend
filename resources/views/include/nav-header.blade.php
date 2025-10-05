@@ -66,6 +66,11 @@
                                     <span class="bi bi-chat-heart"></span>&nbsp;My Chats
                                 </a>
                             </li>
+                            <li>
+                                <a href="/referrals">
+                                    <span class="bi bi-person-plus"></span>&nbsp;My Referral
+                                </a>
+                            </li>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <li>

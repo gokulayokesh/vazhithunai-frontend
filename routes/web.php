@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileSearchController;
+use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -83,6 +84,18 @@ Route::middleware('auth')->group(function () {
     Route::post('/chats/{chat}/send', [ChatController::class, 'send'])->name('chat.send');
 
     Route::delete('/chats/{chat}', [ChatController::class, 'destroy'])->name('chat.destroy');
+
+    // Referral dashboard
+    Route::get('/referrals', [ReferralController::class, 'dashboard'])->name('referrals.dashboard');
+
+    // Referral link usage
+    Route::get('/referral/{code}', [ReferralController::class, 'registerWithReferral'])->name('referral.link');
+
+    // Generate referral code
+    Route::post('/referral/generate/{user}', [ReferralController::class, 'generate'])->name('referral.generate');
+
+    // Reward a referral (admin-only ideally)
+    Route::post('/referral/reward/{referral}', [ReferralController::class, 'reward'])->name('referral.reward');
 });
 
 Route::get('/verify-email/{token}', [LoginController::class, 'verifyEmail'])->name('verify.email');

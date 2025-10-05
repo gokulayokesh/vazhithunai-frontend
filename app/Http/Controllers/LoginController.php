@@ -52,10 +52,12 @@ class LoginController extends Controller
 
         // Check email verification only if logging in with email
         if ($fieldType === 'email' && is_null($user->email_verified_at)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Please verify your email address before logging in.',
-            ], 403);
+            return $request->input('from_form')
+                ? back()->withErrors(['login' => 'Please verify your email address before logging in.'])->onlyInput('login')
+                : response()->json([
+                    'success' => false,
+                    'message' => 'Please verify your email address before logging in..',
+                ], 403);
         }
 
         // Attempt login

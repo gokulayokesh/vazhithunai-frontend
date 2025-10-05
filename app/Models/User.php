@@ -156,4 +156,13 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class, 'viewer_id');
     }
+
+    // app/Models/User.php
+    public function referralsGiven() {
+        return $this->hasMany(Referral::class, 'referrer_id');
+    }
+
+    public function referralReceived() {
+        return $this->hasOne(Referral::class, 'referred_user_id');
+    }
 }

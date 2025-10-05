@@ -170,6 +170,24 @@ namespace App\Models{
 namespace App\Models{
 /**
  * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User|null $referredUser
+ * @property-read \App\Models\User|null $referrer
+ * @method static \Database\Factories\ReferralFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral whereUpdatedAt($value)
+ */
+	class Referral extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
  * @property int $user_id
  * @property int $shortlisted_user_id
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -217,6 +235,7 @@ namespace App\Models{
  * @property string $name
  * @property int $validity_days
  * @property string $price
+ * @property int|null $profile_view_count
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription newModelQuery()
@@ -226,6 +245,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription whereProfileViewCount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Subscription whereValidityDays($value)
  */
@@ -288,6 +308,9 @@ namespace App\Models{
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read User|null $profileWatchHistory
+ * @property-read \App\Models\Referral|null $referralReceived
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Referral> $referralsGiven
+ * @property-read int|null $referrals_given_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, User> $shortlistedUsers
  * @property-read int|null $shortlisted_users_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\SubscriptionHistory> $subscriptions
