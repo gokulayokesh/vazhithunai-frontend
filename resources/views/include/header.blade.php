@@ -11,20 +11,12 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
+
+        gtag('config', 'G-FK1KFKNP7E', {
+            user_id: @json(auth()->check() ? auth()->user()->id : null)
+        });
     </script>
-    @auth
-        <script>
-            gtag('config', 'G-FK1KFKNP7E', {
-                user_id: '{{ auth()->user()->id ?? '' }}'
-            });
-        </script>
-    @else
-        <script>
-            gtag('config', 'G-FK1KFKNP7E', {
-                user_id: null // Signed-out or anonymous
-            });
-        </script>
-    @endauth
+
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
