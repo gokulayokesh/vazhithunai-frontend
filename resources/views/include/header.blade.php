@@ -17,7 +17,7 @@
     @auth
         <script>
             gtag('config', 'G-FK1KFKNP7E', {
-                user_id: '{{ (auth()->user()->id ?? '') . '-' . (auth()->user()->name ?? '') }}'
+                user_id: '{{ auth()->user()->id ?? '' }}'
             });
         </script>
     @else
