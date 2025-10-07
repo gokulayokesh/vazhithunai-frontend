@@ -13,7 +13,8 @@
         gtag('js', new Date());
 
         gtag('config', 'G-FK1KFKNP7E', {
-            user_id: @json(auth()->check() ? auth()->user()->id : null)
+            user_id: @json(auth()->check() ? auth()->user()->id : null),
+            user_id_data: @json(auth()->check() ? auth()->user()->id : null),
         });
     </script>
 
