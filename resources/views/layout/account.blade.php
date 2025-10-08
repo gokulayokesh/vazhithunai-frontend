@@ -41,7 +41,7 @@
                                 <!-- User Info -->
                                 <div class="user-info" data-aos="fade-right">
                                     <div class="user-avatar">
-                                        <img src="{{ Auth::user()->userImages()->first()->image_path }}"
+                                        <img src="{{ Auth::user()?->userImages()->first()->image_path ?? '' }}"
                                             alt="{{ Auth::user()->name }}" alt="Profile" loading="lazy">
                                         <span class="status-badge"><i class="bi bi-shield-check"></i></span>
                                     </div>
@@ -1263,7 +1263,7 @@
                                                             Tongue</label>
                                                         <select class="form-control" id="mother_tongue"
                                                             name="mother_tongue">
-                                                            @foreach ($motherTongues as $lang)
+                                                            @foreach ($languagesKnown as $lang)
                                                                 <option value="{{ $lang }}"
                                                                     {{ $user->mother_tongue == $lang ? 'selected' : '' }}>
                                                                     {{ $lang }}

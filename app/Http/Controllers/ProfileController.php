@@ -106,55 +106,10 @@ class ProfileController extends Controller
         // Load JSON reference data
         $referenceData = json_decode(Storage::disk('public')->get('json/data.json'), true);
 
-        $employmentTypes    = $referenceData['employmentTypes'];
-        $industries         = $referenceData['industries'];
-        $maritalStatuses    = $referenceData['maritalStatuses'];
-        $bodyTypes          = $referenceData['bodyTypes'];
-        $complexions        = $referenceData['complexions'];
-        $motherTongues      = $referenceData['motherTongues'];
-        $interests          = $referenceData['interests'];
-        $hobbies            = $referenceData['hobbies'];
-        $cuisines           = $referenceData['cuisines'];
-        $musicGenres        = $referenceData['musicGenres'];
-        $sportsFitness      = $referenceData['sportsFitness'];
-        $petPreferences     = $referenceData['petPreferences'];
-        $travelPreferences  = $referenceData['travelPreferences'];
-        $dietaryPreferences = $referenceData['dietaryPreferences'];
-        $smokingHabits      = $referenceData['smokingHabits'];
-        $drinkingHabits     = $referenceData['drinkingHabits'];
-        $birthStars         = $referenceData['birthStars'];
-        $zodiacs            = $referenceData['zodiacs'];
-        $educations         = $referenceData['educations'][0];
-        $jobs               = $referenceData['jobs'][0];
-        $salaries           = $referenceData['salaries'][0];
-        $cities             = $referenceData['cities'];
 
         $user = Auth::user()->load(['userDetails', 'userImages', 'shortlistedUsers']);
 
-        return view('layout.account', compact('user',
-            'cities',
-            'birthStars',
-            'zodiacs',
-            'educations',
-            'jobs',
-            'salaries',
-            'employmentTypes',
-            'industries',
-            'maritalStatuses',
-            'bodyTypes',
-            'complexions',
-            'motherTongues',
-            'interests',
-            'hobbies',
-            'cuisines',
-            'musicGenres',
-            'sportsFitness',
-            'petPreferences',
-            'travelPreferences',
-            'dietaryPreferences',
-            'smokingHabits',
-            'drinkingHabits',
-        ));
+        return view('layout.account', compact('user', 'referenceData'));
     }
 
     public function viewProfile($id)

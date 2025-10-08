@@ -53,7 +53,8 @@
                                                 <span class="input-group-text" id="basic-addon1"><span
                                                         class="bi bi-person"></span></span>
                                                 <input type="text" name="name" class="form-control"
-                                                    aria-describedby="basic-addon1" required>
+                                                    value="{{ Auth::user()->name ?? '' }}" aria-describedby="basic-addon1"
+                                                    required>
                                             </div>
                                             <div class="error-text">Name is required</div>
                                         </div>
@@ -116,13 +117,11 @@
                                                         class="bi bi-mortarboard"></span></span>
                                                 <select class="form-control" id="highest_education"
                                                     name="highest_education" required>
-                                                    <option value="">Select</option>
-                                                    <option>Doctorate / PhD</option>
-                                                    <option>Postgraduate / Master's</option>
-                                                    <option>Graduate / Bachelor's</option>
-                                                    <option>Diploma</option>
-                                                    <option>Higher Secondary</option>
-                                                    <option>Secondary</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['educations'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="error-text">Highest Education is required</div>
@@ -136,7 +135,7 @@
                                                         class="bi bi-journal-bookmark"></span></span>
                                                 <select class="form-control" id="education_field" name="education_field"
                                                     required>
-                                                    <option value="">Select</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
                                                     <option value="engineering">Engineering</option>
                                                     <option value="medicine">Medicine</option>
                                                     <option value="arts">Arts</option>
@@ -147,7 +146,7 @@
                                                     <option value="others">Others</option>
                                                 </select>
                                             </div>
-                                            <div class="error-text">Education Field is required</div>
+                                            {{-- <div class="error-text">Education Field is required</div> --}}
                                         </div>
 
                                         <div class="form-group col-12 col-md-3 mb-3">
@@ -161,7 +160,7 @@
                                                     <option value="">Select specialization</option>
                                                 </select>
                                             </div>
-                                            <div class="error-text">Specialization is required</div>
+                                            {{-- <div class="error-text">Specialization is required</div> --}}
                                         </div>
 
                                         <div class="form-group col-12 col-md-3 mb-3">
@@ -180,8 +179,12 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-calendar-event"></span></span>
-                                                <input type="number" class="form-control" id="completion_year"
-                                                    min="1950" max="2099" name="completion_year">
+                                                <select class="form-control" id="completion_year" name="completion_year">
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @for ($i = 2000; $i <= $curYear; $i++)
+                                                        <option value="{{ $i }}">{{ $i }}</option>
+                                                    @endfor
+                                                </select>
                                             </div>
                                         </div>
 
@@ -204,14 +207,11 @@
                                                         class="bi bi-briefcase"></span></span>
                                                 <select class="form-control" id="occupation_category"
                                                     name="occupation_category" required>
-                                                    <option value="">Select</option>
-                                                    <option>IT Professional</option>
-                                                    <option>Government Employee</option>
-                                                    <option>Business Owner</option>
-                                                    <option>Teacher</option>
-                                                    <option>Doctor</option>
-                                                    <option>Engineer</option>
-                                                    <option>Others</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['jobs'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="error-text">Occupation Category is required</div>
@@ -245,11 +245,11 @@
                                                 <span class="input-group-text"><span
                                                         class="bi bi-card-checklist"></span></span>
                                                 <select class="form-control" id="employment_type" name="employment_type">
-                                                    <option value="">Select</option>
-                                                    <option>Permanent</option>
-                                                    <option>Contract</option>
-                                                    <option>Self-employed</option>
-                                                    <option>Freelancer</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['employmentTypes'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -260,13 +260,11 @@
                                                 <span class="input-group-text"><span
                                                         class="bi bi-diagram-3"></span></span>
                                                 <select class="form-control" id="industry" name="industry">
-                                                    <option value="">Select</option>
-                                                    <option>IT</option>
-                                                    <option>Healthcare</option>
-                                                    <option>Education</option>
-                                                    <option>Manufacturing</option>
-                                                    <option>Finance</option>
-                                                    <option>Others</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['industries'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -282,18 +280,17 @@
                                         </div>
 
                                         <div class="form-group col-12 col-md-3 mb-3">
-                                            <label class="form-label" for="annual_income">வருடாந்திர வருமானம் / Annual
+                                            <label class="form-label" for="annual_income">மாத வருமானம் / Monthly
                                                 Income</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-currency-rupee"></span></span>
                                                 <select class="form-control" id="annual_income" name="annual_income">
-                                                    <option value="">Select</option>
-                                                    <option>Below ₹3 LPA</option>
-                                                    <option>₹3–5 LPA</option>
-                                                    <option>₹5–10 LPA</option>
-                                                    <option>₹10–20 LPA</option>
-                                                    <option>Above ₹20 LPA</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['salaries'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -304,8 +301,13 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-hourglass-split"></span></span>
-                                                <input type="number" class="form-control" id="experience_years"
-                                                    min="0" name="experience_years">
+                                                <select class="form-control" id="experience_years"
+                                                    name="experience_years">
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @for ($i = 0; $i < 20; $i++)
+                                                        <option value="{{ $i }}">{{ $i }}</option>
+                                                    @endfor
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -327,10 +329,11 @@
                                                 <span class="input-group-text"><span
                                                         class="bi bi-gender-ambiguous"></span></span>
                                                 <select class="form-control" id="gender" required name="gender">
-                                                    <option value="">Select</option>
-                                                    <option>ஆண் / Male</option>
-                                                    <option>பெண் / Female</option>
-                                                    <option>மற்றவை / Other</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['genders'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="error-text">Gender is required</div>
@@ -344,43 +347,10 @@
                                                         class="bi bi-arrows-vertical"></span></span>
                                                 <select class="form-control" id="height" name="height" required>
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
-                                                    <option value="4ft-121cm">4ft - 121 cm</option>
-                                                    <option value="4ft1in-124cm">4ft 1in - 124 cm</option>
-                                                    <option value="4ft2in-127cm">4ft 2in - 127 cm</option>
-                                                    <option value="4ft3in-129cm">4ft 3in - 129 cm</option>
-                                                    <option value="4ft4in-132cm">4ft 4in - 132 cm</option>
-                                                    <option value="4ft5in-134cm">4ft 5in - 134 cm</option>
-                                                    <option value="4ft6in-137cm">4ft 6in - 137 cm</option>
-                                                    <option value="4ft7in-139cm">4ft 7in - 139 cm</option>
-                                                    <option value="4ft8in-142cm">4ft 8in - 142 cm</option>
-                                                    <option value="4ft9in-144cm">4ft 9in - 144 cm</option>
-                                                    <option value="4ft10in-147cm">4ft 10in - 147 cm</option>
-                                                    <option value="4ft11in-149cm">4ft 11in - 149 cm</option>
-                                                    <option value="5ft-152cm">5ft - 152 cm</option>
-                                                    <option value="5ft1in-154cm">5ft 1in - 154 cm</option>
-                                                    <option value="5ft2in-157cm">5ft 2in - 157 cm</option>
-                                                    <option value="5ft3in-160cm">5ft 3in - 160 cm</option>
-                                                    <option value="5ft4in-162cm">5ft 4in - 162 cm</option>
-                                                    <option value="5ft5in-165cm">5ft 5in - 165 cm</option>
-                                                    <option value="5ft6in-167cm">5ft 6in - 167 cm</option>
-                                                    <option value="5ft7in-170cm">5ft 7in - 170 cm</option>
-                                                    <option value="5ft8in-172cm">5ft 8in - 172 cm</option>
-                                                    <option value="5ft9in-175cm">5ft 9in - 175 cm</option>
-                                                    <option value="5ft10in-177cm">5ft 10in - 177 cm</option>
-                                                    <option value="5ft11in-180cm">5ft 11in - 180 cm</option>
-                                                    <option value="6ft-182cm">6ft - 182 cm</option>
-                                                    <option value="6ft1in-185cm">6ft 1in - 185 cm</option>
-                                                    <option value="6ft2in-187cm">6ft 2in - 187 cm</option>
-                                                    <option value="6ft3in-190cm">6ft 3in - 190 cm</option>
-                                                    <option value="6ft4in-193cm">6ft 4in - 193 cm</option>
-                                                    <option value="6ft5in-195cm">6ft 5in - 195 cm</option>
-                                                    <option value="6ft6in-198cm">6ft 6in - 198 cm</option>
-                                                    <option value="6ft7in-200cm">6ft 7in - 200 cm</option>
-                                                    <option value="6ft8in-203cm">6ft 8in - 203 cm</option>
-                                                    <option value="6ft9in-205cm">6ft 9in - 205 cm</option>
-                                                    <option value="6ft10in-208cm">6ft 10in - 208 cm</option>
-                                                    <option value="6ft11in-210cm">6ft 11in - 210 cm</option>
-                                                    <option value="7ft-213cm">7ft - 213 cm</option>
+                                                    @foreach ($referenceData['heights'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                     <option value="NotSpecified">Not Specified</option>
                                                 </select>
                                             </div>
@@ -393,10 +363,11 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-palette"></span></span>
                                                 <select class="form-control" id="color" required name="color">
-                                                    <option value="">Select</option>
-                                                    <option>வெள்ளை / Fair</option>
-                                                    <option>மிதமான / Wheatish</option>
-                                                    <option>கருப்பு / Dark</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['complexions'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="error-text">Complexion is required</div>
@@ -421,10 +392,11 @@
                                                 <span class="input-group-text"><span class="bi bi-heart"></span></span>
                                                 <select class="form-control" id="marital_status" name="marital_status"
                                                     required>
-                                                    <option value="">Select</option>
-                                                    <option>திருமணம் ஆகாதவர் / Never Married</option>
-                                                    <option>விவாகரத்து / Divorced</option>
-                                                    <option>விதவை / Widowed</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['maritalStatuses'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="error-text">Marital Status is required</div>
@@ -435,8 +407,13 @@
                                             <label class="form-label" for="city">நகரம் / City</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-geo-alt"></span></span>
-                                                <input type="text" class="form-control" id="city" name="city"
-                                                    required>
+                                                <select class="form-control" id="city" name="city" required>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['cities'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="error-text">City is required</div>
                                         </div>
@@ -461,11 +438,11 @@
                                                 <span class="input-group-text"><span
                                                         class="bi bi-person-standing"></span></span>
                                                 <select class="form-control" id="body_type" name="body_type">
-                                                    <option value="">Select</option>
-                                                    <option>மெல்லிய / Slim</option>
-                                                    <option>சராசரி / Average</option>
-                                                    <option>உடல் வலிமை / Athletic</option>
-                                                    <option>பருமன் / Heavy</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['bodyTypes'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -478,9 +455,11 @@
                                                 <span class="input-group-text"><span
                                                         class="bi bi-heart-pulse"></span></span>
                                                 <select class="form-control" id="physical_status" name="physical_status">
-                                                    <option value="">Select</option>
-                                                    <option>சாதாரணம் / Normal</option>
-                                                    <option>உடல் குறைபாடு / Physically Challenged</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['physicalStatus'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -494,30 +473,10 @@
                                                 <select class="form-control" id="mother_tongue" name="mother_tongue"
                                                     required>
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
-                                                    <option value="tamil">தமிழ் / Tamil</option>
-                                                    <option value="english">ஆங்கிலம் / English</option>
-                                                    <option value="Assamese">অসমীয়া / Assamese</option>
-                                                    <option value="Bengali">বাংলা / Bengali</option>
-                                                    <option value="Bodo">बर' / Bodo</option>
-                                                    <option value="Dogri">डोगरी / Dogri</option>
-                                                    <option value="English">English</option>
-                                                    <option value="Gujarati">ગુજરાતી / Gujarati</option>
-                                                    <option value="Hindi">हिन्दी / Hindi</option>
-                                                    <option value="Kannada">ಕನ್ನಡ / Kannada</option>
-                                                    <option value="Kashmiri">कॉशुर / Kashmiri</option>
-                                                    <option value="Konkani">कोंकणी / Konkani</option>
-                                                    <option value="Maithili">मैथिली / Maithili</option>
-                                                    <option value="Malayalam">മലയാളം / Malayalam</option>
-                                                    <option value="Manipuri">মেইতেইলোন্ / Manipuri (Meitei)</option>
-                                                    <option value="Marathi">मराठी / Marathi</option>
-                                                    <option value="Nepali">नेपाली / Nepali</option>
-                                                    <option value="Odia">ଓଡ଼ିଆ / Odia</option>
-                                                    <option value="Punjabi">ਪੰਜਾਬੀ / Punjabi</option>
-                                                    <option value="Sanskrit">संस्कृतम् / Sanskrit</option>
-                                                    <option value="Santali">ᱥᱟᱱᱛᱟᱲᱤ / Santali</option>
-                                                    <option value="Sindhi">سنڌي / Sindhi</option>
-                                                    <option value="Telugu">తెలుగు / Telugu</option>
-                                                    <option value="Urdu">اردو / Urdu</option>
+                                                    @foreach ($referenceData['languagesKnown'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="error-text">Mother Tongue is required</div>
@@ -531,11 +490,10 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-star"></span></span>
                                                 <select id="interests" name="interests[]" class="form-control" multiple>
-                                                    <option value="reading">வாசிப்பு / Reading</option>
-                                                    <option value="cooking">சமையல் / Cooking</option>
-                                                    <option value="travel">பயணம் / Travel</option>
-                                                    <option value="music">இசை / Music</option>
-                                                    <option value="sports">விளையாட்டு / Sports</option>
+                                                    @foreach ($referenceData['interests'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -546,11 +504,10 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-heart"></span></span>
                                                 <select id="hobbies" name="hobbies[]" class="form-control" multiple>
-                                                    <option value="gardening">தோட்டப் பணி / Gardening</option>
-                                                    <option value="photography">புகைப்படம் / Photography</option>
-                                                    <option value="writing">எழுத்து / Writing</option>
-                                                    <option value="dancing">நடனம் / Dancing</option>
-                                                    <option value="yoga">யோகா / Yoga</option>
+                                                    @foreach ($referenceData['hobbies'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -564,10 +521,10 @@
                                                         class="bi bi-egg-fried"></span></span>
                                                 <select id="fav_cuisine" name="favorite_cuisine[]" class="form-control"
                                                     multiple>
-                                                    <option value="south_indian">தென்னிந்திய / South Indian</option>
-                                                    <option value="north_indian">வடஇந்திய / North Indian</option>
-                                                    <option value="chinese">சீன / Chinese</option>
-                                                    <option value="italian">இத்தாலிய / Italian</option>
+                                                    @foreach ($referenceData['cuisines'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -581,10 +538,10 @@
                                                         class="bi bi-music-note-beamed"></span></span>
                                                 <select id="fav_music" name="favorite_music[]" class="form-control"
                                                     multiple>
-                                                    <option value="carnatic">கர்நாடக / Carnatic</option>
-                                                    <option value="western">மேற்கத்திய / Western</option>
-                                                    <option value="bollywood">பாலிவுட் / Bollywood</option>
-                                                    <option value="folk">நாட்டுப்புற / Folk</option>
+                                                    @foreach ($referenceData['musicGenres'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -596,10 +553,10 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-bicycle"></span></span>
                                                 <select id="sports" name="sports[]" class="form-control" multiple>
-                                                    <option value="cricket">கிரிக்கெட் / Cricket</option>
-                                                    <option value="yoga">யோகா / Yoga</option>
-                                                    <option value="gym">உடற்பயிற்சி கூடம் / Gym</option>
-                                                    <option value="swimming">நீச்சல் / Swimming</option>
+                                                    @foreach ($referenceData['sportsFitness'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -613,10 +570,11 @@
                                                         class="bi bi-postage-heart"></span></span>
                                                 <select id="pet_pref" name="pet_preference" class="form-control">
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
-                                                    <option value="likes_pets">செல்லப்பிராணிகளை விரும்புகிறேன் / Likes Pets
-                                                    </option>
-                                                    <option value="no_pets">செல்லப்பிராணி இல்லை / No Pets</option>
-                                                    <option value="specific">குறிப்பிட்டவை / Specific Animals</option>
+
+                                                    @foreach ($referenceData['petPreferences'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -629,10 +587,11 @@
                                                 <span class="input-group-text"><span class="bi bi-airplane"></span></span>
                                                 <select id="travel_pref" name="travel_preference" class="form-control">
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
-                                                    <option value="loves_travel">பயணம் விரும்புகிறேன் / Loves Travelling
-                                                    </option>
-                                                    <option value="occasional">அவ்வப்போது / Occasionally</option>
-                                                    <option value="rarely">அரிதாக / Rarely</option>
+
+                                                    @foreach ($referenceData['travelPreferences'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -645,10 +604,11 @@
                                                 <span class="input-group-text"><span class="bi bi-egg"></span></span>
                                                 <select id="diet" name="diet_preference" class="form-control">
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
-                                                    <option value="veg">சைவம் / Vegetarian</option>
-                                                    <option value="non_veg">அசைவம் / Non-Vegetarian</option>
-                                                    <option value="eggetarian">முட்டை சைவம் / Eggetarian</option>
-                                                    <option value="vegan">முழுச் சைவம் / Vegan</option>
+
+                                                    @foreach ($referenceData['dietaryPreferences'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -661,10 +621,11 @@
                                                 <span class="input-group-text"><span
                                                         class="bi bi-slash-circle"></span></span>
                                                 <select id="smoking" name="smoking_habits" class="form-control">
-                                                    <option value="">தேர்வு செய்யவும் / Select</option>
-                                                    <option value="never">ஒருபோதும் இல்லை / Never</option>
-                                                    <option value="occasional">அவ்வப்போது / Occasionally</option>
-                                                    <option value="regular">வழக்கமாக / Regularly</option>
+
+                                                    @foreach ($referenceData['smokingHabits'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -678,9 +639,11 @@
                                                         class="bi bi-cup-straw"></span></span>
                                                 <select id="drinking" name="drinking_habits" class="form-control">
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
-                                                    <option value="never">ஒருபோதும் இல்லை / Never</option>
-                                                    <option value="occasional">அவ்வப்போது / Occasionally</option>
-                                                    <option value="social">சமூகமாக / Socially</option>
+
+                                                    @foreach ($referenceData['drinkingHabits'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -694,31 +657,11 @@
                                                         class="bi bi-translate"></span></span>
                                                 <select id="languages" name="languages_known[]" class="form-control"
                                                     multiple>
-                                                    <option value="tamil">தமிழ் / Tamil</option>
-                                                    <option value="english">ஆங்கிலம் / English</option>
-                                                    <option value="">தேர்வு செய்யவும் / Select</option>
-                                                    <option value="Assamese">অসমীয়া / Assamese</option>
-                                                    <option value="Bengali">বাংলা / Bengali</option>
-                                                    <option value="Bodo">बर' / Bodo</option>
-                                                    <option value="Dogri">डोगरी / Dogri</option>
-                                                    <option value="English">English</option>
-                                                    <option value="Gujarati">ગુજરાતી / Gujarati</option>
-                                                    <option value="Hindi">हिन्दी / Hindi</option>
-                                                    <option value="Kannada">ಕನ್ನಡ / Kannada</option>
-                                                    <option value="Kashmiri">कॉशुर / Kashmiri</option>
-                                                    <option value="Konkani">कोंकणी / Konkani</option>
-                                                    <option value="Maithili">मैथिली / Maithili</option>
-                                                    <option value="Malayalam">മലയാളം / Malayalam</option>
-                                                    <option value="Manipuri">মেইতেইলোন্ / Manipuri (Meitei)</option>
-                                                    <option value="Marathi">मराठी / Marathi</option>
-                                                    <option value="Nepali">नेपाली / Nepali</option>
-                                                    <option value="Odia">ଓଡ଼ିଆ / Odia</option>
-                                                    <option value="Punjabi">ਪੰਜਾਬੀ / Punjabi</option>
-                                                    <option value="Sanskrit">संस्कृतम् / Sanskrit</option>
-                                                    <option value="Santali">ᱥᱟᱱᱛᱟᱲᱤ / Santali</option>
-                                                    <option value="Sindhi">سنڌي / Sindhi</option>
-                                                    <option value="Telugu">తెలుగు / Telugu</option>
-                                                    <option value="Urdu">اردو / Urdu</option>
+
+                                                    @foreach ($referenceData['languagesKnown'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -734,9 +677,6 @@
                                                     placeholder="உங்கள் வாழ்க்கை குறிக்கோள் / Your life motto">
                                             </div>
                                         </div>
-
-
-
 
                                         <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="first_name">தொலைபேசி எண் / Mobile
@@ -763,7 +703,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1">@</span>
                                                 <input type="text" class="form-control"
-                                                    aria-describedby="basic-addon1" name="facebook_profile_url" required>
+                                                    aria-describedby="basic-addon1" name="facebook_profile_url">
                                             </div>
                                             <div class="error-text">FaceBook Profile Required</div>
                                         </div>
@@ -784,7 +724,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1">@</span>
                                                 <input type="text" class="form-control"
-                                                    aria-describedby="basic-addon1" name="twitter_profile_url" required>
+                                                    aria-describedby="basic-addon1" name="twitter_profile_url">
                                             </div>
                                             <div class="error-text">Twitter Profile Required</div>
                                         </div>
@@ -802,10 +742,11 @@
                                                 <span class="input-group-text"><span class="bi bi-people"></span></span>
                                                 <select class="form-control" id="family_status" name="family_status"
                                                     required>
-                                                    <option value="">Select</option>
-                                                    <option>சாதாரணம் / Middle Class</option>
-                                                    <option>மேல்நிலை நடுத்தர / Upper Middle Class</option>
-                                                    <option>செல்வந்தர் / Rich</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['familyStatus'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="error-text">Family Status is required</div>
@@ -828,9 +769,9 @@
                                                 <span class="input-group-text"><span class="bi bi-person"></span></span>
                                                 <select class="form-control" id="father_alive" name="father_alive"
                                                     required>
-                                                    <option value="">Select</option>
-                                                    <option>உண்டு / Alive</option>
-                                                    <option>இல்லை / Not Alive</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    <option value="1">உண்டு / Alive</option>
+                                                    <option value="0">இல்லை / Not Alive</option>
                                                 </select>
                                             </div>
                                             <div class="error-text">Father status is required</div>
@@ -844,9 +785,9 @@
                                                         class="bi bi-person-fill"></span></span>
                                                 <select class="form-control" id="mother_alive" name="mother_alive"
                                                     required>
-                                                    <option value="">Select</option>
-                                                    <option>உண்டு / Alive</option>
-                                                    <option>இல்லை / Not Alive</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    <option value="1">உண்டு / Alive</option>
+                                                    <option value="0">இல்லை / Not Alive</option>
                                                 </select>
                                             </div>
                                             <div class="error-text">Mother status is required</div>
@@ -948,7 +889,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-house"></span></span>
                                                 <select class="form-control" id="own_house" required name="own_house">
-                                                    <option value="">Select</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
                                                     <option>உண்டு / Yes</option>
                                                     <option>இல்லை / No</option>
                                                 </select>
@@ -979,8 +920,13 @@
                                                 Star</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-stars"></span></span>
-                                                <input type="text" class="form-control" id="birth_star"
-                                                    name="birth_star" required>
+                                                <select class="form-control" id="birth_star" name="birth_star" required>
+
+                                                    @foreach ($referenceData['birthStars'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="error-text">Birth Star is required</div>
                                         </div>
@@ -992,9 +938,9 @@
                                                 <span class="input-group-text"><span
                                                         class="bi bi-moon-stars"></span></span>
                                                 <select class="form-control" id="rahu_ketu" required name="rahu_ketu">
-                                                    <option value="">Select</option>
-                                                    <option>உண்டு / Present</option>
-                                                    <option>இல்லை / Not Present</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    <option value="1">உண்டு / Present</option>
+                                                    <option value="0">இல்லை / Not Present</option>
                                                 </select>
                                             </div>
                                             <div class="error-text">Rahu & Ketu status is required</div>
@@ -1007,9 +953,9 @@
                                                 <span class="input-group-text"><span
                                                         class="bi bi-circle-half"></span></span>
                                                 <select class="form-control" id="chevvai" required name="chevvai">
-                                                    <option value="">Select</option>
-                                                    <option>உண்டு / Present</option>
-                                                    <option>இல்லை / Not Present</option>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    <option value="1">உண்டு / Present</option>
+                                                    <option value="0">இல்லை / Not Present</option>
                                                 </select>
                                             </div>
                                             <div class="error-text">Chevvai status is required</div>
@@ -1021,8 +967,14 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-brightness-high"></span></span>
-                                                <input type="text" class="form-control" id="zodiac_sign"
-                                                    name="zodiac_sign" required>
+                                                <select class="form-control" id="zodiac_sign" name="zodiac_sign"
+                                                    required>
+
+                                                    @foreach ($referenceData['zodiacs'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="error-text">Zodiac Sign is required</div>
                                         </div>
@@ -1033,8 +985,14 @@
                                                 Lagnam</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-sun"></span></span>
-                                                <input type="text" class="form-control" id="birth_lagnam"
-                                                    name="birth_lagnam" required>
+                                                <select class="form-control" id="birth_lagnam" name="birth_lagnam"
+                                                    required>
+
+                                                    @foreach ($referenceData['zodiacs'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="error-text">Birth Lagnam is required</div>
                                         </div>
@@ -1105,26 +1063,6 @@
                                                 I agree to the <span id="tc_modal">Terms & Conditions</span>
                                             </label>
                                         </div>
-
-                                        <!-- Terms & Conditions Modal -->
-                                        <div class="modal fade" id="termsModal" tabindex="-1"
-                                            aria-labelledby="termsModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="termsModalLabel">Terms & Conditions
-                                                        </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <!-- Add your terms and conditions content here -->
-                                                        <p>Terms & Conditions content goes here...</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </section>
 
@@ -1221,9 +1159,9 @@
                         success: function(response) {
                             console.log(response);
                             if (response.status == 200) {
-                                // window.location.href = "../user/user_dashboard";
-                            } else if (response.status == "404") {
-                                alert(response.message);
+                                showToast(response.message, 'success');
+                            } else {
+                                showToast(response.message, 'error');
                             }
                         },
                         error: function(xhr) {
@@ -1264,7 +1202,7 @@
 
             const groups = Array.from(stepEl.querySelectorAll(".form-group"));
             let valid = true;
-            
+            return valid;
             groups.forEach(group => {
                 const input = group.querySelector(".form-control");
                 const errorText = group.querySelector(".error-text");
@@ -1321,7 +1259,8 @@
         const dobInput = document.getElementById('birth_date');
         const today = new Date();
         const minAgeDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
-        dobInput.max = minAgeDate.toISOString().split('T')[0];
+        dobInput.max =
+            minAgeDate.toISOString().split('T')[0];
 
         // Auto-calculate age when DOB changes
         dobInput.addEventListener('change', function() {

@@ -16,13 +16,17 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Mail;
 use App\Rules\RecaptchaRule;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
 
     public function index(Request $request)
     {
-        return view(view: 'layout.register');   
+        // Load JSON reference data
+        $referenceData = json_decode(Storage::disk('public')->get('json/data.json'), true);
+        $curYear = date('Y');
+        return view( 'layout.register',compact('referenceData','curYear'));   
     }
 
 
@@ -32,6 +36,8 @@ class RegisterController extends Controller
         $validated = $request->validate([
             // Birth Details
             'name' => 'required|string|max:255',
+            'email' => 'required|email|email',
+            
             'birth_place' => 'required|string|max:255',
             'dob' => 'required|date',
             'birth_time' => 'nullable|string|max:50',
@@ -115,12 +121,9 @@ class RegisterController extends Controller
         try {
             $plainPassword = Str::random(10);
 
-            $user = new User;
+            $user = User::where('email', $validated['email'])->first();
             $user->name = $validated['name'];
-            $user->email = $validated['email'];
             $user->mobile = $validated['mobile'];
-            $user->show_password = $plainPassword;
-            $user->password = Hash::make($plainPassword);
             $user->profile_completed = 1;
             $user->save();
 
@@ -164,12 +167,16 @@ class RegisterController extends Controller
             }
 
             DB::commit();
-
-            return redirect()->back()->with('success', 'Registration details saved successfully!');
+            return response()->json([
+                'success' => false,
+                'message' => "Successfully registed",
+            ], 200);
         } catch (\Exception $e) {
             DB::rollBack();
-
-            return redirect()->back()->withErrors(['error' => 'Failed to save details: '.$e->getMessage()]);
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+            ], 500);
         }
     }
 
