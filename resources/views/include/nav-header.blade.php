@@ -56,11 +56,11 @@
                             <i class="bi bi-chevron-down toggle-dropdown"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>
+                            {{-- <li>
                                 <a href="/my-account">
                                     <span class="bi bi-person-fill-gear"></span>&nbsp;My Account
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="/chats">
                                     <span class="bi bi-chat-heart"></span>&nbsp;My Chats
