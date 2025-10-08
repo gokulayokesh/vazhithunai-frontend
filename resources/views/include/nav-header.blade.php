@@ -56,11 +56,13 @@
                             <i class="bi bi-chevron-down toggle-dropdown"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            {{-- <li>
-                                <a href="/my-account">
-                                    <span class="bi bi-person-fill-gear"></span>&nbsp;My Account
+                            <li>
+                                {{-- <a href="/my-account"> --}}
+                                <a href="#">
+                                    <span class="bi bi-person-fill-gear"></span>&nbsp;My Account&nbsp;&nbsp;<span
+                                        class="badge text-bg-secondary" style="font-size: x-small"> Coming Soon</span>
                                 </a>
-                            </li> --}}
+                            </li>
                             <li>
                                 <a href="/chats">
                                     <span class="bi bi-chat-heart"></span>&nbsp;My Chats
@@ -68,7 +70,8 @@
                             </li>
                             <li>
                                 <a href="/referrals">
-                                    <span class="bi bi-person-plus"></span>&nbsp;My Referral
+                                    <span class="bi bi-person-plus"></span>&nbsp;My Referral&nbsp;&nbsp;<span
+                                        class="badge text-bg-danger" style="font-size: x-small"> New</span>
                                 </a>
                             </li>
                             <form action="{{ route('logout') }}" method="POST">
