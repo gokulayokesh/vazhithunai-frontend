@@ -30,7 +30,7 @@
                             <div class="registration-form-wrapper">
                                 <div class="form-header text-center">
                                     <h2>Create Your Account</h2>
-                                    <p>Create your account and start shopping with us</p>
+                                    <p>Create your account and start your life with us</p>
                                     <p id="responseMessage"></p>
                                 </div>
 
