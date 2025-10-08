@@ -118,25 +118,37 @@ class RegisterController extends Controller
         try {
             $user = User::where('email', Auth::user()->getRawOriginal('email'))->first();
 
-            // Save all details into UserDetails
-            $details = new UserDetails;
-            $details->user_id = $user->id;
+            // Prepare array fields
+            $interests         = is_array($request->interests) ? implode(',', $request->interests) : null;
+            $hobbies           = is_array($request->hobbies) ? implode(',', $request->hobbies) : null;
+            $favorite_cuisine  = is_array($request->favorite_cuisine) ? implode(',', $request->favorite_cuisine) : null;
+            $sports            = is_array($request->sports) ? implode(',', $request->sports) : null;
+            $languages_known   = is_array($request->languages_known) ? implode(',', $request->languages_known) : null;
+            $favorite_music    = is_array($request->favorite_music) ? implode(',', $request->favorite_music) : null;
 
-            $details->interests = is_array($request->interests) ? implode(',', $request->interests) : null;
-            $details->hobbies = is_array($request->hobbies) ? implode(',', $request->hobbies) : null;
-            $details->favorite_cuisine = is_array($request->favorite_cuisine) ? implode(',', $request->favorite_cuisine) : null;
-            $details->sports = is_array($request->sports) ? implode(',', $request->sports) : null;
-            $details->languages_known = is_array($request->languages_known) ? implode(',', $request->languages_known) : null;
-            $details->favorite_music = is_array($request->favorite_music) ? implode(',', $request->favorite_music) : null;
+            // Merge array fields with other request data
+            $detailsData = array_merge(
+                $request->except(['interests', 'hobbies', 'favorite_cuisine', 'sports', 'languages_known', 'favorite_music']),
+                [
+                    'interests'        => $interests,
+                    'hobbies'          => $hobbies,
+                    'favorite_cuisine' => $favorite_cuisine,
+                    'sports'           => $sports,
+                    'languages_known'  => $languages_known,
+                    'favorite_music'   => $favorite_music,
+                ]
+            );
 
-            $details->fill($request->except(['interests', 'hobbies', 'favorite_cuisine', 'sports', 'languages_known', 'favorite_music']));
-            $details->save();
-
+            // Update or create UserDetails
+            UserDetails::updateOrCreate(
+                ['user_id' => $user->id],
+                $detailsData
+            );
 
             if ($request->hasFile('profile_picture')) {
                 foreach ($request->file('profile_picture') as $file) {
                     $path = $file->store('profile_pictures', 'public');
-
+            
                     UserImages::create([
                         'user_id' => $user->id,
                         'image_path' => $path,
@@ -144,11 +156,10 @@ class RegisterController extends Controller
                     ]);
                 }
             }
-
-            // Save Horoscope Picture
             if ($request->hasFile('horoscope_picture')) {
                 foreach ($request->file('horoscope_picture') as $file) {
                     $path = $file->store('horoscope_pictures', 'public');
+            
                     UserHoroscopeImages::create([
                         'user_id' => $user->id,
                         'image_path' => $path,
@@ -156,9 +167,11 @@ class RegisterController extends Controller
                     ]);
                 }
             }
+            
             $user->profile_completed = 1;
             $user->save();
             DB::commit();
+            
             return response()->json([
                 'status'  => 200,
                 'success' => true,
