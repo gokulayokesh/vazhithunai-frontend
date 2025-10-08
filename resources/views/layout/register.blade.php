@@ -1202,7 +1202,7 @@
 
             const groups = Array.from(stepEl.querySelectorAll(".form-group"));
             let valid = true;
-            return valid;
+
             groups.forEach(group => {
                 const input = group.querySelector(".form-control");
                 const errorText = group.querySelector(".error-text");

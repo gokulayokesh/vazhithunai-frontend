@@ -37,17 +37,11 @@ Route::get('/sign-up', function () {
     return view('layout.signup');
 });
 
-Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
-
-Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
-
 Route::get('/listings', [ProfileSearchController::class, 'search'])->name('listings.search');
 
 Route::get('/profile/{identifier}', [ProfileController::class, 'profile'])->name('profile');
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
-
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/profiles/search', [ProfileSearchController::class, 'search'])->name('profiles.search');
 
@@ -70,6 +64,12 @@ Route::post('/contact-us', [ContactMessageController::class, 'store'])->name('co
 Route::post('/pre-register', [RegisterController::class, 'preRegistration'])->name('pre.register');
 
 Route::middleware('auth')->group(function () {
+
+    Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
+    Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::get('/my-account', [ProfileController::class, 'myaccount'])->name('myaccount');
 
