@@ -888,8 +888,8 @@
                                                 <span class="input-group-text"><span class="bi bi-house"></span></span>
                                                 <select class="form-control" id="own_house" required name="own_house">
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
-                                                    <option>உண்டு / Yes</option>
-                                                    <option>இல்லை / No</option>
+                                                    <option value="1">உண்டு / Yes</option>
+                                                    <option value="0">இல்லை / No</option>
                                                 </select>
                                             </div>
                                             <div class="error-text">Own House status is required</div>
