@@ -87,7 +87,8 @@
                                                     <div class="form-floating">
                                                         <input type="text" class="form-control" id="referralCode"
                                                             name="referralCode" placeholder="Referral Code" value="">
-                                                        <label for="referralCode">Referral Code</label>
+                                                        <label for="referralCode">Referral Code / Referrer Mobile
+                                                            (Optional)</label>
                                                     </div>
                                                 </div>
                                             </div>

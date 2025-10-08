@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Mail;
 use App\Rules\RecaptchaRule;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
@@ -35,16 +36,13 @@ class RegisterController extends Controller
         // Validate all sections
         $validated = $request->validate([
             // Birth Details
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|email',
-            
             'birth_place' => 'required|string|max:255',
             'dob' => 'required|date',
             'birth_time' => 'nullable|string|max:50',
 
             // Education & Occupation
             'highest_education' => 'required|string|max:255',
-            'education_field' => 'required|string|max:255',
+            'education_field' => 'nullable|string|max:255',
             'specialization' => 'nullable|string|max:255',
             'institution' => 'nullable|string|max:255',
             'completion_year' => 'nullable|integer',
@@ -81,7 +79,6 @@ class RegisterController extends Controller
             'drinking_habits' => 'nullable|string|max:255',
             // 'languages_known' => 'nullable|string|max:255',
             'life_motto' => 'nullable|string|max:255',
-            'mobile' => 'required|string|max:20',
             'facebook_profile_url' => 'nullable|string|max:255',
             'instagram_profile_url' => 'nullable|string|max:255',
             'twitter_profile_url' => 'nullable|string|max:255',
@@ -119,13 +116,7 @@ class RegisterController extends Controller
         DB::beginTransaction();
 
         try {
-            $plainPassword = Str::random(10);
-
-            $user = User::where('email', $validated['email'])->first();
-            $user->name = $validated['name'];
-            $user->mobile = $validated['mobile'];
-            $user->profile_completed = 1;
-            $user->save();
+            $user = User::where('email', Auth::user()->getRawOriginal('email'))->first();
 
             // Save all details into UserDetails
             $details = new UserDetails;
@@ -165,15 +156,18 @@ class RegisterController extends Controller
                     ]);
                 }
             }
-
+            $user->profile_completed = 1;
+            $user->save();
             DB::commit();
             return response()->json([
-                'success' => false,
-                'message' => "Successfully registed",
+                'status'  => 200,
+                'success' => true,
+                'message' => "Congratulations, You have completed your Profile",
             ], 200);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([
+                'status'  => 500,
                 'success' => false,
                 'message' => $e->getMessage(),
             ], 500);

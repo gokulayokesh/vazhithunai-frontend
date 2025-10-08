@@ -54,7 +54,7 @@
                                                         class="bi bi-person"></span></span>
                                                 <input type="text" name="name" class="form-control"
                                                     value="{{ Auth::user()->name ?? '' }}" aria-describedby="basic-addon1"
-                                                    required>
+                                                    required disabled>
                                             </div>
                                             <div class="error-text">Name is required</div>
                                         </div>
@@ -70,7 +70,7 @@
                                             <div class="error-text">Birth date is required</div>
                                         </div>
                                         <div class="form-group col-12 col-md-3 mb-3">
-                                            <label class="form-label" for="email">பிறந்த நேரம் / Birth Time</label>
+                                            <label class="form-label" for="birth_time">பிறந்த நேரம் / Birth Time</label>
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1"><span
                                                         class="bi bi-stopwatch"></span></span>
@@ -80,7 +80,7 @@
                                             <div class="error-text">Birth time is required</div>
                                         </div>
                                         <div class="form-group col-12 col-md-3 mb-3">
-                                            <label class="form-label" for="email">வயது / Age</label>
+                                            <label class="form-label" for="age">வயது / Age</label>
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1"><span
                                                         class="bi bi-calendar-heart"></span></span>
@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-12 col-md-3 mb-3">
-                                            <label class="form-label" for="email">பிறந்த ஊர் / Birth Place</label>
+                                            <label class="form-label" for="birth_place">பிறந்த ஊர் / Birth Place</label>
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1"><span
                                                         class="bi bi-geo-alt"></span></span>
@@ -133,8 +133,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-journal-bookmark"></span></span>
-                                                <select class="form-control" id="education_field" name="education_field"
-                                                    required>
+                                                <select class="form-control" id="education_field" name="education_field">
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
                                                     <option value="engineering">Engineering</option>
                                                     <option value="medicine">Medicine</option>
@@ -155,9 +154,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-lightbulb"></span></span>
-                                                <select class="form-control" id="specialization" required
-                                                    name="specialization">
-                                                    <option value="">Select specialization</option>
+                                                <select class="form-control" id="specialization" name="specialization">
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
                                                 </select>
                                             </div>
                                             {{-- <div class="error-text">Specialization is required</div> --}}
@@ -490,6 +488,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-star"></span></span>
                                                 <select id="interests" name="interests[]" class="form-control" multiple>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['interests'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
                                                             {{ $refData['value'] }}</option>
@@ -504,6 +503,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-heart"></span></span>
                                                 <select id="hobbies" name="hobbies[]" class="form-control" multiple>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['hobbies'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
                                                             {{ $refData['value'] }}</option>
@@ -521,6 +521,7 @@
                                                         class="bi bi-egg-fried"></span></span>
                                                 <select id="fav_cuisine" name="favorite_cuisine[]" class="form-control"
                                                     multiple>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['cuisines'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
                                                             {{ $refData['value'] }}</option>
@@ -538,6 +539,7 @@
                                                         class="bi bi-music-note-beamed"></span></span>
                                                 <select id="fav_music" name="favorite_music[]" class="form-control"
                                                     multiple>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['musicGenres'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
                                                             {{ $refData['value'] }}</option>
@@ -553,6 +555,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-bicycle"></span></span>
                                                 <select id="sports" name="sports[]" class="form-control" multiple>
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['sportsFitness'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
                                                             {{ $refData['value'] }}</option>
@@ -570,7 +573,6 @@
                                                         class="bi bi-postage-heart"></span></span>
                                                 <select id="pet_pref" name="pet_preference" class="form-control">
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
-
                                                     @foreach ($referenceData['petPreferences'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
                                                             {{ $refData['value'] }}</option>
@@ -621,7 +623,7 @@
                                                 <span class="input-group-text"><span
                                                         class="bi bi-slash-circle"></span></span>
                                                 <select id="smoking" name="smoking_habits" class="form-control">
-
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['smokingHabits'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
                                                             {{ $refData['value'] }}</option>
@@ -639,7 +641,6 @@
                                                         class="bi bi-cup-straw"></span></span>
                                                 <select id="drinking" name="drinking_habits" class="form-control">
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
-
                                                     @foreach ($referenceData['drinkingHabits'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
                                                             {{ $refData['value'] }}</option>
@@ -657,7 +658,7 @@
                                                         class="bi bi-translate"></span></span>
                                                 <select id="languages" name="languages_known[]" class="form-control"
                                                     multiple>
-
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['languagesKnown'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
                                                             {{ $refData['value'] }}</option>
@@ -678,7 +679,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group col-12 col-md-3 mb-3">
+                                        {{-- <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="first_name">தொலைபேசி எண் / Mobile
                                                 Number</label>
                                             <div class="input-group">
@@ -697,7 +698,7 @@
                                                     aria-describedby="basic-addon1" name="email" required>
                                             </div>
                                             <div class="error-text">E-mail is required</div>
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="f_book">FaceBook Profile</label>
                                             <div class="input-group">
@@ -705,7 +706,6 @@
                                                 <input type="text" class="form-control"
                                                     aria-describedby="basic-addon1" name="facebook_profile_url">
                                             </div>
-                                            <div class="error-text">FaceBook Profile Required</div>
                                         </div>
                                         <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="instagram_profile_url">Instagram profile
@@ -713,9 +713,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-text" id="basic-addon1">@</span>
                                                 <input type="text" class="form-control"
-                                                    aria-describedby="basic-addon1" required name="instagram_profile_url">
+                                                    aria-describedby="basic-addon1" name="instagram_profile_url">
                                             </div>
-                                            <div class="error-text">instagram Profile Required</div>
                                         </div>
 
                                         <div class="form-group col-12 col-md-3 mb-3">
@@ -726,7 +725,6 @@
                                                 <input type="text" class="form-control"
                                                     aria-describedby="basic-addon1" name="twitter_profile_url">
                                             </div>
-                                            <div class="error-text">Twitter Profile Required</div>
                                         </div>
                                     </div>
                                 </section>
@@ -921,7 +919,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-stars"></span></span>
                                                 <select class="form-control" id="birth_star" name="birth_star" required>
-
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['birthStars'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
                                                             {{ $refData['value'] }}</option>
@@ -969,7 +967,7 @@
                                                         class="bi bi-brightness-high"></span></span>
                                                 <select class="form-control" id="zodiac_sign" name="zodiac_sign"
                                                     required>
-
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['zodiacs'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
                                                             {{ $refData['value'] }}</option>
@@ -987,7 +985,7 @@
                                                 <span class="input-group-text"><span class="bi bi-sun"></span></span>
                                                 <select class="form-control" id="birth_lagnam" name="birth_lagnam"
                                                     required>
-
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['zodiacs'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
                                                             {{ $refData['value'] }}</option>
@@ -1081,6 +1079,7 @@
         @include('include.login-modal')
         @include('include.footer')
         @include('include.script')
+        @include('include.success-profile')
 
     </body>
 @endsection
@@ -1159,7 +1158,10 @@
                         success: function(response) {
                             console.log(response);
                             if (response.status == 200) {
-                                showToast(response.message, 'success');
+                                // showToast(response.message);
+                                const modalElement = document.getElementById('profileSuccessModal');
+                                const modal = new bootstrap.Modal(modalElement);
+                                modal.show();
                             } else {
                                 showToast(response.message, 'error');
                             }
