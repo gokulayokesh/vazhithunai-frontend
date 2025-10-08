@@ -267,8 +267,19 @@
                 container.id = 'responseMessage';
                 form.prepend(container);
             }
-            container.innerHTML = `<div class="alert alert-${type}">${msg}</div>`;
+
+            // Split message by new lines and wrap each in <li>
+            const messages = msg.split('<br>').filter(line => line.trim() !== '');
+            const listItems = messages.map(line => `<li>${line}</li>`).join('');
+
+            container.innerHTML = `
+                <div class="alert alert-${type}">
+                    <ul class="mb-0">${listItems}</ul>
+                </div>
+            `;
         }
+
+
 
         const urlParams = new URLSearchParams(window.location.search);
         const referralCode = urlParams.get('referral-code');

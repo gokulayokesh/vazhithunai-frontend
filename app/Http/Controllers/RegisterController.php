@@ -171,7 +171,7 @@ class RegisterController extends Controller
             $user->profile_completed = 1;
             $user->save();
             DB::commit();
-            
+
             return response()->json([
                 'status'  => 200,
                 'success' => true,
@@ -222,7 +222,12 @@ class RegisterController extends Controller
             $request->validate([
                 'name'     => 'required|string|max:255',
                 'email'    => 'required|email|unique:users,email',
-                'mobile'   => 'required|string|max:15|unique:users,mobile',
+                'mobile' => [
+                    'required',
+                    'string',
+                    'regex:/^(?:\+91|0)?[6-9][0-9]{9}$/',
+                    'unique:users,mobile',
+                ],
                 'password' => 'required|string|min:6',
                 'g-recaptcha-response' => ['required', new RecaptchaRule],
             ]);
