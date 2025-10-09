@@ -34,11 +34,11 @@ Route::get('/privacy-policy', function () {
 Route::middleware('guest')->group(function () {
     Route::get('/login', function () {
         return view('layout.login');
-    })->middleware('guest');
+    });
     
     Route::get('/sign-up', function () {
         return view('layout.signup');
-    })->middleware('guest');
+    });
 });
 
 Route::get('/listings', [ProfileSearchController::class, 'search'])->name('listings.search');
