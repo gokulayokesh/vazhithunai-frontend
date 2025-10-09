@@ -268,6 +268,63 @@
         placeholder: "தேர்வு செய்யவும் / Select",
         width: "100%",
     });
+    $("#completion_year").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
+    $("#experience_years").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
+    $("#gender").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
+    $("#religion").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
+    $("#city").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
+    $("#family_status").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
+    $("#father_alive").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
+    $("#mother_alive").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
+    $("#own_house").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
+
+    $("#birth_star").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
+    $("#rahu_ketu").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
+    $("#chevvai").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
+    $("#zodiac_sign").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
+    $("#birth_lagnam").select2({
+        placeholder: "தேர்வு செய்யவும் / Select",
+        width: "100%",
+    });
 
     document.addEventListener("DOMContentLoaded", function () {
         const buttons = document.querySelectorAll(".shortlist-btn");

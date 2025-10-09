@@ -382,6 +382,21 @@
                                             <div class="error-text">Caste is required</div>
                                         </div>
 
+                                        <div class="form-group col-12 col-md-3 mb-3">
+                                            <label class="form-label" for="caste">ஜாதகரின் மதம் / Religion</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><span class="bi bi-people"></span></span>
+                                                <select class="form-control" id="religion" required name="religion">
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['religions'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="error-text">Caste is required</div>
+                                        </div>
+
                                         <!-- திருமண நிலை / Marital Status -->
                                         <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="marital_status">திருமண நிலை / Marital
@@ -409,7 +424,8 @@
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['cities'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
-                                                            {{ $refData['value'] }}</option>
+                                                            {{ $refData['tamil_name'] . ' - ' . $refData['value'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -667,17 +683,7 @@
                                             </div>
                                         </div>
 
-                                        <!-- Life Motto -->
-                                        <div class="form-group col-12 col-md-3 mb-3">
-                                            <label class="form-label" for="life_motto">வாழ்க்கை குறிக்கோள் / Life
-                                                Motto</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text"><span class="bi bi-quote"></span></span>
-                                                <input type="text" class="form-control" id="life_motto"
-                                                    name="life_motto"
-                                                    placeholder="உங்கள் வாழ்க்கை குறிக்கோள் / Your life motto">
-                                            </div>
-                                        </div>
+
 
                                         {{-- <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="first_name">தொலைபேசி எண் / Mobile
@@ -724,6 +730,18 @@
                                                 <span class="input-group-text" id="basic-addon1">@</span>
                                                 <input type="text" class="form-control"
                                                     aria-describedby="basic-addon1" name="twitter_profile_url">
+                                            </div>
+                                        </div>
+
+                                        <!-- Life Motto -->
+                                        <div class="form-group col-12 col-md-6 mb-3">
+                                            <label class="form-label" for="life_motto">வாழ்க்கை குறிக்கோள் / Life
+                                                Motto</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><span class="bi bi-quote"></span></span>
+                                                <textarea type="text" class="form-control" id="life_motto" name="life_motto"
+                                                    placeholder="உங்கள் வாழ்க்கை குறிக்கோள் / Your life motto">
+                                                </textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -922,7 +940,8 @@
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['birthStars'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
-                                                            {{ $refData['value'] }}</option>
+                                                            {{ $refData['tamil_name'] . ' - ' . $refData['value'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -970,7 +989,8 @@
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['zodiacs'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
-                                                            {{ $refData['value'] }}</option>
+                                                            {{ $refData['tamil_name'] . ' - ' . $refData['value'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -988,7 +1008,8 @@
                                                     <option value="">தேர்வு செய்யவும் / Select</option>
                                                     @foreach ($referenceData['zodiacs'] as $refData)
                                                         <option value="{{ $refData['id'] }}">
-                                                            {{ $refData['value'] }}</option>
+                                                            {{ $refData['tamil_name'] . ' - ' . $refData['value'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
