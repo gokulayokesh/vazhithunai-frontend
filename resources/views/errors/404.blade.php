@@ -1,5 +1,5 @@
 @extends('include.header')
-@section('title', 'About Us | Vazhithunai Matrimony')
+@section('title', '404 Not Found | Vazhithunai Matrimony')
 @section('content')
 
     <body class="about-page">
