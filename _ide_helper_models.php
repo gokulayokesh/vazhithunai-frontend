@@ -469,7 +469,7 @@ namespace App\Models{
  * @property-read \App\Models\ReferenceData|null $salaries
  * @property-read \App\Models\ReferenceData|null $smokingHabits
  * @property-read \App\Models\User $user
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserImages> $userHoroscopeImages
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserHoroscopeImages> $userHoroscopeImages
  * @property-read int|null $user_horoscope_images_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserImages> $userImages
  * @property-read int|null $user_images_count
