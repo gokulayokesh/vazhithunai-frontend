@@ -43,6 +43,10 @@ class UserDetails extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function occupationCategory() {
+        return $this->belongsTo(ReferenceData::class, 'occupation_category')->where('type', 'jobs');
+    }
+    
     public function employmentType() {
         return $this->belongsTo(ReferenceData::class, 'employment_type')->where('type', 'employment_type');
     }

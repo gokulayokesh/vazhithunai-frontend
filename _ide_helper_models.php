@@ -455,6 +455,7 @@ namespace App\Models{
  * @property-read \App\Models\ReferenceData|null $employmentType
  * @property-read \App\Models\ReferenceData|null $familyStatus
  * @property-read \App\Models\ReferenceData|null $maritalStatus
+ * @property-read \App\Models\ReferenceData|null $occupationCategory
  * @property-read \App\Models\ReferenceData|null $physicalStatus
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProfileWatchHistory> $profileWatchHistories
  * @property-read int|null $profile_watch_histories_count

@@ -398,7 +398,7 @@
                                                 @endif
 
                                             </h4>
-                                            <p class="agent-role">{{ $profile->occupation_category }}</p>
+                                            <p class="agent-role">{{ $profile->occupationCategory->value }}</p>
                                             @auth
                                                 @if (!$alreadyViewed && (Auth::user()->view_profile_count ?? 0) > 0)
                                                     <a class="btn btn-primary"
