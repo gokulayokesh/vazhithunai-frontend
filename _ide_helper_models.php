@@ -400,7 +400,7 @@ namespace App\Models{
  * @property string|null $annual_income
  * @property int|null $experience_years
  * @property string $gender
- * @property \App\Models\ReferenceData|null $height
+ * @property string $height
  * @property string|null $color
  * @property string $caste
  * @property string $marital_status
@@ -448,25 +448,32 @@ namespace App\Models{
  * @property string|null $additional_horoscope
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\ReferenceData|null $birthStar
+ * @property-read \App\Models\ReferenceData|null $birthLagnam
+ * @property-read \App\Models\ReferenceData|null $birthStars
  * @property-read \App\Models\ReferenceData|null $bodyType
  * @property-read \App\Models\City|null $city
  * @property-read \App\Models\ReferenceData|null $complexion
+ * @property-read \App\Models\ReferenceData|null $drinkingHabits
+ * @property-read \App\Models\ReferenceData|null $educations
  * @property-read \App\Models\ReferenceData|null $employmentType
  * @property-read \App\Models\ReferenceData|null $familyStatus
+ * @property-read \App\Models\ReferenceData|null $genders
+ * @property-read mixed $languages_known_values
+ * @property-read \App\Models\ReferenceData|null $heights
  * @property-read \App\Models\ReferenceData|null $maritalStatus
  * @property-read \App\Models\ReferenceData|null $occupationCategory
  * @property-read \App\Models\ReferenceData|null $physicalStatus
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProfileWatchHistory> $profileWatchHistories
  * @property-read int|null $profile_watch_histories_count
  * @property-read \App\Models\ReferenceData|null $religion
- * @property-read \App\Models\ReferenceData|null $salary
+ * @property-read \App\Models\ReferenceData|null $salaries
+ * @property-read \App\Models\ReferenceData|null $smokingHabits
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserImages> $userHoroscopeImages
  * @property-read int|null $user_horoscope_images_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserImages> $userImages
  * @property-read int|null $user_images_count
- * @property-read \App\Models\ReferenceData|null $zodiac
+ * @property-read \App\Models\ReferenceData|null $zodiacs
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails query()

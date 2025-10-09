@@ -56,7 +56,7 @@ class UserDetails extends Model
     }
     
     public function maritalStatus() {
-        return $this->belongsTo(ReferenceData::class, 'marital_status')->where('type', 'marital_status');
+        return $this->belongsTo(ReferenceData::class, 'marital_status')->where('type', 'maritalStatuses');
     }
     
     public function bodyType() {
@@ -67,12 +67,12 @@ class UserDetails extends Model
         return $this->belongsTo(ReferenceData::class, 'complexion')->where('type', 'complexion');
     }
     
-    public function salary() {
-        return $this->belongsTo(ReferenceData::class, 'salary')->where('type', 'salary');
+    public function salaries() {
+        return $this->belongsTo(ReferenceData::class, 'annual_income')->where('type', 'salaries');
     }
     
-    public function height() {
-        return $this->belongsTo(ReferenceData::class, 'height')->where('type', 'height');
+    public function heights() {
+        return $this->belongsTo(ReferenceData::class, 'height')->where('type', 'heights');
     }
     
     public function religion() {
@@ -87,14 +87,47 @@ class UserDetails extends Model
         return $this->belongsTo(ReferenceData::class, 'family_status')->where('type', 'family_status');
     }
     
-    public function zodiac() {
-        return $this->belongsTo(ReferenceData::class, 'zodiac')->where('type', 'zodiac');
+    public function zodiacs() {
+        return $this->belongsTo(ReferenceData::class, 'zodiac_sign')->where('type', 'zodiacs');
+    }
+
+    public function birthLagnam() {
+        return $this->belongsTo(ReferenceData::class, 'birth_lagnam')->where('type', 'zodiacs');
     }
     
-    public function birthStar() {
-        return $this->belongsTo(ReferenceData::class, 'birth_star')->where('type', 'birth_star');
+    public function birthStars() {
+        return $this->belongsTo(ReferenceData::class, 'birth_star')->where('type', 'birthStars');
     }
+
+    public function genders() {
+        return $this->belongsTo(ReferenceData::class, 'gender')->where('type', 'genders');
+    }
+
+    public function educations() {
+        return $this->belongsTo(ReferenceData::class, 'highest_education')->where('type', 'educations');
+    }
+
+    public function drinkingHabits() {
+        return $this->belongsTo(ReferenceData::class, 'drinking_habits')->where('type', 'drinkingHabits');
+    }
+
+    public function smokingHabits() {
+        return $this->belongsTo(ReferenceData::class, 'smoking_habits')->where('type', 'smokingHabits');
+    }
+
     
+    
+    public function getLanguagesKnownValuesAttribute()
+    {
+        $ids = explode(',', $this->languages_known);
+
+        return \App\Models\ReferenceData::where('type', 'languagesKnown')
+            ->whereIn('id', $ids)
+            ->pluck('value')
+            ->toArray();
+    }
+
+
 
     // Masked Facebook Profile URL
     public function getFacebookProfileUrlAttribute($value)

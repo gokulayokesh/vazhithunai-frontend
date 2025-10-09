@@ -50,21 +50,33 @@
                                                 @if (isset($profile->userImages) && count($profile->userImages) > 0)
                                                     @foreach ($profile->userImages as $image)
                                                         <div class="swiper-slide">
-                                                            <img src="{{ asset($image->image_path) }}"
+                                                            <img src="{{ Storage::url($image->image_path) }}"
                                                                 class="img-fluid hero-image"
                                                                 alt="{{ $profile->user->name }}">
                                                         </div>
                                                     @endforeach
                                                 @else
                                                     <div class="swiper-slide">
-                                                        <img src="{{ asset('assets/img/m-default.webp') }}"
-                                                            class="img-fluid hero-image" alt="{{ $profile->user->name }}">
+                                                        @if ($profile->genders->value == 'Male')
+                                                            <img src="{{ asset('assets/img/m-default.webp') }}"
+                                                                class="img-fluid hero-image"
+                                                                alt="{{ $profile->user->name }}">
+                                                        @else
+                                                            <img src="{{ asset('assets/img/f-default.webp') }}"
+                                                                class="img-fluid hero-image"
+                                                                alt="{{ $profile->user->name }}">
+                                                        @endif
                                                     </div>
                                                 @endif
                                             @else
                                                 <div class="swiper-slide">
-                                                    <img src="{{ asset('assets/img/m-default.webp') }}"
-                                                        class="img-fluid hero-image" alt="{{ $profile->user->name }}">
+                                                    @if ($profile->genders->value == 'Male')
+                                                        <img src="{{ asset('assets/img/m-default.webp') }}"
+                                                            class="img-fluid hero-image" alt="{{ $profile->user->name }}">
+                                                    @else
+                                                        <img src="{{ asset('assets/img/f-default.webp') }}"
+                                                            class="img-fluid hero-image" alt="{{ $profile->user->name }}">
+                                                    @endif
                                                 </div>
                                             @endif
                                         </div>
@@ -98,16 +110,22 @@
                                                 @if (isset($profile->userImages) && count($profile->userImages) > 0)
                                                     @foreach ($profile->userImages as $image)
                                                         <div class="swiper-slide">
-                                                            <img src="{{ asset($image->image_path) }}"
+                                                            <img src="{{ Storage::url($image->image_path) }}"
                                                                 class="img-fluid thumbnail-img"
                                                                 alt="{{ $profile->user->name }}">
                                                         </div>
                                                     @endforeach
                                                 @else
                                                     <div class="swiper-slide">
-                                                        <img src="{{ asset('assets/img/m-default.webp') }}"
-                                                            class="img-fluid thumbnail-img"
-                                                            alt="{{ $profile->user->name }}">
+                                                        @if ($profile->genders->value == 'Male')
+                                                            <img src="{{ asset('assets/img/m-default.webp') }}"
+                                                                class="img-fluid thumbnail-img"
+                                                                alt="{{ $profile->user->name }}">
+                                                        @else
+                                                            <img src="{{ asset('assets/img/f-default.webp') }}"
+                                                                class="img-fluid thumbnail-img"
+                                                                alt="{{ $profile->user->name }}">
+                                                        @endif
                                                     </div>
                                                 @endif
                                             @else
@@ -138,8 +156,8 @@
                                     <div class="price-breakdown">
                                         <span class="deposit">DOB:
                                             {{ \Carbon\Carbon::parse($profile->dob)->format('d-m-Y') . ' ' . $profile->birth_time }}</span>
-                                        <span class="deposit">Height: {{ $profile->height }}</span>
-                                        <span class="available">Marital Status: {{ $profile->marital_status }}</span>
+                                        <span class="deposit">Height: {{ $profile->heights->value }}</span>
+                                        <span class="available">Marital Status: {{ $profile->maritalStatus->value }}</span>
                                     </div>
                                 </div>
 
@@ -148,21 +166,21 @@
                                         <div class="stat-card">
                                             <div class="stat-icon"><i class="bi bi-gender-ambiguous"></i></div>
                                             <div class="stat-content">
-                                                <span class="stat-number">{{ ucfirst($profile->gender) }}</span>
+                                                <span class="stat-number">{{ ucfirst($profile->genders->value) }}</span>
                                                 <span class="stat-label">Gender</span>
                                             </div>
                                         </div>
                                         <div class="stat-card">
                                             <div class="stat-icon"><i class="bi bi-mortarboard"></i></div>
                                             <div class="stat-content">
-                                                <span class="stat-number">{{ $profile->highest_education }}</span>
+                                                <span class="stat-number">{{ $profile->educations->value }}</span>
                                                 <span class="stat-label">Education</span>
                                             </div>
                                         </div>
                                         <div class="stat-card">
                                             <div class="stat-icon"><i class="bi bi-briefcase"></i></div>
                                             <div class="stat-content">
-                                                <span class="stat-number">{{ $profile->occupation_category }}</span>
+                                                <span class="stat-number">{{ $profile->occupationCategory->value }}</span>
                                                 <span class="stat-label">Occupation</span>
                                             </div>
                                         </div>
@@ -170,7 +188,7 @@
                                             <div class="stat-icon"><i class="bi bi-translate"></i></div>
                                             <div class="stat-content">
                                                 <span
-                                                    class="stat-number">{{ implode(', ', explode(',', $profile->languages_known ?? '')) }}</span>
+                                                    class="stat-number">{{ implode(', ', $profile->languages_known_values ?? []) }}</span>
                                                 <span class="stat-label">Languages</span>
                                             </div>
                                         </div>
@@ -202,7 +220,7 @@
                                             <div class="poi-item">
                                                 <i class="bi bi-book"></i>
                                                 <div class="poi-content">
-                                                    <span class="poi-name">{{ $profile->highest_education }}</span>
+                                                    <span class="poi-name">{{ $profile->educations->value }}</span>
                                                     <span class="poi-distance">Field:
                                                         {{ $profile->education_field ?? 'N/A' }}</span>
                                                 </div>
@@ -224,7 +242,8 @@
                                             <div class="poi-item">
                                                 <i class="bi bi-briefcase"></i>
                                                 <div class="poi-content">
-                                                    <span class="poi-name">{{ $profile->occupation_category }}</span>
+                                                    <span
+                                                        class="poi-name">{{ $profile->occupationCategory->value }}</span>
                                                     <span class="poi-distance">{{ $profile->company_name ?? '—' }}</span>
                                                 </div>
                                             </div>
@@ -233,7 +252,7 @@
                                                 <div class="poi-content">
                                                     <span class="poi-name">Annual Income</span>
                                                     <span
-                                                        class="poi-distance">{{ $profile->annual_income ?? 'Not disclosed' }}</span>
+                                                        class="poi-distance">{{ $profile->salaries->value ?? 'Not disclosed' }}</span>
                                                 </div>
                                             </div>
                                             <div class="poi-item">
@@ -315,9 +334,9 @@
                                                 <li><i class="bi bi-person-hearts"></i> Pet:
                                                     {{ $profile->pet_preference ?? 'Not specified' }}</li>
                                                 <li><i class="bi bi-cup-straw"></i> Drinking:
-                                                    {{ $profile->drinking_habits ?? 'Not specified' }}</li>
+                                                    {{ $profile->drinkingHabits->value ?? 'Not specified' }}</li>
                                                 <li><i class="bi bi-lungs"></i> Smoking:
-                                                    {{ $profile->smoking_habits ?? 'Not specified' }}</li>
+                                                    {{ $profile->smokingHabits->value ?? 'Not specified' }}</li>
 
                                             </ul>
                                         </div>
@@ -331,15 +350,25 @@
                                 <div class="floor-plan-card">
                                     @if ($alreadyViewed)
                                         @if (isset($profile->userHoroscopeImages) && $profile->userHoroscopeImages->count() > 0)
-                                            <img src="{{ asset($profile->userHoroscopeImages->first()?->image_path) }}"
+                                            <img src="{{ Storage::url($profile->userHoroscopeImages->first()?->image_path) }}"
                                                 class="img-fluid" alt="Floor Plan">
                                         @else
-                                            <img src="{{ asset('assets/img/m-default.webp') }}" class="img-fluid"
-                                                alt="Floor Plan">
+                                            @if ($profile->genders->value == 'Male')
+                                                <img src="{{ asset('assets/img/m-default.webp') }}" class="img-fluid"
+                                                    alt="{{ $profile->user->name }}">
+                                            @else
+                                                <img src="{{ asset('assets/img/f-default.webp') }}" class="img-fluid"
+                                                    alt="{{ $profile->user->name }}">
+                                            @endif
                                         @endif
                                     @else
-                                        <img src="{{ asset('assets/img/m-default.webp') }}" class="img-fluid"
-                                            alt="Floor Plan">
+                                        @if ($profile->genders->value == 'Male')
+                                            <img src="{{ asset('assets/img/m-default.webp') }}" class="img-fluid"
+                                                alt="{{ $profile->user->name }}">
+                                        @else
+                                            <img src="{{ asset('assets/img/f-default.webp') }}" class="img-fluid"
+                                                alt="{{ $profile->user->name }}">
+                                        @endif
                                         {{-- <div class="plan-details">
                                     <h5>3 Bedroom Penthouse Layout</h5>
                                     <p>Open concept living and dining area with private balcony access. Master suite
@@ -602,10 +631,12 @@
                                         <div class="poi-item">
                                             <i class="bi bi-star"></i>
                                             <div class="poi-content">
-                                                <span class="poi-name">Star - {{ $profile->birth_star }}</span>
+                                                <span class="poi-name">Star -
+                                                    {{ $profile->birthStars->value . ' - ' . $profile->birthStars->tamil_name }}</span>
                                                 <span class="poi-distance">Zodiac:
-                                                    {{ $profile->zodiac_sign }}</span>
-                                                <span class="poi-distance">Lagnam: {{ $profile->birth_lagnam }}</span>
+                                                    {{ $profile->zodiacs->value . ' - ' . $profile->zodiacs->tamil_name }}</span>
+                                                <span class="poi-distance">Lagnam:
+                                                    {{ $profile->birthLagnam->value . ' - ' . $profile->birthLagnam->tamil_name }}</span>
                                             </div>
                                         </div>
                                         <div class="poi-item">
@@ -613,7 +644,7 @@
                                             <div class="poi-content">
                                                 <span class="poi-name">Rahu Ketu</span>
                                                 <span
-                                                    class="poi-distance">{{ $profile->rahu_ketu ?? 'Not specified' }}</span>
+                                                    class="poi-distance">{{ ($profile->rahu_ketu == 1 ? 'Yes' : 'No') ?? 'Not specified' }}</span>
                                             </div>
                                         </div>
                                         <div class="poi-item">
@@ -621,7 +652,7 @@
                                             <div class="poi-content">
                                                 <span class="poi-name">Chevvai</span>
                                                 <span
-                                                    class="poi-distance">{{ $profile->chevvai ?? 'Not specified' }}</span>
+                                                    class="poi-distance">{{ ($profile->chevvai == 1 ? 'Yes' : 'No') ?? 'Not specified' }}</span>
                                             </div>
                                         </div>
                                         <div class="poi-item">

@@ -461,7 +461,7 @@ class ReferenceDataSeeder extends Seeder
                 ['value' => 'Pisces', 'tamil_name' => 'மீனம்'],
             ],
 
-            'birth_star' => [
+            'birthStars' => [
                 ['value' => 'Ashwini', 'tamil_name' => 'அசுவினி'],
                 ['value' => 'Bharani', 'tamil_name' => 'பரணி'],
                 ['value' => 'Krittika', 'tamil_name' => 'கிருத்திகை'],

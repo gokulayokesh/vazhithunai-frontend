@@ -380,16 +380,24 @@
                                                 <a href="{{ route('profile', ['identifier' => $profile->user->identifier ?? '']) }}"
                                                     class="property-link">
                                                     @if (!Auth::user())
-                                                        @if ($profile->gender == 'Male')
+                                                        @if ($profile->genders->value == 'Male')
                                                             <img src="{{ asset('assets/img/m-default.webp') }}"
                                                                 alt="Featured Agent" class="img-fluid">
                                                         @else
                                                             <img src="{{ asset('assets/img/f-default.webp') }}"
                                                                 alt="Featured Agent" class="img-fluid">
                                                         @endif
-                                                    @else
+                                                    @elseif (Auth::user() && (Auth::user()->latestActiveSubscription->plan_code ?? 0) >= 1)
                                                         <img src="{{ Storage::url($profile->userImages->first()->image_path) }}"
                                                             alt="{{ $profile->user->name }}" class="img-fluid">
+                                                    @else
+                                                        @if ($profile->genders->value == 'Male')
+                                                            <img src="{{ asset('assets/img/m-default.webp') }}"
+                                                                alt="Featured Agent" class="img-fluid">
+                                                        @else
+                                                            <img src="{{ asset('assets/img/f-default.webp') }}"
+                                                                alt="Featured Agent" class="img-fluid">
+                                                        @endif
                                                     @endif
                                                 </a>
                                                 <div class="property-status">
