@@ -116,10 +116,10 @@
                                     </ul>
 
                                     <div class="menu-footer">
-                                        <a href="#" class="help-link">
+                                        {{-- <a href="#" class="help-link">
                                             <i class="bi bi-question-circle"></i>
                                             <span>Help Center</span>
-                                        </a>
+                                        </a> --}}
                                         <a href="" class="logout-link logoutBtn">
                                             <i class="bi bi-box-arrow-right"></i>
                                             <span>Log Out</span>
@@ -1013,10 +1013,10 @@
                                                             Highest Education</label>
                                                         <select class="form-control" id="highest_education"
                                                             name="highest_education" required>
-                                                            @foreach ($educations as $level)
-                                                                <option value="{{ $level }}"
-                                                                    {{ $user->highest_education == $level ? 'selected' : '' }}>
-                                                                    {{ $level }}
+                                                            @foreach ($referenceData['educations'] as $level)
+                                                                <option value="{{ $level['id'] }}"
+                                                                    {{ $user->highest_education == $level['id'] ? 'selected' : '' }}>
+                                                                    {{ $level['value'] }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
@@ -1078,12 +1078,12 @@
                                                         <label for="occupation_category" class="form-label">தொழில் வகை /
                                                             Occupation Category</label>
                                                         <select class="form-control" id="occupation_category"
-                                                            name="occupation_category">
-                                                            @foreach ($jobs as $cat)
-                                                                <option value="{{ $cat }}"
-                                                                    {{ $user->occupation_category == $cat ? 'selected' : '' }}>
-                                                                    {{ $cat }}
-                                                                </option>
+                                                            name="occupation_category" required>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['jobs'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->occupation_category == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1106,16 +1106,11 @@
                                                             Employment Type</label>
                                                         <select class="form-control" id="employment_type"
                                                             name="employment_type">
-                                                            @foreach ($employmentTypes as $type)
-                                                                <option value="{{ $type }}"
-                                                                    {{ $user->employment_type == $type ? 'selected' : '' }}>
-                                                                    {{ $type }}
-                                                                </option>
-                                                                <option value="">Select</option>
-                                                                <option>Permanent</option>
-                                                                <option>Contract</option>
-                                                                <option>Self-employed</option>
-                                                                <option>Freelancer</option>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['employmentTypes'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->employment_type == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1124,11 +1119,11 @@
                                                         <label for="industry" class="form-label">தொழில் துறை /
                                                             Industry</label>
                                                         <select class="form-control" id="industry" name="industry">
-                                                            @foreach ($industries as $ind)
-                                                                <option value="{{ $ind }}"
-                                                                    {{ $user->industry == $ind ? 'selected' : '' }}>
-                                                                    {{ $ind }}
-                                                                </option>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['industries'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->industry == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1145,11 +1140,11 @@
                                                             / Annual Income</label>
                                                         <select class="form-control" id="annual_income"
                                                             name="annual_income">
-                                                            @foreach ($salaries as $range)
-                                                                <option value="{{ $range }}"
-                                                                    {{ $user->annual_income == $range ? 'selected' : '' }}>
-                                                                    {{ $range }}
-                                                                </option>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['salaries'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->annual_income == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1170,17 +1165,14 @@
                                                 <div class="row g-3">
                                                     <div class="col-md-6">
                                                         <label for="gender" class="form-label">பாலினம் / Gender</label>
-                                                        <select class="form-control" id="gender" name="gender"
-                                                            required>
-                                                            <option value="Male"
-                                                                {{ $user->gender == 'Male' ? 'selected' : '' }}>Male
-                                                            </option>
-                                                            <option value="Female"
-                                                                {{ $user->gender == 'Female' ? 'selected' : '' }}>Female
-                                                            </option>
-                                                            <option value="Other"
-                                                                {{ $user->gender == 'Other' ? 'selected' : '' }}>Other
-                                                            </option>
+                                                        <select class="form-control" id="gender" required
+                                                            name="gender">
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['genders'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->gender == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
 
@@ -1210,12 +1202,12 @@
                                                         <label for="marital_status" class="form-label">திருமண நிலை /
                                                             Marital Status</label>
                                                         <select class="form-control" id="marital_status"
-                                                            name="marital_status">
-                                                            @foreach ($maritalStatuses as $status)
-                                                                <option value="{{ $status }}"
-                                                                    {{ $user->marital_status == $status ? 'selected' : '' }}>
-                                                                    {{ $status }}
-                                                                </option>
+                                                            name="marital_status" required>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['maritalStatuses'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->marital_status == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1235,11 +1227,11 @@
                                                         <label for="body_type" class="form-label">உடல் அமைப்பு / Body
                                                             Type</label>
                                                         <select class="form-control" id="body_type" name="body_type">
-                                                            @foreach ($bodyTypes as $type)
-                                                                <option value="{{ $type }}"
-                                                                    {{ $user->body_type == $type ? 'selected' : '' }}>
-                                                                    {{ $type }}
-                                                                </option>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['bodyTypes'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->body_type == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1249,11 +1241,11 @@
                                                             Physical Status</label>
                                                         <select class="form-control" id="physical_status"
                                                             name="physical_status">
-                                                            @foreach ($bodyTypes as $ps)
-                                                                <option value="{{ $ps }}"
-                                                                    {{ $user->physical_status == $ps ? 'selected' : '' }}>
-                                                                    {{ $ps }}
-                                                                </option>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['physicalStatus'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->physical_status == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1262,12 +1254,12 @@
                                                         <label for="mother_tongue" class="form-label">தாய்மொழி / Mother
                                                             Tongue</label>
                                                         <select class="form-control" id="mother_tongue"
-                                                            name="mother_tongue">
-                                                            @foreach ($languagesKnown as $lang)
-                                                                <option value="{{ $lang }}"
-                                                                    {{ $user->mother_tongue == $lang ? 'selected' : '' }}>
-                                                                    {{ $lang }}
-                                                                </option>
+                                                            name="mother_tongue" required>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['languagesKnown'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->mother_tongue == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1275,53 +1267,43 @@
                                                     <!-- Interests (checkbox group) -->
                                                     <div class="col-md-12">
                                                         <label class="form-label">விருப்பங்கள் / Interests</label>
-                                                        <div class="row">
-                                                            @foreach ($interests as $interest)
-                                                                <div class="col-md-3">
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox"
-                                                                            id="interest_{{ Str::slug($interest) }}"
-                                                                            name="interests[]"
-                                                                            value="{{ $interest }}"
-                                                                            {{ in_array($interest, $user->interests ?? []) ? 'checked' : '' }}>
-                                                                        <label class="form-check-label"
-                                                                            for="interest_{{ Str::slug($interest) }}">{{ $interest }}</label>
-                                                                    </div>
-                                                                </div>
+                                                        <select id="interests" name="interests[]" class="form-control"
+                                                            multiple>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['interests'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ in_array($refData['id'], $user->interests ?? []) ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}
+                                                                </option>
                                                             @endforeach
-                                                        </div>
+                                                        </select>
                                                     </div>
 
                                                     <!-- Hobbies (checkbox group) -->
                                                     <div class="col-md-12">
                                                         <label class="form-label">பொழுதுபோக்குகள் / Hobbies</label>
-                                                        <div class="row">
-                                                            @foreach ($hobbies as $hobby)
-                                                                <div class="col-md-3">
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox"
-                                                                            id="hobby_{{ Str::slug($hobby) }}"
-                                                                            name="hobbies[]" value="{{ $hobby }}"
-                                                                            {{ in_array($hobby, $user->hobbies ?? []) ? 'checked' : '' }}>
-                                                                        <label class="form-check-label"
-                                                                            for="hobby_{{ Str::slug($hobby) }}">{{ $hobby }}</label>
-                                                                    </div>
-                                                                </div>
+                                                        <select id="hobbies" name="hobbies[]" class="form-control"
+                                                            multiple>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['hobbies'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ in_array($refData['id'], $user->hobbies ?? []) ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
-                                                        </div>
+                                                        </select>
                                                     </div>
 
                                                     <!-- Favourite Cuisine -->
                                                     <div class="col-md-6">
                                                         <label for="favourite_cuisine" class="form-label">விருப்பமான
                                                             சமையல் / Favourite Cuisine</label>
-                                                        <select class="form-control" id="favourite_cuisine"
-                                                            name="favourite_cuisine">
-                                                            @foreach ($cuisines as $cuisine)
-                                                                <option value="{{ $cuisine }}"
-                                                                    {{ $user->favourite_cuisine == $cuisine ? 'selected' : '' }}>
-                                                                    {{ $cuisine }}
-                                                                </option>
+                                                        <select id="fav_cuisine" name="favorite_cuisine[]"
+                                                            class="form-control" multiple>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['cuisines'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->favourite_cuisine == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1330,13 +1312,13 @@
                                                     <div class="col-md-6">
                                                         <label for="favourite_music" class="form-label">விருப்பமான இசை வகை
                                                             / Favourite Music Genre</label>
-                                                        <select class="form-control" id="favourite_music"
-                                                            name="favourite_music">
-                                                            @foreach ($musicGenres as $genre)
-                                                                <option value="{{ $genre }}"
-                                                                    {{ $user->favourite_music == $genre ? 'selected' : '' }}>
-                                                                    {{ $genre }}
-                                                                </option>
+                                                        <select id="fav_music" name="favorite_music[]"
+                                                            class="form-control" multiple>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['musicGenres'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->favourite_music == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1345,34 +1327,28 @@
                                                     <div class="col-md-12">
                                                         <label class="form-label">விளையாட்டு / உடற்பயிற்சி / Sports /
                                                             Fitness</label>
-                                                        <div class="row">
-                                                            @foreach ($sportsFitness as $sf)
-                                                                <div class="col-md-3">
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox"
-                                                                            id="sf_{{ Str::slug($sf) }}"
-                                                                            name="sports_fitness[]"
-                                                                            value="{{ $sf }}"
-                                                                            {{ in_array($sf, $user->sports_fitness ?? []) ? 'checked' : '' }}>
-                                                                        <label class="form-check-label"
-                                                                            for="sf_{{ Str::slug($sf) }}">{{ $sf }}</label>
-                                                                    </div>
-                                                                </div>
+                                                        <select id="sports" name="sports[]" class="form-control"
+                                                            multiple>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['sportsFitness'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ in_array($refData['id'], $user->sports_fitness ?? []) ? 'checked' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
-                                                        </div>
+                                                        </select>
                                                     </div>
 
                                                     <!-- Preferences -->
                                                     <div class="col-md-6">
                                                         <label for="pet_preference" class="form-label">செல்லப்பிராணி
                                                             விருப்பம் / Pet Preference</label>
-                                                        <select class="form-control" id="pet_preference"
-                                                            name="pet_preference">
-                                                            @foreach ($petPreferences as $opt)
-                                                                <option value="{{ $opt }}"
-                                                                    {{ $user->pet_preference == $opt ? 'selected' : '' }}>
-                                                                    {{ $opt }}
-                                                                </option>
+                                                        <select id="pet_pref" name="pet_preference"
+                                                            class="form-control">
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['petPreferences'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->pet_preference == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1380,13 +1356,14 @@
                                                     <div class="col-md-6">
                                                         <label for="travel_preference" class="form-label">பயண விருப்பம் /
                                                             Travel Preference</label>
-                                                        <select class="form-control" id="travel_preference"
-                                                            name="travel_preference">
-                                                            @foreach ($travelPreferences as $opt)
-                                                                <option value="{{ $opt }}"
-                                                                    {{ $user->travel_preference == $opt ? 'selected' : '' }}>
-                                                                    {{ $opt }}
-                                                                </option>
+                                                        <select id="travel_pref" name="travel_preference"
+                                                            class="form-control">
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+
+                                                            @foreach ($referenceData['travelPreferences'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->travel_preference == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1394,13 +1371,14 @@
                                                     <div class="col-md-6">
                                                         <label for="dietary_preference" class="form-label">உணவு விருப்பம்
                                                             / Dietary Preference</label>
-                                                        <select class="form-control" id="dietary_preference"
-                                                            name="dietary_preference">
-                                                            @foreach ($dietaryPreferences as $opt)
-                                                                <option value="{{ $opt }}"
-                                                                    {{ $user->dietary_preference == $opt ? 'selected' : '' }}>
-                                                                    {{ $opt }}
-                                                                </option>
+                                                        <select id="diet" name="diet_preference"
+                                                            class="form-control">
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+
+                                                            @foreach ($referenceData['dietaryPreferences'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->dietary_preference == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1408,13 +1386,13 @@
                                                     <div class="col-md-6">
                                                         <label for="smoking_habit" class="form-label">புகைபிடிக்கும்
                                                             பழக்கம் / Smoking Habit</label>
-                                                        <select class="form-control" id="smoking_habit"
-                                                            name="smoking_habit">
-                                                            @foreach ($smokingHabits as $opt)
-                                                                <option value="{{ $opt }}"
-                                                                    {{ $user->smoking_habit == $opt ? 'selected' : '' }}>
-                                                                    {{ $opt }}
-                                                                </option>
+                                                        <select id="smoking" name="smoking_habits"
+                                                            class="form-control">
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['smokingHabits'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->smoking_habit == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1422,13 +1400,13 @@
                                                     <div class="col-md-6">
                                                         <label for="drinking_habit" class="form-label">மது அருந்தும்
                                                             பழக்கம் / Drinking Habit</label>
-                                                        <select class="form-control" id="drinking_habit"
-                                                            name="drinking_habit">
-                                                            @foreach ($drinkingHabits as $opt)
-                                                                <option value="{{ $opt }}"
-                                                                    {{ $user->drinking_habit == $opt ? 'selected' : '' }}>
-                                                                    {{ $opt }}
-                                                                </option>
+                                                        <select id="drinking" name="drinking_habits"
+                                                            class="form-control">
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['drinkingHabits'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ $user->drinking_habit == $refData['id'] ? 'selected' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -1436,21 +1414,15 @@
                                                     <!-- Languages Known (checkbox or multi-select) -->
                                                     <div class="col-md-12">
                                                         <label class="form-label">தெரிந்த மொழிகள் / Languages Known</label>
-                                                        <div class="row">
-                                                            @foreach ($languagesKnown as $lang)
-                                                                <div class="col-md-3">
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox"
-                                                                            id="lang_{{ Str::slug($lang) }}"
-                                                                            name="languages_known[]"
-                                                                            value="{{ $lang }}"
-                                                                            {{ in_array($lang, $user->languages_known ?? []) ? 'checked' : '' }}>
-                                                                        <label class="form-check-label"
-                                                                            for="lang_{{ Str::slug($lang) }}">{{ $lang }}</label>
-                                                                    </div>
-                                                                </div>
+                                                        <select id="languages" name="languages_known[]"
+                                                            class="form-control" multiple>
+                                                            <option value="">தேர்வு செய்யவும் / Select</option>
+                                                            @foreach ($referenceData['languagesKnown'] as $refData)
+                                                                <option value="{{ $refData['id'] }}"
+                                                                    {{ in_array($refData['id'], $user->languages_known ?? []) ? 'checked' : '' }}>
+                                                                    {{ $refData['value'] }}</option>
                                                             @endforeach
-                                                        </div>
+                                                        </select>
                                                     </div>
 
                                                     <!-- Life Motto -->
@@ -1465,14 +1437,16 @@
                                                         <label for="mobile_number" class="form-label">தொலைபேசி எண் /
                                                             Mobile Number</label>
                                                         <input type="tel" class="form-control" id="mobile_number"
-                                                            name="mobile_number" value="{{ $user->mobile_number }}">
+                                                            disabled name="mobile_number"
+                                                            value="{{ $user->mobile_number }}">
                                                     </div>
 
                                                     <div class="col-md-6">
                                                         <label for="email" class="form-label">மின்னஞ்சல் முகவரி /
                                                             E-mail</label>
                                                         <input type="email" class="form-control" id="email"
-                                                            name="email" value="{{ $user->email }}" required>
+                                                            disabled name="email"
+                                                            value="{{ $user->getRawOriginal('email') }}" required>
                                                     </div>
 
                                                     <div class="col-md-6">
@@ -1509,24 +1483,24 @@
                                                             <label for="fatherName" class="form-label">Father's
                                                                 Name</label>
                                                             <input type="text" class="form-control" id="fatherName"
-                                                                value="<?= $user->father_name ?>">
+                                                                value="{{ $user->father_name }}">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="motherName" class="form-label">Mother's
                                                                 Name</label>
                                                             <input type="text" class="form-control" id="motherName"
-                                                                value="<?= $user->mother_name ?>">
+                                                                value="{{ $user->mother_name }}">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="siblings" class="form-label">Siblings</label>
                                                             <input type="text" class="form-control" id="siblings"
-                                                                value="<?= $user->siblings ?>">
+                                                                value="{{ $user->siblings }}">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="familyStatus" class="form-label">Family
                                                                 Status</label>
                                                             <input type="text" class="form-control" id="familyStatus"
-                                                                value="<?= $user->family_status ?>">
+                                                                value="{{ $user->family_status }}">
                                                         </div>
                                                     </div>
                                                 </form>
@@ -1540,24 +1514,24 @@
                                                         <div class="col-md-6">
                                                             <label for="zodiac" class="form-label">Zodiac Sign</label>
                                                             <input type="text" class="form-control" id="zodiac"
-                                                                value="<?= $user->zodiac ?>">
+                                                                value="{{ $user->zodiac }}">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="birthStar" class="form-label">Birth Star</label>
                                                             <input type="text" class="form-control" id="birthStar"
-                                                                value="<?= $user->birth_star ?>">
+                                                                value="{{ $user->birth_star }}">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="rasi" class="form-label">Rasi</label>
                                                             <input type="text" class="form-control" id="rasi"
-                                                                value="<?= $user->rasi ?>">
+                                                                value="{{ $user->rasi }}">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="horoscopeMatch" class="form-label">Horoscope
                                                                 Match</label>
                                                             <input type="text" class="form-control"
                                                                 id="horoscopeMatch"
-                                                                value="<?= $user->horoscope_match ?>">
+                                                                value="{{ $user->horoscope_match }}">
                                                         </div>
                                                     </div>
                                                 </form>

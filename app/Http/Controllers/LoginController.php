@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\ForgotPasswordOtpMail;
 use App\Models\User;
+use App\Models\UserImages;
 use App\Rules\RecaptchaRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -126,7 +127,25 @@ class LoginController extends Controller
                 // Only for new users
                 $user->password = Hash::make($password);
                 $user->show_password = $password;
+
+                UserImages::create([
+                    'user_id' => $user->id,
+                    'image_path' => $payload['picture'],
+                    'type' => 'profile',
+                ]);
+            }else{
+                $userImages = UserImages::firstOrNew(
+                    ['user_id' => $user->id]
+                );
+                if (! $userImages->exists) {
+                    $userImages->user_id = $user->id;
+                    $userImages->image_path = $payload['picture'];
+                    $userImages->type = 'profile';
+                    $userImages->save();
+                }
             }
+
+            
             
             $user->save();
 
