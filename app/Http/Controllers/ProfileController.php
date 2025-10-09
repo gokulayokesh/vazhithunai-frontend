@@ -18,40 +18,45 @@ class ProfileController extends Controller
 
     public function profile(Request $request)
     {
-        $userId   = User::getIdByIdentifier($request->identifier);
-        $viewerId = Auth::id();
-        if ($userId == $viewerId) {
-            return redirect()->route('myaccount');
+        try{
+            $userId   = User::getIdByIdentifier($request->identifier);
+            $viewerId = Auth::id();
+            if ($userId == $viewerId) {
+                return redirect()->route('myaccount');
+            }
+
+            $profile = UserDetails::with([
+                'user',       // relation to users table
+                'userImages', // relation to profile images
+                'userHoroscopeImages',
+            ])
+                ->where('user_id', $userId)
+                ->first();
+
+            // Main profile (with relations to avoid N+1)
+            $profiles = UserDetails::with(['user', 'userImages'])
+                ->findOrFail($userId);
+
+            // Check if this viewer has already viewed this profile
+            $alreadyViewed = ProfileWatchHistory::where('viewer_id', $viewerId)
+                ->where('profile_id', $profile->user_id)
+                ->exists();
+
+            // Build a simple "similar profiles" query (tune filters as needed)
+            $similarProfiles = UserDetails::with(['user', 'userImages'])
+                ->where('id', '!=', $profiles->id)
+                ->when($profiles->gender, fn($q) => $q->where('gender', $profiles->gender)) // or opposite gender if desired
+                ->when($profiles->state, fn($q) => $q->where('state', $profiles->state))
+                ->when($profiles->caste, fn($q) => $q->where('caste', $profiles->caste))
+                ->latest()
+                ->limit(6)
+                ->get();
+
+            return view('layout.profile', compact('profile', 'similarProfiles', 'alreadyViewed'));
+        }catch (\Exception $e) {
+            \Log::error('ProfileController@profile error: '.$e->getMessage());
+            return abort(404);
         }
-
-        $profile = UserDetails::with([
-            'user',       // relation to users table
-            'userImages', // relation to profile images
-            'userHoroscopeImages',
-        ])
-            ->where('user_id', $userId)
-            ->first();
-
-        // Main profile (with relations to avoid N+1)
-        $profiles = UserDetails::with(['user', 'userImages'])
-            ->findOrFail($userId);
-
-        // Check if this viewer has already viewed this profile
-        $alreadyViewed = ProfileWatchHistory::where('viewer_id', $viewerId)
-            ->where('profile_id', $profile->user_id)
-            ->exists();
-
-        // Build a simple "similar profiles" query (tune filters as needed)
-        $similarProfiles = UserDetails::with(['user', 'userImages'])
-            ->where('id', '!=', $profiles->id)
-            ->when($profiles->gender, fn($q) => $q->where('gender', $profiles->gender)) // or opposite gender if desired
-            ->when($profiles->state, fn($q) => $q->where('state', $profiles->state))
-            ->when($profiles->caste, fn($q) => $q->where('caste', $profiles->caste))
-            ->latest()
-            ->limit(6)
-            ->get();
-
-        return view('layout.profile', compact('profile', 'similarProfiles', 'alreadyViewed'));
     }
 
     public function toggleShortlist(Request $request, $shortlistedUserId)
