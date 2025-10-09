@@ -152,7 +152,6 @@ class RegisterController extends Controller
                     UserImages::create([
                         'user_id' => $user->id,
                         'image_path' => $path,
-                        'type' => 'profile',
                     ]);
                 }
             }
@@ -163,7 +162,6 @@ class RegisterController extends Controller
                     UserHoroscopeImages::create([
                         'user_id' => $user->id,
                         'image_path' => $path,
-                        'type' => 'horoscope',
                     ]);
                 }
             }

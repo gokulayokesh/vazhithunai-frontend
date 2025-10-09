@@ -140,7 +140,6 @@ class LoginController extends Controller
                 if (! $userImages->exists) {
                     $userImages->user_id = $user->id;
                     $userImages->image_path = $payload['picture'];
-                    $userImages->type = 'profile';
                     $userImages->save();
                 }
             }
