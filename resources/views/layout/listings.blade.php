@@ -388,7 +388,7 @@
                                                                 alt="Featured Agent" class="img-fluid">
                                                         @endif
                                                     @else
-                                                        <img src="{{ asset($profile->userImages->first()->image_path) }}"
+                                                        <img src="{{ Storage::url($profile->userImages->first()->image_path) }}"
                                                             alt="{{ $profile->user->name }}" class="img-fluid">
                                                     @endif
                                                 </a>
