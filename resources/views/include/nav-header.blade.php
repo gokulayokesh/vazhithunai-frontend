@@ -59,8 +59,7 @@
                             <li>
                                 <a href="/my-account">
                                     {{-- <a href="#"> --}}
-                                    <span class="bi bi-person-fill-gear"></span>&nbsp;My Account&nbsp;&nbsp;<span
-                                        class="badge text-bg-secondary" style="font-size: x-small"> Coming Soon</span>
+                                    <span class="bi bi-person-fill-gear"></span>&nbsp;My Account
                                 </a>
                             </li>
                             <li>
