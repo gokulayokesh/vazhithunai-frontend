@@ -43,6 +43,55 @@ class UserDetails extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function employmentType() {
+        return $this->belongsTo(ReferenceData::class, 'employment_type')->where('type', 'employment_type');
+    }
+    
+    public function industry() {
+        return $this->belongsTo(ReferenceData::class, 'industry')->where('type', 'industry');
+    }
+    
+    public function maritalStatus() {
+        return $this->belongsTo(ReferenceData::class, 'marital_status')->where('type', 'marital_status');
+    }
+    
+    public function bodyType() {
+        return $this->belongsTo(ReferenceData::class, 'body_type')->where('type', 'body_type');
+    }
+    
+    public function complexion() {
+        return $this->belongsTo(ReferenceData::class, 'complexion')->where('type', 'complexion');
+    }
+    
+    public function salary() {
+        return $this->belongsTo(ReferenceData::class, 'salary')->where('type', 'salary');
+    }
+    
+    public function height() {
+        return $this->belongsTo(ReferenceData::class, 'height')->where('type', 'height');
+    }
+    
+    public function religion() {
+        return $this->belongsTo(ReferenceData::class, 'religion')->where('type', 'religion');
+    }
+    
+    public function physicalStatus() {
+        return $this->belongsTo(ReferenceData::class, 'physical_status')->where('type', 'physical_status');
+    }
+    
+    public function familyStatus() {
+        return $this->belongsTo(ReferenceData::class, 'family_status')->where('type', 'family_status');
+    }
+    
+    public function zodiac() {
+        return $this->belongsTo(ReferenceData::class, 'zodiac')->where('type', 'zodiac');
+    }
+    
+    public function birthStar() {
+        return $this->belongsTo(ReferenceData::class, 'birth_star')->where('type', 'birth_star');
+    }
+    
+
     // Masked Facebook Profile URL
     public function getFacebookProfileUrlAttribute($value)
     {
@@ -103,4 +152,6 @@ class UserDetails extends Model
 
         return $host;
     }
+
+    
 }

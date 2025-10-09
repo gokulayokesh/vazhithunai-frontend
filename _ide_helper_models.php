@@ -170,16 +170,49 @@ namespace App\Models{
 namespace App\Models{
 /**
  * @property int $id
+ * @property string $type
+ * @property string $value
+ * @property string|null $tamil_name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ReferenceData newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ReferenceData newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ReferenceData query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ReferenceData whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ReferenceData whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ReferenceData whereTamilName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ReferenceData whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ReferenceData whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ReferenceData whereValue($value)
+ */
+	class ReferenceData extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property int $referrer_id
+ * @property int|null $referred_user_id
+ * @property string $referral_code
+ * @property string $status
+ * @property int $reward_points
+ * @property string|null $rewarded_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\User|null $referredUser
- * @property-read \App\Models\User|null $referrer
+ * @property-read \App\Models\User $referrer
  * @method static \Database\Factories\ReferralFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral whereReferralCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral whereReferredUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral whereReferrerId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral whereRewardPoints($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral whereRewardedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Referral whereUpdatedAt($value)
  */
 	class Referral extends \Eloquent {}
@@ -353,7 +386,7 @@ namespace App\Models{
  * @property int|null $city_id
  * @property string|null $birth_time
  * @property string $highest_education
- * @property string $education_field
+ * @property string|null $education_field
  * @property string|null $specialization
  * @property string|null $institution
  * @property string|null $completion_year
@@ -362,12 +395,12 @@ namespace App\Models{
  * @property string $job_title
  * @property string|null $company_name
  * @property string|null $employment_type
- * @property string|null $industry
+ * @property \App\Models\ReferenceData|null $industry
  * @property string $work_location
  * @property string|null $annual_income
  * @property int|null $experience_years
  * @property string $gender
- * @property string $height
+ * @property \App\Models\ReferenceData|null $height
  * @property string|null $color
  * @property string $caste
  * @property string $marital_status
@@ -415,14 +448,24 @@ namespace App\Models{
  * @property string|null $additional_horoscope
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\ReferenceData|null $birthStar
+ * @property-read \App\Models\ReferenceData|null $bodyType
  * @property-read \App\Models\City|null $city
+ * @property-read \App\Models\ReferenceData|null $complexion
+ * @property-read \App\Models\ReferenceData|null $employmentType
+ * @property-read \App\Models\ReferenceData|null $familyStatus
+ * @property-read \App\Models\ReferenceData|null $maritalStatus
+ * @property-read \App\Models\ReferenceData|null $physicalStatus
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProfileWatchHistory> $profileWatchHistories
  * @property-read int|null $profile_watch_histories_count
+ * @property-read \App\Models\ReferenceData|null $religion
+ * @property-read \App\Models\ReferenceData|null $salary
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserImages> $userHoroscopeImages
  * @property-read int|null $user_horoscope_images_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserImages> $userImages
  * @property-read int|null $user_images_count
+ * @property-read \App\Models\ReferenceData|null $zodiac
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails query()

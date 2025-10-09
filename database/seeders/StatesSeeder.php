@@ -42,7 +42,7 @@ class StatesSeeder extends Seeder
             ['name' => 'Uttarakhand',         'tamil_name' => 'உத்தரகாண்ட்',       'status' => true],
             ['name' => 'West Bengal',         'tamil_name' => 'மேற்கு வங்காளம்',    'status' => true],
         ];
-
+        State::truncate(); 
         State::insert($states);
     }
 }

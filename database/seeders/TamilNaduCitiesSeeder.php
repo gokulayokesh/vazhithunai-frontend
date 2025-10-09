@@ -13,7 +13,7 @@ class TamilNaduCitiesSeeder extends Seeder
     public function run(): void
     {
 
-        $stateId = 33; // Tamil Nadu's ID in your states table
+        $stateId = 23; // Tamil Nadu's ID in your states table
         $cities = [
             ['name' => 'Chennai',         'tamil_name' => 'சென்னை',           'status' => true, 'state_id' => $stateId],
             ['name' => 'Coimbatore',      'tamil_name' => 'கோயம்புத்தூர்',     'status' => true, 'state_id' => $stateId],
@@ -49,6 +49,7 @@ class TamilNaduCitiesSeeder extends Seeder
             ['name' => 'Nagapattinam',    'tamil_name' => 'நாகப்பட்டினம்',     'status' => true, 'state_id' => $stateId],
         ];
 
+        City::truncate(); 
         City::insert($cities);
     }
 }

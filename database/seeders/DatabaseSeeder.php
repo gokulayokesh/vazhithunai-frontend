@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             StatesSeeder::class,
             TamilNaduCitiesSeeder::class,
             SubscriptionSeeder::class,
+            ReferenceDataSeeder::class,
         ]);
     }
 }

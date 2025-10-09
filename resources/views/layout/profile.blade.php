@@ -350,9 +350,6 @@
                             </div><!-- End Floor Plan -->
 
                         </div>
-
-
-
                         {{-- Sidebar --}}
                         <div class="col-lg-5">
                             <div class="sticky-sidebar">
