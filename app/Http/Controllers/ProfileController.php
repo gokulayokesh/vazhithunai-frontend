@@ -29,13 +29,12 @@ class ProfileController extends Controller
                 'user',       // relation to users table
                 'userImages', // relation to profile images
                 'userHoroscopeImages',
-            ])
-                ->where('user_id', $userId)
-                ->first();
+            ])->where('user_id', $userId)->first();
 
             // Main profile (with relations to avoid N+1)
             $profiles = UserDetails::with(['user', 'userImages'])
-                ->findOrFail($userId);
+            ->where('user_id', $userId)
+            ->firstOrFail();
 
             // Check if this viewer has already viewed this profile
             $alreadyViewed = ProfileWatchHistory::where('viewer_id', $viewerId)
