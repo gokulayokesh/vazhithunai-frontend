@@ -544,7 +544,7 @@
                                             <div class="col-6">
                                                 @auth
                                                     <button class="btn btn-outline-primary w-100 shortlist-btn"
-                                                        data-user-id="{{ $profile->id }}">
+                                                        data-user-id="{{ $profile->user->id }}">
                                                         @if (auth()->user() && auth()->user()->shortlistedUsers->contains('id', $profile->user->id))
                                                             <i class="bi bi-heart-fill text-danger"></i>
                                                         @else
