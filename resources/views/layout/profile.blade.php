@@ -388,10 +388,10 @@
                                         <div class="agent-avatar">
                                             @if ($alreadyViewed)
                                                 @if (isset($profile->userImages) && $profile->userImages->count() > 0)
-                                                    <img src="{{ Auth::user()->avatar ?? asset(Auth::user()->userImages->first()?->image_path) }}"
+                                                    <img src="{{ Storage::url($profile->userImages->first()?->image_path) }}"
                                                         class="img-fluid" alt="{{ $profile->user->name }}">
                                                 @else
-                                                    <img src="{{ Auth::user()->avatar ?? asset('assets/img/m-default.webp') }}"
+                                                    <img src="{{ Storage::url($profile->userImages->first()?->image_path) ?? asset('assets/img/m-default.webp') }}"
                                                         class="img-fluid" alt="{{ $profile->user->name }}">
                                                 @endif
                                             @else
