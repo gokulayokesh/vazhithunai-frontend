@@ -174,7 +174,7 @@ namespace App\Models{
  * @property int $subscription_id
  * @property int $max_uses
  * @property int $used_count
- * @property string|null $expires_at
+ * @property \Illuminate\Support\Carbon|null $expires_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PromocodeRedemption> $redemptions

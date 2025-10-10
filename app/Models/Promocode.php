@@ -16,6 +16,10 @@ class Promocode extends Model
         'expires_at',       // optional expiry date
     ];
 
+    protected $casts = [
+        'expires_at' => 'datetime',
+    ];
+    
     protected $dates = ['expires_at'];
 
     public function redemptions(): HasMany
