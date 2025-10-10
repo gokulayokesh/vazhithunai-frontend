@@ -169,23 +169,49 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * @property-read \App\Models\Subscription|null $plan
+ * @property int $id
+ * @property string $code
+ * @property int $subscription_id
+ * @property int $max_uses
+ * @property int $used_count
+ * @property string|null $expires_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PromocodeRedemption> $redemptions
  * @property-read int|null $redemptions_count
+ * @property-read \App\Models\Subscription|null $subscription
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode whereExpiresAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode whereMaxUses($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode whereSubscriptionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode whereUsedCount($value)
  */
 	class Promocode extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
- * @property-read \App\Models\Promocode|null $promocode
- * @property-read \App\Models\User|null $user
+ * @property int $id
+ * @property int $user_id
+ * @property int $promocode_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Promocode $promocode
+ * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PromocodeRedemption newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PromocodeRedemption newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PromocodeRedemption query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PromocodeRedemption whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PromocodeRedemption whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PromocodeRedemption wherePromocodeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PromocodeRedemption whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PromocodeRedemption whereUserId($value)
  */
 	class PromocodeRedemption extends \Eloquent {}
 }

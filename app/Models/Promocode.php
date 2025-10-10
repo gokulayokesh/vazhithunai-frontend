@@ -23,7 +23,7 @@ class Promocode extends Model
         return $this->hasMany(PromocodeRedemption::class);
     }
 
-    public function plan()  
+    public function subscription()  
     {
         return $this->belongsTo(Subscription::class);
     }

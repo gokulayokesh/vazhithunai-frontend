@@ -50,7 +50,7 @@ class PromocodeController extends Controller
                 return response()->json(['status' => 'error', 'message' => 'You have already used this promocode.'], 409);
             }
     
-            $user->view_profile_count = $user->view_profile_count+$promocode->plan->profile_view_count;
+            $user->view_profile_count = $user->view_profile_count+$promocode->subscription->profile_view_count;
             $user->save();
     
             PromocodeRedemption::create([
