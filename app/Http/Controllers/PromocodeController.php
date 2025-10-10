@@ -6,6 +6,7 @@ use App\Models\PromocodeRedemption;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Subscription;
+use App\Models\SubscriptionHistory;
 
 class PromocodeController extends Controller
 {
@@ -59,6 +60,21 @@ class PromocodeController extends Controller
             ]);
     
             $promocode->increment('used_count');
+
+            $subscription = Subscription::findOrFail($promocode->subscription->id);
+                $startDate = now();
+                $endDate = $startDate->copy()->addDays($subscription->validity_days);
+    
+                SubscriptionHistory::create([
+                    'user_id' => $user->id,
+                    'subscription_id' => $subscription->id,
+                    'plan_name' => $subscription->name,
+                    'plan_code' => $subscription->id,
+                    'amount' => $subscription->price,
+                    'start_date' => $startDate,
+                    'end_date' => $endDate,
+                    'status' => 'active',
+                ]);
     
             return response()->json(['status' => 'success', 'message' => 'Promocode applied! Your subscription is now active.']);
         }catch (\Exception $e) {
