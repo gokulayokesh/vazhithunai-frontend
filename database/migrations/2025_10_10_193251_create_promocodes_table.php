@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('code')->unique(); // Unique promocode string
-            $table->unsignedBigInteger('subs_id'); // ID of the subscription plan
+            $table->unsignedBigInteger('subscription_id'); // ID of the subscription plan
             $table->unsignedInteger('max_uses')->default(1); // Max allowed redemptions
             $table->unsignedInteger('used_count')->default(0); // Current redemption count
             $table->timestamp('expires_at')->nullable(); // Optional expiry
