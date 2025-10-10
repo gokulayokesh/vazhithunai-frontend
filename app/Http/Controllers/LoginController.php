@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ForgotPasswordOtpMail;
+use App\Mail\RegistrationOtpMail;
 use App\Models\User;
 use App\Models\UserImages;
 use App\Rules\RecaptchaRule;
@@ -47,6 +48,7 @@ class LoginController extends Controller
                 ? back()->withErrors(['login' => 'The provided credentials do not match our records.'])->onlyInput('login')
                 : response()->json([
                     'success' => false,
+                    'verify' => false,
                     'message' => 'The provided credentials do not match our records.',
                 ], 422);
         }
@@ -57,6 +59,7 @@ class LoginController extends Controller
                 ? back()->withErrors(['login' => 'Please verify your email address before logging in.'])->onlyInput('login')
                 : response()->json([
                     'success' => false,
+                    'verify' => true,
                     'message' => 'Please verify your email address before logging in..',
                 ], 403);
         }
@@ -81,6 +84,7 @@ class LoginController extends Controller
             ? back()->withErrors(['login' => 'The provided credentials do not match our records.'])->onlyInput('login')
             : response()->json([
                 'success' => false,
+                'verify' => false,
                 'message' => 'The provided credentials do not match our records.',
             ], 422);
     }
@@ -233,6 +237,36 @@ class LoginController extends Controller
         $user->save();
 
         return redirect('/login')->with('success', 'Your email has been verified. You can now log in.');
+    }
+
+    public function resendVerification(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+        if (! $user) {
+            return redirect()->back()->with('error', 'No user found with this email address.');
+        }
+
+        if ($user->email_verified_at) {
+            return redirect()->back()->with('info', 'Your email is already verified. You can log in.');
+        }
+
+        // Generate a new token
+        $user->remember_token = Str::random(60);
+        $user->save();
+
+        // Send verification email
+        try {
+            Mail::to($user->getRawOriginal('email'))->send(new RegistrationOtpMail($user->email, $user->name, $user->remember_token));
+        } catch (\Exception $e) {
+            \Log::error("Verification mail send failed: ".$e->getMessage());
+            return redirect()->back()->with('error', 'Failed to send verification email. Please try again later.');
+        }
+
+        return redirect()->back()->with('success', 'A new verification email has been sent to your email address.');
     }
 
 }

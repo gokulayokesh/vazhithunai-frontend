@@ -103,3 +103,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/verify-email/{token}', [LoginController::class, 'verifyEmail'])->name('verify.email');
+
+Route::get('/resend-verification', [LoginController::class, 'resendVerification'])->name('resend.verification');

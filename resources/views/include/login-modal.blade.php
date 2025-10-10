@@ -96,6 +96,13 @@
                     if (data.success) {
                         location.reload(true);
                     } else {
+                        if (data.verify) {
+                            let errorBox = document.getElementById('loginError');
+                            errorBox.innerHTML =
+                                `Please verify your email address before logging in. <a href="/resend-verification?email=${encodeURIComponent(document.getElementById('login').value)}" class="btn btn-link p-0 m-0 align-baseline text-decoration-none">Resend Verification Email</a>`;
+                            errorBox.classList.remove('d-none');
+                            return;
+                        }
                         let errorBox = document.getElementById('loginError');
                         errorBox.textContent = data.message || 'Login failed';
                         errorBox.classList.remove('d-none');
