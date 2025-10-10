@@ -50,6 +50,15 @@ class PromocodeController extends Controller
             if ($alreadyUsed) {
                 return response()->json(['status' => 'error', 'message' => 'You have already used this promocode.'], 409);
             }
+
+            $alreadysubscription = SubscriptionHistory::where('user_id', $user->id)
+            ->where('status', 'active')
+            ->whereDate('end_date', '>=', now()) // still valid
+            ->latest('end_date')
+            ->first();
+            if ($alreadysubscription) {
+                return response()->json(['status' => 'error', 'message' => 'You already have an active subscription.'], 409);
+            }
     
             $user->view_profile_count = $user->view_profile_count+$promocode->subscription->profile_view_count;
             $user->save();
