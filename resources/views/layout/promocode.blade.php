@@ -89,6 +89,9 @@
                         const modal = new bootstrap.Modal(modalElement);
                         modal.show();
                         form.reset();
+                        setTimeout(() => {
+                            window.location.href = "/";
+                        }, 3000);
                     }
 
                 })
