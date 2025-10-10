@@ -251,6 +251,8 @@ class RegisterController extends Controller
             $user->password = bcrypt($request->password);
             $user->save();
 
+            Self::sendOtpEmail($request->email, $request->name);
+            
             return response()->json([
                 'status'  => 'success',
                 'message' => 'User registered successfully.',
