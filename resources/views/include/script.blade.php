@@ -20,7 +20,6 @@
  <script src="{{ asset('assets/vendor/toastify/toastify.js') }}"></script>
  <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-
  <script>
      function showToast(message, type = "success", gravity = 'top', position = 'right') {
          Toastify({
@@ -173,3 +172,19 @@
          }
      });
  </script>
+
+ @if (session('error'))
+     <script>
+         document.addEventListener("DOMContentLoaded", function() {
+             showToast(@json(session('error')), "error");
+         });
+     </script>
+ @endif
+
+ @if (session('info'))
+     <script>
+         document.addEventListener("DOMContentLoaded", function() {
+             showToast(@json(session('info')), "success");
+         });
+     </script>
+ @endif
