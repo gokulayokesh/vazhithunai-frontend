@@ -84,9 +84,13 @@
                 .then(response => response.json())
                 .then(data => {
                     showToast(data.message, data.status);
-                    const modalElement = document.getElementById('planSuccessModal');
-                    const modal = new bootstrap.Modal(modalElement);
-                    modal.show();
+                    if (data.status != "success") {
+                        const modalElement = document.getElementById('planSuccessModal');
+                        const modal = new bootstrap.Modal(modalElement);
+                        modal.show();
+                        form.reset();
+                    }
+
                 })
                 .catch(error => {
                     showToast("சிக்கல் ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்.", "error");
