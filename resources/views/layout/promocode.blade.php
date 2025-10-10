@@ -84,7 +84,7 @@
                 .then(response => response.json())
                 .then(data => {
                     showToast(data.message, data.status);
-                    if (data.status != "success") {
+                    if (data.status == "success") {
                         const modalElement = document.getElementById('planSuccessModal');
                         const modal = new bootstrap.Modal(modalElement);
                         modal.show();
