@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileSearchController;
+use App\Http\Controllers\PromocodeController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -105,3 +106,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/verify-email/{token}', [LoginController::class, 'verifyEmail'])->name('verify.email');
 
 Route::get('/resend-verification', [LoginController::class, 'resendVerification'])->name('resend.verification');
+
+Route::get('/promocode', [PromocodeController::class, 'index'])->name('promocode.index');
+
+Route::post('/promocode/apply', [PromocodeController::class, 'apply'])->name('promocode.apply');

@@ -10,5 +10,6 @@ class Subscription extends Model
         'name',
         'validity_days',
         'price',
+        'profile_view_count'
     ];
 }

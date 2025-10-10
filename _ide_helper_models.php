@@ -169,6 +169,29 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * @property-read \App\Models\Subscription|null $plan
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PromocodeRedemption> $redemptions
+ * @property-read int|null $redemptions_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Promocode query()
+ */
+	class Promocode extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property-read \App\Models\Promocode|null $promocode
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PromocodeRedemption newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PromocodeRedemption newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PromocodeRedemption query()
+ */
+	class PromocodeRedemption extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * @property int $id
  * @property string $type
  * @property string $value

@@ -68,6 +68,12 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="/promocode">
+                                    <span class="bi bi-bag-heart"></span>&nbsp;Promocode&nbsp;&nbsp;<span
+                                        class="badge text-bg-danger" style="font-size: x-small"> New</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/referrals">
                                     <span class="bi bi-person-plus"></span>&nbsp;My Referral&nbsp;&nbsp;<span
                                         class="badge text-bg-danger" style="font-size: x-small"> New</span>
