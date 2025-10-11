@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Auth;
 use Google\Client as GoogleClient;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class LoginController extends Controller
 {
@@ -115,35 +117,44 @@ class LoginController extends Controller
 
         $client = new GoogleClient(['client_id' => env('GOOGLE_CLIENT_ID')]);
         $payload = $client->verifyIdToken($credential);
+
         if ($payload) {
             $password = Str::random(32);
-            $user = User::firstOrNew(
-                ['email' => $payload['email']]
-            );
-            
+            $user = User::firstOrNew(['email' => $payload['email']]);
+
             $user->fill([
                 'name'      => $payload['name'] ?? $payload['email'],
                 'google_id' => $payload['sub'],
                 'avatar'    => $payload['picture'] ?? null,
             ]);
-            
+
             if (! $user->exists) {
-                // Only for new users
                 $user->password = Hash::make($password);
                 $user->show_password = $password;
             }
+
             $user->save();
 
-            $userImages = UserImages::firstOrNew(
-                ['user_id' => $user->id]
-            );
-            if (! $userImages->exists) {
-                $userImages->user_id = $user->id;
-                $userImages->image_path = $payload['picture'];
-                $userImages->save();
-            }
-            Auth::login($user);
+            $userImages = UserImages::firstOrNew(['user_id' => $user->id]);
 
+            if (! $userImages->exists) {
+                $profilePictureUrl = $payload['picture'] ?? null;
+
+                if ($profilePictureUrl) {
+                    $imageContents = Http::get($profilePictureUrl)->body();
+                    $extension = pathinfo(parse_url($profilePictureUrl, PHP_URL_PATH), PATHINFO_EXTENSION) ?: 'jpg';
+                    $filename = 'profile_' . $user->id . '.' . $extension;
+                    $path = 'profile_pictures/' . $filename;
+
+                    Storage::disk('public')->put($path, $imageContents);
+
+                    $userImages->user_id = $user->id;
+                    $userImages->image_path = $path;
+                    $userImages->save();
+                }
+            }
+
+            Auth::login($user);
             return redirect()->route('home');
         }
 
