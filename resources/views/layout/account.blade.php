@@ -41,7 +41,7 @@
                                 <!-- User Info -->
                                 <div class="user-info" data-aos="fade-right">
                                     <div class="user-avatar">
-                                        <img src="{{ Auth::user()?->userImages()->first()->image_path ?? '' }}"
+                                        <img src="{{ Storage::url(Auth::user()?->userImages()->first()->image_path) ?? asset('assets/img/m-default.webp') }}"
                                             alt="{{ Auth::user()->name }}" alt="Profile" loading="lazy">
                                         <span class="status-badge"><i class="bi bi-shield-check"></i></span>
                                     </div>
@@ -658,7 +658,7 @@
                                                                                 <a href="{{ route('profile', ['identifier' => $profile->identifier ?? '']) }}"
                                                                                     class="property-link">
                                                                                     <div class="property-image-wrapper">
-                                                                                        <img src="{{ $profile->userImages->first()->image_path }}"
+                                                                                        <img src="{{ Storage::url($profile->userImages->first()->image_path) ?? asset('assets/img/m-default.webp') }}"
                                                                                             alt="{{ $profile->name }}"
                                                                                             class="img-fluid">
 

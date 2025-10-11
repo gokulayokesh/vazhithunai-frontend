@@ -19,7 +19,7 @@
                                 @endphp
                                 <a href="{{ route('chat.show', $chat->id) }}"
                                     class="list-group-item list-group-item-action d-flex align-items-center">
-                                    <img src="{{ $otherUser->userImages->first()?->image_path ?? asset('assets/img/default-profile.jpg') }}"
+                                    <img src="{{ Storage::url($otherUser->userImages->first()?->image_path) ?? asset('assets/img/default-profile.jpg') }}"
                                         alt="{{ $otherUser->name }}" class="rounded-circle me-2" width="40"
                                         height="40">
                                     <div class="flex-grow-1">

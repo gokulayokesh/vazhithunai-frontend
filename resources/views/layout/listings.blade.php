@@ -388,7 +388,7 @@
                                                                 alt="Featured Agent" class="img-fluid">
                                                         @endif
                                                     @elseif (Auth::user() && (Auth::user()->latestActiveSubscription->plan_code ?? 0) >= 1)
-                                                        <img src="{{ Storage::url($profile->userImages->first()->image_path) }}"
+                                                        <img src="{{ Storage::url($profile->userImages->first()->image_path) ?? asset('assets/img/m-default.webp') }}"
                                                             alt="{{ $profile->user->name }}" class="img-fluid">
                                                     @else
                                                         @if ($profile->genders->value == 'Male')
