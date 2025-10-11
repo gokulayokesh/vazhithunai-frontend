@@ -143,7 +143,7 @@ class LoginController extends Controller
                 if ($profilePictureUrl) {
                     $imageContents = Http::get($profilePictureUrl)->body();
                     $extension = pathinfo(parse_url($profilePictureUrl, PHP_URL_PATH), PATHINFO_EXTENSION) ?: 'jpg';
-                    $filename = 'profile_' . $user->id . '.' . $extension;
+                    $filename = 'profile_'.Str::random(6) . $user->id . '.' . $extension;
                     $path = 'profile_pictures/' . $filename;
 
                     Storage::disk('public')->put($path, $imageContents);
