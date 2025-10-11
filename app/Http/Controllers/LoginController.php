@@ -137,21 +137,17 @@ class LoginController extends Controller
                     'image_path' => $payload['picture'],
                     'type' => 'profile',
                 ]);
-            }else{
-                $userImages = UserImages::firstOrNew(
-                    ['user_id' => $user->id]
-                );
-                if (! $userImages->exists) {
-                    $userImages->user_id = $user->id;
-                    $userImages->image_path = $payload['picture'];
-                    $userImages->save();
-                }
             }
-
-            
-            
             $user->save();
 
+            $userImages = UserImages::firstOrNew(
+                ['user_id' => $user->id]
+            );
+            if (! $userImages->exists) {
+                $userImages->user_id = $user->id;
+                $userImages->image_path = $payload['picture'];
+                $userImages->save();
+            }
             Auth::login($user);
 
             return redirect()->route('home');
