@@ -275,7 +275,7 @@
                                                 <div class="poi-content">
                                                     <span class="poi-name">Father</span>
                                                     <span class="poi-distance">{{ $profile->father_name ?? '-' }}
-                                                        {{ ($profile->father_alive ?? 0) == 0 ? '(Dead)' : '' }}</span>
+                                                        {{ ($profile->father_alive ?? 0) == 0 ? '(Deceased)' : '' }}</span>
                                                     @if ($profile->father_work != '' && $profile->father_work != null)
                                                         <span class="poi-distance"><i
                                                                 class="bi bi-briefcase"></i>{{ $profile->father_work ?? 'N/A' }}</span>
@@ -287,7 +287,7 @@
                                                 <div class="poi-content">
                                                     <span class="poi-name">Mother</span>
                                                     <span class="poi-distance">{{ $profile->mother_name ?? '-' }}
-                                                        {{ ($profile->mother_alive ?? 0) == 0 ? '(Dead)' : '' }}</span>
+                                                        {{ ($profile->mother_alive ?? 0) == 0 ? '(Deceased)' : '' }}</span>
                                                     @if ($profile->mother_work != '' && $profile->mother_work != null)
                                                         <span class="poi-distance"><i
                                                                 class="bi bi-briefcase"></i>{{ $profile->mother_work ?? 'N/A' }}</span>
