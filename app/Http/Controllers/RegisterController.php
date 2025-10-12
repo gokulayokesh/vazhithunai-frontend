@@ -63,7 +63,7 @@ class RegisterController extends Controller
                     'industry' => 'nullable|string|max:255',
                     'work_location' => 'required|string|max:255',
                     'annual_income' => 'nullable|string|max:255',
-                    'experience_years' => 'nullable|integer',
+                    'experience_years' => 'nullable|integer'
                 ];
                 break;
 
@@ -94,7 +94,7 @@ class RegisterController extends Controller
                     'languages_known' => 'nullable|string|max:255',
                     'facebook_profile_url' => 'nullable|string|max:255',
                     'instagram_profile_url' => 'nullable|string|max:255',
-                    'twitter_profile_url' => 'nullable|string|max:255',
+                    'twitter_profile_url' => 'nullable|string|max:255'
                 ];
                 break;
 
@@ -112,7 +112,7 @@ class RegisterController extends Controller
                     'married_brothers' => 'nullable|integer',
                     'married_sisters' => 'nullable|integer',
                     'own_house' => 'required|string|max:50',
-                    'family_notes' => 'nullable|string',
+                    'family_notes' => 'nullable|string'
                 ];
                 break;
 
