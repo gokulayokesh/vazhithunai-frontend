@@ -116,11 +116,11 @@ class UserDetails extends Model
     }
 
     public function favoriteCuisine() {
-        return $this->belongsTo(ReferenceData::class, 'favorite_cuisine')->where('type', 'favoriteCuisine');
+        return $this->belongsTo(ReferenceData::class, 'favorite_cuisine')->where('type', 'cuisines');
     }
 
     public function favoriteMusic() {
-        return $this->belongsTo(ReferenceData::class, 'favorite_music')->where('type', 'favorite_music');
+        return $this->belongsTo(ReferenceData::class, 'favorite_music')->where('type', 'musicGenres');
     }
 
     public function sports() {
