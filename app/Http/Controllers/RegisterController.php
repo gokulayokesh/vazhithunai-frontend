@@ -134,8 +134,8 @@ class RegisterController extends Controller
                     'expectations'         => 'nullable|string',
                     'previous_marriage'    => 'nullable|string',
                     'additional_horoscope' => 'nullable|string',
-                    'profile_picture.*'    => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-                    'horoscope_picture.*'  => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+                    'profile_picture.*'    => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
+                    'horoscope_picture.*'  => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
                 ];
                 break;
 
