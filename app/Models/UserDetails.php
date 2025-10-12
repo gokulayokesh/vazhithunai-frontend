@@ -127,6 +127,14 @@ class UserDetails extends Model
         return $this->belongsTo(ReferenceData::class, 'sports')->where('type', 'sportsFitness');
     }
 
+    public function dietPreference() {
+        return $this->belongsTo(ReferenceData::class, 'diet_preference')->where('type', 'dietaryPreferences');
+    }
+
+    public function petPreference() {
+        return $this->belongsTo(ReferenceData::class, 'pet_preference')->where('type', 'petPreferences');
+    }
+
     
     
     public function getLanguagesKnownValuesAttribute()

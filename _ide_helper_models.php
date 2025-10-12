@@ -506,6 +506,7 @@ namespace App\Models{
  * @property-read \App\Models\ReferenceData|null $bodyType
  * @property-read \App\Models\ReferenceData|null $cities
  * @property-read \App\Models\ReferenceData|null $complexion
+ * @property-read \App\Models\ReferenceData|null $dietPreference
  * @property-read \App\Models\ReferenceData|null $drinkingHabits
  * @property-read \App\Models\ReferenceData|null $educations
  * @property-read \App\Models\ReferenceData|null $employmentType
@@ -519,6 +520,7 @@ namespace App\Models{
  * @property-read \App\Models\ReferenceData|null $heights
  * @property-read \App\Models\ReferenceData|null $maritalStatus
  * @property-read \App\Models\ReferenceData|null $occupationCategory
+ * @property-read \App\Models\ReferenceData|null $petPreference
  * @property-read \App\Models\ReferenceData|null $physicalStatus
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProfileWatchHistory> $profileWatchHistories
  * @property-read int|null $profile_watch_histories_count

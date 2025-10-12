@@ -331,9 +331,9 @@
                                             <h5>Lifestyle Preferences</h5>
                                             <ul class="feature-list">
                                                 <li><i class="bi bi-egg-fried"></i> Diet:
-                                                    {{ $profile->diet_preference ?? 'Not specified' }}</li>
+                                                    {{ $profile->dietPreference->value ?? 'Not specified' }}</li>
                                                 <li><i class="bi bi-person-hearts"></i> Pet:
-                                                    {{ $profile->pet_preference ?? 'Not specified' }}</li>
+                                                    {{ $profile->petPreference->value ?? 'Not specified' }}</li>
                                                 <li><i class="bi bi-cup-straw"></i> Drinking:
                                                     {{ $profile->drinkingHabits->value ?? 'Not specified' }}</li>
                                                 <li><i class="bi bi-lungs"></i> Smoking:
