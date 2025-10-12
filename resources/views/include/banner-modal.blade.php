@@ -6,7 +6,7 @@
                 <button type="button"
                     style="margin-left: 47%;background-color: white;padding: 5px;opacity: unset;border-radius: 25px;font-size: smaller;"
                     class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <img src="{{ asset('assets/img/banner/banner2.png') }}"
+                <img src="{{ asset('assets/img/banner/Banner2.png') }}"
                     style="height: 500px; width: 100%; object-fit: contain;" alt="Welcome Banner"
                     class="img-fluid rounded" />
             </div>
