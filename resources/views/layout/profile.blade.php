@@ -144,8 +144,9 @@
                                 <div class="property-header">
                                     <h1 class="property-title">{{ $profile->user->name }}</h1>
                                     <div class="property-meta">
-                                        <span class="address"><i class="bi bi-geo-alt"></i> {{ $profile->city->name }},
-                                            {{ $profile->city->state->name }}</span>
+                                        <span class="address"><i class="bi bi-geo-alt"></i>
+                                            {{ $profile->cities->value ?? '' }}
+                                            {{ $profile->cities && $profile->cities->state ? ', ' . $profile->cities->state->value : '' }}</span>
                                         <span class="listing-id">Profile ID: #{{ $profile->user->identifier }}</span>
                                     </div>
                                 </div>
