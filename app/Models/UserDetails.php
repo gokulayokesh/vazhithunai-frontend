@@ -40,7 +40,7 @@ class UserDetails extends Model
 
     public function cities()
     {
-        return $this->belongsTo(ReferenceData::class, 'city')->where('type', 'cities');
+        return $this->belongsTo(Referen ceData::class, 'city')->where('type', 'cities');
     }
 
     public function occupationCategory() {
