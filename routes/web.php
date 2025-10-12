@@ -70,7 +70,7 @@ Route::post('/pre-register', [RegisterController::class, 'preRegistration'])->na
 
 Route::middleware('auth')->group(function () {
 
-    Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+    Route::post('/register', [RegisterController::class, 'storeStep'])->name('register.store');
 
     Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 
@@ -101,6 +101,9 @@ Route::middleware('auth')->group(function () {
 
     // Reward a referral (admin-only ideally)
     Route::post('/referral/reward/{referral}', [ReferralController::class, 'reward'])->name('referral.reward');
+
+    Route::get('/user-details', [RegisterController::class, 'getUserDetails']);
+
 });
 
 Route::get('/verify-email/{token}', [LoginController::class, 'verifyEmail'])->name('verify.email');

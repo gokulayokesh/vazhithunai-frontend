@@ -379,6 +379,7 @@ namespace App\Models{
  * @property string|null $otp
  * @property string|null $otp_created_at
  * @property int $profile_completed
+ * @property string|null $profile_step
  * @property string|null $show_password
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -418,6 +419,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereOtpCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereProfileCompleted($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereProfileStep($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereShowPassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
@@ -432,31 +434,33 @@ namespace App\Models{
  * @property int $user_id
  * @property string $birth_place
  * @property string $dob
- * @property int|null $city_id
+ * @property int|null $age
+ * @property \App\Models\City|null $city
  * @property string|null $birth_time
- * @property string $highest_education
+ * @property string|null $highest_education
  * @property string|null $education_field
  * @property string|null $specialization
  * @property string|null $institution
  * @property string|null $completion_year
  * @property string|null $additional_qualifications
- * @property string $occupation_category
- * @property string $job_title
+ * @property string|null $occupation_category
+ * @property string|null $job_title
  * @property string|null $company_name
  * @property string|null $employment_type
  * @property \App\Models\ReferenceData|null $industry
- * @property string $work_location
+ * @property string|null $work_location
  * @property string|null $annual_income
  * @property int|null $experience_years
- * @property string $gender
- * @property string $height
+ * @property string|null $gender
+ * @property string|null $height
  * @property string|null $color
- * @property string $caste
- * @property string $marital_status
- * @property string $address
+ * @property string|null $caste
+ * @property \App\Models\ReferenceData|null $religion
+ * @property string|null $marital_status
+ * @property string|null $address
  * @property string|null $body_type
  * @property string|null $physical_status
- * @property string $mother_tongue
+ * @property string|null $mother_tongue
  * @property string|null $interests
  * @property string|null $hobbies
  * @property string|null $favorite_cuisine
@@ -474,24 +478,24 @@ namespace App\Models{
  * @property string|null $facebook_profile_url
  * @property string|null $instagram_profile_url
  * @property string|null $twitter_profile_url
- * @property string $family_status
+ * @property string|null $family_status
  * @property string|null $family_god
- * @property string $father_alive
- * @property string $mother_alive
- * @property string $parent_mobile
+ * @property string|null $father_alive
+ * @property string|null $mother_alive
+ * @property string|null $parent_mobile
  * @property string|null $father_work
  * @property string|null $mother_work
  * @property int|null $brothers_count
  * @property int|null $sisters_count
  * @property int|null $married_brothers
  * @property int|null $married_sisters
- * @property string $own_house
+ * @property string|null $own_house
  * @property string|null $family_notes
- * @property string $birth_star
- * @property string $rahu_ketu
- * @property string $chevvai
- * @property string $zodiac_sign
- * @property string $birth_lagnam
+ * @property string|null $birth_star
+ * @property string|null $rahu_ketu
+ * @property string|null $chevvai
+ * @property string|null $zodiac_sign
+ * @property string|null $birth_lagnam
  * @property string|null $expectations
  * @property string|null $previous_marriage
  * @property string|null $additional_horoscope
@@ -500,7 +504,6 @@ namespace App\Models{
  * @property-read \App\Models\ReferenceData|null $birthLagnam
  * @property-read \App\Models\ReferenceData|null $birthStars
  * @property-read \App\Models\ReferenceData|null $bodyType
- * @property-read \App\Models\City|null $city
  * @property-read \App\Models\ReferenceData|null $complexion
  * @property-read \App\Models\ReferenceData|null $drinkingHabits
  * @property-read \App\Models\ReferenceData|null $educations
@@ -514,7 +517,6 @@ namespace App\Models{
  * @property-read \App\Models\ReferenceData|null $physicalStatus
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProfileWatchHistory> $profileWatchHistories
  * @property-read int|null $profile_watch_histories_count
- * @property-read \App\Models\ReferenceData|null $religion
  * @property-read \App\Models\ReferenceData|null $salaries
  * @property-read \App\Models\ReferenceData|null $smokingHabits
  * @property-read \App\Models\User $user
@@ -529,6 +531,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereAdditionalHoroscope($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereAdditionalQualifications($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereAge($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereAnnualIncome($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereBirthLagnam($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereBirthPlace($value)
@@ -538,7 +541,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereBrothersCount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereCaste($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereChevvai($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereCityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereColor($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereCompanyName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereCompletionYear($value)
@@ -585,6 +588,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails wherePhysicalStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails wherePreviousMarriage($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereRahuKetu($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereReligion($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereSistersCount($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereSmokingHabits($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereSpecialization($value)

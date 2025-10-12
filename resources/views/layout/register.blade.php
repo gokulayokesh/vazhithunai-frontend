@@ -41,7 +41,7 @@
                             <div class="card-body">
 
                                 {{-- Step 0 --}}
-                                <section class="form-step active" data-step="0">
+                                <section class="form-step active" data-step="birth">
                                     <h5>பிறப்பு விவரங்கள் / Birth Details
                                     </h5>
                                     <hr>
@@ -85,7 +85,8 @@
                                                 <span class="input-group-text" id="basic-addon1"><span
                                                         class="bi bi-calendar-heart"></span></span>
                                                 <input type="text" id="age" name="age" class="form-control"
-                                                    disabled aria-describedby="basic-addon1">
+                                                    value="{{ Auth::user()->userDetails->age ?? '' }}" disabled
+                                                    aria-describedby="basic-addon1">
                                             </div>
                                         </div>
                                     </div>
@@ -99,6 +100,23 @@
                                                     aria-describedby="basic-addon1" required name="birth_place">
                                             </div>
                                             <div class="error-text">Birth Place is required</div>
+                                        </div>
+
+                                        <!-- பாலினம் / Gender -->
+                                        <div class="form-group col-12 col-md-3 mb-3">
+                                            <label class="form-label" for="gender">பாலினம் / Gender</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><span
+                                                        class="bi bi-gender-ambiguous"></span></span>
+                                                <select class="form-control" id="gender" required name="gender">
+                                                    <option value="">தேர்வு செய்யவும் / Select</option>
+                                                    @foreach ($referenceData['genders'] as $refData)
+                                                        <option value="{{ $refData['id'] }}">
+                                                            {{ $refData['value'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="error-text">Gender is required</div>
                                         </div>
 
                                     </div>
@@ -313,30 +331,13 @@
                                 </section>
 
                                 {{-- Step 1 --}}
-                                <section class="form-step" data-step="1">
+                                <section class="form-step" data-step="personal">
                                     <h5>சொந்த விவரங்கள் / Personal Details
                                     </h5>
                                     <hr>
                                     <br>
 
                                     <div class="row">
-                                        <!-- பாலினம் / Gender -->
-                                        <div class="form-group col-12 col-md-3 mb-3">
-                                            <label class="form-label" for="gender">பாலினம் / Gender</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text"><span
-                                                        class="bi bi-gender-ambiguous"></span></span>
-                                                <select class="form-control" id="gender" required name="gender">
-                                                    <option value="">தேர்வு செய்யவும் / Select</option>
-                                                    @foreach ($referenceData['genders'] as $refData)
-                                                        <option value="{{ $refData['id'] }}">
-                                                            {{ $refData['value'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="error-text">Gender is required</div>
-                                        </div>
-
                                         <!-- ஜாதகரின் உயரம் / Height -->
                                         <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="height">ஜாதகரின் உயரம் / Height</label>
@@ -748,7 +749,7 @@
                                 </section>
 
                                 {{-- Step 2 --}}
-                                <section class="form-step" data-step="2">
+                                <section class="form-step" data-step="family">
                                     <div class="row">
                                         <!-- குடும்ப நிலை / Family Status -->
                                         <div class="form-group col-12 col-md-3 mb-3">
@@ -928,7 +929,7 @@
                                 </section>
 
                                 {{-- Step 3 --}}
-                                <section class="form-step" data-step="3">
+                                <section class="form-step" data-step="horoscope">
                                     <div class="row">
                                         <!-- ஜென்ம நட்சத்திரம் / Birth Star -->
                                         <div class="form-group col-12 col-md-3 mb-3">
@@ -1106,13 +1107,215 @@
 @endsection
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        console.log('hi');
+        $("#highest_education").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#occupation_category").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#employment_type").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#industry").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#annual_income").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#education_field").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#body_type").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#color").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#body_type").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#marital_status").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#physical_status").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#interests").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#hobbies").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#fav_cuisine").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#fav_music").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#sports").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#pet_pref").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#travel_pref").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#diet").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#smoking").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#drinking").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#languages").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#mother_tongue").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#height").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#specialization").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#completion_year").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#experience_years").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#gender").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#religion").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#city").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#family_status").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#father_alive").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#mother_alive").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#own_house").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+
+        $("#birth_star").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#rahu_ketu").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#chevvai").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#zodiac_sign").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
+        $("#birth_lagnam").select2({
+            placeholder: "தேர்வு செய்யவும் / Select",
+            width: "100%",
+        });
         const form = document.getElementById("multiStepForm");
         const steps = Array.from(document.querySelectorAll(".form-step"));
         const headerItems = Array.from(document.querySelectorAll(".step-item"));
         const prevBtn = document.getElementById("prevBtn");
         const nextBtn = document.getElementById("nextBtn");
         let current = 0;
+
+        function prefillForm(data) {
+            console.log(data);
+            Object.entries(data).forEach(([key, value]) => {
+                console.log(key, value);
+                const input = document.querySelector(`[name="${key}"]`);
+                if (!input) return;
+
+                const isSelect2 = $(input).hasClass("select2-hidden-accessible");
+                const isMultiple = input.hasAttribute("multiple");
+                if (isSelect2 && isMultiple) {
+                    console.log(
+                        'ajsdlfkjasldkfjalsdkfjlasdkfjlasdkfjlakdjflaskdfjalsdfkjalsdfkjalsdfkjasdlfkj'
+                    );
+                    // Multi-select with comma-separated values
+                    if (typeof value === "string") {
+                        const valuesArray = value.split(',').map(v => v.trim());
+                        console.log(valuesArray);
+                        $(input).val(valuesArray).trigger("change");
+                    } else if (Array.isArray(value)) {
+                        $(input).val(value).trigger("change");
+                    }
+                } else if (isSelect2) {
+                    // Single select
+                    $(input).val(value).trigger("change");
+                } else if (input.tagName === "TEXTAREA" || input.tagName === "INPUT") {
+                    input.value = value ?? '';
+                }
+            });
+        }
+
+
+
+        $.ajax({
+            type: "GET",
+            url: "../user-details", // Adjust if needed
+            success: function(response) {
+                if (response.status === 200) {
+                    const data = response.data;
+                    prefillForm(data);
+                }
+            },
+            error: function(xhr) {
+                console.error("Failed to load user details:", xhr.responseText);
+            }
+        });
 
         // Initialize
         updateUI();
@@ -1143,58 +1346,75 @@
 
         function go(dir) {
             if (dir === 1 && !validateStep(current)) return;
+
             const nextIndex = current + dir;
-            if (nextIndex < 0) return;
-            if (nextIndex >= steps.length) {
-                // Submit safely
-                var termsandconditionsAccepted = document.getElementById('terms_condition').checked;
-                if (!termsandconditionsAccepted) {
-                    alert("Please accept the terms and conditions.");
-                    return;
-                }
-                if (validateStep(current)) {
-                    // form.submit();
-                    const formData = new FormData(form);
+            if (nextIndex < 0 || nextIndex > steps.length) return;
+
+            if (dir === 1) {
+                const formData = new FormData();
+                const stepEl = steps[current];
+                const inputs = stepEl.querySelectorAll(".form-control, input[type='file'], select, textarea");
+
+                inputs.forEach(input => {
+                    if (input.type === "file") {
+                        for (let i = 0; i < input.files.length; i++) {
+                            formData.append(input.name, input.files[i]);
+                        }
+                    } else {
+                        formData.append(input.name, input.value);
+                    }
+                });
+
+                formData.append("step", stepEl.dataset.step);
+                formData.append("_token", $('meta[name="csrf-token"]').attr("content"));
+
+                if (nextIndex >= steps.length) {
+                    const termsAccepted = document.getElementById('terms_condition').checked;
+                    if (!termsAccepted) {
+                        alert("Please accept the terms and conditions.");
+                        return;
+                    }
 
                     const profileFiles = document.getElementById('profile_picture').files;
                     for (let i = 0; i < profileFiles.length; i++) {
-                        formData.append("profile_picture1[]", profileFiles[i]);
+                        formData.append("profile_picture[]", profileFiles[i]);
                     }
 
-                    // Add horoscope images manually
                     const horoscopeFiles = document.getElementById('horoscope_picture').files;
                     for (let i = 0; i < horoscopeFiles.length; i++) {
-                        formData.append("horoscope_picture1[]", horoscopeFiles[i]);
+                        formData.append("horoscope_picture[]", horoscopeFiles[i]);
                     }
+                }
 
-                    $.ajax({
-                        type: "POST",
-                        url: "../register", // Your actual endpoint
-                        headers: {
-                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-                        },
-                        data: formData,
-                        processData: false, // Important for FormData
-                        contentType: false, // Important for FormData
-                        success: function(response) {
-                            console.log(response);
-                            if (response.status == 200) {
-                                // showToast(response.message);
+                $.ajax({
+                    type: "POST",
+                    url: "../register",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        console.log(response);
+                        if (response.status === 200) {
+                            if (nextIndex >= steps.length) {
                                 const modalElement = document.getElementById('profileSuccessModal');
                                 const modal = new bootstrap.Modal(modalElement);
                                 modal.show();
                             } else {
-                                showToast(response.message, 'error');
+                                showToast(response.message);
+                                showStep(nextIndex);
                             }
-                        },
-                        error: function(xhr) {
-                            console.error("AJAX Error:", xhr.responseText);
+                        } else {
+                            showToast(response.message, 'error');
                         }
-                    });
-                }
-                return;
+                    },
+                    error: function(xhr) {
+                        console.error("AJAX Error:", xhr.responseText);
+                    }
+                });
+            } else {
+                // Just navigate back without submitting
+                showStep(nextIndex);
             }
-            showStep(nextIndex);
         }
 
         function showStep(index) {
@@ -1259,24 +1479,6 @@
 
             return valid;
         }
-
-        // document.getElementById('birth_date').addEventListener('change', function() {
-        //     const dob = new Date(this.value);
-        //     if (!isNaN(dob)) {
-        //         const today = new Date();
-        //         let age = today.getFullYear() - dob.getFullYear();
-        //         const monthDiff = today.getMonth() - dob.getMonth();
-
-        //         // Adjust if birthday hasn't occurred yet this year
-        //         if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
-        //             age--;
-        //         }
-
-        //         document.getElementById('age').value = age;
-        //     } else {
-        //         document.getElementById('age').value = '';
-        //     }
-        // });
 
         // Set max date to today minus 18 years
         const dobInput = document.getElementById('birth_date');

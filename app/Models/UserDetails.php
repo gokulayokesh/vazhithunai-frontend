@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class UserDetails extends Model
 {
     protected $fillable = [
-        'user_id', 'birth_place', 'dob', 'birth_time',
+        'user_id', 'birth_place', 'dob', 'birth_time','age', 'religion', 'complexion',
         'highest_education', 'education_field', 'specialization', 'institution', 'completion_year', 'additional_qualifications',
         'occupation_category', 'job_title', 'company_name', 'employment_type', 'industry', 'work_location', 'annual_income', 'experience_years',
-        'gender', 'height', 'color', 'caste', 'marital_status', 'city_id', 'address', 'body_type', 'physical_status', 'mother_tongue', 'interests', 
+        'gender', 'height', 'color', 'caste', 'marital_status', 'city', 'address', 'body_type', 'physical_status', 'mother_tongue', 'interests', 
         'hobbies', 'favorite_cuisine', 'favorite_music', 'sports', 'pet_preference', 'travel_preference', 'diet_preference', 'smoking_habits', 'drinking_habits', 
         'languages_known', 'life_motto', 'email', 'mobile', 'facebook_profile_url', 'instagram_profile_url', 'twitter_profile_url',
         'family_status', 'family_god', 'father_alive', 'mother_alive', 'parent_mobile', 'father_work', 'mother_work',
