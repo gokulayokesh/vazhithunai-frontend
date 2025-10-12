@@ -123,7 +123,7 @@ class UserDetails extends Model
         return $this->belongsTo(ReferenceData::class, 'favorite_music')->where('type', 'musicGenres');
     }
 
-    public function sports() {
+    public function sportsFitness() {
         return $this->belongsTo(ReferenceData::class, 'sports')->where('type', 'sportsFitness');
     }
 

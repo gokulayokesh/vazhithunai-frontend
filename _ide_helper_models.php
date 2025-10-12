@@ -465,7 +465,7 @@ namespace App\Models{
  * @property string|null $hobbies
  * @property string|null $favorite_cuisine
  * @property string|null $favorite_music
- * @property \App\Models\ReferenceData|null $sports
+ * @property string|null $sports
  * @property string|null $pet_preference
  * @property string|null $travel_preference
  * @property string|null $diet_preference
@@ -524,6 +524,7 @@ namespace App\Models{
  * @property-read int|null $profile_watch_histories_count
  * @property-read \App\Models\ReferenceData|null $salaries
  * @property-read \App\Models\ReferenceData|null $smokingHabits
+ * @property-read \App\Models\ReferenceData|null $sportsFitness
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserHoroscopeImages> $userHoroscopeImages
  * @property-read int|null $user_horoscope_images_count
