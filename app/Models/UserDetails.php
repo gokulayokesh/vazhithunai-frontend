@@ -124,7 +124,7 @@ class UserDetails extends Model
     }
 
     public function sports() {
-        return $this->belongsTo(ReferenceData::class, 'sports')->where('type', 'sports');
+        return $this->belongsTo(ReferenceData::class, 'sports')->where('type', 'sportsFitness');
     }
 
     
