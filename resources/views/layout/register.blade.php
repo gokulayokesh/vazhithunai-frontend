@@ -780,6 +780,16 @@
 
                                         <!-- தகப்பனார் / Father - உண்டு / இல்லை -->
                                         <div class="form-group col-12 col-md-3 mb-3">
+                                            <label class="form-label" for="father_name">தகப்பனார் / Father Name</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><span class="bi bi-person"></span></span>
+                                                <input type="text" class="form-control" id="father_name"
+                                                    name="father_name" required>
+                                            </div>
+                                            <div class="error-text">Father Name is required</div>
+                                        </div>
+
+                                        <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="father_alive">தகப்பனார் / Father</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-person"></span></span>
@@ -794,6 +804,16 @@
                                         </div>
 
                                         <!-- தாயார் / Mother - உண்டு / இல்லை -->
+                                        <div class="form-group col-12 col-md-3 mb-3">
+                                            <label class="form-label" for="mother_name">தாயார் / Mother Name</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><span class="bi bi-person"></span></span>
+                                                <input type="text" class="form-control" id="mother_name"
+                                                    name="mother_name" required>
+                                            </div>
+                                            <div class="error-text">Mother Name is required</div>
+                                        </div>
+
                                         <div class="form-group col-12 col-md-3 mb-3">
                                             <label class="form-label" for="mother_alive">தாயார் / Mother</label>
                                             <div class="input-group">

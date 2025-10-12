@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Models;
@@ -13,7 +14,7 @@ class UserDetails extends Model
         'gender', 'height', 'color', 'caste', 'marital_status', 'city', 'address', 'body_type', 'physical_status', 'mother_tongue', 'interests', 
         'hobbies', 'favorite_cuisine', 'favorite_music', 'sports', 'pet_preference', 'travel_preference', 'diet_preference', 'smoking_habits', 'drinking_habits', 
         'languages_known', 'life_motto', 'email', 'mobile', 'facebook_profile_url', 'instagram_profile_url', 'twitter_profile_url',
-        'family_status', 'family_god', 'father_alive', 'mother_alive', 'parent_mobile', 'father_work', 'mother_work',
+        'family_status', 'family_god', 'father_name', 'mother_name','father_alive', 'mother_alive', 'parent_mobile', 'father_work', 'mother_work',
         'brothers_count', 'sisters_count', 'married_brothers', 'married_sisters', 'own_house', 'family_notes',
         'birth_star', 'rahu_ketu', 'chevvai', 'zodiac_sign', 'birth_lagnam', 'expectations', 'previous_marriage', 'additional_horoscope',
     ];

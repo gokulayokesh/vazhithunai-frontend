@@ -273,8 +273,11 @@
                                             <div class="poi-item">
                                                 <i class="bi bi-people"></i>
                                                 <div class="poi-content">
-                                                    <span class="poi-name">Father’s Occupation</span>
-                                                    <span class="poi-distance">{{ $profile->father_work ?? 'N/A' }}</span>
+                                                    <span class="poi-name">Father</span>
+                                                    <span
+                                                        class="poi-distance">{{ $profile->father_alive ?? 'N/A' }}</span>
+                                                    <span class="poi-distance"><i class="bi bi-briefcase"></i>
+                                                        {{ $profile->father_work ?? 'N/A' }}</span>
                                                 </div>
                                             </div>
                                             <div class="poi-item">
