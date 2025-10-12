@@ -511,6 +511,7 @@ namespace App\Models{
  * @property-read \App\Models\ReferenceData|null $employmentType
  * @property-read \App\Models\ReferenceData|null $familyStatus
  * @property-read \App\Models\ReferenceData|null $genders
+ * @property-read mixed $hobbies_list
  * @property-read mixed $languages_known_values
  * @property-read \App\Models\ReferenceData|null $heights
  * @property-read \App\Models\ReferenceData|null $maritalStatus

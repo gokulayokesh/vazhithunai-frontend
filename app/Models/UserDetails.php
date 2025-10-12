@@ -121,7 +121,7 @@ class UserDetails extends Model
     {
         $ids = explode(',', $this->languages_known);
 
-        return \App\Models\ReferenceData::where('type', 'languagesKnown')
+        return ReferenceData::where('type', 'languagesKnown')
             ->whereIn('id', $ids)
             ->pluck('value')
             ->toArray();
@@ -190,5 +190,10 @@ class UserDetails extends Model
         return $host;
     }
 
+    public function getHobbiesListAttribute() {
+        $ids = explode(',', $this->hobbies);
+        return ReferenceData::whereIn('id', $ids)->where('type', 'hobbies')->get();
+    }
+    
     
 }
