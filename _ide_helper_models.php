@@ -435,7 +435,7 @@ namespace App\Models{
  * @property string $birth_place
  * @property string $dob
  * @property int|null $age
- * @property \App\Models\City|null $city
+ * @property int|null $city
  * @property string|null $birth_time
  * @property string|null $highest_education
  * @property string|null $education_field
@@ -504,6 +504,7 @@ namespace App\Models{
  * @property-read \App\Models\ReferenceData|null $birthLagnam
  * @property-read \App\Models\ReferenceData|null $birthStars
  * @property-read \App\Models\ReferenceData|null $bodyType
+ * @property-read \App\Models\ReferenceData|null $cities
  * @property-read \App\Models\ReferenceData|null $complexion
  * @property-read \App\Models\ReferenceData|null $drinkingHabits
  * @property-read \App\Models\ReferenceData|null $educations

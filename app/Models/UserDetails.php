@@ -38,9 +38,9 @@ class UserDetails extends Model
         return $this->hasMany(UserHoroscopeImages::class, 'user_id', 'user_id');
     }
 
-    public function city()
+    public function cities()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(ReferenceData::class, 'city')->where('type', 'cities');
     }
 
     public function occupationCategory() {

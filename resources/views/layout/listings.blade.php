@@ -454,27 +454,27 @@
                                                     </div>
 
                                                     <h4 class="property-title">
-                                                        {{ $profile->gender ?? '' }} -
+                                                        {{ $profile->genders->value ?? '' }} -
                                                         {{ \Carbon\Carbon::parse($profile->dob)->age }} yrs
                                                     </h4>
-
                                                     <p class="property-address">
                                                         <i class="bi bi-geo-alt"></i>
-                                                        {{ $profile->city->name }}{{ $profile->city->state->name ? ', ' . $profile->city->state->name : '' }}
+                                                        {{ $profile->cities->value ?? '' }}
+                                                        {{ $profile->cities && $profile->cities->state ? ', ' . $profile->cities->state->value : '' }}
                                                     </p>
 
                                                     <div class="property-specs">
                                                         <div class="spec-item">
                                                             <i class="bi bi-rulers"></i>
-                                                            <span>{{ $profile->height }}</span>
+                                                            <span>{{ $profile->heights->value ?? '' }}</span>
                                                         </div>
                                                         <div class="spec-item">
                                                             <i class="bi bi-mortarboard"></i>
-                                                            <span>{{ $profile->highest_education }}</span>
+                                                            <span>{{ $profile->educations->value ?? '' }}</span>
                                                         </div>
                                                         <div class="spec-item">
                                                             <i class="bi bi-briefcase"></i>
-                                                            <span>{{ $profile->occupation_category }}</span>
+                                                            <span>{{ $profile->occupationCategory->value ?? '' }}</span>
                                                         </div>
                                                     </div>
                                                 </a>
