@@ -93,6 +93,25 @@
                                                 </div>
                                             </div>
 
+                                            {{-- Password conditions --}}
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="alert alert-info mb-2" style="font-size: 0.9rem;">
+                                                        Password must meet the following criteria:
+                                                        <ul class="mb-0 text-start"
+                                                            style="list-style-type: disc; padding-left: 20px;">
+                                                            <li>At least 8 characters long</li>
+                                                            <li>Contains at least one uppercase letter (A-Z)</li>
+                                                            <li>Contains at least one lowercase letter (a-z)</li>
+                                                            <li>Contains at least one number (0-9)</li>
+                                                            <li>Contains at least one special character
+                                                                (!@#$%^&*()_+[]{}|;:,.<>?)</li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
                                             <div class="form-check mb-4">
                                                 <input class="form-check-input" type="checkbox" id="termsCheck"
                                                     name="termsCheck" required="">
