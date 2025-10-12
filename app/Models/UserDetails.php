@@ -18,6 +18,17 @@ class UserDetails extends Model
         'birth_star', 'rahu_ketu', 'chevvai', 'zodiac_sign', 'birth_lagnam', 'expectations', 'previous_marriage', 'additional_horoscope',
     ];
 
+    // app/Models/UserDetails.php
+    public function toArray()
+    {
+        $attributes = parent::toArray();
+
+        return array_map(function ($value) {
+            return is_string($value) ? mb_strtoupper($value) : $value;
+        }, $attributes);
+    }
+
+
     public function user()
     {
         return $this->belongsTo(User::class);

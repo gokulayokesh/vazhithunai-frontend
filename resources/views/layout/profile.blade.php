@@ -632,11 +632,11 @@
                                         <div class="poi-item">
                                             <i class="bi bi-star"></i>
                                             <div class="poi-content">
-                                                <span class="poi-name">Star -
+                                                <span class="poi-name">Star :
                                                     {{ $profile->birthStars->value . ' - ' . $profile->birthStars->tamil_name }}</span>
-                                                <span class="poi-distance">Zodiac:
+                                                <span class="poi-name">Zodiac :
                                                     {{ $profile->zodiacs->value . ' - ' . $profile->zodiacs->tamil_name }}</span>
-                                                <span class="poi-distance">Lagnam:
+                                                <span class="poi-distance">Lagnam :
                                                     {{ $profile->birthLagnam->value . ' - ' . $profile->birthLagnam->tamil_name }}</span>
                                             </div>
                                         </div>
