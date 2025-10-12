@@ -736,12 +736,11 @@
 
                                         <!-- Life Motto -->
                                         <div class="form-group col-12 col-md-6 mb-3">
-                                            <label class="form-label" for="life_motto">வாழ்க்கை குறிக்கோள் / Life
-                                                Motto</label>
+                                            <label class="form-label" for="life_motto">உங்களை பற்றி / About You</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-quote"></span></span>
                                                 <textarea type="text" class="form-control" id="life_motto" name="life_motto"
-                                                    placeholder="உங்கள் வாழ்க்கை குறிக்கோள் / Your life motto">
+                                                    placeholder="உங்களை பற்றி / About You">
                                                 </textarea>
                                             </div>
                                         </div>
@@ -1032,7 +1031,7 @@
 
                                         <!-- ஜாதகம் படம் / Horoscope Picture -->
                                         <div class="form-group col-12 col-md-4 mb-3">
-                                            <label class="form-label" for="horoscope_picture">ஜாதகம் படம் / Horoscope
+                                            <label class="form-label" for="horoscope_picture">ஜாதக படம் / Horoscope
                                                 Picture</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span class="bi bi-image"></span></span>
@@ -1043,8 +1042,8 @@
 
                                         <!-- விண்ணப்பதாரர் எதிர்பார்க்கும் தகுதி / Expectations -->
                                         <div class="form-group col-12">
-                                            <label class="form-label" for="expectations">விண்ணப்பதாரர் எதிர்பார்க்கும்
-                                                தகுதி / Expectations</label>
+                                            <label class="form-label" for="expectations">எதிர்பார்ப்புகள் /
+                                                Expectations</label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><span
                                                         class="bi bi-chat-left-text"></span></span>

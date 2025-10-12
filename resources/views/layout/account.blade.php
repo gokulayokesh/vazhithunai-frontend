@@ -1427,8 +1427,8 @@
 
                                                     <!-- Life Motto -->
                                                     <div class="col-md-12">
-                                                        <label for="life_motto" class="form-label">வாழ்க்கை குறிக்கோள் /
-                                                            Your life motto</label>
+                                                        <label for="life_motto" class="form-label">உங்களை பற்றி /
+                                                            About You</label>
                                                         <textarea class="form-control" id="life_motto" name="life_motto" rows="3">{{ $user->life_motto }}</textarea>
                                                     </div>
 
@@ -1542,91 +1542,96 @@
                                                 <button type="submit" class="btn-save">Save Changes</button>
                                             </div>
 
-                                            <!-- Email Preferences -->
-                                            <div class="settings-section" data-aos="fade-up" data-aos-delay="100">
-                                                <h3>Email Preferences</h3>
-                                                <div class="preferences-list">
-                                                    <div class="preference-item">
-                                                        <div class="preference-info">
-                                                            <h4>Order Updates</h4>
-                                                            <p>Receive notifications about your order status</p>
+                                            @if (0)
+                                                <!-- Email Preferences -->
+                                                <div class="settings-section" data-aos="fade-up" data-aos-delay="100">
+                                                    <h3>Email Preferences</h3>
+                                                    <div class="preferences-list">
+                                                        <div class="preference-item">
+                                                            <div class="preference-info">
+                                                                <h4>Order Updates</h4>
+                                                                <p>Receive notifications about your order status</p>
+                                                            </div>
+                                                            <div class="form-check form-switch">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="orderUpdates" checked="">
+                                                            </div>
                                                         </div>
-                                                        <div class="form-check form-switch">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                id="orderUpdates" checked="">
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="preference-item">
-                                                        <div class="preference-info">
-                                                            <h4>Promotions</h4>
-                                                            <p>Receive emails about new promotions and deals</p>
+                                                        <div class="preference-item">
+                                                            <div class="preference-info">
+                                                                <h4>Promotions</h4>
+                                                                <p>Receive emails about new promotions and deals</p>
+                                                            </div>
+                                                            <div class="form-check form-switch">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="promotions">
+                                                            </div>
                                                         </div>
-                                                        <div class="form-check form-switch">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                id="promotions">
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="preference-item">
-                                                        <div class="preference-info">
-                                                            <h4>Newsletter</h4>
-                                                            <p>Subscribe to our weekly newsletter</p>
-                                                        </div>
-                                                        <div class="form-check form-switch">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                id="newsletter" checked="">
+                                                        <div class="preference-item">
+                                                            <div class="preference-info">
+                                                                <h4>Newsletter</h4>
+                                                                <p>Subscribe to our weekly newsletter</p>
+                                                            </div>
+                                                            <div class="form-check form-switch">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="newsletter" checked="">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <!-- Security Settings -->
-                                            <div class="settings-section" data-aos="fade-up" data-aos-delay="200">
-                                                <h3>Security</h3>
-                                                <form class="php-email-form settings-form">
-                                                    <div class="row g-3">
-                                                        <div class="col-md-12">
-                                                            <label for="currentPassword" class="form-label">Current
-                                                                Password</label>
-                                                            <input type="password" class="form-control"
-                                                                id="currentPassword" required="">
+                                                <!-- Security Settings -->
+                                                <div class="settings-section" data-aos="fade-up" data-aos-delay="200">
+                                                    <h3>Security</h3>
+                                                    <form class="php-email-form settings-form">
+                                                        <div class="row g-3">
+                                                            <div class="col-md-12">
+                                                                <label for="currentPassword" class="form-label">Current
+                                                                    Password</label>
+                                                                <input type="password" class="form-control"
+                                                                    id="currentPassword" required="">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="newPassword" class="form-label">New
+                                                                    Password</label>
+                                                                <input type="password" class="form-control"
+                                                                    id="newPassword" required="">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="confirmPassword" class="form-label">Confirm
+                                                                    Password</label>
+                                                                <input type="password" class="form-control"
+                                                                    id="confirmPassword" required="">
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <label for="newPassword" class="form-label">New
-                                                                Password</label>
-                                                            <input type="password" class="form-control"
-                                                                id="newPassword" required="">
+
+                                                        <div class="form-buttons">
+                                                            <button type="submit" class="btn-save">Update
+                                                                Password</button>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <label for="confirmPassword" class="form-label">Confirm
-                                                                Password</label>
-                                                            <input type="password" class="form-control"
-                                                                id="confirmPassword" required="">
+
+                                                        <div class="loading">Loading</div>
+                                                        <div class="error-message"></div>
+                                                        <div class="sent-message">Your password has been updated
+                                                            successfully!
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-buttons">
-                                                        <button type="submit" class="btn-save">Update Password</button>
-                                                    </div>
-
-                                                    <div class="loading">Loading</div>
-                                                    <div class="error-message"></div>
-                                                    <div class="sent-message">Your password has been updated successfully!
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                            <!-- Delete Account -->
-                                            <div class="settings-section danger-zone" data-aos="fade-up"
-                                                data-aos-delay="300">
-                                                <h3>Delete Account</h3>
-                                                <div class="danger-zone-content">
-                                                    <p>Once you delete your account, there is no going back. Please be
-                                                        certain.</p>
-                                                    <button type="button" class="btn-danger">Delete Account</button>
+                                                    </form>
                                                 </div>
-                                            </div>
+
+                                                <!-- Delete Account -->
+                                                <div class="settings-section danger-zone" data-aos="fade-up"
+                                                    data-aos-delay="300">
+                                                    <h3>Delete Account</h3>
+                                                    <div class="danger-zone-content">
+                                                        <p>Once you delete your account, there is no going back. Please be
+                                                            certain.</p>
+                                                        <button type="button" class="btn-danger">Delete
+                                                            Account</button>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
