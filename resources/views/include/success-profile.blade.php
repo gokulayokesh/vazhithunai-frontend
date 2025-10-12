@@ -15,7 +15,8 @@
                 <p class="text-muted">Once verification is done, your profile will be listed publicly.</p>
             </div>
             <div class="modal-footer border-0">
-                <a href="/" type="button" class="btn btn-success" data-bs-dismiss="modal">Awesome!</a>
+                <a href="{{ url('/') }}" type="button" class="btn btn-success"
+                    data-bs-dismiss="modal">Awesome!</a>
             </div>
         </div>
     </div>
