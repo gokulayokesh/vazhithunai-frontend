@@ -481,7 +481,9 @@ namespace App\Models{
  * @property string|null $family_status
  * @property string|null $family_god
  * @property string|null $father_alive
+ * @property string|null $father_name
  * @property string|null $mother_alive
+ * @property string|null $mother_name
  * @property string|null $parent_mobile
  * @property string|null $father_work
  * @property string|null $mother_work
@@ -567,6 +569,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereFamilyNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereFamilyStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereFatherAlive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereFatherName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereFatherWork($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereFavoriteCuisine($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereFavoriteMusic($value)
@@ -587,6 +590,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereMarriedSisters($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereMobile($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereMotherAlive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereMotherName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereMotherTongue($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereMotherWork($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserDetails whereOccupationCategory($value)
