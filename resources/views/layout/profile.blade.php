@@ -691,7 +691,7 @@
                                             <div class="poi-content">
                                                 <span class="poi-name">Sports</span>
                                                 <span
-                                                    class="poi-distance">{{ $profile->sports->value ?? 'Not specified' }}</span>
+                                                    class="poi-distance">{{ $profile->sportsFitness->value ?? 'Not specified' }}</span>
                                             </div>
                                         </div>
                                     </div>
