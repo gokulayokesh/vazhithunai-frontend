@@ -465,7 +465,7 @@ namespace App\Models{
  * @property string|null $hobbies
  * @property string|null $favorite_cuisine
  * @property string|null $favorite_music
- * @property string|null $sports
+ * @property \App\Models\ReferenceData|null $sports
  * @property string|null $pet_preference
  * @property string|null $travel_preference
  * @property string|null $diet_preference
@@ -510,8 +510,11 @@ namespace App\Models{
  * @property-read \App\Models\ReferenceData|null $educations
  * @property-read \App\Models\ReferenceData|null $employmentType
  * @property-read \App\Models\ReferenceData|null $familyStatus
+ * @property-read \App\Models\ReferenceData|null $favoriteCuisine
+ * @property-read \App\Models\ReferenceData|null $favoriteMusic
  * @property-read \App\Models\ReferenceData|null $genders
  * @property-read mixed $hobbies_list
+ * @property-read mixed $interests_list
  * @property-read mixed $languages_known_values
  * @property-read \App\Models\ReferenceData|null $heights
  * @property-read \App\Models\ReferenceData|null $maritalStatus

@@ -314,14 +314,14 @@
                                         <div class="col-md-6">
                                             <h5>Interests & Hobbies</h5>
                                             <ul class="feature-list">
-                                                @foreach (explode(',', $profile->interests ?? '') as $interest)
-                                                    @if (trim($interest) !== '')
-                                                        <li><i class="bi bi-check2"></i> {{ trim($interest) }}</li>
+                                                @foreach ($profile->interestsList as $interest)
+                                                    @if (trim($interest->value) !== '')
+                                                        <li><i class="bi bi-check2"></i> {{ trim($interest->value) }}</li>
                                                     @endif
                                                 @endforeach
-                                                @foreach (explode(',', $profile->hobbies ?? '') as $hobbies)
-                                                    @if (trim($hobbies) !== '')
-                                                        <li><i class="bi bi-check2"></i> {{ trim($hobbies) }}</li>
+                                                @foreach ($profile->hobbiesList as $hobbies)
+                                                    @if (trim($hobbies->value) !== '')
+                                                        <li><i class="bi bi-check2"></i> {{ trim($hobbies->value) }}</li>
                                                     @endif
                                                 @endforeach
 
@@ -675,7 +675,7 @@
                                             <div class="poi-content">
                                                 <span class="poi-name">Cuisine</span>
                                                 <span
-                                                    class="poi-distance">{{ $profile->favorite_cuisine ?? 'Not specified' }}</span>
+                                                    class="poi-distance">{{ $profile->favoriteCuisine->value ?? 'Not specified' }}</span>
                                             </div>
                                         </div>
                                         <div class="poi-item">
@@ -683,7 +683,7 @@
                                             <div class="poi-content">
                                                 <span class="poi-name">Music</span>
                                                 <span
-                                                    class="poi-distance">{{ $profile->favorite_music ?? 'Not specified' }}</span>
+                                                    class="poi-distance">{{ $profile->favoriteMusic->value ?? 'Not specified' }}</span>
                                             </div>
                                         </div>
                                         <div class="poi-item">
@@ -691,7 +691,7 @@
                                             <div class="poi-content">
                                                 <span class="poi-name">Sports</span>
                                                 <span
-                                                    class="poi-distance">{{ $profile->sports ?? 'Not specified' }}</span>
+                                                    class="poi-distance">{{ $profile->sports->value ?? 'Not specified' }}</span>
                                             </div>
                                         </div>
                                     </div>

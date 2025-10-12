@@ -115,6 +115,18 @@ class UserDetails extends Model
         return $this->belongsTo(ReferenceData::class, 'smoking_habits')->where('type', 'smokingHabits');
     }
 
+    public function favoriteCuisine() {
+        return $this->belongsTo(ReferenceData::class, 'favorite_cuisine')->where('type', 'favoriteCuisine');
+    }
+
+    public function favoriteMusic() {
+        return $this->belongsTo(ReferenceData::class, 'favorite_music')->where('type', 'favorite_music');
+    }
+
+    public function sports() {
+        return $this->belongsTo(ReferenceData::class, 'sports')->where('type', 'sports');
+    }
+
     
     
     public function getLanguagesKnownValuesAttribute()
@@ -193,6 +205,11 @@ class UserDetails extends Model
     public function getHobbiesListAttribute() {
         $ids = explode(',', $this->hobbies);
         return ReferenceData::whereIn('id', $ids)->where('type', 'hobbies')->get();
+    }
+
+    public function getInterestsListAttribute() {
+        $ids = explode(',', $this->interests);
+        return ReferenceData::whereIn('id', $ids)->where('type', 'interests')->get();
     }
     
     
