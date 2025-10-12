@@ -30,8 +30,158 @@ class RegisterController extends Controller
         return view( 'layout.register',compact('referenceData','curYear'));   
     }
 
-
     public function store(Request $request)
+    {
+        $step = $request->input('step'); // e.g., 'birth', 'education', 'personal', etc.
+
+        $user = User::where('email', Auth::user()->getRawOriginal('email'))->first();
+        if (!$user) {
+            return response()->json(['status' => 404, 'success' => false, 'message' => 'User not found'], 404);
+        }
+
+        $rules = [];
+        $data = [];
+
+        switch ($step) {
+            case 'birth':
+                $rules = [
+                    'birth_place' => 'required|string|max:255',
+                    'dob' => 'required|date',
+                    'age' => 'nullable|integer',
+                    'birth_time' => 'nullable|string|max:50',
+
+                    'highest_education' => 'required|string|max:255',
+                    'education_field' => 'nullable|string|max:255',
+                    'specialization' => 'nullable|string|max:255',
+                    'institution' => 'nullable|string|max:255',
+                    'completion_year' => 'nullable|integer',
+                    'additional_qualifications' => 'nullable|string|max:255',
+                    'occupation_category' => 'required|string|max:255',
+                    'job_title' => 'required|string|max:255',
+                    'company_name' => 'nullable|string|max:255',
+                    'employment_type' => 'nullable|string|max:255',
+                    'industry' => 'nullable|string|max:255',
+                    'work_location' => 'required|string|max:255',
+                    'annual_income' => 'nullable|string|max:255',
+                    'experience_years' => 'nullable|integer',
+                ];
+                break;
+
+            case 'personal':
+                $rules = [
+                    'gender' => 'required|string|max:50',
+                    'height' => 'required|string|max:50',
+                    'color' => 'nullable|string|max:50',
+                    'caste' => 'required|string|max:255',
+                    'religion' => 'required|string|max:255',
+                    'marital_status' => 'required|string|max:50',
+                    'city' => 'required|string|max:255',
+                    'address' => 'required|string',
+                    'body_type' => 'nullable|string|max:50',
+                    'physical_status' => 'nullable|string|max:50',
+                    'mother_tongue' => 'required|string|max:255',
+                    'pet_preference' => 'nullable|string|max:255',
+                    'interests' => 'nullable|string|max:255',
+                    'hobbies' => 'nullable|string|max:255',
+                    'favorite_cuisine'=> 'nullable|string|max:255',
+                    'favorite_music'=> 'nullable|string|max:255',
+                    'sports'=> 'nullable|string|max:255',
+                    'travel_preference' => 'nullable|string|max:255',
+                    'diet_preference' => 'nullable|string|max:255',
+                    'smoking_habits' => 'nullable|string|max:255',
+                    'drinking_habits' => 'nullable|string|max:255',
+                    'life_motto' => 'nullable|string|max:255',
+                    'languages_known' => 'nullable|string|max:255',
+                    'facebook_profile_url' => 'nullable|string|max:255',
+                    'instagram_profile_url' => 'nullable|string|max:255',
+                    'twitter_profile_url' => 'nullable|string|max:255',
+                ];
+                break;
+
+            case 'family':
+                $rules = [
+                    'family_status' => 'required|string|max:255',
+                    'family_god' => 'nullable|string|max:255',
+                    'father_alive' => 'required|string|max:50',
+                    'mother_alive' => 'required|string|max:50',
+                    'parent_mobile' => 'required|string|max:20',
+                    'father_work' => 'nullable|string|max:255',
+                    'mother_work' => 'nullable|string|max:255',
+                    'brothers_count' => 'nullable|integer',
+                    'sisters_count' => 'nullable|integer',
+                    'married_brothers' => 'nullable|integer',
+                    'married_sisters' => 'nullable|integer',
+                    'own_house' => 'required|string|max:50',
+                    'family_notes' => 'nullable|string',
+                ];
+                break;
+
+            case 'horoscope':
+                $rules = [
+                    'birth_star' => 'required|string|max:255',
+                    'rahu_ketu' => 'required|string|max:50',
+                    'chevvai' => 'required|string|max:50',
+                    'zodiac_sign' => 'required|string|max:255',
+                    'birth_lagnam' => 'required|string|max:255',
+                    'expectations' => 'nullable|string',
+                    'previous_marriage' => 'nullable|string',
+                    'additional_horoscope' => 'nullable|string',
+                    'profile_picture.*' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+                    'horoscope_picture.*' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+                ];
+                break;
+
+            default:
+                return response()->json(['status' => 400, 'success' => false, 'message' => 'Invalid step'], 400);
+        }
+
+        $validated = $request->validate($rules);
+
+        DB::beginTransaction();
+
+        try {
+            if ($step !== 'images') {
+                UserDetails::updateOrCreate(
+                    ['user_id' => $user->id],
+                    $validated
+                );
+            }
+
+            if ($step === 'images') {
+                if ($request->hasFile('profile_picture')) {
+                    foreach ($request->file('profile_picture') as $file) {
+                        $path = $file->store('profile_pictures', 'public');
+                        UserImages::create(['user_id' => $user->id, 'image_path' => $path]);
+                    }
+                }
+
+                if ($request->hasFile('horoscope_picture')) {
+                    foreach ($request->file('horoscope_picture') as $file) {
+                        $path = $file->store('horoscope_pictures', 'public');
+                        UserHoroscopeImages::create(['user_id' => $user->id, 'image_path' => $path]);
+                    }
+                }
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'status' => 200,
+                'success' => true,
+                'message' => "Step '{$step}' saved successfully.",
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'status' => 500,
+                'success' => false,
+                'message' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+
+    public function storeData(Request $request)
     {
         // Validate all sections
         $validated = $request->validate([

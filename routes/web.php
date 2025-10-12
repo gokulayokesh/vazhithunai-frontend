@@ -110,3 +110,9 @@ Route::get('/resend-verification', [LoginController::class, 'resendVerification'
 Route::get('/promocode', [PromocodeController::class, 'index'])->name('promocode.index');
 
 Route::post('/promocode/apply', [PromocodeController::class, 'apply'])->name('promocode.apply');
+
+Route::get('/clear-cache', function () {
+    Artisan::call('optimize');
+    Artisan::call('migrate');
+    echo "Cleared";
+});
