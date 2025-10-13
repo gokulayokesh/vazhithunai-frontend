@@ -15,10 +15,10 @@
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // if (!sessionStorage.getItem('bannerShown')) {
-        const bannerModal = new bootstrap.Modal(document.getElementById('bannerModal'));
-        bannerModal.show();
-        sessionStorage.setItem('bannerShown', 'true');
-        // }
+        if (!sessionStorage.getItem('bannerShown')) {
+            const bannerModal = new bootstrap.Modal(document.getElementById('bannerModal'));
+            bannerModal.show();
+            sessionStorage.setItem('bannerShown', 'true');
+        }
     });
 </script>
