@@ -15,11 +15,8 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        // Read the JSON file from storage/app/public/json/cities.json
-        $citiesJson = Storage::disk('public')->get('json/cities.json');
-
-        // Decode JSON into an array
-        $cities = json_decode($citiesJson, true);
+        $referenceData = json_decode(Storage::disk('public')->get('json/data.json'), true);
+        $cities = $referenceData['cities'] ?? [];
 
         // Step 1: Get subscribed users with custom subscription ordering
         $subscribedUsers = User::has('userDetails')

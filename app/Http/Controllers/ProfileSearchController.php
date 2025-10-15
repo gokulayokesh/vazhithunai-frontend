@@ -40,7 +40,7 @@ class ProfileSearchController extends Controller
 
         // City filter
         if ($request->filled('city')) {
-            $query->where('city_id', $request->city);
+            $query->where('city', $request->city);
         }
 
         // Gender filter
