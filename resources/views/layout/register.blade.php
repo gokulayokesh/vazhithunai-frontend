@@ -12,7 +12,7 @@
                 <div class="wizard-container">
                     <div class="card">
                         <div class="card-header">
-                            <h1 class="wizard-title">Create your profile</h1>
+                            <h1 class="wizard-title">Complete your profile</h1>
                             <p class="hint">Fill each step. You can revisit completed steps from the header.</p>
                         </div>
 

@@ -76,7 +76,8 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             if ($request->input('from_form')) {
-                return redirect()->route('home');
+                $redirectRoute = Auth::user()->profile_completed == 0 ? 'register.index' : 'home';
+                return redirect()->route($redirectRoute);
             }
 
             return response()->json(['success' => true]);
